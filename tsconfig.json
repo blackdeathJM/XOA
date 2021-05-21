@@ -1,0 +1,110 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "es2020",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2017",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom",
+            "ESNext.AsyncIterable"
+        ],
+        "paths": {
+            "@plantilla/*": [
+                "@fuse/*"
+            ],
+            "@env/*": [
+                "environments/*"
+            ],
+            "@Config/*": [
+                "app/config/*"
+            ],
+            "@services/*": [
+                "app/main/services/*"
+            ],
+            "@presidencia/*": [
+                "app/main/componentes/documentos/componentes/*",
+                "app/main/componentes/documentos/graphql/*",
+                "app/main/componentes/documentos/guards/*",
+                "app/main/componentes/documentos/services/*",
+                "app/main/componentes/documentos/models/*",
+                "app/main/componentes/documentos/state/*"
+            ],
+            "@dir-comercial/*": [
+                "app/main/componentes/dir-comercial/clientes/*",
+                "app/main/componentes/dir-comercial/cartera-vencida/*",
+                "app/main/componentes/dir-comercial/contratos/*",
+                "app/main/componentes/dir-comercial/graphql/*",
+                "app/main/componentes/dir-comercial/models/*",
+                "app/main/componentes/dir-comercial/services/*",
+                "app/main/componentes/dir-comercial/state/*"
+            ],
+            "@dir-area-tecnica/*": [
+                "app/main/componentes/dir-area-tecnica/ordenes-trabajo/*",
+            ],
+            "@glogal/*": [
+                "app/main/componentes/global/*"
+            ],
+            "@telemetria/*": [
+                "app/main/componentes/direccion/telemetria/componentes/*",
+                "app/main/componentes/direccion/telemetria/graphql/*",
+                "app/main/componentes/direccion/telemetria/models/*",
+                "app/main/componentes/direccion/telemetria/services/*",
+                "app/main/componentes/direccion/telemetria/state/*"
+            ],
+            "@ui-externos/*": [
+                "app/ui-externos/*"
+            ],
+            "@modelosUsuarios/*": [
+                "app/main/componentes/usuarios/models/*"
+            ],
+            "@serviciosUsuarios/*": [
+                "app/main/componentes/usuarios/services/*"
+            ],
+            "@componentesSeparados/*": [
+                "app/main/componentes-separados/*"
+            ],
+            "@funcionesRaiz/*": [
+                "app/main/guards/*",
+                "app/main/interfaces/*"
+            ],
+            "@global/*": [
+                "app/main/componentes/global/departamentos/*",
+                "app/main/componentes/global/notificaciones/*"
+            ],
+            "@usuarios/*": [
+                "app/main/componentes/usuarios/*",
+                "app/main/componentes/usuarios/services/*"
+            ],
+            "@resguardo/*": [
+                "app/main/componentes/comun/resguardo/*"
+            ],
+            "@shared/*": [
+                "app/shared/*"
+            ],
+            "@organismo/*": [
+                "assets/organismo/*"
+            ],
+            "@fuse": [
+                "@fuse/"
+            ]
+        }
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": false,
+        "strictInjectionParameters": false,
+        "enableI18nLegacyMessageIdFormat": false
+    }
+}
