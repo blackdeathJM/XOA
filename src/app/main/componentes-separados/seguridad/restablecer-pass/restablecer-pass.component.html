@@ -1,0 +1,60 @@
+<div class="inner-scroll" fxLayout="row" fxLayoutAlign="start" id="forgot-password">
+
+      <div fxFlex fxHide fxShow.gt-xs id="forgot-password-intro">
+
+            <div [@animate]="{value:'*',params:{scale:'0.2'}}" class="logo">
+                  <img alt="" src="../../../../../assets/images/logos/fuse.svg">
+            </div>
+
+            <div [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}" class="title">
+                  Restablece tu contraseña
+            </div>
+
+            <div [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}" class="description">
+                  Para recuperar tu contraseña solo introduce tu email que tienes registrado en el sistema comercial
+                  se te enviara un correo con un link para que puedas colocar una nueva contraseña
+            </div>
+
+      </div>
+
+      <div [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}" fusePerfectScrollbar
+           id="forgot-password-form-wrapper">
+
+            <div id="forgot-password-form">
+
+                  <div class="logo" fxHide.gt-xs>
+                        <img alt="" src="../../../../../assets/images/logos/fuse.svg">
+                  </div>
+
+                  <div class="title">RECUPERA TU CONTRASEÑA</div>
+
+                  <form [formGroup]="restablecerPassForm" name="forgoPasswordForm" novalidate>
+
+                        <mat-form-field appearance="outline">
+                              <mat-label>Correo</mat-label>
+                              <input formControlName="email" matInput>
+                              <mat-icon class="secondary-text" matSuffix>mail</mat-icon>
+                              <mat-error *ngIf="restablecerPassForm.get('email').hasError('required')">
+                                    El correo es requerido
+                              </mat-error>
+                              <mat-error *ngIf="restablecerPassForm.get('email').hasError('email')">
+                                    Introduce un correo valido
+                              </mat-error>
+                        </mat-form-field>
+
+                        <button [disabled]="restablecerPassForm.invalid" aria-label="Enviar link para restablecer"
+                                class="submit-button"
+                                color="accent" mat-raised-button>
+                              Enviar link para restablecer
+                        </button>
+
+                  </form>
+
+                  <div class="login" fxLayout="row" fxLayoutAlign="center center">
+                        <a [routerLink]="'/seguridad/login'" class="link">Regresar para iniciar sesion</a>
+                  </div>
+
+            </div>
+      </div>
+</div>
+

@@ -1,0 +1,22 @@
+        Swal.fire({
+            title: 'Desactivar motor',
+            text: 'Estas seguro(a) de cambiar el estado del el motor!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            customClass: 'swal-text',
+            confirmButtonText: 'Si, cambiar estado'
+        }).then((result) =>
+        {
+            if (result.value)
+            {
+                Swal.fire(
+                    {
+                        title: 'Deseas activar esta bomba',
+                        text: 'Motor',
+                        icon: 'success',
+                        customClass: 'swal-text'
+                    });
+            }
+        });

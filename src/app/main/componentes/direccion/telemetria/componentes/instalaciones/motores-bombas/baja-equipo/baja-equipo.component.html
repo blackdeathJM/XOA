@@ -1,0 +1,27 @@
+<form [formGroup]="formFecha" (ngSubmit)="baja()">
+    <div class="baseDiv">
+        <div fxLayout="row">
+            <mat-form-field fxFill>
+                <mat-label>Selecciona una fecha</mat-label>
+                <input [matDatepicker]="fechaC" formControlName="fecha" matInput
+                       name="fecha">
+                <mat-datepicker-toggle [for]="fechaC" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fechaC></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Motivo de retiro del equipo</mat-label>
+                <textarea matInput style="height: 150px" formControlName="motivoRetiro"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap=" 32px" class="baseDiv">
+        <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" [disabled]="this.formFecha.invalid">Guardar
+        </mat-spinner-button>
+        <button fxFlex="50" mat-raised-button color="warn" matDialogClose="true">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+    </div>
+</form>

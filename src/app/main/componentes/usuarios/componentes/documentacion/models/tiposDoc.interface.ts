@@ -1,0 +1,6 @@
+export enum TIPOS_DOC
+{
+    OFICIO = 'OFICIO',
+    MEMORANDUM = 'MEMORANDUM',
+    CIRCULAR = 'CIRCULAR',
+}

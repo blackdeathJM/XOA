@@ -1,0 +1,26 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/docsExt.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Administracion de instalaciones</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button fxFlex="1 0 auto" mat-raised-button (click)="nvaInstalacion()" color="primary">
+                <mat-icon>add</mat-icon>
+                Nueva instalacion
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido *ngIf="_instState.state$ | async as instSelec">
+        <div fxLayout="row" [@animate]="{value:'*',params:{y:'100%'}}" class="m-8">
+            <app-prime-tabla fxFill
+                             (emitirAccion)="accionRecibida($event)"
+                             [columnas]="columnas"
+                             [ancho]="{width: '80px'}"
+                             [valConsulta]="instSelec"
+                             [btnAcciones]="acciones"
+                             [accionesVisibles]="true">
+            </app-prime-tabla>
+        </div>
+    </ng-container>
+</app-pagina>

@@ -1,0 +1,80 @@
+<input #fileInput accept="application/pdf" [multiple]="false" [uploader]="cargaDeArchivo" hidden id="fileUpload" name="fileUpload" ng2FileSelect type="file"
+       (click)="cargaDeArchivo.clearQueue()">
+
+<div class="mat-elevation-z14 m-8" fxLayout="row">
+    <button (click)="recargarListaDocsUsuario()" class="green" fxFlex="1 0 auto" mat-raised-button>
+        <mat-icon>refresh</mat-icon>
+        Volver a cargar lista
+    </button>
+</div>
+<section *ngIf="(_docsUsuarioState.state$ | async) as documentos">
+    <ng-container *ngIf="!estaCargando; else cargandoLista">
+        <div class="mx-8">
+            <accordion [isAnimated]="true" fxFill>
+                <accordion-group *ngFor="let documento of documentos; let i = index" class="mb-8 mat-elevation-z14" panelClass="customClass">
+                    <div accordion-heading fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="celda" fxFlex matTooltip="Numero de seguimiento">{{documento.noSeguimiento}}</span>
+                        <span class="celda" fxFlex matTooltip="Identificador">{{documento.identificadorDoc}}</span>
+                        <span class="celda" fxFlex matTooltip="Asunto: {{documento.asunto}}">{{documento.asunto | slice: 0:25}}</span>
+                        <span class="celda" fxFlex matTooltip="Dependencia: {{documento.dependencia}}">{{documento.dependencia | slice: 0:28}}</span>
+                        <mat-icon [matTooltip]="documento.usuarioDestino[0].subproceso" [svgIcon]="documento.usuarioDestino[0].subproceso" class="ml-8">
+                        </mat-icon>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <span>Fecha de recepcion:<em class="yellow-fg ml-8">{{documento.fechaRecepcion  | date: 'dd/MM/yyyy'}}</em></span>
+                        <span>Fehca limite de entrega:<em class="yellow-fg ml-8">{{documento.fechaLimiteEntrega | date: 'dd/MM/yyyy'}}</em></span>
+                    </div>
+                    <mat-divider class="my-8"></mat-divider>
+                    <div fxLayout="row">
+                        <span class="mat-subheading-2 yellow-fg" fxFill>{{documento.comentario}}</span>
+                    </div>
+                    <div fxLayout="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>observaciones</mat-label>
+                            <textarea matInput readonly style="height: 50px" value="{{documento.usuarioDestino[0].observaciones}}"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <mat-divider class="mb-8"></mat-divider>
+                    <mat-action-row fxLayout="row" fxLayoutAlign="space-between center">
+                        <a mat-raised-button [disabled]="documento.docUrl === ''" [href]="documento.docUrl | archivoUrl: 'dex'"
+                           class="light-blue-900" target="_blank">
+                            <mat-icon>attachment</mat-icon>
+                            Abrir documento
+                        </a>
+                        <div fxLayoutGap="32px">
+                            <button mat-raised-button type="button" class="green" (click)="subirDocTemp(fileInput, documento)" [disabled]="cargandoArchivoTem"
+                                    [hidden]="documento.usuarioDestino[0].subproceso === 'APROBADO' || documento.proceso === 'TERMINADO'">
+                                <ng-container *ngIf="cargandoArchivoTem; else elseCargando">
+                                    <mat-icon>
+                                        <mat-spinner diameter="20" color="warn"></mat-spinner>
+                                    </mat-icon>
+                                </ng-container>
+                            </button>
+                            <button mat-raised-button class="amber" [disabled]="generandoFolioResp"
+                                    matTooltip="Genera un nuevo folio para dar respuesta a este documento" (click)="generarFolioResp(documento, i)">
+                                <ng-container *ngIf="generandoFolioResp; else elseCaFolResp">
+                                    <mat-icon>
+                                        <mat-spinner diameter="20" color="warn"></mat-spinner>
+                                    </mat-icon>
+                                </ng-container>
+                            </button>
+                        </div>
+                    </mat-action-row>
+                </accordion-group>
+            </accordion>
+        </div>
+    </ng-container>
+</section>
+
+<ng-template #elseCargando>
+    <mat-icon>publish</mat-icon>
+    Subir documento para aprobacion
+</ng-template>
+
+<ng-template #elseCaFolResp>
+    <mat-icon>image_aspect_ratio</mat-icon>
+    Generar folio respuesta
+</ng-template>
+<ng-template #cargandoLista>
+    <app-lista-cargando [tieneDatos]="tieneDatos"></app-lista-cargando>
+</ng-template>

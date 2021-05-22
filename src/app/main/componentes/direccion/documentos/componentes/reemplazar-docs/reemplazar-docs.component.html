@@ -1,0 +1,30 @@
+<ng-container *ngFor="let elemento of documentos; let i = index">
+    <div [hidden]="!elemento['doc']">
+        {{elemento['tipo']}}
+    </div>
+    <div fxLayout="row" class="mb-8">
+        <button fxFill (click)="subirArchivo(fileInput, elemento['doc'], i)" type="button" mat-raised-button class="teal-700"
+                [hidden]="elemento['doc'] === null" [disabled]="elemento['cargando']">
+            <ng-container *ngIf="documentos[i]['cargando']; else elseCargando">
+                <mat-icon>
+                    <mat-spinner diameter="20" mode="determinate" [value]="progresoTodo" color="warn"></mat-spinner>
+                </mat-icon>
+            </ng-container>
+            {{elementoCompletado}}
+        </button>
+    </div>
+</ng-container>
+
+<input #fileInput accept="application/pdf" [multiple]="false" [uploader]="cargarDoc" hidden ng2FileSelect type="file" (click)="cargarDoc.clearQueue()">
+
+<div fxLayout="row">
+    <button fxFill mat-raised-button color="warn" type="button" matDialogClose="true">
+        <mat-icon>closed</mat-icon>
+        Cerrar
+    </button>
+</div>
+
+<ng-template #elseCargando>
+    <mat-icon>publish</mat-icon>
+    Cargar documento
+</ng-template>

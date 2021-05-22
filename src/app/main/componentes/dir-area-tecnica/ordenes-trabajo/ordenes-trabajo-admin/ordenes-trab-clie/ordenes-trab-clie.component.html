@@ -1,0 +1,34 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div class="h2">Filtrar ordenes de trabajo</div>
+    </ng-container>
+    <ng-container contenido>
+        <div fxLayoutAlign="center center" fxLayoutGap="8px">
+            <button mat-raised-button fxFlex="1 0 auto" class="orange-300" (click)="ordenesFil('PENDIENTE')">
+                <mat-icon>warning</mat-icon>
+                Pendientes
+            </button>
+            <button mat-raised-button fxFlex="1 0 auto" class="green" (click)="ordenesFil('EJECUTADA')">
+                <mat-icon>done_all</mat-icon>
+                Ejecutadas
+            </button>
+        </div>
+    </ng-container>
+</app-card-bootstrap>
+<mat-divider></mat-divider>
+
+<div class="baseDiv m-8" *ngIf="!estaCargando else cargando">
+    <app-prime-tabla
+        (emitirAccion)="accionRecibida($event)"
+        [valConsulta]="_ordenesState.state$ | async"
+        [columnas]="columnas"
+        [btnAcciones]="acciones"
+        [accionesVisibles]="true"
+        [ancho]="{width: '80px'}">
+    </app-prime-tabla>
+</div>
+<mat-divider></mat-divider>
+<app-detalle-orden-tele *ngIf="ordenTrabajo" [ordenTele]="ordenTrabajo"></app-detalle-orden-tele>
+<ng-template #cargando>
+    <app-lista-cargando></app-lista-cargando>
+</ng-template>

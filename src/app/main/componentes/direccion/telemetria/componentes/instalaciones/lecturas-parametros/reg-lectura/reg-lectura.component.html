@@ -1,0 +1,39 @@
+<form [formGroup]="formFecha" *ngIf="data.fechaVisible">
+    <div fxLayout="row" class="baseDiv p-12 mb-8">
+        <mat-form-field fxFill>
+            <input [matDatepicker]="fechaRegParamsElectricos" formControlName="fechaReg" matInput
+                   name="fechaReg" placeholder="Fecha de registro">
+            <mat-datepicker-toggle [for]="fechaRegParamsElectricos" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #fechaRegParamsElectricos></mat-datepicker>
+        </mat-form-field>
+    </div>
+</form>
+<form [formGroup]="formParametros">
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="32px" class="baseDiv p-12 mt-8">
+        <mat-form-field>
+            <mat-label>Valor 1</mat-label>
+            <input matInput formControlName="v1" class="ali-numeros">
+            <span matSuffix>&nbsp;&nbsp;{{data.sufijo}}</span>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Valor 2</mat-label>
+            <input matInput formControlName="v2" class="ali-numeros">
+            <span matSuffix>&nbsp;&nbsp;{{data.sufijo}}</span>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Valor 3</mat-label>
+            <input matInput formControlName="v3" class="ali-numeros">
+            <span matSuffix>&nbsp;&nbsp;{{data.sufijo}}</span>
+        </mat-form-field>
+    </div>
+</form>
+
+<mat-action-row fxLayoutGap="8px" class="baseDiv mt-8 p-12">
+    <button fxFlex mat-raised-button color="warn" matDialogClose="true">
+        <mat-icon>close</mat-icon>
+        Cancelar
+    </button>
+    <mat-spinner-button fxFlex [options]="opcionesButtonSpinner"
+                        [disabled]="this.formParametros.invalid || this.formFecha.invalid" (click)="nvoParametro()">Guardar
+    </mat-spinner-button>
+</mat-action-row>

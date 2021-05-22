@@ -1,0 +1,50 @@
+<form (ngSubmit)="registrarUsuario()" [formGroup]="formUsuarios">
+    <div class="baseDiv">
+        <div fxLayout="column">
+            <mat-form-field>
+                <mat-label>Selecciona un departamento para asignarlo al usuario que vas a registrar</mat-label>
+                <mat-select formControlName="departamento" required>
+                    <mat-option *ngFor="let departamento of (_deptos.state$ | async)" [value]="departamento._id">
+                        {{departamento.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nombre del usuario</mat-label>
+                <input formControlName="nombre" matInput name="nombre">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input formControlName="usuario" matInput name="usuario">
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayoutGap="8px">
+            <mat-form-field fxFlex>
+                <mat-label>contraseña</mat-label>
+                <input formControlName="contrasena" matInput name="contrasena" type="password">
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>confima la contraseña</mat-label>
+                <input formControlName="confContrasena" matInput name="confContrasena" type="password">
+                <mat-error *ngIf="mensajeError('confContrasena', 'required')"></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxLayoutGap="8px" class="baseDiv mt-8">
+        <button color="warn" fxFlex mat-dialog-close mat-raised-button type="button">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+        <div class="button-container" fxFlex>
+            <div *ngIf="guardando" class="spinner-container">
+                <mat-spinner diameter="24"></mat-spinner>
+            </div>
+            <button [disabled]="formUsuarios.invalid || guardando" class="altoAnchoButton100" color="primary" mat-raised-button type="submit">
+                <mat-icon>save</mat-icon>
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>

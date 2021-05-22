@@ -1,0 +1,23 @@
+@mixin example-viewer-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    #material-vista {
+        .material-vista-header {
+            color: map-get($foreground, secondary-text);
+            background: map-get($background, app-bar);
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .material-vista-source {
+            .tab-content {
+                .tab {
+                    .material-source {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -52,7 +52,7 @@
                 "app/main/componentes/dir-comercial/state/*"
             ],
             "@dir-area-tecnica/*": [
-                "app/main/componentes/dir-area-tecnica/ordenes-trabajo/*",
+                "app/main/componentes/dir-area-tecnica/ordenes-trabajo/*"
             ],
             "@glogal/*": [
                 "app/main/componentes/global/*"

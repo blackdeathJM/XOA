@@ -1,0 +1,40 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <span class="card-title">Cambia tu contrasena ({{_sesionState.snapshot.nombre}})</span>
+    </ng-container>
+    <ng-container contenido>
+
+        <div fxLayout="row">
+            <img [src]="_sesionState.snapshot.img | archivoUrl: 'per'" class="m-12 avatar" alt="" style="width: 200px; height:200px"/>
+            <mat-divider class="blue-grey-bg" vertical="true"></mat-divider>
+            <div fxFlex>
+                <div class="ml-16 container" fxFlex fxLayout="column">
+                    <form (ngSubmit)="cambiarContrasena()" [formGroup]="formCambiarContrasena" class="pr-12">
+                        <mat-form-field>
+                            <mat-label>Contrasena actual</mat-label>
+                            <input formControlName="contrasenaActual" matInput type="password">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Contrasena</mat-label>
+                            <input formControlName="contrasena" matInput type="password">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Confirmar contrasena</mat-label>
+                            <input formControlName="confirmarContrasena" matInput
+                                   type="password">
+                        </mat-form-field>
+                        <div fxLayout="row">
+                            <mat-spinner-button [disabled]="formCambiarContrasena.invalid" [options]="opcionesButtonSpinner" fxFill>
+                            </mat-spinner-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container pie>
+        <div class="mx-8">
+            <app-ng2-file-upload [opcionesCarga]="opcionesCarga" (emitirListaArchivos)="archivoRecibido()"></app-ng2-file-upload>
+        </div>
+    </ng-container>
+</app-card-bootstrap>

@@ -1,0 +1,69 @@
+<div [@animate]="{value:'*',params:{y:'100%'}}">
+    <div fxLayout='column' fxFlex='60'>
+        <app-card-bootstrap>
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Informacion de motores</span></ng-container>
+            <ng-container contenido>
+                <app-prime-tabla
+                    [columnas]='colMotor'
+                    [ancho]='{width: "80px"}'
+                    [accionesVisibles]='true'
+                    [btnAcciones]='accionesEquipo'
+                    [valConsulta]='_instalacion.motor'
+                    (emitirAccion)='accionMotorRecibida($event, _instalacion._id)'>
+                </app-prime-tabla>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider></mat-divider>
+        <app-card-bootstrap *ngIf="infoMotor !== null && infoMotor.fechaInstalacion !== null">
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Evidencia de instalacion - ({{_instalacion.nombre}})</span></ng-container>
+            <ng-container contenido>
+                <app-galeria [album]="infoMotor?.imgEvidenciaInst | convertirLigthboxAlbum : preMotorIns"></app-galeria>
+            </ng-container>
+            <ng-container pie>
+                <app-ng2-file-upload
+                    [opcionesCarga]="opcCargMotInt"
+                    (emitirListaArchivos)="listaArchInstMotor($event, _instalacion._id, true)">
+                </app-ng2-file-upload>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider></mat-divider>
+        <app-card-bootstrap *ngIf="infoMotor !== null && infoMotor.fechaRetiro !== null">
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Evidencia de retiro</span></ng-container>
+            <ng-container contenido>
+                <app-galeria [album]="infoMotor.imgEvidenciaRet | convertirLigthboxAlbum: preMotorRet"></app-galeria>
+                <mat-divider></mat-divider>
+                <div fxLayout="row wrap" class="baseDiv mat-elevation-z14 mt-4">{{infoMotor.motivoRetiro}}</div>
+            </ng-container>
+            <ng-container pie>
+                <app-ng2-file-upload
+                    [opcionesCarga]="opcCargMotRet"
+                    (emitirListaArchivos)="listaArchInstMotor($event, _instalacion._id, false)">
+                </app-ng2-file-upload>
+            </ng-container>
+        </app-card-bootstrap>
+    </div>
+    <mat-divider [vertical]='true'></mat-divider>
+    <app-card-bootstrap fxFlex>
+        <ng-container cabecera>
+            <div>
+                <mat-icon [ngClass]="(infoMotor?.activa)? 'green-fg': 'red-fg'">brightness_high</mat-icon>
+            </div>
+        </ng-container>
+        <ng-container contenido>
+            <app-reg-motor [soloLectura]='true'
+                           [ocultarAcciones]='true'
+                           apariencia='outline'
+                           [motorSele]='infoMotor'>
+            </app-reg-motor>
+        </ng-container>
+        <ng-container pie>
+            <div fxLayoutAlign='space-between' fxLayoutGap='8px'>
+                <button fxFlex='1 0 auto' mat-button color='primary' [disabled]="infoMotor === null || infoMotor?.fechaRetiro !== null "
+                        (click)="bajaEquipo(_instalacion._id, infoMotor.id, 'motor')">
+                    <mat-icon color='warn'>block</mat-icon>
+                    Baja
+                </button>
+            </div>
+        </ng-container>
+    </app-card-bootstrap>
+</div>

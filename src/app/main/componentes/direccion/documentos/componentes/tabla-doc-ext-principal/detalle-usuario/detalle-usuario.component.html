@@ -1,0 +1,61 @@
+<div fxLayout="row">
+    <accordion [isAnimated]="true" fxFill>
+        <accordion-group class="mb-8 mat-elevation-z14" panelClass="customClass">
+            <div accordion-heading fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayoutAlign="space-between center" fxLayoutGap="8px">
+                    <p-avatar size="xlarge" [image]="('per-' + usuarioDestino.usuario) | archivoUrl: 'per'" shape="circle">
+                    </p-avatar>
+                    <div class="mat-title lime-fg">{{usuarioDestino.usuario}}</div>
+                </div>
+                <div>
+                    <button mat-icon-button (click)="eliminarU()">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                    <button mat-icon-button [hidden]="!usuarioDestino.notificarRespDelUsuario">
+                        <mat-icon class="green-fg">notifications_active</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <form [formGroup]="formObservaciones" fxFill>
+                    <mat-form-field>
+                        <label>Observaciones</label>
+                        <textarea formControlName="observacion" matInput required style="height: 50px"></textarea>
+                    </mat-form-field>
+                </form>
+            </div>
+            <mat-action-row fxLayoutGap="32px">
+                <button (click)="rechazarObservaciones(usuarioDestino)" [disabled]="formObservaciones.invalid || this.caRechazar" color="accent" fxFlex
+                        mat-raised-button type="button">
+                    <ng-container *ngIf="caRechazar; else elseRechazar">
+                        <mat-icon>
+                            <mat-spinner diameter="20" color="warn"></mat-spinner>
+                        </mat-icon>
+                    </ng-container>
+                </button>
+                <button (click)="aprobarDocumento()" [disabled]="usuarioDestino.docUrl === null || this.caAprobar" color="primary" fxFlex mat-raised-button>
+                    <ng-container *ngIf="caAprobar; else elseAprobar">
+                        <mat-icon>
+                            <mat-spinner diameter="20" color="warn"></mat-spinner>
+                        </mat-icon>
+                    </ng-container>
+                </button>
+                <a (click)="desactivarNotificacionUsuario()" [disabled]="usuarioDestino.docUrl === null" [href]="usuarioDestino.docUrl | archivoUrl: 'deu'"
+                   mat-raised-button target="_blank" color="primary">
+                    <mat-icon [ngClass]="usuarioDestino.docUrl ? 'yellow-fg': 'blue-grey-400-fg'">attachment</mat-icon>
+                    Abrir documento
+                </a>
+            </mat-action-row>
+        </accordion-group>
+    </accordion>
+</div>
+
+<ng-template #elseAprobar>
+    <mat-icon>save</mat-icon>
+    Aprobar documento
+</ng-template>
+<ng-template #elseRechazar>
+    <mat-icon>send</mat-icon>
+    Rechazar y enviar observaciones a: {{usuarioDestino.usuario}}
+</ng-template>

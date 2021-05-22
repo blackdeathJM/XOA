@@ -1,12 +1,6 @@
 export class FuseUtils
 {
-    /**
-     * Filter array by string
-     *
-     * @param mainArr
-     * @param searchText
-     * @returns {any}
-     */
+
     public static filterArrayByString(mainArr, searchText): any
     {
         if ( searchText === '' )
@@ -94,13 +88,6 @@ export class FuseUtils
         }
     }
 
-    /**
-     * Search in string
-     *
-     * @param value
-     * @param searchText
-     * @returns {any}
-     */
     public static searchInString(value, searchText): any
     {
         return value.toLowerCase().includes(searchText);

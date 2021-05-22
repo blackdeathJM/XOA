@@ -1,0 +1,13 @@
+<app-completa-navegacion-iz-tab [barraHerramientas]="false">
+    <ng-container cabeceraTitulo><h1>Instalaciones</h1></ng-container>
+    <ng-container cabecera2>
+        <p-avatar image="assets/images/titulos/instalaciones.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Pozos y tanques de agua</span>
+    </ng-container>
+    <ng-container contenidoBarraLateral>
+        <app-listar-instalaciones></app-listar-instalaciones>
+    </ng-container>
+    <ng-container contenido-tab>
+        <router-outlet></router-outlet>
+    </ng-container>
+</app-completa-navegacion-iz-tab>

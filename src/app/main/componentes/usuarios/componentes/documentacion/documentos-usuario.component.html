@@ -1,0 +1,19 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar size="xlarge" image="assets/images/titulos/misDocumentos.png"></p-avatar>
+        <span class="ml-4 mat-title">Mi documentacion</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button (click)="generarNvoFolio()" color="primary" fxFlex="1 0 auto" mat-raised-button>
+                <mat-icon>image_aspect_ratio</mat-icon>
+                Generar nuevo folio
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <app-busqueda-docs-usuario>
+            <app-docs-ext-recibidos-lista></app-docs-ext-recibidos-lista>
+        </app-busqueda-docs-usuario>
+    </ng-container>
+</app-pagina>

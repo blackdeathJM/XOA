@@ -1,0 +1,72 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar size="xlarge" image="assets/images/titulos/usuarios.png"></p-avatar>
+        <span class="ml-4 mat-title">Control de usuarios</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button fxFlex="1 0 auto" color="primary" mat-raised-button (click)="regUsuario()">
+                <mat-icon>person_add</mat-icon>
+                Registrar nuevo usuario
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <div class="m-8 mat-elevation-z14">
+            <p-table [value]="_admonUsuarioState.state$ | async" [paginator]="true" dataKey="usuario"
+                     [alwaysShowPaginator]="false" [rowHover]="true" [rows]="10">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Avatar</th>
+                        <th [colSpan]="2">Nombre</th>
+                        <th>Usuario</th>
+                        <th [colSpan]="2">Departamento</th>
+                        <th fxLayoutAlign="center center">Acciones</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-usuario>
+                    <tr>
+                        <td>
+                            <p-avatar shape="circle" size="xlarge" [image]="usuario.img | archivoUrl: 'per'"></p-avatar>
+                        </td>
+                        <td [colSpan]="2">
+                            {{usuario.nombre}}
+                        </td>
+                        <td>
+                            {{usuario.usuario}}
+                        </td>
+                        <td [colSpan]="2">
+                            {{usuario.departamento.nombre}}
+                        </td>
+                        <td>
+                            <div fxLayoutAlign="center center" fxLayoutGap="4px">
+                                <button mat-icon-button color="primary" [pRowToggler]="usuario">
+                                    <mat-icon>info</mat-icon>
+                                </button>
+                                <button mat-icon-button class="gree" (click)="cambiarPassPorElAdmin(usuario.usuario)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="rowexpansion" let-usuario>
+                    <tr>
+                        <td [colSpan]="7">
+                            <div>
+                                <mat-list role="list" fxFill>
+                                    <div fxLayoutAlign="space-between" *ngFor="let rol of roles">
+                                        <mat-list-item role="listitem">{{rol}}</mat-list-item>
+                                        <mat-slide-toggle #slideToggle color="primary" [checked]="usuario.role.includes(rol)"
+                                                          (toggleChange)="cambiarRole(slideToggle, usuario, rol)">
+                                        </mat-slide-toggle>
+                                    </div>
+                                </mat-list>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </ng-container>
+</app-pagina>

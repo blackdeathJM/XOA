@@ -1,0 +1,47 @@
+<ng-container *ngIf="_ordenAreaTecnica">
+    <section [@animate]="{value:'*',params:{y:'100%'}}">
+        <div class="message-box fuse-navy-600-bg fuse-white-fg my-8 h2">
+            <strong>Detalles del usuario</strong>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="60" class="form-etiquetas">RPU:</span>
+                <span fxFlex class="form-datos">{{_ordenAreaTecnica.rpu | uppercase}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Contrato:</span>
+                <span fxFlex class="form-datos">{{_ordenAreaTecnica.noContrato}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">No medidor:</span>
+                <span fxFlex class="form-datos">{{_ordenAreaTecnica.noMedidor}}</span>
+            </div>
+        </div>
+        <div>
+            <span fxFlex="20" class="form-etiquetas">Nombre:</span>
+            <span fxFlex class="form-datos">{{_ordenAreaTecnica.nombre | titlecase}} {{_ordenAreaTecnica.apellidos | titlecase}}</span>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Calle:</span>
+                <span fxFlex class="form-datos">{{_ordenAreaTecnica.calle | titlecase}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Colonia:</span>
+                <span fxFlex class="form-datos">{{_ordenAreaTecnica.colonia | titlecase}}</span>
+            </div>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Entre que calles:</span>
+            <span fxFlex class="form-datos">{{_ordenAreaTecnica.calle | titlecase}}</span>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Referencia del domicilio:</span>
+            <span fxFlex class="form-datos">{{_ordenAreaTecnica.referencia}}</span>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">contacto:</span>
+            <span fxFlex class="form-datos">{{_ordenAreaTecnica.telefonos}}</span>
+        </div>
+    </section>
+</ng-container>

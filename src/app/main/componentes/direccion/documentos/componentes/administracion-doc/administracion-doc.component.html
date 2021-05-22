@@ -1,0 +1,19 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/docsExt.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Administracion de documentacion</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button fxFlex="1 0 auto" mat-flat-button (click)="nuevoDocEx()" color="primary">
+                <mat-icon>add</mat-icon>
+                Registrar nuevo documento
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <app-busqueda-docs-admon>
+            <app-tabla-doc-ext-principal></app-tabla-doc-ext-principal>
+        </app-busqueda-docs-admon>
+    </ng-container>
+</app-pagina>

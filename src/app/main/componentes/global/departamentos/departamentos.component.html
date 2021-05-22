@@ -1,0 +1,38 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/departamentos.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Departamentos</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <div fxFill fxLayoutAlign="space-between center" fxLayoutGap="8px">
+                <button mat-raised-button fxFlex="1 0 auto" color="primary" (click)="nvoDepto()">
+                    <mat-icon>add</mat-icon>
+                    Nuevo departamento
+                </button>
+            </div>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido *ngIf="_deptos.state$ | async as deptos; else elseDeptos">
+        <div [@animate]="{value:'1000',params:{y:'100%'}}" class="m-5">
+            <mat-card *ngFor="let departamento of deptos" class="mat-elevation-z14 grey-900-bg my-8" fxFill>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>
+                            <img alt="" matListAvatar src="../../../../../assets/icons/generales/departamento.png"/>
+                            <h2 matLine>{{departamento['nombre']}}</h2>
+                            <span class="mat-caption" matLine>{{departamento['centroGestor']}}</span>
+                            <button (click)="datoSeleccionado(departamento)" mat-icon-button>
+                                <mat-icon color="primary">edit</mat-icon>
+                            </button>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-container>
+</app-pagina>
+
+<ng-template #elseDeptos>
+    <p-skeleton width="100%" height="5rem"></p-skeleton>
+</ng-template>

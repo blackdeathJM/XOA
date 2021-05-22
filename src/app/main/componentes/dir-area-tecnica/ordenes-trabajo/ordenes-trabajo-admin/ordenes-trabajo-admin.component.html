@@ -1,0 +1,64 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/orden-trabajo.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Ordenes de trabajo</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar fxLayoutGap="8px">
+            <button mat-raised-button fxFlex="1 0 auto" color="primary" (click)="crearOrdenTele()">
+                <mat-icon>add</mat-icon>
+                Crear orden telemetria
+            </button>
+            <button mat-raised-button fxFlex="1 0 auto" color="primary" (click)="crearOrdenAreaT()">
+                <mat-icon>add</mat-icon>
+                Crear orden area tecnica
+            </button>
+            <button mat-raised-button fxFlex="1 0 auto" color="primary">
+                <mat-icon>add</mat-icon>
+                Crear otro tipo de orden
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <app-card-bootstrap>
+            <ng-container cabecera>
+                <div class="h2">Consulta de ordenes de trabajo</div>
+            </ng-container>
+            <ng-container contenido>
+                <div fxLayoutAlign="center center" fxLayoutGap="8px" class="mb-4">
+                    <button mat-raised-button fxFlex="1 0 auto" class="orange-300" (click)="ordenesEstatus('PENDIENTE')">
+                        <mat-icon>warning</mat-icon>
+                        Pendientes
+                    </button>
+                    <button mat-raised-button fxFlex="1 0 auto" class="green" (click)="ordenesEstatus('FINALIZADA')">
+                        <mat-icon>done_all</mat-icon>
+                        Finalizados
+                    </button>
+                </div>
+                <mat-form-field>
+                    <mat-label>No. de orden</mat-label>
+                    <input matInput (keydown.enter)="buscarPorNoOrden($event.target.value)">
+                </mat-form-field>
+                <app-selec-depto-drop [multiple]="false" (deptos)="deptoSeleccionado($event)"></app-selec-depto-drop>
+                <app-buscar-por-fechas (rangoFechas)="buscarPorRango($event)"></app-buscar-por-fechas>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider></mat-divider>
+        <div class="baseDiv m-8" *ngIf="!estaCargando else cargando">
+            <app-prime-tabla
+                (emitirAccion)="datoSeleccionado($event)"
+                [columnas]="columnas"
+                [valConsulta]="_ordenesState.state$ | async"
+                [accionesVisibles]="true"
+                [ancho]="{width: '80px'}"
+                [btnAcciones]="acciones">
+            </app-prime-tabla>
+        </div>
+        <mat-divider></mat-divider>
+        <app-detalles-orden-gral [ordenTrabajo]="detalleOrden"></app-detalles-orden-gral>
+    </ng-container>
+</app-pagina>
+
+<ng-template #cargando>
+    <app-lista-cargando></app-lista-cargando>
+</ng-template>

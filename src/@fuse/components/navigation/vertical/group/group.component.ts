@@ -10,8 +10,7 @@ import {FuseNavigationService} from '@fuse/components/navigation/navigation.serv
     templateUrl: './group.component.html',
     styleUrls: ['./group.component.scss']
 })
-export class FuseNavVerticalGroupComponent implements OnInit, OnDestroy
-{
+export class FuseNavVerticalGroupComponent implements OnInit, OnDestroy {
     @HostBinding('class')
     classes = 'nav-group nav-item';
 
@@ -27,14 +26,13 @@ export class FuseNavVerticalGroupComponent implements OnInit, OnDestroy
 
     /**
      *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FuseNavigationService} _fuseNavigationService
+     * @param _changeDetectorRef
+     * @param _fuseNavigationService
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseNavigationService: FuseNavigationService
-    )
-    {
+    ) {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
@@ -46,16 +44,14 @@ export class FuseNavVerticalGroupComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to navigation item
         merge(
             this._fuseNavigationService.onNavigationItemAdded,
             this._fuseNavigationService.onNavigationItemUpdated,
             this._fuseNavigationService.onNavigationItemRemoved
         ).pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() =>
-            {
+            .subscribe(() => {
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();
@@ -65,8 +61,7 @@ export class FuseNavVerticalGroupComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next('');
         this._unsubscribeAll.complete();

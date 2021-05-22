@@ -9,14 +9,19 @@ import moment from 'moment';
     styleUrls: ['./countdown.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseCountdownComponent implements OnInit, OnDestroy
-{
+export class FuseCountdownComponent implements OnInit, OnDestroy {
+    // Event date
+    @Input() eventDate;
+
+    countdown: any;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
      */
-    constructor()
-    {
+    constructor() {
         // Set the defaults
         this.countdown = {
             days: '',
@@ -28,16 +33,9 @@ export class FuseCountdownComponent implements OnInit, OnDestroy
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
-    // Event date
-    @Input() eventDate;
-
-    countdown: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
+    // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
 
     /**
@@ -46,8 +44,7 @@ export class FuseCountdownComponent implements OnInit, OnDestroy
      * @param seconds
      * @private
      */
-    private static _secondsToRemaining(seconds): any
-    {
+    private static _secondsToRemaining(seconds): any {
         const timeLeft = moment.duration(seconds, 'seconds');
 
         return {
@@ -58,15 +55,23 @@ export class FuseCountdownComponent implements OnInit, OnDestroy
         };
     }
 
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next('');
+        this._unsubscribeAll.complete();
+    }
+
     // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
+    // @ Private methodsh
     // -----------------------------------------------------------------------------------------------------
 
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         const currDate = moment();
         const eventDate = moment(this.eventDate);
 
@@ -80,32 +85,16 @@ export class FuseCountdownComponent implements OnInit, OnDestroy
         // Create a subscribable interval
         const countDown = interval(1000)
             .pipe(
-                map(() =>
-                {
-                    return diff = diff - 1;
-                }),
-                map(value =>
-                {
-                    return FuseCountdownComponent._secondsToRemaining(value);
-                })
+                map(value => diff = diff - 1),
+                map(value => FuseCountdownComponent._secondsToRemaining(value))
             );
 
         // Subscribe to the countdown interval
         countDown
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(value =>
-            {
+            .subscribe(value => {
                 this.countdown = value;
             });
     }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next('');
-        this._unsubscribeAll.complete();
-    }
 }

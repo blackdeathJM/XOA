@@ -1,0 +1,3 @@
+<div fxLayout="row wrap">
+    <img [src]="img.thumb" *ngFor="let img of _album; let i =index" (click)="abrir(i)" alt="" class="tamanoAlbum mat-elevation-z20">
+</div>

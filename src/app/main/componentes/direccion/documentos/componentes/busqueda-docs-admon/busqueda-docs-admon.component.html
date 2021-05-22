@@ -1,0 +1,52 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div class="h2">Opciones de busqueda</div>
+    </ng-container>
+    <ng-container contenido>
+        <div fxLayout="row">
+            <mat-form-field>
+                <mat-label>Buscar documento</mat-label>
+                <input matInput placeholder="Criterios: No.Seguimiento, folio, Asunto, identificador, dependencia, Cualquier fecha, tipo de documento"
+                       (keydown.enter)="busquedaGral($event.target.value)">
+            </mat-form-field>
+        </div>
+        <app-seleccionar-usuario fxFill (emitirUsuarios)="busquedaPorUsuario($event)"></app-seleccionar-usuario>
+        <app-buscar-por-fechas (rangoFechas)="rangoFechas($event)"></app-buscar-por-fechas>
+    </ng-container>
+    <ng-container pie>
+        <div fxLayoutGap="8px">
+            <button fxFlex="1 0 auto" mat-raised-button [matMenuTriggerFor]="menu" class="amber">
+                <mat-icon>subtitles</mat-icon>
+                OFICIOS
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="esInterno(false)">Externos</button>
+                <button mat-menu-item (click)="esInterno(true)">Internos</button>
+                <button mat-menu-item (click)="cambio('OFICIO')">General</button>
+                <button mat-menu-item (click)="ultimoFolio()">Ultimo folio</button>
+            </mat-menu>
+
+            <button fxFlex="1 0 auto" mat-raised-button (click)="cambio('CIRCULAR')" class="amber">
+                <mat-icon>notes</mat-icon>
+                CIRCULARES
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button (click)="cambio('MEMORANDUM')" class="amber">
+                <mat-icon>note</mat-icon>
+                MEMORANDUMS
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button (click)="cambio('pendientes')" class="amber">
+                <mat-icon>note</mat-icon>
+                Pendientes
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button (click)="cambio('finalizados')" class="amber">
+                <mat-icon>done_all</mat-icon>
+                Finalizados
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button (click)="cambio('todos')" class="amber">
+                <mat-icon>info</mat-icon>
+                Todos los documentos
+            </button>
+        </div>
+    </ng-container>
+</app-card-bootstrap>
+<ng-content></ng-content>

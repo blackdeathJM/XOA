@@ -125,6 +125,7 @@
                 &:first-child {
                     border-top: 1px solid;
                 }
+
                 .datatable-body-cell {
                     display: inline-flex;
                     align-items: center;
@@ -188,7 +189,7 @@
 }
 
 [class*="datatable-icon-"] {
-    font-family: 'material-outline-icons';
+    font-family: 'material-outline-icons', serif;
     font-weight: normal;
     font-style: normal;
     font-size: 24px;

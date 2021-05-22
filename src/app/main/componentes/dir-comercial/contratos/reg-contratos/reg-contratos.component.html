@@ -1,0 +1,129 @@
+<mat-horizontal-stepper class="fuse-navy-800" linear>
+    <mat-step [stepControl]="formDatosGrales" errorMessage="Verifica los campos que son requeridos">
+        <form [formGroup]="formDatosGrales" autocomplete="off">
+            <ng-template matStepLabel>Datos generales del usuario</ng-template>
+            <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <mat-form-field fxFlex="40">
+                    <mat-label>Calle y numero</mat-label>
+                    <input matInput formControlName="calle">
+                </mat-form-field>
+                <mat-form-field fxFlex="30">
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="colonia">
+                </mat-form-field>
+                <mat-form-field fxFlex="30">
+                    <mat-label>Numero de integrantes en la familia</mat-label>
+                    <input type="number" matInput formControlName="noFamiliasEnToma">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Entre que calles</mat-label>
+                    <input matInput formControlName="entreCalles">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Referencia</mat-label>
+                    <input matInput formControlName="referencia">
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Ciudad</mat-label>
+                    <input matInput formControlName="ciudad">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Municipio</mat-label>
+                    <input matInput formControlName="municipio">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <input matInput formControlName="estado">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Codigo postal</mat-label>
+                    <input matInput formControlName="codigoPostal">
+                </mat-form-field>
+            </div>
+            <mat-action-row>
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperNext [disabled]="formDatosGrales.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="formContrato" errorMessage="Verifica los campos que son requeridos">
+        <form [formGroup]="formContrato" autocomplete="off">
+            <ng-template matStepLabel>Datos del contrato</ng-template>
+            <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Numero de contrato</mat-label>
+                    <input matInput formControlName="noContrato">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Numero de medidor</mat-label>
+                    <input matInput formControlName="noMedidor">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Numero de cuenta</mat-label>
+                    <input matInput formControlName="noCuenta">
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Sector</mat-label>
+                    <input type="number" matInput formControlName="sector">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Ruta</mat-label>
+                    <input type="number" matInput formControlName="ruta">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Zona</mat-label>
+                    <input matInput formControlName="zona">
+                </mat-form-field>
+            </div>
+            <div fxFill class="mb-8">
+                <mat-button-toggle-group aria-label="Font Style" formControlName="tarifa">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let tarifa of tarifas" [value]="tarifa.tarifa">
+                        <mat-icon class="orange-fg">av_timer</mat-icon>
+                        {{tarifa.tarifa}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="my-8">
+                <mat-button-toggle-group aria-label="Font Style" formControlName="giro">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let giro of giros" [value]="giro">
+                        <mat-icon class="cyan-fg">view_array</mat-icon>
+                        {{giro}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <mat-action-row fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Anterior
+                </button>
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperNext [disabled]="formContrato.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Correcto</ng-template>
+        <div fxLayoutAlign="center center" fxFill style="height: 110px">
+            <img src="assets/images/varios/contratosOk.svg" alt="">
+        </div>
+        <mat-action-row fxLayoutGap="8px">
+            <button fxFlex="50" mat-raised-button color="warn" matDialogClose="true">
+                <mat-icon>close</mat-icon>
+                Cancelar
+            </button>
+            <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" (click)="regContrato()">Guardar</mat-spinner-button>
+        </mat-action-row>
+    </mat-step>
+</mat-horizontal-stepper>

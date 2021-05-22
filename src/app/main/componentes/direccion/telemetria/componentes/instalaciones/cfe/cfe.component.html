@@ -1,0 +1,34 @@
+<section *ngIf="_instSelect.camInstalacion$ | async as instSelect">
+    <mat-toolbar>
+        <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="nvoMedidor(instSelect._id)">
+            <mat-icon>add</mat-icon>
+            Nuevo medidor - ({{instSelect.nombre}})
+        </button>
+    </mat-toolbar>
+
+    <mat-divider></mat-divider>
+    <div [@animate]="{value:'1000',params:{y:'100%'}}">
+        <app-card-bootstrap>
+            <ng-container contenido>
+                <div style="display: block">
+                    <canvas [id]="grafCfe" [height]="100"></canvas>
+                </div>
+            </ng-container>
+        </app-card-bootstrap>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row wrap" [@animate]="{value:'1000',params:{y:'100%'}}" fxLayoutAlign="center center">
+        <app-card-medidores fxFlex="20" *ngFor="let medidor of instSelect.medidores"
+                            [idInsta]="instSelect._id"
+                            [medidor]="medidor"
+                            (emitGrafAnual)="graficaAnual($event)"
+                            (emitirMedidor)="valoresRecibidos($event)">
+        </app-card-medidores>
+    </div>
+    <mat-divider></mat-divider>
+    <app-detalle-recibo *ngFor="let detalle of detalles"
+                        (datosGrafica)="datosGrafica($event)"
+                        [ano]="detalle[0]"
+                        [detallesRecibos]="detalle[1]">
+    </app-detalle-recibo>
+</section>

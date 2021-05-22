@@ -1,0 +1,9 @@
+$mat-card-header-size: 256px !default;
+.mat-avatar-p {
+  height: $mat-card-header-size;
+  width: $mat-card-header-size;
+  border-radius: 10%;
+  flex-shrink: 0;
+  display: block;
+  justify-content: right;
+}

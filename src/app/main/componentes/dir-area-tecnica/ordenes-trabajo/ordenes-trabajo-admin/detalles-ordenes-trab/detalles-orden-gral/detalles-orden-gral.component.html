@@ -1,0 +1,79 @@
+<section [@animate]="{value:'*',params:{y:'100%'}}" class="m-5" *ngIf="_ordenTrabajo">
+    <app-card-bootstrap>
+        <ng-container cabecera>
+            <div class="h2">Orden de trabajo - ({{_ordenTrabajo.departamento.nombre}})</div>
+        </ng-container>
+        <ng-container contenido>
+            <app-impresion></app-impresion>
+            <div fxLayoutAlign="end center">
+                <span class="form-etiquetas">No. Orden:</span>
+                <span class="form-datos green-fg">{{_ordenTrabajo.noOrden}}</span>
+            </div>
+            <div fxLayoutAlign="space-between center">
+                <div>
+                    <span class="mat-title" [ngClass]="{'gree-fg': _ordenTrabajo.estatus === 'EJECUTADA', 'orange-fg': _ordenTrabajo.estatus === 'PENDIENTE'}">
+                    {{_ordenTrabajo.estatus}}
+                </span>
+                    <span class="mat-title fuse-white-fg baseDiv ml-5 p-4">
+                        Prioridad: {{_ordenTrabajo.prioridad}}
+                    </span>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="form-etiquetas">Fecha:</span>
+                        <span class="form-datos">{{_ordenTrabajo.fechaOrden | date: 'MM/dd/YYYY'}}</span>
+                    </div>
+                    <div>
+                        <span class="form-etiquetas">Fecha de ejecucion:</span>
+                        <span class="form-datos">{{_ordenTrabajo.fechaEjecucion | date: 'MM/dd/YYYY'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="form-etiquetas" fxFlex="20">Anomalia:</span>
+                <span fxFlex class="form-datos">{{_ordenTrabajo.anomalia}}</span>
+            </div>
+            <div>
+                <span class="form-etiquetas" fxFlex="20">Comentarios:</span>
+                <span fxFlex class="form-datos">{{_ordenTrabajo.comentarios}}</span>
+            </div>
+            <div>
+                <span class="form-etiquetas" fxFlex="20">Observaciones:</span>
+                <span fxFlex class="form-datos">{{_ordenTrabajo.observaciones}}</span>
+            </div>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Creada por:</span>
+                    <span fxFlex class="form-datos">{{_ordenTrabajo.creadaPor}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Ejecutada por:</span>
+                    <span fxFlex class="form-datos">{{_ordenTrabajo.ejecutadaPor}}</span>
+                </div>
+            </div>
+            <app-detalles-orden-telemetria [ordenTelemetria]="_ordenTrabajo.ordenTelemetria"></app-detalles-orden-telemetria>
+            <app-detalle-orden-area-tecnica [ordenAreaTecnica]="_ordenTrabajo.ordenAreaTecnica"></app-detalle-orden-area-tecnica>
+            <div>
+                <mat-list role="list">
+                    <div mat-subheader class="amber-fg">Nota: 2236</div>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">1 Item</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">3 Item</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">8 Item</mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-list>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <ng-container pie>
+            <mat-action-row>
+                <button mat-raised-button fxFlex="1 0 auto" class="brown">
+                    <mat-icon>print</mat-icon>
+                    Imprimir
+                </button>
+            </mat-action-row>
+        </ng-container>
+    </app-card-bootstrap>
+</section>

@@ -1,0 +1,10 @@
+mat-list.list-horizontal {
+    padding: 0;
+
+    .mat-list-item {
+        display: inline-block;
+        padding: 4px;
+        height: auto;
+        width: auto;
+    }
+}

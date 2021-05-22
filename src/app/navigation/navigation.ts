@@ -1,26 +1,15 @@
-import { FuseNavigation } from '@fuse/types';
+import {FuseNavigation} from '@fuse/types';
+import {PRESIDENCIA} from './presidencia';
+import {DIR_COMERCIAL} from './dir-comercial';
+import {ADMON_FINANZAS} from './dir-admon-finanzas';
+import {AREA_TECNICA} from './dir-area-tecnica';
+import {JURIDICO} from './dir-juridico-reg';
+import {RURAL} from './dir-rural';
+import {SANEAMIENTO} from './dir-saneamiento';
+import {GLOBAL} from './global';
+import {ADMINISTRACION} from './administracion';
 
-export const navigation: FuseNavigation[] = [
-    {
-        id       : 'applications',
-        title    : 'Applications',
-        translate: 'NAV.APPLICATIONS',
-        type     : 'group',
-        children : [
-            {
-                id       : 'sample',
-                title    : 'Sample',
-                translate: 'NAV.SAMPLE.TITLE',
-                type     : 'item',
-                icon     : 'email',
-                url      : '/sample',
-                badge    : {
-                    title    : '25',
-                    translate: 'NAV.SAMPLE.BADGE',
-                    bg       : '#F44336',
-                    fg       : '#FFFFFF'
-                }
-            }
-        ]
-    }
-];
+export const navigation: FuseNavigation[] =
+    [
+        PRESIDENCIA, DIR_COMERCIAL, ADMON_FINANZAS, AREA_TECNICA, JURIDICO, RURAL, SANEAMIENTO, GLOBAL, ADMINISTRACION
+    ];

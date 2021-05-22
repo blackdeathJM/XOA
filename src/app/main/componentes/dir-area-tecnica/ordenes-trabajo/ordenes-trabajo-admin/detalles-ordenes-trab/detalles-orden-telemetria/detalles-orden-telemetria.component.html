@@ -1,0 +1,11 @@
+<ng-container *ngIf="_ordenTelemetria">
+    <section [@animate]="{value:'*',params:{y:'100%'}}">
+        <div class="message-box fuse-navy-600-bg fuse-white-fg my-8 h2">
+            <strong>Informacion de la instalacion</strong>
+        </div>
+        <div>
+            <span fxFlex="20" class="form-etiquetas">Instalacion:</span>
+            <span fxFlex class="form-datos">{{_ordenTelemetria.instalacion}}</span>
+        </div>
+    </section>
+</ng-container>

@@ -1,0 +1,17 @@
+<div>
+    <file-upload simple fxFlex="1 0 auto">
+        <ng-template let-file #placeholder>
+            <ng-container *ngIf="file; else emptyList">
+                {{ file.name }}
+            </ng-container>
+
+            <ng-template #emptyList>
+                Selecciona el archivo
+            </ng-template>
+        </ng-template>
+
+        <ng-template let-control="control" #button>
+            Explorardor
+        </ng-template>
+    </file-upload>
+</div>

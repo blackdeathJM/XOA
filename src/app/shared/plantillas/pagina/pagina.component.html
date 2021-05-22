@@ -1,0 +1,18 @@
+<div class="page-layout carded fullwidth">
+    <div class="top-bg accent"></div>
+    <div class="center">
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+            <ng-content select="[cabecera]"></ng-content>
+        </div>
+        <div class="content-card">
+            <div class="toolbar">
+                <ng-content select="[barra-herramientas]"></ng-content>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="content">
+                <ng-content select="[contenido]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+<mat-horizontal-stepper linear class="fuse-navy-800">
+    <mat-step [stepControl]="formDetallesGrales" errorMessage="Verifica los campos que son requeridos">
+        <form [formGroup]="formDetallesGrales">
+            <ng-template matStepLabel>Datos Generales</ng-template>
+            <app-detalles-grales formControlName="detallesGrales" [tipoAnomalia]="tipoAnomalia"></app-detalles-grales>
+            <div class="mt-8">
+                <button fxFlex="1 0 auto" mat-raised-button matStepperNext [disabled]="formDetallesGrales.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="formordenTelemetria" errorMessage="Debes seleccionar una instalacion">
+        <form [formGroup]="formordenTelemetria">
+            <ng-template matStepLabel>Instalacion</ng-template>
+            <mat-form-field>
+                <mat-label>Selecciona la instalacion que se va hacer mtto</mat-label>
+                <mat-select formControlName="instalacion">
+                    <mat-option *ngFor="let inst of _teleState.snapshot" [value]="inst.nombre">{{inst.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="mt-8" fxLayoutGap="8px">
+                <button fxFlex="1 0 auto" mat-raised-button matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Anterior
+                </button>
+                <button fxFlex="1 0 auto" mat-raised-button matStepperNext [disabled]="formordenTelemetria.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Finalizar</ng-template>
+        <div fxLayoutAlign="center center" fxFill>
+            <img src="../../../../../../../../assets/images/varios/ok3.svg" alt="ok">
+        </div>
+        <div class="mt-8" fxLayoutGap="8px">
+            <button fxFlex="1 0 auto" mat-raised-button color="warn">
+                <mat-icon>cancel</mat-icon>
+                Cancelar
+            </button>
+            <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" (click)="regOrdenTele()">Guardar</mat-spinner-button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

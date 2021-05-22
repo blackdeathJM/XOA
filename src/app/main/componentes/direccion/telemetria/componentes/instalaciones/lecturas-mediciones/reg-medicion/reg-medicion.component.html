@@ -1,0 +1,36 @@
+<form [formGroup]="formLecturasMacro">
+    <div fxLayout="row" fxLayoutGap="8px">
+        <mat-form-field fxFill>
+            <mat-label>Selecciona el mes y el año</mat-label>
+            <input [matDatepicker]="fechaRegistroLectura" formControlName="fechaRegistro" matInput
+                   name="fechaRegistro">
+            <mat-datepicker-toggle [for]="fechaRegistroLectura" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #fechaRegistroLectura></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <ng-container *ngIf="!data.esAgregar">
+        <div fxLayout="row" fxLayoutGap="32px">
+            <mat-form-field>
+                <mat-label>Ingresa la lectura anterior</mat-label>
+                <input formControlName="lecturaAnterior" matInput placeholder="cero si no hay lec anterior">
+                <span matSuffix>{{data.sufijo}}</span>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Ingresa la lectura</mat-label>
+                <input formControlName="lectura" matInput>
+                <span matSuffix>{{data.sufijo}}</span>
+            </mat-form-field>
+        </div>
+    </ng-container>
+
+    <mat-action-row fxLayoutGap="8px">
+        <mat-spinner-button (click)="regLecturas()" [disabled]="this.formLecturasMacro.invalid" [options]="opcionesButtonSpinner"
+                            fxFlex="50">Guardar
+        </mat-spinner-button>
+        <button color="warn" fxFlex="50" mat-raised-button matDialogClose="true">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+    </mat-action-row>
+</form>
+

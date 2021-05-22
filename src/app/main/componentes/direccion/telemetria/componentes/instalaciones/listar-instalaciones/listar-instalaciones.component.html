@@ -1,0 +1,27 @@
+<section *ngIf="(_instalacionState.state$ | async) as instalaciones, else cargando">
+    <ng-container *ngIf="instalaciones.length > 0; else elseInst">
+        <mat-selection-list multiple="false">
+            <mat-list-option *ngFor="let instalacion of instalaciones" (click)="elementoSeleccionado(instalacion)">
+                <mat-icon mat-list-icon class="teal-300-fg">my_location</mat-icon>
+                <div mat-line matTooltip="{{instalacion.nombre}}">{{instalacion.nombre}}</div>
+                <mat-divider></mat-divider>
+            </mat-list-option>
+        </mat-selection-list>
+    </ng-container>
+</section>
+
+<ng-template #elseInst>
+    <div class="message-box warning">
+        Sin datos
+    </div>
+</ng-template>
+
+<ng-template #cargando>
+    <p-skeleton width="100%" height="4rem"></p-skeleton>
+    <mat-divider></mat-divider>
+    <p-skeleton width="100%" height="4rem"></p-skeleton>
+    <mat-divider></mat-divider>
+    <p-skeleton width="100%" height="4rem"></p-skeleton>
+    <mat-divider></mat-divider>
+    <p-skeleton width="100%" height="4rem"></p-skeleton>
+</ng-template>

@@ -1,0 +1,78 @@
+<form [formGroup]='formMotor'>
+    <div fxLayout='row' fxFill>
+        <mat-form-field [appearance]='_apariencia'>
+            <mat-label>No. serie</mat-label>
+            <input matInput type='text' formControlName='serie' [readonly]='_soloLectura'>
+        </mat-form-field>
+    </div>
+    <div fxLayout='row' fxLayoutGap='8px'>
+        <mat-form-field [appearance]='_apariencia' fxFlex='50'>
+            <mat-label>Marca</mat-label>
+            <input matInput type='text' formControlName='marca' [readonly]='_soloLectura'>
+        </mat-form-field>
+        <mat-form-field [appearance]='_apariencia' fxFlex='50'>
+            <mat-label>Modelo</mat-label>
+            <input matInput type='text' formControlName='modelo' [readonly]='_soloLectura'>
+        </mat-form-field>
+    </div>
+    <div fxLayout='row'>
+        <mat-form-field [appearance]='_apariencia'>
+            <mat-label>Eficiencia</mat-label>
+            <input matInput type='text' formControlName='eficiencia' [readonly]='_soloLectura'>
+            <span matSuffix> ???</span>
+        </mat-form-field>
+    </div>
+    <div fxLayout='row'>
+        <mat-form-field [appearance]='_apariencia'>
+            <mat-label>HP</mat-label>
+            <input matInput type='text' formControlName='hp' [readonly]='_soloLectura'>
+            <span matSuffix> ???</span>
+        </mat-form-field>
+    </div>
+    <div fxLayout='row' fxLayoutGap='8px'>
+        <mat-form-field [appearance]='_apariencia' fxFlex>
+            <mat-label>Voltaje</mat-label>
+            <input matInput type='text' formControlName='voltaje' [readonly]='_soloLectura'>
+            <span matSuffix> Volts</span>
+        </mat-form-field>
+        <mat-form-field [appearance]='_apariencia' fxFlex>
+            <mat-label>Amperaje</mat-label>
+            <input matInput type='text' formControlName='amperaje' [readonly]='_soloLectura'>
+            <span matSuffix> Amp</span>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field [appearance]='_apariencia' fxFlex>
+            <mat-label>Fact Potencia</mat-label>
+            <input matInput type='text' formControlName='factPotencia' [readonly]='_soloLectura'>
+            <span matSuffix> %</span>
+        </mat-form-field>
+    </div>
+    <div fxLayout='column' fxLayoutGap='8px'>
+        <mat-form-field [appearance]='_apariencia' fxFill>
+            <mat-label>Descripcion</mat-label>
+            <input matInput type='text' formControlName='descripcion' [readonly]='_soloLectura'>
+        </mat-form-field>
+        <mat-form-field [appearance]='_apariencia' fxFill>
+            <mat-label>Observaciones</mat-label>
+            <input matInput type='text' formControlName='observaciones' [readonly]='_soloLectura'>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout='row' fxLayoutGap='8px'>
+        <mat-form-field [appearance]='_apariencia' fxFill>
+            <mat-label>Fecha de instalacion</mat-label>
+            <input [matDatepicker]='fechaInstalacionMotor' formControlName='fechaInstalacion' matInput
+                   name='fechaInstalacion' [readonly]='_soloLectura'>
+            <mat-datepicker-toggle [for]='fechaInstalacionMotor' matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #fechaInstalacionMotor></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <mat-action-row fxLayoutGap='8px' *ngIf='!_ocultarAcciones'>
+        <button fxFlex='50' mat-raised-button color='warn' matDialogClose='true'>
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+        <mat-spinner-button fxFlex='50' [options]='opcionesButtonSpinner' [disabled]='this.formMotor.invalid' (click)='regMotor()'>Guardar</mat-spinner-button>
+    </mat-action-row>
+</form>

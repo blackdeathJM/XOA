@@ -1,0 +1,30 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="h3 cyan-A200-fg">Lecturas - ({{_instalacionSeleccionada.nombre}}) - ({{_lecturaTipo}})</div>
+            <div fxLayoutGap="8px">
+                <button (click)="lecturaMensual(_lecturaTipo);" color="primary" mat-button type="button">
+                    <mat-icon>event</mat-icon>
+                    Mensual
+                </button>
+                <button (click)="lecturaBimestral(_lecturaTipo)" color="primary" mat-button type="button">
+                    <mat-icon>today</mat-icon>
+                    Bimestre
+                </button>
+                <button (click)="lecturaTrimestral(_lecturaTipo)" color="primary" mat-button type="button">
+                    <mat-icon>date_range</mat-icon>
+                    Trimestre
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container contenido>
+        <app-prime-tabla
+            (emitirAccion)="valoresRecibidos($event)"
+            [accionesVisibles]="true"
+            [btnAcciones]="btnAcciones"
+            [columnas]="columnas"
+            [valConsulta]="valoresTabla">
+        </app-prime-tabla>
+    </ng-container>
+</app-card-bootstrap>

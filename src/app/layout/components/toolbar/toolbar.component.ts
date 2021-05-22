@@ -1,163 +1,142 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
-import * as _ from 'lodash';
+import {AfterContentInit, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Subject, Subscription} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {FuseConfigService} from '@fuse/services/config.service';
 
-import { FuseConfigService } from '@fuse/services/config.service';
-import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
-
-import { navigation } from 'app/navigation/navigation';
+import {navigation} from 'app/navigation/navigation';
+import {FuseSidebarService} from '@fuse/components/sidebar/sidebar.service';
+import {SesionState} from '@usuarios/state/sesion.state';
+import {IUsuario} from '@modelosUsuarios/usuario.interface';
+import {NotificarState} from '@global/state/notificar.state';
+import {INotificacion} from '@global/models/notificacion.interface';
+import {DocsState} from '../../../main/componentes/direccion/documentos/state/docs.state';
+import {DocsUsuarioState} from '@usuarios/state/docs-usuario.state';
+import {toastSweet} from '@shared/alerts/toasts';
+import {TipoAlerta} from '@shared/alerts/values.config';
+import {UsuarioSubscriptionService} from "@usuarios/usuario-subscription.service";
 
 @Component({
-    selector     : 'toolbar',
-    templateUrl  : './toolbar.component.html',
-    styleUrls    : ['./toolbar.component.scss'],
+    selector: 'toolbar',
+    templateUrl: './toolbar.component.html',
+    styleUrls: ['./toolbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
-export class ToolbarComponent implements OnInit, OnDestroy
+export class ToolbarComponent implements OnInit, AfterContentInit, OnDestroy
 {
     horizontalNavbar: boolean;
     rightNavbar: boolean;
     hiddenNavbar: boolean;
     languages: any;
     navigation: any;
-    selectedLanguage: any;
-    userStatusOptions: any[];
+    sesionUsuario: IUsuario = {role: [], _id: '', contrasena: '', departamento: undefined, departamentoID: '', img: '', nombre: '', usuario: ''};
 
-    // Private
+
+    notificacion: INotificacion[] = [];
+    subscripcion: Subscription = new Subscription();
+    userStatusOptions: any[];
+    matBageTotal = 0;
+
+// Private
     private _unsubscribeAll: Subject<any>;
 
-    /**
-     * Constructor
-     *
-     * @param {FuseConfigService} _fuseConfigService
-     * @param {FuseSidebarService} _fuseSidebarService
-     * @param {TranslateService} _translateService
-     */
-    constructor(
-        private _fuseConfigService: FuseConfigService,
-        private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService
-    )
+    constructor(private _fuseConfigService: FuseConfigService, private _fuseSidebarService: FuseSidebarService, public _sesionState: SesionState,
+                public _notificacionState: NotificarState, private _docsState: DocsState, private _docUsuarioState: DocsUsuarioState,
+                private _usuarioSubscripcion: UsuarioSubscriptionService)
     {
         // Set the defaults
         this.userStatusOptions = [
             {
                 title: 'Online',
-                icon : 'icon-checkbox-marked-circle',
+                icon: 'icon-checkbox-marked-circle',
                 color: '#4CAF50'
             },
             {
                 title: 'Away',
-                icon : 'icon-clock',
+                icon: 'icon-clock',
                 color: '#FFC107'
             },
             {
                 title: 'Do not Disturb',
-                icon : 'icon-minus-circle',
+                icon: 'icon-minus-circle',
                 color: '#F44336'
             },
             {
                 title: 'Invisible',
-                icon : 'icon-checkbox-blank-circle-outline',
+                icon: 'icon-checkbox-blank-circle-outline',
                 color: '#BDBDBD'
             },
             {
                 title: 'Offline',
-                icon : 'icon-checkbox-blank-circle-outline',
+                icon: 'icon-checkbox-blank-circle-outline',
                 color: '#616161'
             }
         ];
-
-        this.languages = [
-            {
-                id   : 'en',
-                title: 'English',
-                flag : 'us'
-            },
-            {
-                id   : 'tr',
-                title: 'Turkish',
-                flag : 'tr'
-            }
-        ];
-
         this.navigation = navigation;
-
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((settings) => {
+            .subscribe((settings) =>
+            {
                 this.horizontalNavbar = settings.layout.navbar.position === 'top';
                 this.rightNavbar = settings.layout.navbar.position === 'right';
                 this.hiddenNavbar = settings.layout.navbar.hidden === true;
             });
 
-        // Set the selected language from default languages
-        this.selectedLanguage = _.find(this.languages, {id: this._translateService.currentLang});
+        this.subscripcion.add(this._sesionState.state$.subscribe(r =>
+        {
+            if (r)
+            {
+                console.log('r', r);
+                this.sesionUsuario = r;
+            }
+        }, error => toastSweet(TipoAlerta.error, 'Error inseperado: ' + error, 5000), () => console.log('Se completo')));
     }
 
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
+    ngAfterContentInit(): void
     {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next('');
-        this._unsubscribeAll.complete();
+        this.subscripcion.add(this._notificacionState.listarNotificaciones().subscribe());
+        this._docsState.subDocs().subscribe();
+        this._docUsuarioState.subDocsUsuario().subscribe();
+        this._notificacionState.subNot();
+
+        this._usuarioSubscripcion.cambiarRoleUsuario(this._sesionState.snapshot.usuario).subscribe((res) =>
+        {
+            localStorage.removeItem('token');
+            setTimeout(() =>
+            {
+                localStorage.setItem('token', res.token);
+                this._sesionState.obtenerSesion();
+                toastSweet(TipoAlerta.info, 'Se ha cambiado tus privilegios', 2000);
+            }, 200);
+        });
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Toggle sidebar open
-     *
-     * @param key
-     */
     toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
 
-    /**
-     * Search
-     *
-     * @param value
-     */
     search(value): void
     {
-        // Do your search here...
         console.log(value);
     }
 
-    /**
-     * Set the language
-     *
-     * @param lang
-     */
-    setLanguage(lang): void
+    logout(): void
     {
-        // Set the selected language for the toolbar
-        this.selectedLanguage = lang;
+        this._sesionState.cerrarSesion();
+    }
 
-        // Use the selected language for translations
-        this._translateService.use(lang.id);
+    ngOnDestroy(): void
+    {
+        this._unsubscribeAll.next('');
+        this._unsubscribeAll.complete();
+        this.subscripcion.unsubscribe();
     }
 }

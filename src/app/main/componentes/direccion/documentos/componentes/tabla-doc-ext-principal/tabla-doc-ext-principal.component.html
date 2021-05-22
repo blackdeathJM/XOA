@@ -1,0 +1,77 @@
+<section *ngIf="_docsState.state$ | async as docEx">
+    <ng-container *ngIf="!estaCargando; else elseCargando">
+        <div fxLayout="row" class="m-8">
+            <accordion [isAnimated]="true" fxFill>
+                <accordion-group class="mb-8 mat-elevation-z14" panelClass="customClass"
+                                 *ngFor="let documento of docEx | paginate: {totalItems: totalElementos, itemsPerPage: 10, currentPage: p}">
+                    <div fxLayout="row" accordion-heading>
+                        <span class="celda" fxFlex="5" matTooltip="Numero de seguimiento">{{documento.noSeguimiento}}</span>
+                        <span class="celda lime-fg" fxFlex matTooltip="Folio">{{documento.folio}}</span>
+                        <span class="celda" fxFlex="12" matTooltipClass="mat-tooltip" matTooltip="Identificacor: {{documento.identificadorDoc}}">{{documento.identificadorDoc | slice: 0:20}}</span>
+                        <span class="celda" fxFlex="15" matTooltip="Dependencia: {{documento.dependencia}}">{{documento.dependencia | slice: 0:28}}</span>
+                        <span class="celda" fxFlex="15" matTooltip="Asunto: {{documento.asunto}}">{{documento.asunto | slice: 0:28}}</span>
+                        <span class="celda" fxFlex matTooltip="Comentarios: {{documento.comentario}}">{{documento.comentario | slice: 0:45}}</span>
+                        <span class="celda lime-fg" fxFlex matTooltip="Usuario folio: {{documento.usuarioFolio}}">{{documento.usuarioFolio | slice: 0:10}}</span>
+
+                        <div (click)="evitarExpandir($event)" fxFlex="nogrow" fxLayoutGap="4px">
+                            <!--Visualizar el boton solo si ya hay docuemtno registrado en la db que seria el documento recibido-->
+                            <a [hidden]="documento.docUrl === null" [href]="documento.docUrl | archivoUrl: 'dex'" mat-icon-button matTooltip="Abrir documento"
+                               target="_blank">
+                                <mat-icon class="yellow-fg">get_app</mat-icon>
+                            </a>
+                            <!--Visualizar el boton solo si ya hay docuemtno registrado en la db que seria el documento respuesta-->
+                            <a [hidden]="documento.docRespUrl === null" [href]="documento.docRespUrl | archivoUrl: 'der'" mat-icon-button
+                               matTooltip="Abrir documento de respuesta" target="_blank">
+                                <mat-icon>get_app</mat-icon>
+                            </a>
+                            <!--Visualizar el boton solo si ya hay docuemtno registrado en la db que seria el acuse-->
+                            <a [hidden]="documento.acuseUrl === null" [href]="documento.acuseUrl | archivoUrl: 'acu'" class="green-A400-fg" mat-icon-button target="_blank"
+                               matTooltip="Abrir acuse de respuesta">
+                                <mat-icon>get_app</mat-icon>
+                            </a>
+                            <button mat-icon-button disabled [hidden]="!documento.notificarAdministrador">
+                                <mat-icon class="green-fg">notifications_active</mat-icon>
+                            </button>
+
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item [disabled]="documento.proceso === 'ENTREGADO'" (click)="editarInfo(documento)">
+                                    <mat-icon color="primary">edit</mat-icon>
+                                    <span>Modificar</span>
+                                </button>
+                                <button mat-menu-item (click)="reemplazarDocs(documento)">
+                                    <mat-icon color="warn">more</mat-icon>
+                                    <span>Reemplazar docs</span>
+                                </button>
+                                <button mat-menu-item (click)="darPorTerminadoDoc(documento._id)" [disabled]="documento.proceso === 'ENTREGADO'">
+                                    <mat-icon class="green-fg">archive</mat-icon>
+                                    <span>Terminar</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+
+                    <div class="py-8" fxLayout="row" fxLayoutAlign="space-between">
+                        <span>Fecha de recepcion:<em class="yellow-fg ml-8">{{documento.fechaRecepcion | date: 'dd/MM/yyyy'}}</em></span>
+                        <span>Fehca limite de entrega:<em class="yellow-fg ml-8">{{documento.fechaLimiteEntrega | date: 'dd/MM/yyyy'}}</em></span>
+                        <span>Fecha de entragado:<em class="yellow-fg ml-8">{{documento.fechaTerminado | date: 'dd/MM/yyyy'}}</em></span>
+                    </div>
+                    <mat-divider class="green-fg"></mat-divider>
+                    <div *ngFor="let usuario of documento.usuarioDestino" fxLayout="row">
+                        <app-detalle-usuario [idDocumento]="documento._id" [usuarioDestino]="usuario" fxFill></app-detalle-usuario>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+        <div fxLayout="row">
+            <pagination-controls fxFill (pageChange)="p = $event" [autoHide]="true" [previousLabel]="'Anterior'" [nextLabel]="'Siguiente'">
+            </pagination-controls>
+        </div>
+    </ng-container>
+</section>
+
+<ng-template #elseCargando>
+    <app-lista-cargando [tieneDatos]="tieneDatos"></app-lista-cargando>
+</ng-template>

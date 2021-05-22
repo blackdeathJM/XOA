@@ -1,0 +1,39 @@
+.baseDiv {
+    background: #131416;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.manita {
+    cursor: pointer;
+}
+
+.img-firma {
+    width: 200px;
+    height: 118px;
+}
+
+.form-etiquetas {
+    font-size: 2rem;
+    color: #f3e59a;
+    text-align: right;
+    margin-right: 8px;
+    margin-top: 8px;
+    border-bottom: 1px solid #020405;
+}
+
+.form-datos {
+    font-size: 2rem;
+    color: #bbfffe;
+    margin-right: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 8px;
+    margin-left: 8px;
+    text-align: left;
+    border-bottom: 1px solid #020405;
+}
+
+th, td {
+    font-size: 16px;
+}

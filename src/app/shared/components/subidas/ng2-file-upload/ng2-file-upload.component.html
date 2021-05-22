@@ -1,0 +1,28 @@
+<input #fileInput [accept]="_opcionesCarga.allowedMimeType" [multiple]="_opcionesCarga.multiple" [uploader]="cargarArchivo" hidden id="fileUpload" name="fileUpload" ng2FileSelect
+       type="file" (click)="cargarArchivo.clearQueue()">
+
+<ng-container *ngIf="!_opcionesCarga.esIconButton">
+    <div fxFill>
+        <button fxFlex="1 0 auto" mat-raised-button [ngClass]="_opcionesCarga.claseColorBtn" (click)="fileInput.click()"
+                [disabled]="cargandoArch">
+            <ng-container *ngIf="!cargandoArch; else cargandoImagen">
+                <mat-icon [ngClass]="_opcionesCarga.claseColorIcon">{{_opcionesCarga.icono}}</mat-icon>
+            </ng-container>
+            {{_opcionesCarga.textoBoton}}
+        </button>
+    </div>
+</ng-container>
+<ng-container *ngIf="_opcionesCarga.esIconButton">
+    <button mat-icon-button [ngClass]="_opcionesCarga.claseColorBtn" (click)="fileInput.click()"
+            [disabled]="cargandoArch" [hidden]="_ocultarBtn">
+        <ng-container *ngIf="!cargandoArch; else cargandoImagen">
+            <mat-icon [ngClass]="_opcionesCarga.claseColorIcon">{{_opcionesCarga.icono}}</mat-icon>
+        </ng-container>
+    </button>
+</ng-container>
+
+<ng-template #cargandoImagen>
+    <mat-icon>
+        <mat-progress-spinner mode="determinate" [value]="progreso" diameter="20"></mat-progress-spinner>
+    </mat-icon>
+</ng-template>

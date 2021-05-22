@@ -1,0 +1,12 @@
+<form [formGroup]="formCargaArchivos" (ngSubmit)="subir()">
+    <div>
+        <file-upload fxFlex="1 0 auto" [multiple]="multiple" [animation]="true" formControlName="archivos" [filesize]="tamano" [fileslimit]="limiteArchivos">
+        </file-upload>
+    </div>
+    <div fxFlex="1 0 auto">
+        <button type="submit" mat-button color="primary">
+            <mat-icon>publish</mat-icon>
+            Subir archivos
+        </button>
+    </div>
+</form>

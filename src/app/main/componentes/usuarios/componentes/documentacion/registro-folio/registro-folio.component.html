@@ -1,0 +1,28 @@
+<form (ngSubmit)="registrarFolios()" [formGroup]="formFolios">
+    <div fxLayout="column" class="baseDiv p-12">
+        <mat-form-field>
+            <mat-label>Dependencia</mat-label>
+            <input matInput formControlName="dependencia" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Asunto</mat-label>
+            <input formControlName="asunto" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Comentarios</mat-label>
+            <input formControlName="comentario" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Hacer referencia a un documento externo</mat-label>
+            <input formControlName="refDoc" placeholder="Introduce el seguimiento para hacer referencia a un documento" matInput>
+        </mat-form-field>
+        <app-seleccionar-tipo-doc formControlName="tipoDoc"></app-seleccionar-tipo-doc>
+    </div>
+    <mat-action-row fxLayoutGap="8px" class="mt-8 baseDiv p-12">
+        <button color="warn" fxFlex mat-raised-button matDialogClose="true" type="button">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+        <mat-spinner-button [disabled]="formFolios.invalid" [options]="opcionesButtonSpinner" fxFlex></mat-spinner-button>
+    </mat-action-row>
+</form>

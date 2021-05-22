@@ -1,0 +1,13 @@
+{
+  "organismo" : "Sistema Municipal de Agua Potable y Alcantarillado de Dolores Hidalgo., Guanajuato",
+  "logo" : "assets/organismo/logo-org.png",
+  "datosOrg" : "Carretera Rio Laja Km 0.5 Col Ejido Dolores C.P 37810 Dolores Hidalgo., Gto",
+  "telefonos" : [
+	{
+	  "tel" : "(418) 182-0637"
+	},
+	{
+	  "tel" : "(418) 182-3770"
+	}
+  ]
+}

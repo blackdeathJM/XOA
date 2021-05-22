@@ -1,0 +1,33 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="h3 cyan-A200-fg">Graficado - ({{instSelec.nombre}})</span>
+            <span class="h1 cyan-A200-fg">{{this.parametros}}</span>
+            <div fxLayoutGap="8px">
+                <button mat-button color="primary" [disabled]="deshabilitarBtn">
+                    <mat-icon>print</mat-icon>
+                    Imprimir
+                </button>
+                <button mat-button color="primary" [disabled]="deshabilitarBtn">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                    Exportar
+                </button>
+                <button mat-button color="primary" [disabled]="deshabilitarBtn" (click)="graficaAnual()">
+                    <mat-icon>date_range</mat-icon>
+                    Anual
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container contenido>
+        <div style="display: block">
+            <canvas [id]="ctx" [height]="60"></canvas>
+        </div>
+    </ng-container>
+</app-card-bootstrap>
+
+<app-tabla-lect-med *ngFor="let tipoLect of tiposLect"
+                    (emitirAccion)="recibirDatos($event, tipoLect, instSelec)"
+                    [instalacionSeleccionada]="instSelec"
+                    [lecturaTipo]="tipoLect">
+</app-tabla-lect-med>

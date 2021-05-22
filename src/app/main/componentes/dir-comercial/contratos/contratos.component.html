@@ -1,0 +1,17 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/orden-trabajo.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Contratos</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button mat-raised-button fxFlex="1 0 auto" (click)="regUsuario()" color="primary">
+                <mat-icon>add</mat-icon>
+                Registrar nuevo usuario
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <router-outlet></router-outlet>
+    </ng-container>
+</app-pagina>

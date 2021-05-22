@@ -1,0 +1,68 @@
+<section fxLayout='row' *ngIf='!_skeleton; else skeletonTrue'>
+    <p-table fxFill
+             styleClass='p-datatable-striped p-datatable-gridlines'
+             [selectionMode]='_tipoSeleccion'
+             [columns]='_columnas'
+             [value]='_valConsulta'
+             [rows]='_elemPorPagina'
+             [rowsPerPageOptions]='[10, 20, 50, 100, 500]'
+             [alwaysShowPaginator]='true'
+             [resizableColumns]='true'
+             [responsive]='true'
+             [rowHover]='true'
+             [paginator]='true'
+             [showLoader]='true'
+             [autoLayout]='false'>
+        <ng-template pTemplate='header' let-columnas>
+            <tr>
+                <th id='datos' pResizableColumn *ngFor='let columna of columnas' [colSpan]="columna['columnaSpan']" [ngStyle]="columna['ancho']"
+                    class="mat-body-1 teal-A200-fg">
+                    {{columna['etiqueta']}}
+                </th>
+                <th id='acciones' *ngIf='_accionesVisibles' [colSpan]='_columnsSpan' [ngStyle]='_ancho' class="mat-body-1 teal-A200-fg">
+                    Acciones
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template let-columnas='columns' let-filaDatos pTemplate='body'>
+            <ng-container>
+                <tr>
+                    <td *ngFor='let col of columnas' class="py-0 pl-8 mat-body-1 {{col['color']}}" [colSpan]="col['columnaSpan']" [ngStyle]="col['ancho']"
+                        [matTooltip]="col['subPropiedad'] ? filaDatos[col['propiedad']][col['subPropiedad']] : filaDatos[col['propiedad']] | miPipe: col['pipe']">
+                        {{col['subPropiedad'] ? filaDatos[col['propiedad']][col['subPropiedad']] : filaDatos[col['propiedad']] | miPipe: col['pipe']}}
+                    </td>
+                    <td class='p-0' *ngIf='_accionesVisibles' [colSpan]='_columnsSpan' [style]='_ancho'>
+                        <div fxLayout='row' fxLayoutAlign='center center' fxLayoutGap='2px'>
+                            <ng-container *ngIf="_cargaVisible">
+                                <app-ng2-file-upload *ngFor="let opcionCarga of _opcionesCarga"
+                                                     (emitirListaArchivos)="infoSeleccionada(filaDatos, opcionCarga.accion, $event)"
+                                                     [matTooltip]="opcionCarga.tooltip"
+                                                     [opcionesCarga]="opcionCarga"
+                                                     [ocultarBtn]="filaDatos | tPrimeAccVisiblePipe: {id: opcionCarga.accion, param: opcionCarga.param}">
+                                </app-ng2-file-upload>
+                            </ng-container>
+                            <button *ngFor='let accion of _btnAcciones' mat-icon-button type='button'
+                                    (click)="infoSeleccionada(filaDatos, accion.accion, [''])"
+                                    [color]='accion.color' matTooltip='{{accion.tooltip}}'
+                                    [disabled]='filaDatos | tPrimeAccDeshabPipe: {id: accion.accion, param: _accDeshPipe}'
+                                    [hidden]='filaDatos | tPrimeAccVisiblePipe: {id: accion.accion, param: _accVisPipe} '>
+                                <mat-icon [ngClass]="accion.claseColor">{{accion.icono}}</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-container>
+        </ng-template>
+    </p-table>
+</section>
+<ng-template #skeletonTrue>
+    <app-lista-cargando></app-lista-cargando>
+    <!--    <tr>-->
+    <!--        <td *ngFor='let columna of _columnas'>-->
+    <!--            <p-skeleton></p-skeleton>-->
+    <!--        </td>-->
+    <!--        <td *ngIf='_accionesVisibles'>-->
+    <!--            <p-skeleton></p-skeleton>-->
+    <!--        </td>-->
+    <!--    </tr>-->
+</ng-template>

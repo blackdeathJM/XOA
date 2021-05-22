@@ -1,0 +1,85 @@
+<mat-horizontal-stepper class="fuse-navy-800" linear>
+    <mat-step [stepControl]="formDetallesGrales" errorMessage="Verifica los campos que son requeridos">
+        <form [formGroup]="formDetallesGrales" autocomplete="off">
+            <ng-template matStepLabel>Datos generales</ng-template>
+            <app-detalles-grales formControlName="detallesGrales" [tipoAnomalia]="tipoAnomalia"></app-detalles-grales>
+            <div class="mt-8">
+                <button mat-raised-button fxFlex="1 0 auto" matStepperNext [disabled]="formDetallesGrales.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="formDetallesUsuario" errorMessage="Verifica los campos que son requeridos">
+        <app-buscar-cliente-autocomplete (clienteSeleccionado)="clienteSeleccionado($event)"></app-buscar-cliente-autocomplete>
+        <form [formGroup]="formDetallesUsuario" autocomplete="off">
+            <ng-template matStepLabel>Datos del usuario</ng-template>
+            <div fxLayoutGap="8px" fxLayoutAlign="space-between">
+                <mat-form-field>
+                    <mat-label>RPU</mat-label>
+                    <input matInput formControlName="rpu">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>contrato</mat-label>
+                    <input matInput formControlName="noContrato">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Numero de medidor</mat-label>
+                    <input matInput formControlName="noMedidor">
+                </mat-form-field>
+            </div>
+            <div fxLayoutGap="8px">
+                <mat-form-field fxFlex>
+                    <mat-label>Calle</mat-label>
+                    <input matInput formControlName="calle">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="colonia">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field fxFlex="1 0 auto">
+                    <mat-label>Telefonos</mat-label>
+                    <input matInput formControlName="telefonos">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Entre calles</mat-label>
+                    <input matInput formControlName="entreCalles">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Referencia</mat-label>
+                    <input matInput formControlName="referencia">
+                </mat-form-field>
+            </div>
+            <mat-action-row fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Anterior
+                </button>
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperNext [disabled]="formDetallesUsuario.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Finalizar</ng-template>
+        <div fxLayoutAlign="center center">
+            <img src="../../../../../../../../assets/images/varios/ok3.svg" alt>
+        </div>
+        <mat-action-row fxLayoutGap="8px">
+            <button fxFlex="50" mat-raised-button color="warn" (click)="cerrarModal()">
+                <mat-icon>close</mat-icon>
+                Cancelar
+            </button>
+            <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" (click)="regOrdenAreaT()">Guardar</mat-spinner-button>
+        </mat-action-row>
+    </mat-step>
+</mat-horizontal-stepper>

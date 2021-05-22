@@ -1,0 +1,50 @@
+<div class="inner-scroll" fxLayout="row" fxLayoutAlign="start" id="login">
+    <div fxFlex fxHide fxShow.gt-xs id="login-intro">
+        <div [@animate]="{value:'*',params:{scale:'0.2'}}" class="logo">
+            <img alt="" src="../../../../../assets/images/logos/logo-simapas.png">
+        </div>
+        <div [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}" class="title">
+            Bienvenido al sistema comercial
+        </div>
+        <div [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}" class="description">
+            Descripcion para el sistema comercial
+        </div>
+    </div>
+
+    <div [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}" fusePerfectScrollbar
+         id="login-form-wrapper">
+        <div id="login-form">
+            <div class="logo" fxHide.gt-xs>
+                <img alt="" src="../../../../../assets/images/logos/logo-simapas.png">
+            </div>
+            <div class="title">Inicia sesion con tu cuenta</div>
+            <form (ngSubmit)="ingresar()" [formGroup]="loginForm" name="loginForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Usuario</mat-label>
+                    <input formControlName="usuario" matInput type="text">
+                    <mat-icon class="secondary-text" matSuffix>person</mat-icon>
+                    <mat-error *ngIf="loginForm.get('usuario').hasError('required')">
+                        El usuario es requerido
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input formControlName="contrasena" matInput type="password">
+                    <mat-icon class="secondary-text" matSuffix>vpn_key</mat-icon>
+                    <mat-error>
+                        La contraseña es requerida
+                    </mat-error>
+                </mat-form-field>
+                <button [disabled]="loginForm.invalid" aria-label="LOGIN" class="submit-button"
+                        mat-raised-button
+                        type="submit">
+                    Inicia sesion
+                </button>
+            </form>
+        </div>
+        <div *ngIf="cargando" fxLayout="row" fxLayoutAlign="center center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
+</div>

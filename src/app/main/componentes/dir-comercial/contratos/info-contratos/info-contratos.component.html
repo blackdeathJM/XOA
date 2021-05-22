@@ -1,0 +1,25 @@
+<app-card-bootstrap>
+    <ng-container cabecera><h2>Informacion de usuarios</h2></ng-container>
+    <ng-container contenido>
+        <mat-form-field>
+            <mat-label>Buscar usuario por criterios</mat-label>
+            <input matInput placeholder="RPU, Nombre, Apellidos ---- (PRESIONA ENTER PARA REALIZAR LA BUSQUEDA)"
+                   (keydown.enter)="buscarProCriterios($event.target.value)">
+        </mat-form-field>
+        <app-prime-tabla
+            (emitirAccion)="clienteSeleccionado($event)"
+            [columnas]="columnas"
+            [skeleton]="skeleton"
+            [accionesVisibles]="true"
+            [btnAcciones]="acciones"
+            [valConsulta]="_clientesState.state$ | async"
+            [ancho]="{width: '80px'}">
+        </app-prime-tabla>
+    </ng-container>
+    <ng-container pie>
+    </ng-container>
+</app-card-bootstrap>
+
+<!--<ng-template #cargandoTabla>-->
+<!--    <app-lista-cargando></app-lista-cargando>-->
+<!--</ng-template>-->

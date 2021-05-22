@@ -1,0 +1,24 @@
+<ng-container *ngIf="_instSelec.camInstalacion$ | async as instSelect">
+    <mat-toolbar>
+        <div fxLayoutAlign="space-between center" fxLayoutGap="8px" fxFill>
+            <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="regLecturas(instSelect._id, tiposLect.macro, {value: 1000000000}, 'Mt3')">
+                <mat-icon>add</mat-icon>
+                Lect macromedidor - ({{instSelect.nombre}})
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="regLecturas(instSelect._id, tiposLect.cfe, {value: 100000000}, 'Kwh')">
+                <mat-icon>add</mat-icon>
+                Lect CFE - ({{instSelect.nombre}})
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="regLecturas(instSelect._id, tiposLect.nivelE, {value: 1000}, 'Mts')">
+                <mat-icon>add</mat-icon>
+                N. Estatico - ({{instSelect.nombre}})
+            </button>
+            <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="regLecturas(instSelect._id, tiposLect.nivelD, {value: 1000}, 'Mts')">
+                <mat-icon>add</mat-icon>
+                N. Dinamico - ({{instSelect.nombre}})
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+    <app-grafica-lect-medicion [instSelec]="instSelect"></app-grafica-lect-medicion>
+</ng-container>

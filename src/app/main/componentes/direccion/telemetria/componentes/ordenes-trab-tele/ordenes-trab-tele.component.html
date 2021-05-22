@@ -1,0 +1,18 @@
+<app-pagina>
+    <ng-container cabecera>
+        <p-avatar image="assets/images/titulos/docsExt.png" size="xlarge"></p-avatar>
+        <span class="ml-4 mat-title">Administracion de instalaciones</span>
+    </ng-container>
+    <ng-container barra-herramientas>
+        <mat-toolbar>
+            <button fxFlex="1 0 auto" mat-raised-button color="primary" (click)="nuevaOrden()">
+                <mat-icon>add</mat-icon>
+                Crear nueva orden
+            </button>
+        </mat-toolbar>
+    </ng-container>
+    <ng-container contenido>
+        <app-ordenes-trab-clie></app-ordenes-trab-clie>
+    </ng-container>
+</app-pagina>
+

@@ -1,0 +1,39 @@
+<ng-container *ngIf="(_instSelec.camInstalacion$ | async) as instalacionSeleccionada">
+    <mat-toolbar>
+        <div fxLayoutAlign="space-between center" fxLayoutGap="8px" fxFill>
+            <button fxFlex='1 0 auto' mat-raised-button color='primary'
+                    (click)="regParam(instalacionSeleccionada._id,true, voltaje, 'volts', true, {value:10000})">
+                <mat-icon>add</mat-icon>
+                Nuevo Voltaje - ({{instalacionSeleccionada.nombre}})
+            </button>
+            <button fxFlex='1 0 auto' mat-raised-button color='primary'
+                    (click)="regParam(instalacionSeleccionada._id,true, amperaje, 'amp', true, {value: 500})">
+                <mat-icon>add</mat-icon>
+                Nuevo Amperaje - ({{instalacionSeleccionada.nombre}})
+            </button>
+            <button fxFlex='1 0 auto' mat-raised-button color='primary'
+                    (click)="regParam(instalacionSeleccionada._id,true, fc, '%', true, {value: 100})">
+                <mat-icon>add</mat-icon>
+                Nuevo factor potencia - ({{instalacionSeleccionada.nombre}})
+            </button>
+            <button fxFlex='1 0 auto' mat-raised-button color='primary'
+                    (click)="regParam(instalacionSeleccionada._id,true, kw, 'Kw', true, {value: 100000})">
+                <mat-icon>add</mat-icon>
+                Nuevo Kilowatts - ({{instalacionSeleccionada.nombre}})
+            </button>
+        </div>
+    </mat-toolbar>
+
+    <mat-divider></mat-divider>
+    <app-graficar-parametros [instalacionSeleccionada]="instalacionSeleccionada" parametro="voltajes">
+    </app-graficar-parametros>
+    <mat-divider></mat-divider>
+    <app-graficar-parametros [instalacionSeleccionada]="instalacionSeleccionada" parametro="amperajes">
+    </app-graficar-parametros>
+    <mat-divider></mat-divider>
+    <app-graficar-parametros [instalacionSeleccionada]="instalacionSeleccionada" parametro="factorPotencia">
+    </app-graficar-parametros>
+    <mat-divider></mat-divider>
+    <app-graficar-parametros [instalacionSeleccionada]="instalacionSeleccionada" parametro="kilowatts">
+    </app-graficar-parametros>
+</ng-container>

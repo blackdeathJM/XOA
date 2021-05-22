@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
-import { FuseSharedModule } from '@fuse/shared.module';
-
-import { ContentComponent } from 'app/layout/components/content/content.component';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {FuseSharedModule} from '@fuse/shared.module';
+import {MaterialModule} from '@ui-externos/material/material.module';
+import {ContentComponent} from './content.component';
+import {NgxBootstrapModule} from '@ui-externos/ngx-bootstrap/ngx-bootstrap.module';
 
 @NgModule({
     declarations: [
         ContentComponent
     ],
-    imports     : [
+    imports: [
         RouterModule,
-        FuseSharedModule
+        FuseSharedModule,
+        MaterialModule,
+        NgxBootstrapModule
     ],
-    exports     : [
+    exports: [
         ContentComponent
     ]
 })
-export class ContentModule
-{
+export class ContentModule {
 }

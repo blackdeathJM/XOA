@@ -1,0 +1,5 @@
+se modifico el nombre de container por contenedor-fuse porque al agregar ngx-bootstrap lo sustituye por el de boostrap
+Se agrego width al 100% en el archivo _navigate.scss para mostrar el item de la navegacion correctamente
+cambiar el lodash por lodash-es en la directiva fuse-perfect-scrollbar.directive.ts
+
+NavigationService: requiere lodash-es en el merge eliminar el guion y agregar el import a lodash-es

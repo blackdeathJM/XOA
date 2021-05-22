@@ -1,0 +1,65 @@
+.tabla-contenedor {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.tabla-header-contenedor {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+.mat-header-cell {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: #15202b;
+    border-right: 1px solid #458682;
+}
+
+.mat-header-row {
+    font-family: Arial, "Century Schoolbook", 'Inconsolata', "Arial Narrow", serif;
+}
+
+.mat-cell {
+    border-right: 1px solid #458682;
+    padding-left: 8px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-table {
+    overflow: auto;
+}
+
+.mat-row:nth-child(even) {
+    background-color: rgb(31, 40, 46)
+}
+
+.mat-row:nth-child(odd) {
+    background-color: rgb(67, 83, 96)
+}
+
+.mat-row:hover {
+    background-color: #0f111a;
+}
+
+.encabezado {
+    background-color: #3e8894;
+}
+
+.hide {
+    display: none;
+}
+
+.mat-footer-row .mat-footer-cell {
+    justify-content: center;
+}
+
+.expandable-row {
+    background-color: #27333a;
+}
+

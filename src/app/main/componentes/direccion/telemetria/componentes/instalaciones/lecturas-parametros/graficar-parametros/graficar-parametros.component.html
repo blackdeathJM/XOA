@@ -1,0 +1,35 @@
+<div [@animate]="{value:'*',params:{y:'100%'}}">
+    <app-card-bootstrap>
+        <ng-container cabecera>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="h3 cyan-A200-fg">{{_instSeleccionada.nombre}} ({{_parametro}})
+                        </span>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Inserta el año a graficar</mat-label>
+                        <input matInput style="text-align: center" (keydown.enter)="consultar($event.target.value)">
+                    </mat-form-field>
+                </div>
+                <div fxLayoutGap="8px">
+                    <button mat-button color="primary" class="cyan">
+                        <mat-icon>print</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container contenido>
+            <div style="display: block">
+                <canvas [id]="_parametro" [height]="70">
+                </canvas>
+            </div>
+        </ng-container>
+        <ng-container pie>
+            <app-prime-tabla
+                [btnAcciones]="btnAcciones"
+                [accionesVisibles]="false"
+                [valConsulta]="valores"
+                [columnas]="columnas">
+            </app-prime-tabla>
+        </ng-container>
+    </app-card-bootstrap>
+</div>

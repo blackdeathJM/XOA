@@ -1,62 +1,38 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+// fuse
+import {FuseProgressBarModule, FuseSidebarModule} from '../@fuse/components';
+import {FuseSharedModule} from '../@fuse/shared.module';
+// componentes
+import {AppComponent} from './app.component';
+import {HomeComponent} from './main/home/home.component';
+// modulos
+import {AppRouting} from './app.routing';
+import {LayoutModule} from './layout/layout.module';
+import {MaterialModule} from '@ui-externos/material/material.module';
+import {SharedModule} from '@shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
+import {FileUploadModule} from '@iplab/ngx-file-upload';
+import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
 
-import { FuseModule } from '@fuse/fuse.module';
-import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
-
-import { fuseConfig } from 'app/fuse-config';
-
-import { AppComponent } from 'app/app.component';
-import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
-
-const appRoutes: Routes = [
-    {
-        path      : '**',
-        redirectTo: 'sample'
-    }
-];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent,
     ],
-    imports     : [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        RouterModule.forRoot(appRoutes),
-
+    imports: [
+        CommonModule,
         TranslateModule.forRoot(),
-
-        // Material moment date module
-        MatMomentDateModule,
-
-        // Material
-        MatButtonModule,
-        MatIconModule,
-
-        // Fuse modules
-        FuseModule.forRoot(fuseConfig),
         FuseProgressBarModule,
-        FuseSharedModule,
         FuseSidebarModule,
-        FuseThemeOptionsModule,
-
-        // App modules
+        FuseSharedModule,
         LayoutModule,
-        SampleModule
-    ],
-    bootstrap   : [
-        AppComponent
+        SharedModule,
+        MaterialModule,
+        FileUploadModule,
+        AppRouting,
+        PrimeNgModule
     ]
 })
 export class AppModule

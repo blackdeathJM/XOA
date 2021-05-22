@@ -1,0 +1,82 @@
+<section *ngIf='_teleQuery.camInstalacion$ | async as instalacion; else sinInfo'>
+    <div [@animate]="{value:'*',params:{y:'100%'}}" class='mat-elevation-z14'>
+        <app-card-bootstrap fxFill>
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Informacion general de la instalacion ({{instalacion.nombre}})</span></ng-container>
+            <ng-container contenido>
+                <app-reg-instalacion [ocultarAcciones]='true' [soloLectura]='true' [apariencia]="'outline'" [instSele]='instalacion'></app-reg-instalacion>
+            </ng-container>
+        </app-card-bootstrap>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout='row' [@animate]="{value:'*',params:{y:'100%'}}" fxLayoutAlign='space-betweeb'>
+        <app-info-ips fxFlex='20%'
+                      [verAcciones]='false'
+                      [soloLectura]='true'
+                      [instSelectTele]='instalacion'
+                      [tipo]='"radio"'>
+        </app-info-ips>
+        <app-info-ips fxFlex='20%'
+                      [verAcciones]='false'
+                      [soloLectura]='true'
+                      [instSelectTele]='instalacion'
+                      [tipo]='"switch"'>
+        </app-info-ips>
+        <app-info-ips fxFlex='20%'
+                      [verAcciones]='false'
+                      [soloLectura]='true'
+                      [instSelectTele]='instalacion'
+                      [tipo]='"plc"'>
+        </app-info-ips>
+        <app-info-ips fxFlex='20%'
+                      [verAcciones]='false'
+                      [soloLectura]='true'
+                      [instSelectTele]='instalacion'
+                      [tipo]='"repetidor"'>
+        </app-info-ips>
+        <app-info-ips fxFlex='20%'
+                      [verAcciones]='false'
+                      [soloLectura]='true'
+                      [instSelectTele]='instalacion'
+                      [tipo]='"camara"'>
+        </app-info-ips>
+    </div>
+    <mat-divider></mat-divider>
+    <div [@animate]="{value:'*',params:{y:'100%'}}">
+        <app-card-bootstrap fxFlex='50' class='mat-elevation-z14'>
+            <ng-container cabecera>
+                <span class='h3 cyan-A200-fg'>Motor - ({{instalacion.nombre}})</span>
+            </ng-container>
+            <ng-container contenido>
+                <app-reg-motor
+                    [ocultarAcciones]='true'
+                    [soloLectura]='true'
+                    apariencia='outline'
+                    [motorSele]="instalacion | equipoActivo:'motor'">
+                </app-reg-motor>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider vertical='true'></mat-divider>
+        <app-card-bootstrap fxFlex='50' class='mat-elevation-z14'>
+            <ng-container cabecera>
+                <span class='h3 cyan-A200-fg'>Bomba - ({{instalacion.nombre}})</span>
+            </ng-container>
+            <ng-container contenido>
+                <app-reg-bomba [soloLectura]='true' [ocultarAcciones]='true' apariencia='outline' [bombaSele]="instalacion | equipoActivo: 'bomba'">
+                </app-reg-bomba>
+            </ng-container>
+        </app-card-bootstrap>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="m-8">
+        <button fxFlex="1 0 auto" mat-raised-button (click)="generarPdf(instalacion)" class="cyan">
+            <mat-icon>print</mat-icon>
+            Imprimir
+        </button>
+    </div>
+</section>
+
+<ng-template #sinInfo>
+    <div class='message-box warning mat-title' fxFill>
+        Selecciona una instalacion para mostrar su informacion
+    </div>
+</ng-template>

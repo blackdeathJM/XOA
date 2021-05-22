@@ -1,0 +1,42 @@
+<input #fileInput accept="application/pdf" [multiple]="false" [uploader]="cargaDeArchivo" hidden id="fileUpload" name="fileUpload"
+       (click)="cargaDeArchivo.clearQueue()" ng2FileSelect type="file">
+<form [formGroup]="formRecibosCfe" (ngSubmit)="regReciboCfe()">
+    <div fxLayout="row">
+        <mat-form-field fxFill>
+            <input [matDatepicker]="fechaRegistro" formControlName="fechaReg" matInput
+                   name="fechaReg" placeholder="Fecha de registro">
+            <mat-datepicker-toggle [for]="fechaRegistro" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #fechaRegistro></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+        <mat-form-field fxFill>
+            <mat-label>Lectura</mat-label>
+            <input matInput formControlName="lectura">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="32px">
+        <mat-form-field fxFlex>
+            <mat-label>Costo KW</mat-label>
+            <input matInput formControlName="costoKw">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <mat-label>Pago</mat-label>
+            <input matInput formControlName="pago">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" class="mb-8">
+        <button fxFill (click)="fileInput.click()" type="button" class="amber-fg" mat-stroked-button>
+            <mat-icon>publish</mat-icon>
+            {{fileInput.value}}
+        </button>
+    </div>
+    <mat-action-row fxLayout="row" fxLayoutGap=" 32px">
+        <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" [disabled]="this.formRecibosCfe.invalid">Guardar
+        </mat-spinner-button>
+        <button fxFlex="50" mat-raised-button color="warn" type="button" mat-dialog-close="true">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+    </mat-action-row>
+</form>

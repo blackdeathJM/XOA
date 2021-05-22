@@ -1,0 +1,33 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="green-fg">{{_medidor.fechaInstalacion | date: 'dd/MM/yyyy'}}</span>
+            <span class="red-fg">{{_medidor.fechaRetiro | date: 'dd/MM/yyyy'}}</span>
+        </div>
+    </ng-container>
+    <ng-container contenido>
+        <div class="h1">
+            {{_medidor.medidor}}
+        </div>
+    </ng-container>
+    <ng-container pie>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-icon-button color="warn" matTooltip="Dar de baja medidor" [disabled]="!_medidor.activa" (click)="bajaMedidor(_medidor)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Agregar nuevo recibo de luz" [disabled]="!_medidor.activa" (click)="nuevoReciboCfe(_medidor)">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Mostrar recibos registrados" (click)="detalleRecibo(_medidor)">
+                <mat-icon>info</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Grafica los pagos de manera anual de la instalacion seleccionada"
+                    (click)="graficarAnual(_medidor.recibos)">
+                <mat-icon class="amber-fg">insert_chart_outlined</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Imprimir grafica" (click)="imprimirGrafica(_medidor)">
+                <mat-icon class="teal-fg">print</mat-icon>
+            </button>
+        </div>
+    </ng-container>
+</app-card-bootstrap>

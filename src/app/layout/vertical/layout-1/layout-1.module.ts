@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { FuseSidebarModule } from '@fuse/components';
-import { FuseSharedModule } from '@fuse/shared.module';
+import {FuseSidebarModule} from '@fuse/components';
+import {FuseSharedModule} from '@fuse/shared.module';
 
-import { ContentModule } from 'app/layout/components/content/content.module';
-import { FooterModule } from 'app/layout/components/footer/footer.module';
-import { NavbarModule } from 'app/layout/components/navbar/navbar.module';
-import { QuickPanelModule } from 'app/layout/components/quick-panel/quick-panel.module';
-import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
+import {ContentModule} from 'app/layout/components/content/content.module';
+import {FooterModule} from 'app/layout/components/footer/footer.module';
+import {NavbarModule} from 'app/layout/components/navbar/navbar.module';
+import {QuickPanelModule} from 'app/layout/components/quick-panel/quick-panel.module';
+import {ToolbarModule} from 'app/layout/components/toolbar/toolbar.module';
+import {VerticalLayout1Component} from './layout-1.component';
+import {ChatPanelModule} from '../../components/chat-panel/chat-panel.module';
 
-import { VerticalLayout1Component } from 'app/layout/vertical/layout-1/layout-1.component';
 
 @NgModule({
     declarations: [
         VerticalLayout1Component
     ],
-    imports     : [
+    imports: [
         RouterModule,
 
         FuseSharedModule,
@@ -26,9 +27,10 @@ import { VerticalLayout1Component } from 'app/layout/vertical/layout-1/layout-1.
         FooterModule,
         NavbarModule,
         QuickPanelModule,
-        ToolbarModule
+        ToolbarModule,
+        ChatPanelModule
     ],
-    exports     : [
+    exports: [
         VerticalLayout1Component
     ]
 })

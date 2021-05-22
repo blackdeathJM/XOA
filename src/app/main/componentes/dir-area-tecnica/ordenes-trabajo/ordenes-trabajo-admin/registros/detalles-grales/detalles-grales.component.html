@@ -1,0 +1,18 @@
+<mat-form-field>
+    <mat-label>Anomalia presentada</mat-label>
+    <input matInput [matAutocomplete]="auto" [(ngModel)]="anomalia" (ngModelChange)="onDescProblema()" (blur)="onTouch()" autocomplete="off">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let opcion of anomalias" [value]="opcion.anomalia">
+            {{opcion.anomalia}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Comentarios</mat-label>
+    <input matInput [(ngModel)]="comentarios" (ngModelChange)="onObs()" (blur)="onTouch()" autocomplete="off">
+</mat-form-field>
+<mat-button-toggle-group aria-label="Font Style" [(ngModel)]="prioridad" fxLayoutAlign="space-between" (ngModelChange)="onPrioridad()" (blur)="onTouch()">
+    <mat-button-toggle value="baja" fxFlex>Baja</mat-button-toggle>
+    <mat-button-toggle value="Normal" fxFlex [checked]="true">Normal</mat-button-toggle>
+    <mat-button-toggle value="Alta" fxFlex>Alta</mat-button-toggle>
+</mat-button-toggle-group>

@@ -1,0 +1,37 @@
+<form autocomplete="off" [formGroup]="formCliente" (ngSubmit)="regCliente()">
+    <div class="baseDiv p-12">
+        <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+            <mat-form-field>
+                <mat-label>Nombre completo</mat-label>
+                <input matInput formControlName="nombreCompleto" class="text-capitalize">
+            </mat-form-field>
+        </div>
+        <div fxLayoutAlign="space-between" fxLayoutGap="8px">
+            <mat-form-field>
+                <mat-label>Telefono</mat-label>
+                <input matInput [formControl]="nvoTelefono" (keydown.enter)="agregarTel()">
+            </mat-form-field>
+            <button mat-mini-fab type="button" color="primary" (click)="agregarTel()">
+                <mat-icon>add</mat-icon>
+            </button>
+            <div formArrayName="telefonos">
+                <div fxLayoutAlign="space-between" fxLayoutGap="8px" *ngFor="let telefono of telArr.controls; let i = index">
+                    <mat-form-field>
+                        <mat-label>Telefono</mat-label>
+                        <input matInput [formControlName]="i">
+                    </mat-form-field>
+                    <button mat-mini-fab type="button" color="warn" (click)="borrarTel(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-action-row fxLayoutGap="8px" class="baseDiv mt-8">
+        <button fxFlex="1 0 auto" mat-raised-button color="warn" matDialogClose="true">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+        <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" [disabled]="formCliente.invalid">Guardar</mat-spinner-button>
+    </mat-action-row>
+</form>

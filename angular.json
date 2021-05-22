@@ -37,8 +37,12 @@
                         "allowedCommonJsDependencies": [
                             "@swimlane/dragula",
                             "chart.js",
+                            "subscriptions-transport-ws",
                             "angular-calendar",
+                            "pdfmake/build/pdfmake",
                             "calendar-utils/date-adapters/date-fns",
+                            "ngx-lightbox",
+                            "uuid",
                             "contra/emitter",
                             "dom-plane",
                             "dom-set"

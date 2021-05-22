@@ -1,0 +1,33 @@
+<app-card-bootstrap>
+    <ng-container cabecera><span class='h2 cyan-A200-fg'>{{_tipo}}</span></ng-container>
+    <ng-container contenido>
+        <mat-list *ngIf='_instSelectTele.telemetria as tele'>
+            <mat-list-item *ngFor='let dir of tele[_tipo]' fxFill>
+                <div fxLayout='row' fxFill>
+                    <mat-form-field>
+                        <div matPrefix>
+                            <mat-icon [svgIcon]='_tipo'></mat-icon>
+                        </div>
+                        <input [value]='dir' matInput style='text-align: center; font-size: 18px' [readonly]='_soloLectura'>
+                        <div matSuffix fxLayoutGap='4px' *ngIf='_verAcciones'>
+                            <button mat-icon-button style='font-size: 20px' (click)='editarIp(dir)' matTooltip='Editar direccion ip'>
+                                <mat-icon color='primary'>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button style='font-size: 24px' (click)='eliminarIp(dir)' matTooltip='Eliminar direccion ip'>
+                                <mat-icon color='warn'>delete</mat-icon>
+                            </button>
+                        </div>
+                    </mat-form-field>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+    <ng-container pie>
+        <div *ngIf='_verAcciones'>
+            <button mat-raised-button color='primary' fxFlex='1 0 auto' (click)='nvoIp()'>
+                <mat-icon>add</mat-icon>
+                Agregar IP
+            </button>
+        </div>
+    </ng-container>
+</app-card-bootstrap>

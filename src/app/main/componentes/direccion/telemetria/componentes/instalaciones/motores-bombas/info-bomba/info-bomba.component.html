@@ -1,0 +1,70 @@
+<div [@animate]="{value:'*',params:{y:'100%'}}">
+    <div fxLayout='column' fxFlex='60'>
+        <app-card-bootstrap>
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Informacion bombas</span></ng-container>
+            <ng-container contenido>
+                <app-prime-tabla
+                    [columnas]='colBomba'
+                    [ancho]='{width: "80px"}'
+                    [accionesVisibles]='true'
+                    [btnAcciones]='accionesEquipo'
+                    [valConsulta]='_instalacion.bomba'
+                    (emitirAccion)='accionBombaRecibida($event, _instalacion._id)'>
+                </app-prime-tabla>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider></mat-divider>
+        <app-card-bootstrap *ngIf="infoBomba !== null && infoBomba.fechaInstalacion !== null">
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Evidencia de instalacion - ({{_instalacion.nombre}})</span></ng-container>
+            <ng-container contenido>
+                <app-galeria [album]="infoBomba?.imgEvidenciaInst | convertirLigthboxAlbum : preBombaIns"></app-galeria>
+            </ng-container>
+            <ng-container pie>
+                <app-ng2-file-upload
+                    [opcionesCarga]="opcBombaIns"
+                    (emitirListaArchivos)="listaArchInstBomba($event, _instalacion._id, true)">
+                </app-ng2-file-upload>
+            </ng-container>
+        </app-card-bootstrap>
+        <mat-divider></mat-divider>
+        <app-card-bootstrap *ngIf="infoBomba !== null && infoBomba.fechaRetiro !== null">
+            <ng-container cabecera><span class='h2 cyan-A200-fg'>Evidencia de retiro</span></ng-container>
+            <ng-container contenido>
+                <app-galeria [album]="infoBomba.imgEvidenciaRet | convertirLigthboxAlbum: preBombaRet"></app-galeria>
+                <mat-divider></mat-divider>
+                <div fxLayout="row wrap" class="baseDiv mat-elevation-z14 mt-4">{{infoBomba.motivoRetiro}}</div>
+            </ng-container>
+            <ng-container pie>
+                <app-ng2-file-upload
+                    [opcionesCarga]="opcBombaRet"
+                    (emitirListaArchivos)="listaArchInstBomba($event, _instalacion._id, false)">
+                </app-ng2-file-upload>
+            </ng-container>
+        </app-card-bootstrap>
+    </div>
+    <mat-divider [vertical]='true'></mat-divider>
+    <app-card-bootstrap fxFlex>
+        <ng-container cabecera>
+            <div>
+                <mat-icon [ngClass]="(infoBomba?.activa)? 'green-fg': 'red-fg'">settings_input_composite</mat-icon>
+            </div>
+        </ng-container>
+        <ng-container contenido>
+            <app-reg-bomba
+                [bombaSele]='infoBomba'
+                apariencia='outline'
+                [soloLectura]='true'
+                [ocultarAcciones]='true'>
+            </app-reg-bomba>
+        </ng-container>
+        <ng-container pie>
+            <div fxLayoutAlign='space-between' fxLayoutGap='8px'>
+                <button fxFlex='1 0 auto' mat-button color='primary' [disabled]='infoBomba === null || infoBomba.fechaRetiro !== null'
+                        (click)="bajaEquipo(_instalacion._id,infoBomba.id,'bomba')">
+                    <mat-icon color='warn'>block</mat-icon>
+                    Baja
+                </button>
+            </div>
+        </ng-container>
+    </app-card-bootstrap>
+</div>

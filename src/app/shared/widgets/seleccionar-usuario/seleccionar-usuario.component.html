@@ -1,0 +1,8 @@
+<div fxLayout="row">
+    <mat-form-field fxFill>
+        <mat-label>Seleccionar usuarios</mat-label>
+        <mat-select [(value)]="usuariosSeleccionados" [multiple]="_multiple" (closed)="enviarUsuarios()">
+            <mat-option *ngFor="let usuario of cargarUsuarios$ | async" [value]="usuario.usuario">{{usuario.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

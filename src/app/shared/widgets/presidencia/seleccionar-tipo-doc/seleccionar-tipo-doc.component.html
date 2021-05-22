@@ -1,0 +1,8 @@
+<mat-form-field>
+    <mat-label>Tipo de documento</mat-label>
+    <mat-select (valueChange)="cambioValor($event)" [disabled]="isDisabled">
+        <mat-option *ngFor="let tipo of tiposDoc" [value]="tipo">
+            {{tipo}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

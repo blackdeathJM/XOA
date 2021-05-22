@@ -1,0 +1,29 @@
+<div [@animate]="{value:'1000',params:{y:'100%'}}" class="m-8">
+    <accordion [isAnimated]="true" class="mat-elevation-z14">
+        <accordion-group panelClass="customClass">
+            <div accordion-heading fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="h2">
+                    {{_ano}}
+                </div>
+                <div fxLayoutGap="4px">
+                    <button mat-stroked-button type="button" (click)="graficar($event)">
+                        <mat-icon>insert_chart_outlined</mat-icon>
+                        Graficar pagos
+                    </button>
+                    <button mat-stroked-button type="button" class="teal-fg" (click)="imprimirPagos($event)">
+                        <mat-icon>print</mat-icon>
+                        Imprimir pagos
+                    </button>
+                </div>
+            </div>
+            <app-prime-tabla
+                (emitirAccion)="accionTabla($event)"
+                [columnas]="columnas"
+                [ancho]="{width: '80px'}"
+                [accionesVisibles]="true"
+                [btnAcciones]="btnAcciones"
+                [valConsulta]="_detallesRecibos">
+            </app-prime-tabla>
+        </accordion-group>
+    </accordion>
+</div>

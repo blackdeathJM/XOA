@@ -1,0 +1,14 @@
+<section *ngIf='_instQuery.camInstalacion$ | async as instSele'>
+    <div fxLayout='row wrap' [@animate]="{value:'*',params:{y:'100%'}}" fxLayoutAlign='space-betweeb'>
+        <app-info-ips fxFlex [instSelectTele]='instSele' [tipo]='"radio"'>
+        </app-info-ips>
+        <app-info-ips fxFlex [instSelectTele]='instSele' [tipo]='"switch"'>
+        </app-info-ips>
+        <app-info-ips fxFlex [instSelectTele]='instSele' [tipo]='"plc"'>
+        </app-info-ips>
+        <app-info-ips fxFlex [instSelectTele]='instSele' [tipo]='"repetidor"'>
+        </app-info-ips>
+        <app-info-ips fxFlex [instSelectTele]='instSele' [tipo]='"camara"'>
+        </app-info-ips>
+    </div>
+</section>

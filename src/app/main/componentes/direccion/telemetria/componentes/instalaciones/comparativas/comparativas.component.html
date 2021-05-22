@@ -1,0 +1,72 @@
+<app-pagina>
+      <ng-container cabecera>
+            <p-avatar size="xlarge" image="assets/images/titulos/instalaciones.png"></p-avatar>
+            <span class="ml-4 mat-title">Comparativa de las diferentes instalaciones</span>
+      </ng-container>
+      <ng-container contenido>
+            <app-card-bootstrap>
+                  <ng-container cabecera>
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                              <div class="h2">Promedios (Colocar el tipo)</div>
+                              <button mat-stroked-button color="primary" class="teal-fg" type="button" (click)="imprimir()">
+                                    <mat-icon>print</mat-icon>
+                                    Imprimir
+                              </button>
+                        </div>
+                  </ng-container>
+                  <ng-container contenido>
+                        <div style="display: block">
+                              <canvas [id]="idGraf" [height]="100"></canvas>
+                        </div>
+                  </ng-container>
+            </app-card-bootstrap>
+            <app-card-bootstrap>
+                  <ng-container cabecera>
+                        <div fxLayoutAlign="space-between center">
+                              <div class="h2">
+                                    Niveles estaticos
+                              </div>
+                        </div>
+                  </ng-container>
+                  <ng-container contenido>
+                        <mat-form-field>
+                              <input matInput placeholder="Introduce el año a consultar" (keydown.enter)="nivelesEstaticos($event.target.value)">
+                        </mat-form-field>
+                        <app-prime-tabla [columnas]="columnas" [valConsulta]="valoresTransNivelE">
+                        </app-prime-tabla>
+                  </ng-container>
+            </app-card-bootstrap>
+            <mat-divider></mat-divider>
+            <app-card-bootstrap>
+                  <ng-container cabecera>
+                        <div fxLayoutAlign="space-between center">
+                              <div class="h2">
+                                    Niveles Dinamicos
+                              </div>
+                        </div>
+                  </ng-container>
+                  <ng-container contenido>
+                        <mat-form-field>
+                              <input matInput placeholder="Introduce el año a consultar" (keydown.enter)="nivelesDinamicos($event.target.value)">
+                        </mat-form-field>
+                        <app-prime-tabla [columnas]="columnas" [valConsulta]="valoresTransNivelD">
+                        </app-prime-tabla>
+                  </ng-container>
+            </app-card-bootstrap>
+            <mat-divider></mat-divider>
+            <app-card-bootstrap>
+                  <ng-container cabecera>
+                        <div class="h2">
+                              Pagos de CFE
+                        </div>
+                  </ng-container>
+                  <ng-container contenido>
+                        <mat-form-field>
+                              <input matInput placeholder="introduce el año" (keydown.enter)="pagosCfe($event.target.value)">
+                        </mat-form-field>
+                        <app-prime-tabla [columnas]="columnas" [valConsulta]="valoresTransCfe">
+                        </app-prime-tabla>
+                  </ng-container>
+            </app-card-bootstrap>
+      </ng-container>
+</app-pagina>

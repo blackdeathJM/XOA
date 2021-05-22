@@ -1,32 +1,27 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
-import { FuseSharedModule } from '@fuse/shared.module';
+import {FuseSearchBarModule, FuseShortcutsModule} from '@fuse/components';
+import {FuseSharedModule} from '@fuse/shared.module';
 
-import { ToolbarComponent } from 'app/layout/components/toolbar/toolbar.component';
+import {MaterialModule} from '@ui-externos/material/material.module';
+import {ToolbarComponent} from './toolbar.component';
+import {ArchivoUrlModule} from '../../../main/pipes/archivo-url.module';
 
 @NgModule({
     declarations: [
         ToolbarComponent
     ],
-    imports     : [
+    imports: [
         RouterModule,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        MatToolbarModule,
-
         FuseSharedModule,
         FuseSearchBarModule,
-        FuseShortcutsModule
+        FuseShortcutsModule,
+        MaterialModule,
+        ArchivoUrlModule
     ],
-    exports     : [
-        ToolbarComponent
+    exports: [
+        ToolbarComponent,
     ]
 })
 export class ToolbarModule

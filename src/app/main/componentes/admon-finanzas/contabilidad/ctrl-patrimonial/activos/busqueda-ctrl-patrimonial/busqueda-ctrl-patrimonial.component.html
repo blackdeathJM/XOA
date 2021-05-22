@@ -1,0 +1,38 @@
+<accordion fxFill [isAnimated]="true" class="mat-elevation-z14">
+      <accordion-group panelClass="customClass">
+            <div accordion-heading class="h2">
+                  Buscar control patrimonial
+            </div>
+            <section>
+                  <div fxLayout="row">
+                        <mat-form-field fxFill>
+                              <mat-label>Buscar documento por diferentes parametros</mat-label>
+                              <input matInput placeholder="Descripcion, No Activo, Resguardante">
+                        </mat-form-field>
+                  </div>
+                  <div fxLayout="row">
+                        <mat-form-field>
+                              <mat-label>buscar por categoria</mat-label>
+                              <mat-select [(value)]="seleccionCategoria">
+                                    <mat-option>Ninguna</mat-option>
+                                    <mat-option value="option1">Option 1</mat-option>
+                                    <mat-option value="option2">Option 2</mat-option>
+                                    <mat-option value="option3">Option 3</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                  </div>
+                  <div fxLayout="row">
+                        <mat-form-field fxFill>
+                              <mat-label>Busqueda entre fechas</mat-label>
+                              <mat-date-range-input [rangePicker]="picker">
+                                    <input matStartDate placeholder="Fecha de inicio">
+                                    <input matEndDate placeholder="Fecha final">
+                              </mat-date-range-input>
+                              <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                              <mat-date-range-picker #picker (closed)="busquedaEntreFechas()">
+                              </mat-date-range-picker>
+                        </mat-form-field>
+                  </div>
+            </section>
+      </accordion-group>
+</accordion>

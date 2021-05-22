@@ -1,0 +1,23 @@
+<div fxLayout="row" class="my-12">
+    <div fxFlex="20">
+        <img [src]="organismoInfo.logo" alt/>
+    </div>
+    <div fxLayout="column" fxFlex="80">
+        <div class="h2 cyan-fg" fxLayoutAlign="center center">{{organismoInfo.organismo}}</div>
+        <div class="h3 cyan-fg" fxLayoutAlign="center center">{{organismoInfo.datosOrg}}</div>
+        <div class="h4 cyan-fg" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="32px">
+            <span *ngFor="let telefono of organismoInfo.telefonos">{{telefono['tel']}}</span>
+        </div>
+        <ng-content select="[estatus]"></ng-content>
+        <ng-content select="[departamento]"></ng-content>
+        <ng-content select="[descripcion]"></ng-content>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<ng-content select="[cuerpo]"></ng-content>
+<ng-content select="[pie]"></ng-content>
+
+<!--<div fxLayoutAlign="center center">-->
+<!--      <progressbar class="progress-bar-striped active" [value]="100" type="success" [striped]="true" [animate]="true">-->
+<!--      </progressbar>-->
+<!--</div>-->

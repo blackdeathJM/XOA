@@ -1,0 +1,22 @@
+@mixin mtto-theme($theme) {
+
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-mtto {
+
+    #maintenance {
+
+      #maintenance-form-wrapper {
+
+        #maintenance-form {
+          background: map-get($background, card);
+
+          .subtitle {
+            color: map-get($foreground, secondary-text);
+          }
+        }
+      }
+    }
+  }
+}

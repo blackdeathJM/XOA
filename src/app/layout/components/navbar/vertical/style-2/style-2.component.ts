@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { delay, filter, take, takeUntil } from 'rxjs/operators';
+import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {Subject} from 'rxjs';
+import {delay, filter, take, takeUntil} from 'rxjs/operators';
 
-import { FuseConfigService } from '@fuse/services/config.service';
-import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
-import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
-import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import {FuseConfigService} from '@fuse/services/config.service';
+import {FuseNavigationService} from '@fuse/components/navigation/navigation.service';
+import {FusePerfectScrollbarDirective} from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+import {FuseSidebarService} from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
-    selector     : 'navbar-vertical-style-2',
-    templateUrl  : './style-2.component.html',
-    styleUrls    : ['./style-2.component.scss'],
+    selector: 'navbar-vertical-style-2',
+    templateUrl: './style-2.component.html',
+    styleUrls: ['./style-2.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
@@ -26,10 +26,10 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {FuseConfigService} _fuseConfigService
-     * @param {FuseNavigationService} _fuseNavigationService
-     * @param {FuseSidebarService} _fuseSidebarService
-     * @param {Router} _router
+     * @param _fuseConfigService
+     * @param _fuseNavigationService
+     * @param _fuseSidebarService
+     * @param _router
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
@@ -50,7 +50,7 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
     @ViewChild(FusePerfectScrollbarDirective, {static: true})
     set directive(theDirective: FusePerfectScrollbarDirective)
     {
-        if ( !theDirective )
+        if (!theDirective)
         {
             return;
         }
@@ -63,7 +63,8 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
                 delay(500),
                 takeUntil(this._unsubscribeAll)
             )
-            .subscribe(() => {
+            .subscribe(() =>
+            {
                 this._fusePerfectScrollbar.update();
             });
 
@@ -73,8 +74,10 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
                 filter((event) => event instanceof NavigationEnd),
                 take(1)
             )
-            .subscribe(() => {
-                    setTimeout(() => {
+            .subscribe(() =>
+                {
+                    setTimeout(() =>
+                    {
                         this._fusePerfectScrollbar.scrollToElement('navbar .nav-link.active', -120);
                     });
                 }
@@ -95,8 +98,9 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
                 filter((event) => event instanceof NavigationEnd),
                 takeUntil(this._unsubscribeAll)
             )
-            .subscribe(() => {
-                    if ( this._fuseSidebarService.getSidebar('navbar') )
+            .subscribe(() =>
+                {
+                    if (this._fuseSidebarService.getSidebar('navbar'))
                     {
                         this._fuseSidebarService.getSidebar('navbar').close();
                     }
@@ -109,14 +113,16 @@ export class NavbarVerticalStyle2Component implements OnInit, OnDestroy
                 filter(value => value !== null),
                 takeUntil(this._unsubscribeAll)
             )
-            .subscribe(() => {
+            .subscribe(() =>
+            {
                 this.navigation = this._fuseNavigationService.getCurrentNavigation();
             });
 
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((config) => {
+            .subscribe((config) =>
+            {
                 this.fuseConfig = config;
             });
     }

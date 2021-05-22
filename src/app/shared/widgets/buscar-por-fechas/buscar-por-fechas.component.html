@@ -1,0 +1,12 @@
+<div fxLayout="row">
+    <mat-form-field fxFill>
+        <mat-label>Busqueda entre fechas</mat-label>
+        <mat-date-range-input [rangePicker]="picker" [formGroup]="rango">
+            <input matStartDate placeholder="Fecha de inicio" formControlName="iniciar">
+            <input matEndDate placeholder="Fecha final" formControlName="fin">
+        </mat-date-range-input>
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-date-range-picker #picker (closed)="busquedaEntreFechas()">
+        </mat-date-range-picker>
+    </mat-form-field>
+</div>

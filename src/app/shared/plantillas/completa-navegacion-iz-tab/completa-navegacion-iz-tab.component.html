@@ -1,0 +1,32 @@
+<div class="page-layout carded left-sidebar tabbed inner-scroll">
+    <div class="top-bg accent"></div>
+    <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md">
+        <div class="header p-24 accent">
+            <ng-content select="[cabeceraTitulo]"></ng-content>
+        </div>
+        <div class="content p-4">
+            <ng-content select="[contenidoBarraLateral]"></ng-content>
+        </div>
+    </fuse-sidebar>
+    <div class="center">
+        <div class="header accent p-24">
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                        (click)="toggleSidebar('carded-left-sidebar-tabbed-1')">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <ng-content select="[cabecera2]"></ng-content>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="toolbar px-24 py-4" *ngIf="barraHerramientas">
+                <ng-content select="[barra-herramientas]"></ng-content>
+            </div>
+            <div fxLayout="row">
+                <div class="content" fxFill>
+                    <ng-content select="[contenido-tab]"></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

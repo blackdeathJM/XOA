@@ -1,0 +1,52 @@
+<app-card-bootstrap>
+    <ng-container cabecera>
+        <div>Opciones de busqueda</div>
+    </ng-container>
+    <ng-container contenido>
+        <div fxLayout="row" class="my-4">
+            <mat-form-field>
+                <mat-label>Buscar documento</mat-label>
+                <input matInput placeholder="Criterios: No.Seguimiento, folio, Asunto, identificador, dependencia, Cualquier fecha"
+                       (keydown.enter)="busquedaGral($event.target.value)">
+            </mat-form-field>
+        </div>
+        <section>
+            <app-prime-tabla (emitirAccion)="accionRecibida($event)"
+                             [cargaVisible]="true"
+                             [anchoCarga]="{width: '80px'}"
+                             [opcionesCarga]="accionesCarga"
+                             [columnas]="columnas"
+                             [skeleton]="skeleton"
+                             [valConsulta]="_docsFolioState.state$ | async"
+                             [btnAcciones]="acciones"
+                             [accVisPipe]="paramPipe"
+                             [accionesVisibles]="true">
+            </app-prime-tabla>
+        </section>
+    </ng-container>
+    <ng-container pie>
+        <div fxLayout="row" fxLayoutGap="8px">
+            <button mat-stroked-button class="orange-300" fxFlex="1 0 auto" (click)="cambio('OFICIO')">
+                <mat-icon>subtitles</mat-icon>
+                Oficios
+            </button>
+            <button mat-stroked-button class="orange-300" fxFlex="1 0 auto" (click)="cambio('CIRCULAR')">
+                <mat-icon>notes</mat-icon>
+                Circulares
+            </button>
+            <button mat-stroked-button class="orange-300" fxFlex="1 0 auto" (click)="cambio('MEMORANDUM')">
+                <mat-icon>note</mat-icon>
+                Memorandums
+            </button>
+            <button mat-stroked-button class="orange-300" fxFlex="1 0 auto" (click)="cambio('externo')">
+                <mat-icon>find_in_page</mat-icon>
+                Docs externos
+            </button>
+            <button mat-stroked-button class="orange-300" fxFlex="1 0 auto" (click)="cambio('pendientes')">
+                <mat-icon>cloud_upload</mat-icon>
+                Pendientes por subir
+            </button>
+        </div>
+    </ng-container>
+</app-card-bootstrap>
+<ng-content></ng-content>

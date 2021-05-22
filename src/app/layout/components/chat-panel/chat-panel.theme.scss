@@ -6,7 +6,7 @@
     $accent: map-get($theme, accent);
     $is-dark: map-get($theme, is-dark);
 
-    chat-panel {
+    app-chat-panel {
 
         #contacts-list {
             background-color: map-get($background, app-bar);

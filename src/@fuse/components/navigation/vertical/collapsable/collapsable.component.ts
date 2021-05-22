@@ -15,11 +15,14 @@ import {FuseNavigationService} from '@fuse/components/navigation/navigation.serv
 })
 export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
 {
-    @Input() item: FuseNavigationItem;
+    @Input()
+    item: FuseNavigationItem;
 
-    @HostBinding('class') classes = 'nav-collapsable nav-item';
+    @HostBinding('class')
+    classes = 'nav-collapsable nav-item';
 
-    @HostBinding('class.open') public isOpen = false;
+    @HostBinding('class.open')
+    public isOpen = false;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -27,9 +30,9 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FuseNavigationService} _fuseNavigationService
-     * @param {Router} _router
+     * @param _changeDetectorRef
+     * @param _fuseNavigationService
+     * @param _router
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -197,7 +200,7 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
      *
      * @param parent
      * @param item
-     * @returns {boolean}
+     * @returns
      */
     isChildrenOf(parent, item): boolean
     {
@@ -233,7 +236,7 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
      *
      * @param parent
      * @param url
-     * @returns {boolean}
+     * @returns
      */
     isUrlInChildren(parent, url): boolean
     {

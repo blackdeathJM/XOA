@@ -1,0 +1,42 @@
+<app-pagina>
+      <ng-container cabecera>
+            <p-avatar image="assets/images/titulos/notasAlmacen.png"></p-avatar>
+            <span class="ml-4 mat-title">Inventarios</span>
+      </ng-container>
+      <ng-container barra-herramientas>
+            <div class="mat-elevation-z4 baseDiv" fxFill fxLayout="row" fxLayoutGap="32px">
+                  <button fxFlex="1 0 auto" mat-flat-button color="primary">
+                        <mat-icon>add</mat-icon>
+                        Nueva nota
+                  </button>
+            </div>
+      </ng-container>
+      <ng-container contenido>
+            <div fxLayout="row" [@animate]="{value:'1000',params:{y:'100%'}}" class="m-8">
+            </div>
+            <app-card-bootstrap [@animate]="{value:'1000',params:{y:'100%'}}" *ngFor="let t of inventario">
+                  <ng-container cabecera>
+                        <div>{{t['tipo']}}</div>
+                  </ng-container>
+                  <ng-container contenido>
+                        <app-prime-tabla fxFill [columnas]="t['columnas']"></app-prime-tabla>
+                  </ng-container>
+            </app-card-bootstrap>
+            <!--            <app-card-bootstrap [@animate]="{value:'1000',params:{y:'100%'}}">-->
+            <!--                  <ng-container cabecera>-->
+            <!--                        <div>Entradas</div>-->
+            <!--                  </ng-container>-->
+            <!--                  <ng-container contenido>-->
+            <!--                        <app-prime-tabla fxFill [columnas]="columnasEntradas"></app-prime-tabla>-->
+            <!--                  </ng-container>-->
+            <!--            </app-card-bootstrap>-->
+            <!--            <app-card-bootstrap [@animate]="{value:'1000',params:{y:'100%'}}">-->
+            <!--                  <ng-container cabecera>-->
+            <!--                        <div>Salidas</div>-->
+            <!--                  </ng-container>-->
+            <!--                  <ng-container contenido>-->
+            <!--                        <app-prime-tabla fxFill></app-prime-tabla>-->
+            <!--                  </ng-container>-->
+            <!--            </app-card-bootstrap>-->
+      </ng-container>
+</app-pagina>

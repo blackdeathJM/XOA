@@ -1,0 +1,8 @@
+<div fxLayout="row">
+    <mat-form-field fxFill>
+        <mat-label>Seleccionar departamento</mat-label>
+        <mat-select [(value)]="deptoSeleccion" [multiple]="_multiple" (closed)="selectDepto(deptoSeleccion)">
+            <mat-option *ngFor="let depto of _deptosState.state$ | async" [value]="depto._id">{{depto.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

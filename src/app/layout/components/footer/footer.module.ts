@@ -1,18 +1,17 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
-import { FuseSharedModule } from '@fuse/shared.module';
-
-import { FooterComponent } from 'app/layout/components/footer/footer.component';
+import {FuseSharedModule} from '@fuse/shared.module';
+import {FooterComponent} from './footer.component';
 
 @NgModule({
     declarations: [
         FooterComponent
     ],
-    imports     : [
+    imports: [
         RouterModule,
 
         MatButtonModule,
@@ -21,7 +20,7 @@ import { FooterComponent } from 'app/layout/components/footer/footer.component';
 
         FuseSharedModule
     ],
-    exports     : [
+    exports: [
         FooterComponent
     ]
 })

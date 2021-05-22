@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table-cebra mat-elevation-z8">
+        <thead>
+        <tr>
+            <th scope="col" *ngFor="let columna of columnas">{{columna.etiqueta}}</th>
+            <th scope="col" *ngIf="accionesVisibles">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dato of documentos$ | async | paginate: {itemsPerPage: infoPagina.elementosPorPagina,
+                  currentPage: infoPagina.pagina, totalItems: infoPagina.total}">
+            <td *ngFor="let columna of columnas">{{dato[columna.propiedad]}}</td>
+            <td>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="32px" *ngIf="accionesVisibles">
+                    <button mat-icon-button type="button" *ngFor="let btnAccion of btnAcciones" [color]="btnAccion.color"
+                            class="{{btnAccion.claseColor}}" [disabled]="dato | tNgTablaDesh:
+                                      {id: btnAccion.accion, param: accDeshabilitarPipie}"
+                            [hidden]="dato | tNgTablaVis: {id: btnAccion.accion, param: accVisiblePipe}"
+                            (click)="infoSeleccionada(dato, btnAccion.accion)">
+                        <mat-icon>{{btnAccion.icono}}</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div fxLayout="row" class="baseDiv mat-elevation-z8" fxLayoutAlign="center center">
+    <pagination-controls (pageChange)="cambioPagina($event)"
+                         autoHide="true" nextLabel="Siguiente"
+                         previousLabel="Anterior" responsive="true">
+    </pagination-controls>
+</div>
