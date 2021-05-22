@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
-      "analytics": "d6bd3aa2-4d11-41b8-a550-409d2fbd3191"
+        "analytics": "d6bd3aa2-4d11-41b8-a550-409d2fbd3191"
     },
     "version": 1,
     "newProjectRoot": "projects",
@@ -49,6 +49,7 @@
                             "calendar-utils/date-adapters/date-fns",
                             "ngx-lightbox",
                             "uuid",
+                            "react",
                             "contra/emitter",
                             "dom-plane",
                             "dom-set"
@@ -178,5 +179,5 @@
             }
         }
     },
-    "defaultProject": "fuse"
+    "defaultProject": "sistema-comercial"
 }
