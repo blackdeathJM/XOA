@@ -22,6 +22,7 @@
             "ESNext.AsyncIterable"
         ],
         "paths": {
+            "@angular/*": ["./node_modules/@angular/*"],
             "@plantilla/*": [
                 "@fuse/*"
             ],
