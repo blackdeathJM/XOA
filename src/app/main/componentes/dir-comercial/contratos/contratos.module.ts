@@ -12,6 +12,7 @@ import {WingetsModule} from '@shared/widgets/wingets.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {SubidasModule} from '@shared/components/subidas/subidas.module';
 import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.component';
+import { ConsultaContratosComponent } from './info-contratos/consulta-contratos/consulta-contratos.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.compon
             ContratosComponent,
             InfoContratosComponent,
             RegContratosComponent,
-            RegClienteComponent
+            RegClienteComponent,
+            ConsultaContratosComponent
         ],
     imports:
         [

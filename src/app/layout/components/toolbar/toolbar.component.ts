@@ -93,7 +93,6 @@ export class ToolbarComponent implements OnInit, AfterContentInit, OnDestroy
         {
             if (r)
             {
-                console.log('r', r);
                 this.sesionUsuario = r;
             }
         }, error => toastSweet(TipoAlerta.error, 'Error inseperado: ' + error, 5000), () => console.log('Se completo')));

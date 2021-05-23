@@ -1,11 +1,9 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
-import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
+import {IAccionesPrimeTabla} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {MatDialog} from '@angular/material/dialog';
-import {RegContratosComponent} from '../reg-contratos/reg-contratos.component';
 import {ClientesState} from '../../state/clientes.state';
-import {debounceTime, finalize, switchMap} from 'rxjs/operators';
-import {ICliente, IClienteMod} from '@dir-comercial/cliente.interface';
+import {ICliente, IContrato} from '@dir-comercial/cliente.interface';
 import {Subscription} from 'rxjs';
 import {FormControl} from '@angular/forms';
 
@@ -58,33 +56,37 @@ export class InfoContratosComponent implements OnInit, OnDestroy
 
     ngOnInit(): void
     {
-        this.subscripcion.add(this.buscarCliente.valueChanges.pipe(debounceTime(500),
-            switchMap((v: string) => this._clientesState.clientesPorCriterio(v))).subscribe());
+        // this.subscripcion.add(this.buscarCliente.valueChanges.pipe(debounceTime(500),
+        //     switchMap((v: string) => this._clientesState.clientesPorCriterio(v))).subscribe());
     }
 
     buscarProCriterios(criterio: string): void
     {
         // this.skeleton = true;
-        this._clientesState.clientesPorCriterio(criterio).pipe(finalize(() => this.skeleton = false)).subscribe();
+        // this._clientesState.clientesPorCriterio(criterio).pipe(finalize(() => this.skeleton = false)).subscribe();
     }
 
-    clienteSeleccionado(evento: IEventoAcciones): void
+    // clienteSeleccionado(evento: IEventoAcciones): void
+    // {
+    //     switch (evento.accion)
+    //     {
+    //         case AccionesTabla.nvoContrato:
+    //             const data: IClienteMod =
+    //                 {
+    //                     esRegistro: true,
+    //                     datosCliente: evento.datos as ICliente
+    //                 };
+    //             this._dialogRef.open(RegContratosComponent, {width: 'auto', data});
+    //             break;
+    //         case AccionesTabla.info:
+    //             break;
+    //         case AccionesTabla.rest:
+    //             break;
+    //     }
+    // }
+    clienteEmitido(evento: [ICliente, IContrato]): void
     {
-        switch (evento.accion)
-        {
-            case AccionesTabla.nvoContrato:
-                const data: IClienteMod =
-                    {
-                        esRegistro: true,
-                        datosCliente: evento.datos as ICliente
-                    };
-                this._dialogRef.open(RegContratosComponent, {width: 'auto', data});
-                break;
-            case AccionesTabla.info:
-                break;
-            case AccionesTabla.rest:
-                break;
-        }
+        console.log('Evento', evento);
     }
 
     ngOnDestroy(): void

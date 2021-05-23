@@ -1,9 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChild, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {ICliente, IContrato} from '@dir-comercial/cliente.interface';
 import {Subscription} from 'rxjs';
+import {WIDGET} from '@Config/widget.token';
+import {IWidget} from '@Config/widget.interface';
 
 @Component({
     selector: 'app-buscar-cliente-autocomplete',
@@ -15,8 +17,9 @@ import {Subscription} from 'rxjs';
 export class BuscarClienteAutocompleteComponent implements OnInit, OnDestroy
 {
     @Output() clienteSeleccionado: EventEmitter<[ICliente, IContrato]> = new EventEmitter();
+    @ContentChild(WIDGET as any, {static: true}) clientes: IWidget;
 
-    buscarCliente = new FormControl();
+    buscarCliente = new FormControl('');
     subscripcion: Subscription = new Subscription();
 
     constructor(public _clientesState: ClientesState)
@@ -31,7 +34,8 @@ export class BuscarClienteAutocompleteComponent implements OnInit, OnDestroy
 
     clienteSelec(cliente: ICliente, contrato: IContrato): void
     {
-        this.clienteSeleccionado.emit([cliente, contrato]);
+        this.clientes.datos = [cliente, contrato];
+        // this.clienteSeleccionado.emit([cliente, contrato]);
     }
 
     ngOnDestroy(): void

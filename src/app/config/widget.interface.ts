@@ -5,4 +5,5 @@ export interface IWidget
     tieneDatos: boolean;
     totalElementos?: number;
     elementosPorPagina?: number;
+    datos?: any;
 }

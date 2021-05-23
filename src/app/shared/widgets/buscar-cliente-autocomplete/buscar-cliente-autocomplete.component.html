@@ -1,16 +1,33 @@
+<!--<mat-form-field>-->
+<!--    <mat-label>Busqueda de usuarios por criterios</mat-label>-->
+<!--    <input type="text" matInput [formControl]="buscarCliente" placeholder="Buscar por los siguientes criterios: (NOMBRE COMPLETO - TELEFONO)"-->
+<!--           [matAutocomplete]="auto" autocomplete="off">-->
+<!--    <mat-autocomplete #auto="matAutocomplete">-->
+<!--        <mat-optgroup *ngFor="let cliente of _clientesState.state$ | async" [label]="cliente.nombreCompleto">-->
+<!--            <mat-option *ngFor="let contrato of cliente.contratos" [value]="cliente.nombreCompleto" (onSelectionChange)="clienteSelec(cliente, contrato)">-->
+<!--                <div fxLayoutAlign="space-between center" fxLayoutGap="8px">-->
+<!--                    <div><small class="grey-600-fg">No. Medidor</small> {{contrato.noMedidor}}</div>-->
+<!--                    <div><small class="grey-600-fg">calle:</small> {{contrato.calle}}</div>-->
+<!--                    <div><small class="grey-600-fg">colonia:</small> {{contrato.colonia}}</div>-->
+<!--                </div>-->
+<!--            </mat-option>-->
+<!--        </mat-optgroup>-->
+<!--    </mat-autocomplete>-->
+<!--</mat-form-field>-->
+
 <mat-form-field>
-    <mat-label>Busqueda de usuarios por criterios</mat-label>
-    <input type="text" matInput [formControl]="buscarCliente" placeholder="Buscar por los siguientes criterios: (NOMBRE COMPLETO - TELEFONO)"
-           [matAutocomplete]="auto" autocomplete="off">
+    <mat-label>Nombre completo del cliente</mat-label>
+    <input matInput [matAutocomplete]="auto" [formControl]="buscarCliente">
     <mat-autocomplete #auto="matAutocomplete">
-        <mat-optgroup *ngFor="let cliente of _clientesState.state$ | async" [label]="cliente.nombreCompleto">
-            <mat-option *ngFor="let contrato of cliente.contratos" [value]="cliente.nombre" (onSelectionChange)="clienteSelec(cliente, contrato)">
-                <div fxLayoutAlign="space-between center" fxLayoutGap="8px">
-                    <div><small class="grey-600-fg">No. Medidor</small> {{contrato.noMedidor}}</div>
-                    <div><small class="grey-600-fg">calle:</small> {{contrato.calle}}</div>
-                    <div><small class="grey-600-fg">colonia:</small> {{contrato.colonia}}</div>
-                </div>
-            </mat-option>
-        </mat-optgroup>
+        <mat-option *ngFor="let cliente of _clientesState.state$ | async" [value]="cliente.nombreCompleto"
+                    (onSelectionChange)="clienteSelec(cliente, null)">
+            <div fxLayoutAlign="start" fxLayoutGap="8px">
+                <div><small class="grey-600-fg">Nombre: </small>{{cliente.nombreCompleto}}</div>
+                <div><small class="grey-600-fg">Telefono: </small>{{cliente.telefonos}}</div>
+            </div>
+        </mat-option>
     </mat-autocomplete>
 </mat-form-field>
+
+
+<ng-content select="[contenidoBusqueda]"></ng-content>
