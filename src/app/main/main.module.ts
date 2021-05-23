@@ -21,6 +21,7 @@ import {PdfMakeWrapper} from 'pdfmake-wrapper';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {LightboxModule} from 'ngx-lightbox';
 import {QRCodeModule} from 'angularx-qrcode';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -40,6 +41,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
             FuseSharedModule,
             MaterialModule,
             NgxBootstrapModule,
+            SweetAlert2Module.forRoot({provideSwal: () => import('sweetalert2/src/sweetalert2')}),
             MainRoutingModule,
             LightboxModule,
             QRCodeModule,

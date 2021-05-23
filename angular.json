@@ -43,9 +43,11 @@
                         "allowedCommonJsDependencies": [
                             "@swimlane/dragula",
                             "chart.js",
+                            "lodash",
                             "subscriptions-transport-ws",
                             "angular-calendar",
                             "pdfmake/build/pdfmake",
+                            "zen-observable",
                             "calendar-utils/date-adapters/date-fns",
                             "ngx-lightbox",
                             "uuid",

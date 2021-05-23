@@ -13,7 +13,7 @@ import {MaterialModule} from '@ui-externos/material/material.module';
 import {SharedModule} from '@shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {FileUploadModule} from '@iplab/ngx-file-upload';
-import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
         MaterialModule,
         FileUploadModule,
         AppRouting,
-        PrimeNgModule
+        SweetAlert2Module
     ]
 })
 export class AppModule

@@ -1,9 +1,9 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { ResolveEnd, Router } from '@angular/router';
-import { Platform } from '@angular/cdk/platform';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import * as _ from 'lodash';
+import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {ResolveEnd, Router} from '@angular/router';
+import {Platform} from '@angular/cdk/platform';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {filter} from 'rxjs/operators';
+import {cloneDeep, isEqual, merge} from 'lodash-es';
 
 // Create the injection token for the custom settings
 export const FUSE_CONFIG = new InjectionToken('fuseCustomConfig');
@@ -50,7 +50,7 @@ export class FuseConfigService
         let config = this._configSubject.getValue();
 
         // Merge the new config
-        config = _.merge({}, config, value);
+        config = merge({}, config, value);
 
         // Notify the observers
         this._configSubject.next(config);
@@ -61,11 +61,7 @@ export class FuseConfigService
         return this._configSubject.asObservable();
     }
 
-    /**
-     * Get default config
-     *
-     * @returns {any}
-     */
+
     get defaultConfig(): any
     {
         return this._defaultConfig;
@@ -85,26 +81,27 @@ export class FuseConfigService
         /**
          * Disable custom scrollbars if browser is mobile
          */
-        if ( this._platform.ANDROID || this._platform.IOS )
+        if (this._platform.ANDROID || this._platform.IOS)
         {
             this._defaultConfig.customScrollbars = false;
         }
 
         // Set the config from the default config
-        this._configSubject = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
+        this._configSubject = new BehaviorSubject(cloneDeep(this._defaultConfig));
 
         // Reload the default layout config on every RoutesRecognized event
         // if the current layout config is different from the default one
         this._router.events
             .pipe(filter(event => event instanceof ResolveEnd))
-            .subscribe(() => {
-                if ( !_.isEqual(this._configSubject.getValue().layout, this._defaultConfig.layout) )
+            .subscribe(() =>
+            {
+                if (!isEqual(this._configSubject.getValue().layout, this._defaultConfig.layout))
                 {
                     // Clone the current config
-                    const config = _.cloneDeep(this._configSubject.getValue());
+                    const config = cloneDeep(this._configSubject.getValue());
 
                     // Reset the layout from the default config
-                    config.layout = _.cloneDeep(this._defaultConfig.layout);
+                    config.layout = cloneDeep(this._defaultConfig.layout);
 
                     // Set the config
                     this._configSubject.next(config);
@@ -128,21 +125,16 @@ export class FuseConfigService
         let config = this._configSubject.getValue();
 
         // Merge the new config
-        config = _.merge({}, config, value);
+        config = merge({}, config, value);
 
         // If emitEvent option is true...
-        if ( opts.emitEvent === true )
+        if (opts.emitEvent === true)
         {
             // Notify the observers
             this._configSubject.next(config);
         }
     }
 
-    /**
-     * Get config
-     *
-     * @returns {Observable<any>}
-     */
     getConfig(): Observable<any>
     {
         return this._configSubject.asObservable();
@@ -154,7 +146,7 @@ export class FuseConfigService
     resetToDefaults(): void
     {
         // Set the config from the default config
-        this._configSubject.next(_.cloneDeep(this._defaultConfig));
+        this._configSubject.next(cloneDeep(this._defaultConfig));
     }
 }
 

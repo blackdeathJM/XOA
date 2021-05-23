@@ -1665,10 +1665,12 @@
   resolved "https://registry.yarnpkg.com/@sellside/emitter/-/emitter-1.2.1.tgz#0dd839c30cdf01087f4dc63613503da6bcdf5f1e"
   integrity sha512-P1rUad4vDnp4d5HB7NEJ/MDf4zg3pM2Q8ZXJ2xgGkGo5yckyDn56YPAvUGH+1VsOud5dbli8MZu14j/EcNZCGw==
 
-"@sweetalert2/theme-dark@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@sweetalert2/theme-dark/-/theme-dark-5.0.0.tgz#909e96b8796f9cd0210ff0458464afdb10afd54e"
-  integrity sha512-lpO/uNn+LG9sA1bQn07zhB2cAdMGIfdTwiR7lZiOKsTXCGLz9P8nTC93Xu94dkYoExdpWbR2rZjIx4KFDjhUHQ==
+"@sweetalert2/ngx-sweetalert2@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/ngx-sweetalert2/-/ngx-sweetalert2-10.0.0.tgz#b04f41305e28c1ed150dffd3781b1dcff214ced3"
+  integrity sha512-PyqrlgWioN+mVd9FtZDM0cMKMV7jfD1T5Klic0F+znQN0OZypYsx5F4KRh+P+eDr+eLAR4m2LOgS5CpAgdlWEQ==
+  dependencies:
+    tslib "^2.0.0"
 
 "@sweetalert2/themes@^5.0.0":
   version "5.0.0"

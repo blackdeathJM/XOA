@@ -47,7 +47,7 @@
         "@ngxs/store": "^3.7.2",
         "@popperjs/core": "^2.9.2",
         "@rxweb/reactive-form-validators": "^2.1.2",
-        "@sweetalert2/theme-dark": "^5.0.0",
+        "@sweetalert2/ngx-sweetalert2": "^10.0.0",
         "@sweetalert2/themes": "^5.0.0",
         "@swimlane/dragula": "^3.8.0",
         "@swimlane/ngx-datatable": "^19.0.0",
