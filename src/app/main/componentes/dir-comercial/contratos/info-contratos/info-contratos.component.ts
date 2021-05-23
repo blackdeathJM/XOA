@@ -1,12 +1,13 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
-import {TiposPipe} from '@shared/widgets/tablas/prime-tabla/models/tiposPipe';
 import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {MatDialog} from '@angular/material/dialog';
 import {RegContratosComponent} from '../reg-contratos/reg-contratos.component';
 import {ClientesState} from '../../state/clientes.state';
-import {finalize} from 'rxjs/operators';
+import {debounceTime, finalize, switchMap} from 'rxjs/operators';
 import {ICliente, IClienteMod} from '@dir-comercial/cliente.interface';
+import {Subscription} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 enum AccionesTabla
 {
@@ -21,31 +22,13 @@ enum AccionesTabla
     styleUrls: ['./info-contratos.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class InfoContratosComponent
+export class InfoContratosComponent implements OnInit, OnDestroy
 {
     columnas: ITablaColumnas[] =
         [
             {
-                etiqueta: 'Folio',
-                propiedad: 'folio',
-                pipe: TiposPipe.numero,
-                color: 'yellow-fg'
-            },
-            {
-                etiqueta: 'RPU',
-                propiedad: 'rpu',
-            },
-            {
-                etiqueta: 'RFC',
-                propiedad: 'rfc'
-            },
-            {
-                etiqueta: 'Nombre',
-                propiedad: 'nombre'
-            },
-            {
-                etiqueta: 'Apellidos',
-                propiedad: 'apellidos'
+                etiqueta: 'Nombre completo',
+                propiedad: 'nombreCompleto'
             }
         ];
     acciones: IAccionesPrimeTabla[] =
@@ -65,14 +48,23 @@ export class InfoContratosComponent
             }
         ];
     skeleton = false;
+    subscripcion: Subscription = new Subscription();
+
+    buscarCliente = new FormControl('');
 
     constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState)
     {
     }
 
+    ngOnInit(): void
+    {
+        this.subscripcion.add(this.buscarCliente.valueChanges.pipe(debounceTime(500),
+            switchMap((v: string) => this._clientesState.clientesPorCriterio(v))).subscribe());
+    }
+
     buscarProCriterios(criterio: string): void
     {
-        this.skeleton = true;
+        // this.skeleton = true;
         this._clientesState.clientesPorCriterio(criterio).pipe(finalize(() => this.skeleton = false)).subscribe();
     }
 
@@ -93,5 +85,10 @@ export class InfoContratosComponent
             case AccionesTabla.rest:
                 break;
         }
+    }
+
+    ngOnDestroy(): void
+    {
+        this.subscripcion.unsubscribe();
     }
 }

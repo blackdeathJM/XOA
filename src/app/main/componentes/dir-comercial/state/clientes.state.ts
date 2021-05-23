@@ -23,7 +23,10 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
     {
         return this._clienteQuery.clientesPorCriterio(criterio).pipe(tap((clie: IResCliente) =>
         {
-            this.ctx.setState(clie.documentos);
+            if (clie.estatus)
+            {
+                this.ctx.setState(clie.documentos);
+            }
         }));
     }
 
@@ -31,7 +34,10 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
     {
         return this._clienteMutation.regContrato(idCliente, contrato).pipe(tap((cli: IResCliente) =>
         {
-            this.ctx.setState(GralesServices.nvoEdo(idCliente, this.ctx).concat(cli.documento));
+            if (cli.estatus)
+            {
+                this.ctx.setState(GralesServices.nvoEdo(idCliente, this.ctx).concat(cli.documento));
+            }
         }));
     }
 }

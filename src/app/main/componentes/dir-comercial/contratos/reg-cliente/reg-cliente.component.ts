@@ -6,11 +6,9 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
 import {SesionState} from '@usuarios/state/sesion.state';
-import moment from 'moment';
 import {tap} from 'rxjs/operators';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
-import {validarNum} from '@services/validacionCampos';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -37,7 +35,7 @@ export class RegClienteComponent implements OnDestroy
         return this.formCliente.get('telefonos') as FormArray;
     }
 
-    constructor(private _formBuilder: FormBuilder, private _clienteState: ClienteState, @Inject(MAT_DIALOG_DATA) public data: IClienteMod, private _sesionState: SesionState,
+    constructor(private _formBuilder: FormBuilder, public _clienteState: ClienteState, @Inject(MAT_DIALOG_DATA) public data: IClienteMod, private _sesionState: SesionState,
                 private _dialogRef: MatDialog)
     {
     }

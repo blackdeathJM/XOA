@@ -76,7 +76,6 @@ export interface IClienteMod
     datosCliente: ICliente;
 }
 
-
 export interface IResCliente
 {
     estatus: boolean;

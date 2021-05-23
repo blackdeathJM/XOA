@@ -1,17 +1,16 @@
-<form [formGroup]="formBuscarCliente" autocomplete="off">
-    <mat-form-field>
-        <mat-label>Busqueda de usuarios por criterios</mat-label>
-        <input type="text" matInput formControlName="criterio" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-optgroup *ngFor="let cliente of _clienteState.state$ | async" [label]="cliente.nombre + ' ' + cliente.apellidos">
-                <mat-option *ngFor="let contrato of cliente.contratos" [value]="cliente.nombre + ' ' + cliente.apellidos" (onSelectionChange)="clienteSelec(cliente, contrato)">
-                    <div fxLayoutAlign="space-between center" fxLayoutGap="8px">
-                        <div><small class="grey-600-fg">No. Medidor</small> {{contrato.noMedidor}}</div>
-                        <div><small class="grey-600-fg">calle:</small> {{contrato.calle}}</div>
-                        <div><small class="grey-600-fg">colonia:</small> {{contrato.colonia}}</div>
-                    </div>
-                </mat-option>
-            </mat-optgroup>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+<mat-form-field>
+    <mat-label>Busqueda de usuarios por criterios</mat-label>
+    <input type="text" matInput [formControl]="buscarCliente" placeholder="Buscar por los siguientes criterios: (NOMBRE COMPLETO - TELEFONO)"
+           [matAutocomplete]="auto" autocomplete="off">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-optgroup *ngFor="let cliente of _clientesState.state$ | async" [label]="cliente.nombreCompleto">
+            <mat-option *ngFor="let contrato of cliente.contratos" [value]="cliente.nombre" (onSelectionChange)="clienteSelec(cliente, contrato)">
+                <div fxLayoutAlign="space-between center" fxLayoutGap="8px">
+                    <div><small class="grey-600-fg">No. Medidor</small> {{contrato.noMedidor}}</div>
+                    <div><small class="grey-600-fg">calle:</small> {{contrato.calle}}</div>
+                    <div><small class="grey-600-fg">colonia:</small> {{contrato.colonia}}</div>
+                </div>
+            </mat-option>
+        </mat-optgroup>
+    </mat-autocomplete>
+</mat-form-field>

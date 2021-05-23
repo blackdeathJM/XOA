@@ -2,7 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {fuseAnimations} from '@plantilla/animations';
 import {MatDialog} from '@angular/material/dialog';
-import {RegClienteComponent} from '../../contratos/reg-cliente/reg-cliente.component';
+import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.component';
 import {IClienteMod} from '../../models/cliente.interface';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {ClientesState} from '@dir-comercial/clientes.state';

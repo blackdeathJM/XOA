@@ -3,8 +3,7 @@
     <ng-container contenido>
         <mat-form-field>
             <mat-label>Buscar usuario por criterios</mat-label>
-            <input matInput placeholder="RPU, Nombre, Apellidos ---- (PRESIONA ENTER PARA REALIZAR LA BUSQUEDA)"
-                   (keydown.enter)="buscarProCriterios($event.target.value)">
+            <input matInput placeholder="Buscar cliente por nombre completo o telefono" [formControl]="buscarCliente">
         </mat-form-field>
         <app-prime-tabla
             (emitirAccion)="clienteSeleccionado($event)"
