@@ -30,6 +30,28 @@ const fragDatosFacturacion = gql`
         rpuAFacturar
     }
 `;
+const fragSolicitudServ = gql`
+    fragment fragSolicitudServ on SolicitudServType
+    {
+        calle
+        colonia
+        entreCalles
+        referencia
+        noCuentaRef
+        tipoPredio
+        areaPredio
+        almacenamiento
+        tipoDeUso
+        MaterialArroyoDeCalle
+        MaterialAcera
+        comentarios
+        aprovado
+        latitud
+        longitud
+        creadoPor
+    }
+`;
+
 const fragConvenioContrato = gql`
     fragment fragConvenioContrato on ConvenioContratoType
     {
@@ -66,6 +88,7 @@ const fragContrato = gql`
         zona
         noPersonas
         activo
+        esPrincipal
         documentosImg
         {
             ...fragDocumentacion
@@ -91,6 +114,10 @@ export const fragCliente = gql`
         _id
         nombreCompleto
         telefonos
+        solicitudServ
+        {
+            ...fragSolicitudServ
+        }
         contratos
         {
             ...fragContrato
@@ -100,6 +127,7 @@ export const fragCliente = gql`
             ...fragDatosFacturacion
         }
     }
+    ${fragSolicitudServ}
     ${fragContrato}
     ${fragDatosFacturacion}
 `;

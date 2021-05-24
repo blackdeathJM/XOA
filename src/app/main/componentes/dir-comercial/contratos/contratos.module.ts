@@ -13,6 +13,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {SubidasModule} from '@shared/components/subidas/subidas.module';
 import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.component';
 import { ConsultaContratosComponent } from './info-contratos/consulta-contratos/consulta-contratos.component';
+import { SolicitudServAguaComponent } from './solicitud-serv-agua/solicitud-serv-agua.component';
+import { RegSolicitudServComponent } from './reg-solicitud-serv/reg-solicitud-serv.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ConsultaContratosComponent } from './info-contratos/consulta-contratos/
             InfoContratosComponent,
             RegContratosComponent,
             RegClienteComponent,
-            ConsultaContratosComponent
+            ConsultaContratosComponent,
+            SolicitudServAguaComponent,
+            RegSolicitudServComponent
         ],
     imports:
         [

@@ -1,36 +1,40 @@
-<!--<p-table [value]="_clientesState.state$ | async" dataKey="clientes" [rowHover]="true" class="p-datatable-striped">-->
-<!--    <ng-template pTemplate="header">-->
-<!--        <tr>-->
-<!--            <th class="yellow-fg" [colSpan]="5">Nombre completo</th>-->
-<!--            <th class="yellow-fg">Nombre</th>-->
-<!--            <th class="yellow-fg" [style]="{width: '100px'}">contratos</th>-->
-<!--        </tr>-->
-<!--    </ng-template>-->
-<!--    <ng-template pTemplate="body" let-clientes>-->
-<!--        <tr>-->
-<!--            <td class="amber-fg" [colSpan]="5">{{clientes.nombreCompleto}}</td>-->
-<!--            <td class="amber-fg">{{clientes.telefonos}}</td>-->
-<!--            <td [ngStyle]="{width: '80px'}">-->
-<!--                <button mat-icon-button class="green-fg" [pRowToggler]="clientes">-->
-<!--                    <mat-icon>info</mat-icon>-->
-<!--                </button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </ng-template>-->
-<!--    <ng-template pTemplate="rowexpansion" let-contratos>-->
-<!--        <tr>-->
-<!--            <td [colSpan]="7">-->
-<!--                <app-prime-tabla-->
-<!--                    [accionesVisibles]="true"-->
-<!--                    [btnAcciones]="acciones"-->
-<!--                    [valConsulta]="contratos"-->
-<!--                    [ancho]="{width: '80px'}">-->
-<!--                </app-prime-tabla>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </ng-template>-->
-<!--</p-table>-->
+<p-table [value]="_clientesState.state$ |  async" dataKey="clientes" [rowHover]="true" class="p-datatable-striped">
+    <ng-template pTemplate="header">
+        <tr>
+            <th class="yellow-fg" [colSpan]="5">Nombre completo</th>
+            <th class="yellow-fg">Telefonos</th>
+            <th class="yellow-fg" [style]="{width: '150px'}">Contratos</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-clientes let-expanded="expanded">
+        <tr>
+            <td class="amber-fg" [colSpan]="5">{{clientes.nombreCompleto}}</td>
+            <td class="amber-fg">{{clientes.telefonos}}</td>
+            <td [ngStyle]="{width: '150px'}">
+                <button mat-icon-button class="green-fg" [pRowToggler]="clientes">
+                    <mat-icon>{{expanded ? 'arrow_downward' : 'arrow_forward'}}</mat-icon>
+                </button>
+                <button mat-icon-button class="white-fg" matTooltip="Crear nueva solicitud de servicio">
+                    <mat-icon>note_add</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" matTooltip="solicitudes de servicio creadas">
+                    <mat-icon>assignment_late</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-contratos>
+        <tr>
+            <td [colSpan]="7">
+                <app-prime-tabla
+                    [accionesVisibles]="true"
+                    [btnAcciones]="acciones"
+                    [columnas]="columnas"
+                    [valConsulta]="contratos"
+                    [ancho]="{width: '80px'}">
+                </app-prime-tabla>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
 
-<ng-container *ngIf="datos[0]">
-    <div>{{datos[0] | json}}</div>
-</ng-container>

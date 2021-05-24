@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ContentChild, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChild, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {debounceTime, switchMap} from 'rxjs/operators';
 import {ClientesState} from '@dir-comercial/clientes.state';
@@ -16,8 +16,12 @@ import {IWidget} from '@Config/widget.interface';
 })
 export class BuscarClienteAutocompleteComponent implements OnInit, OnDestroy
 {
-    @Output() clienteSeleccionado: EventEmitter<[ICliente, IContrato]> = new EventEmitter();
+    @Input() tipoConsulta: 'multiple' | 'autoCompletado' | 'normal';
+
+    // @Output() clienteSeleccionado: EventEmitter<[ICliente, IContrato]> = new EventEmitter();
     @ContentChild(WIDGET as any, {static: true}) clientes: IWidget;
+
+    marcador = 'Buscar cliente por: (NOMBRE COMPLETO - TELEFONO)';
 
     buscarCliente = new FormControl('');
     subscripcion: Subscription = new Subscription();

@@ -1,17 +1,10 @@
 <app-card-bootstrap>
     <ng-container cabecera><h2>Informacion de usuarios</h2></ng-container>
     <ng-container contenido>
-        <!--        <mat-form-field>-->
-        <!--            <mat-label>Buscar usuario por criterios</mat-label>-->
-        <!--            <input matInput placeholder="Buscar cliente por nombre completo o telefono" [formControl]="buscarCliente">-->
-        <!--        </mat-form-field>-->
-        <app-buscar-cliente-autocomplete (clienteSeleccionado)="clienteEmitido($event)">
+        <app-buscar-cliente-autocomplete tipoConsulta="normal">
             <ng-container contenidoBusqueda>
                 <app-consulta-contratos></app-consulta-contratos>
             </ng-container>
         </app-buscar-cliente-autocomplete>
     </ng-container>
 </app-card-bootstrap>
-<!--<ng-template #cargandoTabla>-->
-<!--    <app-lista-cargando></app-lista-cargando>-->
-<!--</ng-template>-->
