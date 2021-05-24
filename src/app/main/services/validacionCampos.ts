@@ -4,7 +4,7 @@ import {NumberConfig} from '@rxweb/reactive-form-validators/models/config';
 export const validarNum = (admitirDecimal: boolean = true, longMax: NumberConfig = null, longMin: NumberConfig = null,
                            valorMax: NumberConfig = null): Array<RxwebValidators> =>
 {
-    const validar = [RxwebValidators.required(), RxwebValidators.numeric({
+    const validar = [RxwebValidators.required({message: 'El campo es requerido'}), RxwebValidators.numeric({
         acceptValue: NumericValueType.PositiveNumber, allowDecimal: admitirDecimal
     })];
     if (longMax)

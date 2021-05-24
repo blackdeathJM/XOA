@@ -1,0 +1,10 @@
+[
+    {
+        "servicio": "Agua",
+        "icono": "opacity"
+    },
+    {
+        "servicio": "Drenaje",
+        "icono": "radio_button_unchecked"
+    }
+]

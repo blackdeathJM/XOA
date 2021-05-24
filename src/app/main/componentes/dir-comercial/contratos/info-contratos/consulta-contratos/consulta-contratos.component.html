@@ -14,7 +14,7 @@
                 <button mat-icon-button class="green-fg" [pRowToggler]="clientes">
                     <mat-icon>{{expanded ? 'arrow_downward' : 'arrow_forward'}}</mat-icon>
                 </button>
-                <button mat-icon-button class="white-fg" matTooltip="Crear nueva solicitud de servicio">
+                <button mat-icon-button class="white-fg" (click)="nvaSolicitudServAgua(clientes)" matTooltip="Crear nueva solicitud de servicio">
                     <mat-icon>note_add</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" matTooltip="solicitudes de servicio creadas">
@@ -30,7 +30,7 @@
                     [accionesVisibles]="true"
                     [btnAcciones]="acciones"
                     [columnas]="columnas"
-                    [valConsulta]="contratos"
+                    [valConsulta]="contratos.contratos"
                     [ancho]="{width: '80px'}">
                 </app-prime-tabla>
             </td>

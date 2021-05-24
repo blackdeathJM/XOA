@@ -1,14 +1,18 @@
 [
     {
-        "almacenamiento": "No tiene"
+        "tipo": "No tiene",
+        "icono": "stop"
     },
     {
-        "Almacenamiento": "Cisterna"
+        "tipo": "Cisterna",
+        "icono":  "all_out"
     },
     {
-        "Almacenamiento": "Tinaco"
+        "tipo": "Tinaco",
+        "icono":  "filter_center_focus"
     },
     {
-        "Alcemaniento": "Capacidad m3"
+        "tipo": "Capacidad m3",
+        "icono":  "filter_tilt_shift"
     }
 ]

@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {WIDGET} from '@Config/widget.token';
-import {IWidget} from '@Config/widget.interface';
-import {ICliente, IContrato} from '@dir-comercial/cliente.interface';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {IAccionesPrimeTabla} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
+import {MatDialog} from '@angular/material/dialog';
+import {RegSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/reg-solicitud-serv.component';
+import {IModalInfo} from '@funcionesRaiz/modal.interface';
+import {ICliente} from '@dir-comercial/cliente.interface';
 
 enum AccionesTabla
 {
@@ -15,13 +16,12 @@ enum AccionesTabla
 @Component({
     selector: 'app-consulta-contratos',
     templateUrl: './consulta-contratos.component.html',
-    styleUrls: ['./consulta-contratos.component.scss'],
-    providers: [{provide: WIDGET, useExisting: ConsultaContratosComponent}]
+    styleUrls: ['./consulta-contratos.component.scss']
 })
-export class ConsultaContratosComponent implements IWidget
+export class ConsultaContratosComponent
 {
 
-    constructor(public _clientesState: ClientesState)
+    constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState)
     {
     }
 
@@ -74,7 +74,15 @@ export class ConsultaContratosComponent implements IWidget
                 tooltip: 'Mostrar informacion detallada del o los contratos de este usuario'
             }
         ];
-    datos: [ICliente, IContrato] = [null, null];
-    estaCargando: boolean;
-    tieneDatos: boolean;
+
+    nvaSolicitudServAgua(cliente: ICliente): void
+    {
+        const data: IModalInfo =
+            {
+                esReg: true,
+                datos: cliente
+            };
+
+        this._dialogRef.open(RegSolicitudServComponent, {width: '45%', data});
+    }
 }

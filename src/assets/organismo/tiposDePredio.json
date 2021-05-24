@@ -1,17 +1,22 @@
 [
     {
-        "tipo": "Baldio"
+        "tipo": "Baldio",
+        "icono": "rounded_corner"
     },
     {
-        "tipo": "Construccion"
+        "tipo": "Construccion",
+        "icono": "tab"
     },
     {
-        "tipo": "Casa habitacion"
+        "tipo": "Casa habitacion",
+        "icono": "branding_watermark"
     },
     {
-        "tipo": "Provisional"
+        "tipo": "Provisional",
+        "icono": "tab_unselected"
     },
     {
-        "tipo": "Deshabitada"
+        "tipo": "Deshabitada",
+        "icono": "crop_din"
     }
 ]

@@ -1,14 +1,18 @@
 [
     {
-        "tarifa": "Domestica"
+        "tarifa": "Domestica",
+        "icono": "replay"
     },
     {
-        "tarifa": "Comercial"
+        "tarifa": "Comercial",
+        "icono": "replay_5"
     },
     {
-        "tarifa": "Mixta"
+        "tarifa": "Mixta",
+        "icono": "replay_15"
     },
     {
-        "tarifa": "Industrial"
+        "tarifa": "Industrial",
+        "icono": "replay_30"
     }
 ]

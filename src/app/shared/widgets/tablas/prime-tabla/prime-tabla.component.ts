@@ -29,7 +29,13 @@ export class PrimeTablaComponent implements OnChanges
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     @Input() set valConsulta(val: any)
     {
-        this._valConsulta = val;
+        if (val)
+        {
+            this._valConsulta = val;
+        } else
+        {
+            this.valConsulta = [];
+        }
     }
 
     @Input() set tipoSeleccion(val: string)
