@@ -40,6 +40,7 @@ const fragSolicitudServ = gql`
         noCuentaRef
         tipoPredio
         areaPredio
+        areaConstruida
         almacenamiento
         tipoDeUso
         MaterialArroyoDeCalle

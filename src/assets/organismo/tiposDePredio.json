@@ -1,0 +1,17 @@
+[
+    {
+        "tipo": "Baldio"
+    },
+    {
+        "tipo": "Construccion"
+    },
+    {
+        "tipo": "Casa habitacion"
+    },
+    {
+        "tipo": "Provisional"
+    },
+    {
+        "tipo": "Deshabitada"
+    }
+]

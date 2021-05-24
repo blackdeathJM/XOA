@@ -42,6 +42,7 @@ export interface ISolicitudServ
     noCuentaRef: string;
     tipoPredio: string;
     areaPredio: number;
+    areaConstruida: number;
     almacenamiento: string;
     tipoDeUso: string;
     MaterialArroyoDeCalle: string;
