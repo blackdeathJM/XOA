@@ -23,14 +23,14 @@
             </td>
         </tr>
     </ng-template>
-    <ng-template pTemplate="rowexpansion" let-contratos>
+    <ng-template pTemplate="rowexpansion" let-clientes>
         <tr>
             <td [colSpan]="7">
                 <app-prime-tabla
                     [accionesVisibles]="true"
                     [btnAcciones]="acciones"
                     [columnas]="columnas"
-                    [valConsulta]="contratos.contratos"
+                    [valConsulta]="clientes.contratos"
                     [ancho]="{width: '80px'}">
                 </app-prime-tabla>
             </td>

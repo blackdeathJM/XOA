@@ -13,8 +13,7 @@
     </ng-container>
     <ng-container contenido>
         <div class="m-8 mat-elevation-z14">
-            <p-table [value]="_admonUsuarioState.state$ | async" [paginator]="true" dataKey="usuario"
-                     [alwaysShowPaginator]="false" [rowHover]="true" [rows]="10">
+            <p-table [value]="_admonUsuarioState.state$ | async" [paginator]="true" dataKey="usuario" [alwaysShowPaginator]="false" [rowHover]="true" [rows]="10">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Avatar</th>
@@ -24,7 +23,7 @@
                         <th fxLayoutAlign="center center">Acciones</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-usuario>
+                <ng-template pTemplate="body" let-usuario let-expandir="ex">
                     <tr>
                         <td>
                             <p-avatar shape="circle" size="xlarge" [image]="usuario.img | archivoUrl: 'per'"></p-avatar>
@@ -40,8 +39,8 @@
                         </td>
                         <td>
                             <div fxLayoutAlign="center center" fxLayoutGap="4px">
-                                <button mat-icon-button color="primary" [pRowToggler]="usuario">
-                                    <mat-icon>info</mat-icon>
+                                <button mat-icon-button class="green-fg" [pRowToggler]="usuario">
+                                    <mat-icon>{{expandir ? 'arrow_downward' : 'arrow_forward'}}</mat-icon>
                                 </button>
                                 <button mat-icon-button class="gree" (click)="cambiarPassPorElAdmin(usuario.usuario)">
                                     <mat-icon>edit</mat-icon>
