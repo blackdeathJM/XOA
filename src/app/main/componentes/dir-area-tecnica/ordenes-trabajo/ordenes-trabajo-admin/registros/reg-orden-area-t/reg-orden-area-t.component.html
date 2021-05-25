@@ -12,7 +12,7 @@
         </form>
     </mat-step>
     <mat-step [stepControl]="formDetallesUsuario" errorMessage="Verifica los campos que son requeridos">
-        <app-buscar-cliente-autocomplete (clienteSeleccionado)="clienteSeleccionado($event)"></app-buscar-cliente-autocomplete>
+        <app-buscar-cliente-autocomplete></app-buscar-cliente-autocomplete>
         <form [formGroup]="formDetallesUsuario" autocomplete="off">
             <ng-template matStepLabel>Datos del usuario</ng-template>
             <div fxLayoutGap="8px" fxLayoutAlign="space-between">

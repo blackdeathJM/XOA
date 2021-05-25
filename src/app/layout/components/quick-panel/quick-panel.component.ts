@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {NotificarState} from '../../../main/componentes/global/notificaciones/state/notificar.state';
-import {INotificacion} from '../../../main/componentes/global/notificaciones/models/notificacion.interface';
+import {NotificarState} from '@global/state/notificar.state';
+import {INotificacion} from '@global/models/notificacion.interface';
 
 @Component({
     selector: 'quick-panel',

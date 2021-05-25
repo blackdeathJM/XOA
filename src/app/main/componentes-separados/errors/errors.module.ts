@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Error404Component} from './404/error-404.component';
 import {Error500Component} from './500/error-500.component';
-import {FuseSharedModule} from '../../../../@fuse/shared.module';
+import {FuseSharedModule} from '@plantilla/shared.module';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule} from '@angular/router';
 import {ErrorsRoutingModule} from './errors.routing';

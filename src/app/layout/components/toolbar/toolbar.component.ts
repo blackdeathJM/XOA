@@ -13,7 +13,7 @@ import {DocsState} from '../../../main/componentes/direccion/documentos/state/do
 import {DocsUsuarioState} from '@usuarios/state/docs-usuario.state';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
-import {UsuarioSubscriptionService} from "@usuarios/usuario-subscription.service";
+import {UsuarioSubscriptionService} from '@usuarios/usuario-subscription.service';
 
 @Component({
     selector: 'toolbar',

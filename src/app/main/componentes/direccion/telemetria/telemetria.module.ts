@@ -37,8 +37,8 @@ import {InstalacionesComponent} from '@telemetria/instalaciones/instalaciones.co
 import {NgxsModule} from '@ngxs/store';
 import {TelemetriaState} from '@telemetria/telemetriaState';
 import { OrdenesTrabTeleComponent } from '@telemetria/ordenes-trab-tele/ordenes-trab-tele.component';
-import { OrdenesTrabajoState } from '../../dir-area-tecnica/ordenes-trabajo/state/ordenes-trabajo.state';
-import { OrdenesTrabajoModule } from '../../dir-area-tecnica/ordenes-trabajo/ordenes-trabajo.module';
+import { OrdenesTrabajoState } from '@dir-area-tecnica/state/ordenes-trabajo.state';
+import { OrdenesTrabajoModule } from '@dir-area-tecnica/ordenes-trabajo.module';
 
 
 @NgModule({

@@ -9,9 +9,6 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Subscription} from 'rxjs';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import tarifa from 'assets/organismo/tarifa.json';
-import {toastSweet} from '@shared/alerts/toasts';
-import {TipoAlerta} from '@shared/alerts/values.config';
-import {finalize} from 'rxjs/operators';
 
 interface ITarifa
 {
@@ -78,20 +75,20 @@ export class RegContratosComponent implements OnInit
 
         if (this.data.esRegistro)
         {
-            this.sub.add(this._clienteState.regContrato(this.data.datosCliente._id, this.modeloContrato).pipe(finalize(() =>
-            {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
-                this.cerrarModal();
-            })).subscribe((res) =>
-            {
-                if (res.documento)
-                {
-                    toastSweet(TipoAlerta.satisfactorio, 'El contrato fue realizado con exito', 5000);
-                } else
-                {
-                    toastSweet(TipoAlerta.error, res.mensaje, 5000);
-                }
-            }, e => toastSweet(TipoAlerta.error, e, 5000)));
+            // this.sub.add(this._clienteState.regContrato(this.data.datosCliente._id, this.modeloContrato).pipe(finalize(() =>
+            // {
+            //     this.opcionesButtonSpinner = botonGuardarConfig(false);
+            //     this.cerrarModal();
+            // })).subscribe((res) =>
+            // {
+            //     if (res.documento)
+            //     {
+            //         toastSweet(TipoAlerta.satisfactorio, 'El contrato fue realizado con exito', 5000);
+            //     } else
+            //     {
+            //         toastSweet(TipoAlerta.error, res.mensaje, 5000);
+            //     }
+            // }, e => toastSweet(TipoAlerta.error, e, 5000)));
         }
     }
 

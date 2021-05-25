@@ -9,7 +9,6 @@ import {TiposPipe} from '@shared/widgets/tablas/prime-tabla/models/tiposPipe';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IOrdenTrabajo} from '../models/ordenes-trabajo';
 import {fuseAnimations} from '@plantilla/animations';
-import {Role} from '@modelosUsuarios/usuario.interface';
 import {Subscription} from 'rxjs';
 import {RegOrdenAreaTComponent} from './registros/reg-orden-area-t/reg-orden-area-t.component';
 

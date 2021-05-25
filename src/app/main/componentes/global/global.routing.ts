@@ -2,7 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {GlobalComponent} from './global.component';
 import {DepartamentosComponent} from '@global/departamentos.component';
-import {OrdenesTrabajoComponent} from '../dir-area-tecnica/ordenes-trabajo/ordenes-trabajo.component';
+import {OrdenesTrabajoComponent} from '@dir-area-tecnica/ordenes-trabajo.component';
 
 const globalRouting: Routes =
     [

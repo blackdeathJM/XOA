@@ -10,7 +10,7 @@ import {TipoAlerta} from '@shared/alerts/values.config';
 import {Router} from '@angular/router';
 import {NgxsDataDoCheck} from '@ngxs-labs/data/typings';
 import {TtlExpiredStrategy} from '@ngxs-labs/data/typings/storage/storage';
-import {UsuarioSubscriptionService} from "@usuarios/usuario-subscription.service";
+import {UsuarioSubscriptionService} from '@usuarios/usuario-subscription.service';
 
 @Persistence({
     existingEngine: localStorage, ttlExpiredStrategy: TtlExpiredStrategy.REMOVE_KEY_AFTER_EXPIRED,

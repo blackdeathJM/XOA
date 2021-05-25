@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation,} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Prefijos, ProcesosDoc} from '@Config/enums';

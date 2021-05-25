@@ -3,7 +3,7 @@ import {ActivationEnd, Router} from '@angular/router';
 import {Meta, MetaDefinition, Title} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
-import {fuseAnimations} from '../../../../@fuse/animations';
+import {fuseAnimations} from '@plantilla/animations';
 
 @Component({
     selector: 'app-content',

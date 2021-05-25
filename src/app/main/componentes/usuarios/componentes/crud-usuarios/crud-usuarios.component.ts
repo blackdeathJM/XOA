@@ -5,8 +5,8 @@ import {IResUsuario, IUsuario} from '@modelosUsuarios/usuario.interface';
 import {IDepartamento} from '@global/models/departamento.model';
 import {DepartamentoState} from '@global/state/departamento.state';
 import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
-import {toastSweet} from "@shared/alerts/toasts";
-import {TipoAlerta} from "@shared/alerts/values.config";
+import {toastSweet} from '@shared/alerts/toasts';
+import {TipoAlerta} from '@shared/alerts/values.config';
 
 @Component({
     selector: 'app-crud-usuarios',
@@ -89,7 +89,7 @@ export class CrudUsuariosComponent implements OnInit
     }
 
     public mensajeError = (control: string, error: string) =>
-        this.formUsuarios.controls[control].hasError(error);
+        this.formUsuarios.controls[control].hasError(error)
 
     cerrarModal(): void
     {

@@ -14,7 +14,7 @@ export class TPrimeAccDeshabPipe implements PipeTransform
             {
                 if (param.id === 'terminarOrden')
                 {
-                    if (value.estatus === "TERMINADO")
+                    if (value.estatus === 'TERMINADO')
                     {
                         return true;
                     }

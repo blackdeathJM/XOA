@@ -3,7 +3,6 @@ import {GralesServices} from '@services/grales.service';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 import {fuseAnimations} from '@plantilla/animations';
 import {TelemetriaState} from '@telemetria/telemetriaState';
-import {Subscription} from 'rxjs';
 import {forEach, orderBy, range, toArray} from 'lodash-es';
 import {IDatasets} from '@funcionesRaiz/graficas';
 import {Chart} from 'chart.js';
@@ -18,7 +17,6 @@ import {Img, PdfMakeWrapper} from 'pdfmake-wrapper';
 })
 export class ComparativasComponent
 {
-    subscripciones: Subscription = new Subscription();
     meses = range(1, 14);
     idGraf = 'idGraf';
     grafica: Chart = null;

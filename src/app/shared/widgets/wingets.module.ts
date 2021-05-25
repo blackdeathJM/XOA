@@ -23,7 +23,7 @@ import {NgxsModule} from '@ngxs/store';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
 import { PopoverBuscarClienteTablaComponent } from './popover-buscar-cliente-tabla/popover-buscar-cliente-tabla.component';
-import {PlantillasModule} from "@shared/plantillas/plantillas.module";
+import {PlantillasModule} from '@shared/plantillas/plantillas.module';
 
 
 @NgModule({

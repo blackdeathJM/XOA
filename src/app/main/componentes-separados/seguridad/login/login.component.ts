@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import {FuseConfigService} from '../../../../../@fuse/services/config.service';
-import {fuseAnimations} from '../../../../../@fuse/animations';
+import {FuseConfigService} from '@plantilla/services/config.service';
+import {fuseAnimations} from '@plantilla/animations';
 import {IDatosLogin} from '@modelosUsuarios/usuario.interface';
 import {SesionState} from '@usuarios/state/sesion.state';
 import {toastSweet} from '@shared/alerts/toasts';

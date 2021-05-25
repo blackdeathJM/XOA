@@ -7,21 +7,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let dato of documentos$ | async | paginate: {itemsPerPage: infoPagina.elementosPorPagina,
-                  currentPage: infoPagina.pagina, totalItems: infoPagina.total}">
-            <td *ngFor="let columna of columnas">{{dato[columna.propiedad]}}</td>
-            <td>
-                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="32px" *ngIf="accionesVisibles">
-                    <button mat-icon-button type="button" *ngFor="let btnAccion of btnAcciones" [color]="btnAccion.color"
-                            class="{{btnAccion.claseColor}}" [disabled]="dato | tNgTablaDesh:
-                                      {id: btnAccion.accion, param: accDeshabilitarPipie}"
-                            [hidden]="dato | tNgTablaVis: {id: btnAccion.accion, param: accVisiblePipe}"
-                            (click)="infoSeleccionada(dato, btnAccion.accion)">
-                        <mat-icon>{{btnAccion.icono}}</mat-icon>
-                    </button>
-                </div>
-            </td>
-        </tr>
+<!--        <tr *ngFor="let dato of documentos$ | async | paginate: {itemsPerPage: infoPagina.elementosPorPagina,-->
+<!--                  currentPage: infoPagina.pagina, totalItems: infoPagina.total}">-->
+<!--            <td *ngFor="let columna of columnas">{{dato[columna.propiedad]}}</td>-->
+<!--            <td>-->
+<!--                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="32px" *ngIf="accionesVisibles">-->
+<!--                    <button mat-icon-button type="button" *ngFor="let btnAccion of btnAcciones" [color]="btnAccion.color"-->
+<!--                            class="{{btnAccion.claseColor}}" [disabled]="dato | tNgTablaDesh:-->
+<!--                                      {id: btnAccion.accion, param: accDeshabilitarPipie}"-->
+<!--                            [hidden]="dato | tNgTablaVis: {id: btnAccion.accion, param: accVisiblePipe}"-->
+<!--                            (click)="infoSeleccionada(dato, btnAccion.accion)">-->
+<!--                        <mat-icon>{{btnAccion.icono}}</mat-icon>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 </div>

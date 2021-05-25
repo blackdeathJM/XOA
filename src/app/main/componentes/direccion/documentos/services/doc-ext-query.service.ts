@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
-import {busquedaGral, docExtProceso, docPorTipo, docsEntreFechas, intOExt, todosDocsExt, todosLosDocs, todosLosDocsPorUsuario, ultimoFolio}
-    from '../graphql/docExt.query';
+import {busquedaGral, docExtProceso, docPorTipo, docsEntreFechas, intOExt, todosDocsExt, todosLosDocs, todosLosDocsPorUsuario, ultimoFolio} from '../graphql/docExt.query';
 import {ApiService} from '@services/api.service';
 import {Observable} from 'rxjs';
 import {IResDocEx} from '../models/docExt.interface';

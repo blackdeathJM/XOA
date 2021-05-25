@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITablaColumnas} from '../../../../../../interfaces/paginacion-interface';
+import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 
 @Component({
   selector: 'app-tabla-inventario',

@@ -5,5 +5,5 @@ export interface IResInstalacion
     estatus: boolean;
     mensaje: string;
     documento?: IInstalacion;
-    documentos?: Array<IInstalacion>
+    documentos?: Array<IInstalacion>;
 }

@@ -69,7 +69,7 @@ export class RegSolicitudServComponent implements OnInit
                 aprobadoServ: false,
                 ...this.formSolicitud.value
             };
-        this._clientesState.regContrato(this.data.datos._id, modeloContrato).subscribe((res: IResCliente) =>
+        this._clientesState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResCliente) =>
         {
             if (res.documento)
             {

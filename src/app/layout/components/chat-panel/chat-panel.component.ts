@@ -3,7 +3,6 @@ import {NgForm} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 
 import {FuseSidebarService} from '@fuse/components/sidebar/sidebar.service';
 import {FusePerfectScrollbarDirective} from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
@@ -242,7 +241,7 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
         this._replyForm.reset();
 
         // Update the server
-        this._chatPanelService.updateChat(this.chat.id, this.chat.dialog).then(response =>
+        this._chatPanelService.updateChat(this.chat.id, this.chat.dialog).then(() =>
         {
 
             // Prepare the chat for the replies

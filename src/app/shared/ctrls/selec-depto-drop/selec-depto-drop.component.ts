@@ -1,6 +1,4 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {toastSweet} from '@shared/alerts/toasts';
-import {TipoAlerta} from '@shared/alerts/values.config';
 import {DepartamentoState} from '@global/state/departamento.state';
 import {Subscription} from 'rxjs';
 

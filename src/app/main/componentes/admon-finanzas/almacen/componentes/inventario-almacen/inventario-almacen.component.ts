@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ITablaColumnas} from '../../../../../interfaces/paginacion-interface';
-import {fuseAnimations} from '../../../../../../../@fuse/animations';
+import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
+import {fuseAnimations} from '@plantilla/animations';
 
 @Component({
     selector: 'app-inventario-almacen',

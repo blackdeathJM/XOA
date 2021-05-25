@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {FuseSidebarService} from '@fuse/components/sidebar/sidebar.service';
-import {fuseAnimations} from "../../../../@fuse/animations";
+import {fuseAnimations} from '@plantilla/animations';
 
 @Component({
     selector: 'app-completa-navegacion-iz-tab',

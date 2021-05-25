@@ -1,4 +1,4 @@
-import {NumberConfig} from "@rxweb/reactive-form-validators/models/config";
+import {NumberConfig} from '@rxweb/reactive-form-validators/models/config';
 
 export interface ILecturasT
 {

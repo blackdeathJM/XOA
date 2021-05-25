@@ -8,7 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from '@ui-externos/material/material.module';
 import {FuseSidebarModule} from '@plantilla/components';
 import {FuseSharedModule} from '@plantilla/shared.module';
-import {WingetsModule} from "@shared/widgets/wingets.module";
+import {WingetsModule} from '@shared/widgets/wingets.module';
 
 
 @NgModule({

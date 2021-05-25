@@ -18,10 +18,10 @@ export const regCliente = gql`
     ${fragCliente}
 `;
 
-export const regContrato = gql`
-    mutation regContrato($idCliente: ID!, $contrato: ContratoInput)
+export const regSolicitudServ = gql`
+    mutation regSolicitudServ($idCliente: ID!, $contrato: ContratoInput)
     {
-        regContrato(idCliente: $idCliente, contrato: $contrato)
+        regSolicitudServ(idCliente: $idCliente, contrato: $contrato)
         {
             estatus
             mensaje

@@ -26,7 +26,8 @@ export class SeleccionarTipoDocComponent implements ControlValueAccessor
 
     onChange: (valor: string) => void = () =>
     {
-    };
+    }
+
 
     writeValue(v: string): void
     {

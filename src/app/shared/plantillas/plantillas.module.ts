@@ -9,7 +9,7 @@ import {MaterialModule} from '@ui-externos/material/material.module';
 import {FuseSidebarModule} from '@plantilla/components';
 import { ImpresionComponent } from './impresion/impresion.component';
 import { ImpresionPieComponent } from './impresion/impresion-pie/impresion-pie.component';
-import {PrimeNgModule} from "@ui-externos/prime-ng/prime-ng.module";
+import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
 
 
 @NgModule({

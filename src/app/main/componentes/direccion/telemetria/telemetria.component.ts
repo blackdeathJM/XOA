@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {TelemetriaState} from '@telemetria/telemetriaState';
-import { OrdenesTrabajoState } from '../../dir-area-tecnica/ordenes-trabajo/state/ordenes-trabajo.state';
+import { OrdenesTrabajoState } from '@dir-area-tecnica/state/ordenes-trabajo.state';
 
 @Component({
     selector: 'app-telemetria',
