@@ -8,7 +8,7 @@ import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutati
 import {tap} from 'rxjs/operators';
 
 @StateRepository()
-@State<ISolicitudServ[]>({name: 'Solicitud de servicio', defaults: []})
+@State<ISolicitudServ[]>({name: 'SolicitudServicio', defaults: []})
 @Injectable()
 export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 {

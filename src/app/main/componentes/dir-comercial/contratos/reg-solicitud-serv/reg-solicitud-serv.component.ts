@@ -13,7 +13,7 @@ import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
-import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
+import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 
 @Component({
     selector: 'app-reg-solicitud-serv',
@@ -29,7 +29,7 @@ export class RegSolicitudServComponent implements OnInit
     opcionesButtonSpinner = botonGuardarConfig();
     nombreCliente: string;
 
-    constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo,
+    constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo, private _solicitudServState: SolicitudesState,
                 private _dr: MatDialog)
     {
     }
@@ -71,18 +71,18 @@ export class RegSolicitudServComponent implements OnInit
                 aprobadoServ: false,
                 ...this.formSolicitud.value
             };
-        // this._solicitudServState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResCliente) =>
-        // {
-        //     if (res.documento)
-        //     {
-        //         toastSweet(TipoAlerta.satisfactorio, 'Solicitud de servicio creada correctamente', 5000);
-        //     } else
-        //     {
-        //         toastSweet(TipoAlerta.error, 'Ocurrio un error al tratar de crear la solicitud de servicio', 5000);
-        //     }
-        //     this.opcionesButtonSpinner = botonGuardarConfig(false);
-        //     this.cerrarModal();
-        // }, e => toastSweet(TipoAlerta.error, e, 5000));
+        this._solicitudServState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResSolicitud) =>
+        {
+            if (res.documento)
+            {
+                toastSweet(TipoAlerta.satisfactorio, 'Solicitud de servicio creada correctamente', 5000);
+            } else
+            {
+                toastSweet(TipoAlerta.error, 'Ocurrio un error al tratar de crear la solicitud de servicio', 5000);
+            }
+            this.opcionesButtonSpinner = botonGuardarConfig(false);
+            this.cerrarModal();
+        }, e => toastSweet(TipoAlerta.error, e, 5000));
 
         localStorage.setItem(this.data.datos._id, JSON.stringify(modeloContrato));
         toastSweet(TipoAlerta.satisfactorio, 'La solicitud fue guardad de manera exitosa y permanecera de manera local', 5000);
