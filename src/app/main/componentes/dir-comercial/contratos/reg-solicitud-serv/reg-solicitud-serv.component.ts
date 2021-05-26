@@ -13,6 +13,8 @@ import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
+import {SolicitudesState} from '@dir-comercial/solicitudes.state';
+import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 
 @Component({
     selector: 'app-reg-solicitud-serv',
@@ -28,7 +30,8 @@ export class RegSolicitudServComponent implements OnInit
     opcionesButtonSpinner = botonGuardarConfig();
     nombreCliente: string;
 
-    constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo, private _clientesState: ClientesState, private _dr: MatDialog)
+    constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo, private _solicitudServState: SolicitudesState,
+                private _dr: MatDialog)
     {
     }
 
@@ -64,12 +67,13 @@ export class RegSolicitudServComponent implements OnInit
     regSolicitudServ(): void
     {
         this.opcionesButtonSpinner = botonGuardarConfig(true);
-        const modeloContrato: IContrato =
+        const modeloContrato: ISolicitudServ =
             {
+
                 aprobadoServ: false,
                 ...this.formSolicitud.value
             };
-        this._clientesState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResCliente) =>
+        this._solicitudServState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResCliente) =>
         {
             if (res.documento)
             {

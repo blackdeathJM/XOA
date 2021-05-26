@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import {fragSolicitud} from '@dir-comercial/fragments/solicitud.fragment';
 
 const fragDocumentacion = gql`
     fragment fragDocumentacion on DocumentacionType
@@ -47,26 +48,10 @@ const fragConvenioContrato = gql`
 const fragContrato = gql`
     fragment fragContrato on ContratoType
     {
-        calle
-        colonia
-        entreCalles
-        referencia
-        servSolicitado
-        medidorRef
-        tipoPredio
-        areaPredio
-        areaConstruida
-        almacenamiento
-        tarifa
-        MaterialArroyoDeCalle
-        MaterialAcera
-        comentarios
-        aprobadoServ
-        matArroyoCalle
-        matAcera
-        latitud
-        longitud
-
+        datosSolicitud
+        {
+            ...fragSolicitud
+        }
         estado
         ciudad
         municipio
@@ -84,6 +69,8 @@ const fragContrato = gql`
         activo
         esPrincipal
         creadoPor
+        longitud
+        latitud
         documentosImg
         {
             ...fragDocumentacion
@@ -100,6 +87,7 @@ const fragContrato = gql`
     ${fragDocumentacion}
     ${fragModificadaPor}
     ${fragConvenioContrato}
+    ${fragSolicitud}
 `;
 
 export const fragCliente = gql`

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '@services/api.service';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
-import {regCliente, regSolicitudServ} from '../graphql/mutations/cliente.mutation';
+import {regCliente, regContrato} from '../graphql/mutations/cliente.mutation';
 import {ICliente, IContrato, IResCliente} from '../models/cliente.interface';
 
 @Injectable({
@@ -21,8 +21,8 @@ export class ClienteMutationService extends ApiService
         return this.mutation(regCliente, {cliente}, {}, ['data', 'regCliente']);
     }
 
-    regSolicitudServ(idCliente: string, contrato: IContrato): Observable<IResCliente>
+    regContrato(idCliente: string, contrato: IContrato): Observable<IResCliente>
     {
-        return this.mutation(regSolicitudServ, {idCliente, contrato}, {}, ['data', 'regContrato']);
+        return this.mutation(regContrato, {idCliente, contrato}, {}, ['data', 'regContrato']);
     }
 }

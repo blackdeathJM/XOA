@@ -13,7 +13,8 @@
     </ng-container>
     <ng-container contenido>
         <div class="m-8 mat-elevation-z14">
-            <p-table [value]="_admonUsuarioState.state$ | async" [paginator]="true" dataKey="usuario" [alwaysShowPaginator]="false" [rowHover]="true" [rows]="10">
+            <p-table [value]="_admonUsuarioState.state$ | async" [paginator]="true" dataKey="usuario"
+                     [alwaysShowPaginator]="false" [rowHover]="true" [rows]="10">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Avatar</th>
