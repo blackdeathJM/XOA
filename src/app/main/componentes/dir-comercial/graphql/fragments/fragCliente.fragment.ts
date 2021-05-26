@@ -65,7 +65,6 @@ const fragContrato = gql`
         ruta
         giro
         zona
-        noPersonas
         activo
         esPrincipal
         creadoPor
