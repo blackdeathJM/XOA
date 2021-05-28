@@ -16,8 +16,8 @@ export class SolicitudServMutationService extends ApiService
         super(apollo);
     }
 
-    regSolicitudServ(idCliente: string, solicitudServ: ISolicitudServ): Observable<IResSolicitud>
+    regSolicitudServ(solicitudServ: ISolicitudServ): Observable<IResSolicitud>
     {
-        this.mutation(regSolicitudServ, {idCliente, solicitudServ});
+        return this.mutation(regSolicitudServ, {solicitudServ}, {}, ['data', 'regSolicitudServ']);
     }
 }

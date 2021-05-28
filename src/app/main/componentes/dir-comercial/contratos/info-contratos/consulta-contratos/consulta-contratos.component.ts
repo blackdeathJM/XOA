@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {RegSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/reg-solicitud-serv.component';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ICliente} from '@dir-comercial/cliente.interface';
+import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 
 enum AccionesTabla
 {
@@ -21,7 +22,7 @@ enum AccionesTabla
 export class ConsultaContratosComponent
 {
 
-    constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState)
+    constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState, public _solicitudServState: SolicitudesState)
     {
     }
 
@@ -84,5 +85,10 @@ export class ConsultaContratosComponent
             };
 
         this._dialogRef.open(RegSolicitudServComponent, {width: '45%', data});
+    }
+
+    verSolicitudesCreadas(cliente: ICliente): void
+    {
+        this._solicitudServState.solPorCliente(cliente._id).subscribe();
     }
 }

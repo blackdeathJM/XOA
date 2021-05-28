@@ -10,10 +10,10 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ICliente} from '@dir-comercial/cliente.interface';
 import {botonGuardarConfig} from '@services/botonGuardarConfig';
-import {toastSweet} from '@shared/alerts/toasts';
-import {TipoAlerta} from '@shared/alerts/values.config';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
+import {toastSweet} from '@shared/alerts/toasts';
+import {TipoAlerta} from '@shared/alerts/values.config';
 
 @Component({
     selector: 'app-reg-solicitud-serv',
@@ -66,12 +66,14 @@ export class RegSolicitudServComponent implements OnInit
     regSolicitudServ(): void
     {
         this.opcionesButtonSpinner = botonGuardarConfig(true);
-        const modeloContrato: ISolicitudServ =
+        const modSolicitudServ: ISolicitudServ =
             {
+                idCliente: this.data.datos._id,
                 aprobadoServ: false,
                 ...this.formSolicitud.value
             };
-        this._solicitudServState.regSolicitudServ(this.data.datos._id, modeloContrato).subscribe((res: IResSolicitud) =>
+
+        this._solicitudServState.regSolicitudServ(modSolicitudServ).subscribe((res: IResSolicitud) =>
         {
             if (res.documento)
             {
@@ -83,9 +85,6 @@ export class RegSolicitudServComponent implements OnInit
             this.opcionesButtonSpinner = botonGuardarConfig(false);
             this.cerrarModal();
         }, e => toastSweet(TipoAlerta.error, e, 5000));
-
-        localStorage.setItem(this.data.datos._id, JSON.stringify(modeloContrato));
-        toastSweet(TipoAlerta.satisfactorio, 'La solicitud fue guardad de manera exitosa y permanecera de manera local', 5000);
     }
 
     cerrarModal(): void

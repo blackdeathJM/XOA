@@ -19,13 +19,20 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
         super();
     }
 
+    cargando = false;
+
     @DataAction() clientesPorCriterio(@Payload('Buscar por criterio') criterio: string): Observable<IResCliente>
     {
+        if (criterio !== '')
+        {
+            this.cargando = true;
+        }
         return this._clienteQuery.clientesPorCriterio(criterio).pipe(tap((clie: IResCliente) =>
         {
             if (clie.estatus)
             {
                 this.ctx.setState(clie.documentos);
+                this.cargando = false;
             }
         }));
     }

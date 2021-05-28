@@ -16,6 +16,7 @@ import {ConsultaContratosComponent} from './info-contratos/consulta-contratos/co
 import {SolicitudServAguaComponent} from './solicitud-serv-agua/solicitud-serv-agua.component';
 import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv.component';
 import {NgxsModule} from '@ngxs/store';
+import { DetallesSolicitudServComponent } from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {NgxsModule} from '@ngxs/store';
             RegClienteComponent,
             ConsultaContratosComponent,
             SolicitudServAguaComponent,
-            RegSolicitudServComponent
+            RegSolicitudServComponent,
+            DetallesSolicitudServComponent
         ],
     imports:
         [

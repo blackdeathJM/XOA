@@ -1,14 +1,14 @@
 import gql from 'graphql-tag';
 import {fragSolicitud} from '@dir-comercial/fragments/solicitud.fragment';
 
-export const regSolicitudServ = gql`
-    mutation regSolicitudServ($solicitudServ: SolicitudServInput)
+export const solPorCliente = gql`
+    query solPorCliente($idCliente: ID!)
     {
-        regSolicitudServ(solicitudServ: $solicitudServ)
+        solPorCliente(idCliente: $idCliente)
         {
             estatus
             mensaje
-            documento
+            documentos
             {
                 ...fragSolicitud
             }
