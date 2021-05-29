@@ -1,1 +1,18 @@
-<p>detalles-solicitud-serv works!</p>
+<ng-container>
+    <section [@animate]="{value: '*', params: {y: '100%'}}">
+        <div fxFill>
+            <span fxFlex="40" class="form-etiquetas">Nombre:</span>
+            <span fxFlex="60" class="form-datos">Nombre completo del cliente</span>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="60" class="form-etiquetas">Calle:</span>
+                <span fxFlex class="form-datos">Informacion de la calle</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Colonia:</span>
+                <span fxFlex class="form-datos">Informacion de la colonia</span>
+            </div>
+        </div>
+    </section>
+</ng-container>
