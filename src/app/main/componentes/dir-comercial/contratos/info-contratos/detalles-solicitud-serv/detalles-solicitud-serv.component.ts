@@ -16,15 +16,16 @@ export class DetallesSolicitudServComponent implements OnInit, OnDestroy
 
     constructor(private _puentePortal: PuentePortalService)
     {
+
     }
 
     ngOnInit(): void
     {
-        this._puentePortal.setPortal(this.contenedorPortal);
+        setTimeout(() => this._puentePortal.setPortal(this.contenedorPortal), 100);
     }
 
     ngOnDestroy(): void
     {
-        this.contenedorPortal.detach();
+        // this.contenedorPortal.detach();
     }
 }
