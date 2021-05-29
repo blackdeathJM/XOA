@@ -19,6 +19,8 @@ import {NgxsModule} from '@ngxs/store';
 import { DetallesSolicitudServComponent } from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
 import { DetalleContratoComponent } from './info-contratos/detalle-contrato/detalle-contrato.component';
 import { DetalleReferenciaComponent } from './info-contratos/detalle-referencia/detalle-referencia.component';
+import { TarjetaSolicitudServComponent } from './info-contratos/tarjeta-solicitud-serv/tarjeta-solicitud-serv.component';
+import { TarjetaContratosComponent } from './info-contratos/tarjeta-contratos/tarjeta-contratos.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { DetalleReferenciaComponent } from './info-contratos/detalle-referencia/
             RegSolicitudServComponent,
             DetallesSolicitudServComponent,
             DetalleContratoComponent,
-            DetalleReferenciaComponent
+            DetalleReferenciaComponent,
+            TarjetaSolicitudServComponent,
+            TarjetaContratosComponent
         ],
     imports:
         [
