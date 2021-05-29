@@ -15,12 +15,15 @@ import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.compon
 import {ConsultaContratosComponent} from './info-contratos/consulta-contratos/consulta-contratos.component';
 import {SolicitudServAguaComponent} from './solicitud-serv-agua/solicitud-serv-agua.component';
 import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv.component';
+import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
+import {DetalleContratoComponent} from './info-contratos/detalle-contrato/detalle-contrato.component';
+import {DetalleReferenciaComponent} from './info-contratos/detalle-referencia/detalle-referencia.component';
+import {TarjetaSolicitudServComponent} from './info-contratos/tarjeta-solicitud-serv/tarjeta-solicitud-serv.component';
+import {TarjetaContratosComponent} from './info-contratos/tarjeta-contratos/tarjeta-contratos.component';
+import {PortalModule} from '@angular/cdk/portal';
 import {NgxsModule} from '@ngxs/store';
-import { DetallesSolicitudServComponent } from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
-import { DetalleContratoComponent } from './info-contratos/detalle-contrato/detalle-contrato.component';
-import { DetalleReferenciaComponent } from './info-contratos/detalle-referencia/detalle-referencia.component';
-import { TarjetaSolicitudServComponent } from './info-contratos/tarjeta-solicitud-serv/tarjeta-solicitud-serv.component';
-import { TarjetaContratosComponent } from './info-contratos/tarjeta-contratos/tarjeta-contratos.component';
+import {SolicitudesState} from '@dir-comercial/solicitudes.state';
+import {SharedModule} from '@shared/shared.module';
 
 
 @NgModule({
@@ -49,7 +52,10 @@ import { TarjetaContratosComponent } from './info-contratos/tarjeta-contratos/ta
             FlexLayoutModule,
             WingetsModule,
             ReactiveFormsModule,
-            SubidasModule
+            SubidasModule,
+            NgxsModule.forFeature([SolicitudesState]),
+            PortalModule,
+            SharedModule
         ]
 })
 export class ContratosModule

@@ -1,17 +1,30 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {CdkPortal} from '@angular/cdk/portal';
 import {fuseAnimations} from '@plantilla/animations';
+import {PuentePortalService} from '@services/puente-portal.service';
 
 @Component({
     selector: 'app-detalles-solicitud-serv',
     templateUrl: './detalles-solicitud-serv.component.html',
     styleUrls: ['./detalles-solicitud-serv.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
-export class DetallesSolicitudServComponent
+export class DetallesSolicitudServComponent implements OnInit, OnDestroy
 {
-    constructor()
+    @ViewChild(CdkPortal, {static: true}) contenedorPortal: CdkPortal;
+
+    constructor(private _puentePortal: PuentePortalService)
     {
+    }
+
+    ngOnInit(): void
+    {
+        this._puentePortal.setPortal(this.contenedorPortal);
+    }
+
+    ngOnDestroy(): void
+    {
+        this.contenedorPortal.detach();
     }
 }

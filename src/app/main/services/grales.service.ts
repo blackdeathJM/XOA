@@ -10,7 +10,6 @@ import {IDatasets} from '@funcionesRaiz/graficas';
 import {DataStateContext} from '@ngxs-labs/data/typings';
 import {IOpcionesCarga} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 
-
 @Injectable({
     providedIn: 'root'
 })

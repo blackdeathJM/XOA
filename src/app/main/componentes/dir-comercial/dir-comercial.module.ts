@@ -3,8 +3,6 @@ import {CommonModule} from '@angular/common';
 import {DirComercialComponent} from './dir-comercial.component';
 import {RouterModule} from '@angular/router';
 import {DirComercialRouting} from './dir-comercial.routing';
-import {NgxsModule} from '@ngxs/store';
-import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 
 @NgModule({
     declarations:
@@ -15,8 +13,7 @@ import {SolicitudesState} from '@dir-comercial/solicitudes.state';
         [
             CommonModule,
             RouterModule,
-            DirComercialRouting,
-            NgxsModule.forFeature([SolicitudesState])
+            DirComercialRouting
         ]
 })
 export class DirComercialModule
