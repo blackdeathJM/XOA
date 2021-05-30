@@ -71,7 +71,7 @@
                             "sourceMap": false,
                             "vendorChunk": false,
                             "namedChunks": false,
-                            "extractLicenses": true,
+                            "extractLicenses": false,
                             "aot": true,
                             "budgets": [
                                 {
