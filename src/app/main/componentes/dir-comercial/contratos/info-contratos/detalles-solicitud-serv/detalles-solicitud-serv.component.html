@@ -1,12 +1,12 @@
 <ng-container>
     <section [@animate]="{value: '*', params: {y: '100%'}}">
         <div fxFill>
-            <span fxFlex="40" class="form-etiquetas">Nombre:</span>
-            <span fxFlex="60" class="form-datos">Nombre completo del cliente</span>
+            <span fxFlex="20" class="form-etiquetas">Nombre:</span>
+            <span fxFlex class="form-datos">Nombre completo del cliente</span>
         </div>
         <div>
             <div fxFlex>
-                <span fxFlex="60" class="form-etiquetas">Calle:</span>
+                <span fxFlex="40" class="form-etiquetas">Calle:</span>
                 <span fxFlex class="form-datos">Informacion de la calle</span>
             </div>
             <div fxFlex>
@@ -14,25 +14,85 @@
                 <span fxFlex class="form-datos">Informacion de la colonia</span>
             </div>
         </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Entre calles:</span>
+            <span fxFlex class="form-datos">Entre que calles</span>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Referencia:</span>
+            <span fxFlex class="form-datos">Referencia del domicilio</span>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Servicio solicitado:</span>
+            <span fxFlex class="form-datos">Servicio solicitado</span>
+        </div>
+        <div fxFill>
+            <span fxFlex="20" class="form-etiquetas">Tipo de predio:</span>
+            <div fxLayoutAlign="space-between" fxFlex="70">
+                <span class="form-datos">Baldio<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
+                <span class="form-datos">Construccion<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
+                <span class="form-datos">Casa habitacion<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
+                <span class="form-datos">Provisional<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
+                <span class="form-datos">Deshabilitada<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
+            </div>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">area del predio:</span>
+                <span fxFlex class="form-datos">Area del predio</span>
+                <span fxFlex="10" class="form-datos">m3</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">area construida:</span>
+                <span fxFlex class="form-datos">Area construida</span>
+                <span fxFlex="10" class="form-datos">m3</span>
+            </div>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Almacenamiento:</span>
+                <span fxFlex class="form-datos">Almacenamiento</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Tarifa:</span>
+                <span fxFlex class="form-datos">Tarifa</span>
+            </div>
+        </div>
+        <div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Material del arroyo de calle:</span>
+                <span fxFlex class="form-datos">Material del arroyo de calle</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Material de acera:</span>
+                <span fxFlex class="form-datos">Material de acera</span>
+            </div>
+        </div>
+        <div fxFill fxLayoutAlign="center center">
+            <span class="mat-title">Comentarios</span>
+        </div>
+        <div fxFill>
+            <span fxFlex class="form-datos">Comentarios para la solicitud de servicio de agua o drenaje</span>
+        </div>
     </section>
 </ng-container>
 
 <ng-container *cdkPortal>
     <div fxLayoutGap="8px">
-        <button mat-raised-button fxFlex="1 0 auto" class="brown">
-            <mat-icon>print</mat-icon>
-            Realizar cobro
-        </button>
-        <button mat-raised-button fxFlex="1 0 auto" class="brown">
-            <mat-icon>print</mat-icon>
-            Actualizar servicio
+        <button mat-raised-button fxFlex="1 0 auto" class="light-green-500">
+            <mat-icon>attach_money</mat-icon>
+            Pago verificacion de servicio
         </button>
         <button mat-raised-button fxFlex="1 0 auto" class="brown">
             <mat-icon>print</mat-icon>
             Imprimir
         </button>
-        <button mat-raised-button fxFlex="1 0 auto" class="brown">
-            <mat-icon>print</mat-icon>
+        <button mat-raised-button fxFlex="1 0 auto" class="lime">
+            <mat-icon>autorenew</mat-icon>
+            Actualizar servicio
+        </button>
+        <button mat-raised-button fxFlex="1 0 auto" class="fuse-white">
+            <mat-icon>featured_play_list</mat-icon>
             Generar contrato
         </button>
     </div>

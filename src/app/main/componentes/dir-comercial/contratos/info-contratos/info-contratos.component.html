@@ -16,7 +16,9 @@
                          [skeleton]="_solicitudPrev.cargando"
                          [valConsulta]="_solicitudPrev.state$ | async">
         </app-prime-tabla>
-        <mat-divider></mat-divider>
+        <ng-container>
+            <app-tarjeta-solicitud-serv></app-tarjeta-solicitud-serv>
+        </ng-container>
     </ng-container>
 </app-card-bootstrap>
 <mat-divider></mat-divider>

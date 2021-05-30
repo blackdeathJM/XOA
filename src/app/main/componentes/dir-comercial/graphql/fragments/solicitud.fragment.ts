@@ -17,8 +17,6 @@ export const fragSolicitud = gql`
         areaConstruida
         almacenamiento
         tarifa
-        MaterialArroyoDeCalle
-        MaterialAcera
         comentarios
         aprobadoServ
         matArroyoCalle
