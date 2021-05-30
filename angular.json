@@ -21,7 +21,7 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "aot": true,
-                        "outputPath": "sistema-comercial",
+                        "outputPath": "dist/sistema-comercial",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -65,15 +65,14 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ],
+                            "buildOptimizer": true,
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
-                            "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": true,
                             "vendorChunk": false,
-                            "buildOptimizer": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "aot": true,
                             "budgets": [
                                 {
                                     "type": "initial",
