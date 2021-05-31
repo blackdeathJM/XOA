@@ -17,13 +17,12 @@ import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv
 import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
 import {DetalleContratoComponent} from './info-contratos/detalle-contrato/detalle-contrato.component';
 import {DetalleReferenciaComponent} from './info-contratos/detalle-referencia/detalle-referencia.component';
-import {TarjetaSolicitudServComponent} from './info-contratos/tarjeta-solicitud-serv/tarjeta-solicitud-serv.component';
 import {TarjetaContratosComponent} from './info-contratos/tarjeta-contratos/tarjeta-contratos.component';
 import {PortalModule} from '@angular/cdk/portal';
 import {NgxsModule} from '@ngxs/store';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {SharedModule} from '@shared/shared.module';
-import { InfoSolicitudServComponent } from './info-solicitud-serv/info-solicitud-serv.component';
+import {InfoSolicitudServComponent} from './info-solicitud-serv/info-solicitud-serv.component';
 
 
 @NgModule({
@@ -38,7 +37,6 @@ import { InfoSolicitudServComponent } from './info-solicitud-serv/info-solicitud
             DetallesSolicitudServComponent,
             DetalleContratoComponent,
             DetalleReferenciaComponent,
-            TarjetaSolicitudServComponent,
             TarjetaContratosComponent,
             InfoSolicitudServComponent
         ],
