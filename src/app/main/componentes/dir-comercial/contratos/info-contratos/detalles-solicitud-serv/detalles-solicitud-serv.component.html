@@ -1,92 +1,96 @@
 <ng-container *ngIf="_solicitudServ.gSolicituServ | async as solicitudServ">
-    <section [@animate]="{value: '*', params: {y: '100%'}}">
-        <div fxFill>
-            <span fxFlex="20" class="form-etiquetas">Nombre:</span>
-            <span fxFlex class="form-datos">Nombre completo del cliente</span>
-        </div>
-        <div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Calle:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.calle}}</span>
+    <div fxLayoutAlign="center center">
+        <section [@animate]="{value: '*', params: {y: '100%'}}" class="baseDiv m-5 w-90-p">
+            <div fxFill>
+                <span fxFlex="20" class="form-etiquetas">Nombre:</span>
+                <span fxFlex class="form-datos">Nombre completo del cliente</span>
             </div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Colonia:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.colonia}}</span>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Calle:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.calle}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Colonia:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.colonia}}</span>
+                </div>
             </div>
-        </div>
-        <div fxFill>
-            <span fxFlex="20" class="form-etiquetas">Entre calles:</span>
-            <span fxFlex class="form-datos">{{solicitudServ.entreCalles}}</span>
-        </div>
-        <div fxFill>
-            <span fxFlex="20" class="form-etiquetas">Referencia:</span>
-            <span fxFlex class="form-datos">{{solicitudServ.referencia}}</span>
-        </div>
-        <div fxFill>
-            <span fxFlex="20" class="form-etiquetas">Servicio solicitado:</span>
-            <span fxFlex class="form-datos">{{solicitudServ.servSolicitado}}</span>
-        </div>
-        <div fxFill>
-            <span fxFlex="20" class="form-etiquetas">Tipo de predio:</span>
-            <span fxFlex class="form-datos">{{solicitudServ.tipoPredio}}</span>
-        </div>
-        <div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">area del predio:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.areaPredio}}</span>
-                <span fxFlex="10" class="form-datos">m3</span>
+            <div fxFill>
+                <span fxFlex="20" class="form-etiquetas">Entre calles:</span>
+                <span fxFlex class="form-datos">{{solicitudServ.entreCalles}}</span>
             </div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">area construida:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.areaConstruida}}</span>
-                <span fxFlex="10" class="form-datos">m3</span>
+            <div fxFill>
+                <span fxFlex="20" class="form-etiquetas">Referencia:</span>
+                <span fxFlex class="form-datos">{{solicitudServ.referencia}}</span>
             </div>
-        </div>
-        <div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Almacenamiento:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.almacenamiento}}</span>
+            <div fxFill>
+                <span fxFlex="20" class="form-etiquetas">Servicio solicitado:</span>
+                <span fxFlex class="form-datos">{{solicitudServ.servSolicitado}}</span>
             </div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Tarifa:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.tarifa}}</span>
+            <div fxFill>
+                <span fxFlex="20" class="form-etiquetas">Tipo de predio:</span>
+                <span fxFlex class="form-datos">{{solicitudServ.tipoPredio}}</span>
             </div>
-        </div>
-        <div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Material del arroyo de calle:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.matArroyoCalle}}</span>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">area del predio:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.areaPredio}}</span>
+                    <span fxFlex="10" class="form-datos">m3</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">area construida:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.areaConstruida}}</span>
+                    <span fxFlex="10" class="form-datos">m3</span>
+                </div>
             </div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Material de acera:</span>
-                <span fxFlex class="form-datos">{{solicitudServ.matAcera}}</span>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Almacenamiento:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.almacenamiento}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Tarifa:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.tarifa}}</span>
+                </div>
             </div>
-        </div>
-        <div fxFill fxLayoutAlign="center center">
-            <span class="mat-title">Comentarios</span>
-        </div>
-        <div fxFill>
-            <span fxFlex class="form-datos">{{solicitudServ.comentarios}}</span>
-        </div>
-    </section>
-    <ng-container *cdkPortal>
-        <div fxLayoutGap="8px">
-            <button mat-raised-button fxFlex="1 0 auto" class="light-green-500">
-                <mat-icon>attach_money</mat-icon>
-                Pago verificacion de servicio
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="brown">
-                <mat-icon>print</mat-icon>
-                Imprimir
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="lime">
-                <mat-icon>autorenew</mat-icon>
-                Actualizar servicio
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="fuse-white">
-                <mat-icon>featured_play_list</mat-icon>
-                Generar contrato
-            </button>
-        </div>
-    </ng-container>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Material del arroyo de calle:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.matArroyoCalle}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="40" class="form-etiquetas">Material de acera:</span>
+                    <span fxFlex class="form-datos">{{solicitudServ.matAcera}}</span>
+                </div>
+            </div>
+            <div fxFill fxLayoutAlign="center center">
+                <span class="mat-title">Comentarios</span>
+            </div>
+            <div fxFill>
+                <span fxFlex class="form-datos">{{solicitudServ.comentarios}}</span>
+            </div>
+            <ng-content></ng-content>
+
+            <mat-action-row *ngIf="visible">
+                <div fxLayoutGap="8px">
+                    <button mat-raised-button fxFlex="1 0 auto" class="light-green-500" (click)="generarPagoServ(solicitudServ)">
+                        <mat-icon>attach_money</mat-icon>
+                        Pago verificacion de servicio
+                    </button>
+                    <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(solicitudServ)">
+                        <mat-icon>print</mat-icon>
+                        Imprimir
+                    </button>
+                    <button mat-raised-button fxFlex="1 0 auto" class="lime" (click)="actualizarOrden(solicitudServ)">
+                        <mat-icon>autorenew</mat-icon>
+                        Actualizar servicio
+                    </button>
+                    <button mat-raised-button fxFlex="1 0 auto" class="fuse-white" (click)="generarContrato(solicitudServ)">
+                        <mat-icon>featured_play_list</mat-icon>
+                        Generar contrato
+                    </button>
+                </div>
+            </mat-action-row>
+        </section>
+    </div>
 </ng-container>

@@ -17,7 +17,6 @@ import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv
 import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
 import {DetalleContratoComponent} from './info-contratos/detalle-contrato/detalle-contrato.component';
 import {DetalleReferenciaComponent} from './info-contratos/detalle-referencia/detalle-referencia.component';
-import {TarjetaContratosComponent} from './info-contratos/tarjeta-contratos/tarjeta-contratos.component';
 import {PortalModule} from '@angular/cdk/portal';
 import {NgxsModule} from '@ngxs/store';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
@@ -37,7 +36,6 @@ import {InfoSolicitudServComponent} from './info-solicitud-serv/info-solicitud-s
             DetallesSolicitudServComponent,
             DetalleContratoComponent,
             DetalleReferenciaComponent,
-            TarjetaContratosComponent,
             InfoSolicitudServComponent
         ],
     imports:
