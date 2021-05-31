@@ -28,6 +28,12 @@ export class ClienteState extends NgxsDataRepository<ICliente>
 
     @DataAction() datosRef(@Payload('Buscar medidor ref') noMedidor: string): Observable<IResCliente>
     {
-        return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) => this.ctx.setState(res.documento)));
+        return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) =>
+        {
+            if (res.estatus)
+            {
+                this.ctx.setState(res.documento);
+            }
+        }));
     }
 }

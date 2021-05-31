@@ -18,7 +18,7 @@ export const clientesPorCriterio = gql`
 `;
 
 export const datosRef = gql`
-    query datosRef($noMedidor: String)
+    query datosRef($noMedidor: String!)
     {
         datosRef(noMedidor: $noMedidor)
         {

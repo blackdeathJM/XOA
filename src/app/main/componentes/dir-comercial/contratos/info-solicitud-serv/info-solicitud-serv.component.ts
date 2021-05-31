@@ -5,12 +5,14 @@ import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
+import {fuseAnimations} from '@plantilla/animations';
 
 @Component({
     selector: 'app-info-solicitud-serv',
     templateUrl: './info-solicitud-serv.component.html',
     styleUrls: ['./info-solicitud-serv.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fuseAnimations]
 })
 export class InfoSolicitudServComponent implements OnDestroy
 {
@@ -55,8 +57,13 @@ export class InfoSolicitudServComponent implements OnDestroy
     clienteSelec(evento: IEventoAcciones): void
     {
         const datos = evento.datos as ISolicitudServ;
-        this._solicitudPrev.sSolicituServ = datos;
-        this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
+        switch (evento.accion)
+        {
+            case 'info':
+                this._solicitudPrev.sSolicituServ = datos;
+                this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
+                break;
+        }
     }
 
     ngOnDestroy(): void
