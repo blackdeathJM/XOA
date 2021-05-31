@@ -13,7 +13,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {SubidasModule} from '@shared/components/subidas/subidas.module';
 import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.component';
 import {ConsultaContratosComponent} from './info-contratos/consulta-contratos/consulta-contratos.component';
-import {SolicitudServAguaComponent} from './solicitud-serv-agua/solicitud-serv-agua.component';
 import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv.component';
 import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
 import {DetalleContratoComponent} from './info-contratos/detalle-contrato/detalle-contrato.component';
@@ -24,6 +23,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {NgxsModule} from '@ngxs/store';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {SharedModule} from '@shared/shared.module';
+import { InfoSolicitudServComponent } from './info-solicitud-serv/info-solicitud-serv.component';
 
 
 @NgModule({
@@ -34,13 +34,13 @@ import {SharedModule} from '@shared/shared.module';
             RegContratosComponent,
             RegClienteComponent,
             ConsultaContratosComponent,
-            SolicitudServAguaComponent,
             RegSolicitudServComponent,
             DetallesSolicitudServComponent,
             DetalleContratoComponent,
             DetalleReferenciaComponent,
             TarjetaSolicitudServComponent,
-            TarjetaContratosComponent
+            TarjetaContratosComponent,
+            InfoSolicitudServComponent
         ],
     imports:
         [

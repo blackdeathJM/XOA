@@ -48,7 +48,6 @@ export class RegSolicitudServComponent implements OnInit
         matArroyoCalle: ['', RxwebValidators.required({message: 'Este campo es requerido'})],
         matAcera: ['', RxwebValidators.required({message: 'Este campo es requerido'})],
         medidorRef: ['']
-
     });
 
     ngOnInit(): void
@@ -69,7 +68,6 @@ export class RegSolicitudServComponent implements OnInit
         const modSolicitudServ: ISolicitudServ =
             {
                 idCliente: this.data.datos._id,
-                aprobadoServ: false,
                 ...this.formSolicitud.value
             };
 

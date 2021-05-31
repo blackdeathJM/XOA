@@ -18,6 +18,7 @@ export interface ISolicitudServ
     aprobadoServ: boolean;
     matArroyoCalle: string;
     matAcera: string;
+    pagoServRealizado: boolean;
 }
 
 export interface IResSolicitud

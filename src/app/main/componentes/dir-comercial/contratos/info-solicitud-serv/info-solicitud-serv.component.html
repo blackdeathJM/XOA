@@ -1,0 +1,16 @@
+<app-card-bootstrap>
+    <ng-container cabecera><h2>Informacion de solicitudes creadas</h2></ng-container>
+    <ng-container contenido>
+        <app-prime-tabla [columnas]="columnasSolicitud"
+                         [skeleton]="_solicitudPrev.cargando"
+                         [accionesVisibles]="true"
+                         [btnAcciones]="acciones"
+                         [ancho]="{width: '80px'}"
+                         [valConsulta]="_solicitudPrev.state$ | async"
+                         (emitirAccion)="clienteSelec($event)">
+        </app-prime-tabla>
+        <app-tarjeta-solicitud-serv></app-tarjeta-solicitud-serv>
+    </ng-container>
+</app-card-bootstrap>
+<mat-divider></mat-divider>
+<app-tarjeta-solicitud-serv></app-tarjeta-solicitud-serv>

@@ -3,7 +3,7 @@ import {ApiService} from '@services/api.service';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
 import {IResCliente} from '../models/cliente.interface';
-import {clientesPorCriterio} from '../graphql/query/cliente.query';
+import {clientesPorCriterio, datosRef} from '../graphql/query/cliente.query';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +18,11 @@ export class ClienteQueryService extends ApiService
     clientesPorCriterio(criterio: string): Observable<IResCliente>
     {
         return this.consulta(clientesPorCriterio, {criterio}, {}, ['data', 'clientesPorCriterio']);
+    }
+
+    datosRef(noMedidor: string): Observable<IResCliente>
+    {
+        return this.consulta(datosRef, {noMedidor}, {}, ['data', 'datosRef']);
     }
 }
 

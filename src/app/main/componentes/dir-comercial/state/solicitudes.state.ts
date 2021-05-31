@@ -3,7 +3,7 @@ import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interf
 import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
 import {DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutation.service';
 import {tap} from 'rxjs/operators';
 import {SolicitudServQueryService} from '@dir-comercial/solicitud-serv.query.service';
@@ -13,6 +13,8 @@ import {SolicitudServQueryService} from '@dir-comercial/solicitud-serv.query.ser
 @Injectable()
 export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 {
+    private solicitud$: BehaviorSubject<ISolicitudServ> = new BehaviorSubject<ISolicitudServ>(null);
+
     constructor(private _solicitudMutation: SolicitudServMutationService, private _solicitudQuery: SolicitudServQueryService)
     {
         super();
@@ -20,12 +22,19 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 
     cargando = false;
 
+    get gSolicituServ(): Observable<ISolicitudServ>
+    {
+        return this.solicitud$.asObservable();
+    }
+
+    set sSolicituServ(datos: ISolicitudServ)
+    {
+        this.solicitud$.next(datos);
+    }
+
     @DataAction() regSolicitudServ(@Payload('Reg solicitud serv') solicitudServ: ISolicitudServ): Observable<IResSolicitud>
     {
-        return this._solicitudMutation.regSolicitudServ(solicitudServ).pipe(tap((res: IResSolicitud) =>
-        {
-            this.ctx.setState((state: ISolicitudServ[]): ISolicitudServ[] => state.concat(res.documento));
-        }));
+        return this._solicitudMutation.regSolicitudServ(solicitudServ);
     }
 
     @DataAction() solPorCliente(@Payload('Solicitudes por cliente') idCliente: string): Observable<IResSolicitud>

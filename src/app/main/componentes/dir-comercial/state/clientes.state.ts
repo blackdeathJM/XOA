@@ -8,6 +8,7 @@ import {ClienteQueryService} from '../services/cliente.query.service';
 import {tap} from 'rxjs/operators';
 import {GralesServices} from '@services/grales.service';
 import {ClienteMutationService} from '@dir-comercial/cliente.mutation.service';
+import {BehaviorSubject} from 'rxjs';
 
 @StateRepository()
 @State<ICliente[]>({name: 'Clientes', defaults: []})
@@ -17,6 +18,18 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
     constructor(private _clienteQuery: ClienteQueryService, private _clienteMutation: ClienteMutationService)
     {
         super();
+    }
+
+    private cliente$ = new BehaviorSubject<ICliente>(null);
+
+    get gCliente(): Observable<ICliente>
+    {
+        return this.cliente$.asObservable();
+    }
+
+    set sCliente(dato: ICliente)
+    {
+        this.cliente$.next(dato);
     }
 
     cargando = false;

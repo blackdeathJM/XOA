@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="_solicitudServ.gSolicituServ | async as solicitudServ">
     <section [@animate]="{value: '*', params: {y: '100%'}}">
         <div fxFill>
             <span fxFlex="20" class="form-etiquetas">Nombre:</span>
@@ -7,72 +7,66 @@
         <div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Calle:</span>
-                <span fxFlex class="form-datos">Informacion de la calle</span>
+                <span fxFlex class="form-datos">{{solicitudServ.calle}}</span>
             </div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Colonia:</span>
-                <span fxFlex class="form-datos">Informacion de la colonia</span>
+                <span fxFlex class="form-datos">{{solicitudServ.colonia}}</span>
             </div>
         </div>
         <div fxFill>
             <span fxFlex="20" class="form-etiquetas">Entre calles:</span>
-            <span fxFlex class="form-datos">Entre que calles</span>
+            <span fxFlex class="form-datos">{{solicitudServ.entreCalles}}</span>
         </div>
         <div fxFill>
             <span fxFlex="20" class="form-etiquetas">Referencia:</span>
-            <span fxFlex class="form-datos">Referencia del domicilio</span>
+            <span fxFlex class="form-datos">{{solicitudServ.referencia}}</span>
         </div>
         <div fxFill>
             <span fxFlex="20" class="form-etiquetas">Servicio solicitado:</span>
-            <span fxFlex class="form-datos">Servicio solicitado</span>
+            <span fxFlex class="form-datos">{{solicitudServ.servSolicitado}}</span>
         </div>
         <div fxFill>
             <span fxFlex="20" class="form-etiquetas">Tipo de predio:</span>
-            <div fxLayoutAlign="space-between" fxFlex="70">
-                <span class="form-datos">Baldio<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
-                <span class="form-datos">Construccion<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
-                <span class="form-datos">Casa habitacion<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
-                <span class="form-datos">Provisional<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
-                <span class="form-datos">Deshabilitada<mat-icon class="green-fg ml-8">done_all</mat-icon></span>
-            </div>
+            <span fxFlex class="form-datos">{{solicitudServ.tipoPredio}}</span>
         </div>
         <div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">area del predio:</span>
-                <span fxFlex class="form-datos">Area del predio</span>
+                <span fxFlex class="form-datos">{{solicitudServ.areaPredio}}</span>
                 <span fxFlex="10" class="form-datos">m3</span>
             </div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">area construida:</span>
-                <span fxFlex class="form-datos">Area construida</span>
+                <span fxFlex class="form-datos">{{solicitudServ.areaConstruida}}</span>
                 <span fxFlex="10" class="form-datos">m3</span>
             </div>
         </div>
         <div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Almacenamiento:</span>
-                <span fxFlex class="form-datos">Almacenamiento</span>
+                <span fxFlex class="form-datos">{{solicitudServ.almacenamiento}}</span>
             </div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Tarifa:</span>
-                <span fxFlex class="form-datos">Tarifa</span>
+                <span fxFlex class="form-datos">{{solicitudServ.tarifa}}</span>
             </div>
         </div>
         <div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Material del arroyo de calle:</span>
-                <span fxFlex class="form-datos">Material del arroyo de calle</span>
+                <span fxFlex class="form-datos">{{solicitudServ.matArroyoCalle}}</span>
             </div>
             <div fxFlex>
                 <span fxFlex="40" class="form-etiquetas">Material de acera:</span>
-                <span fxFlex class="form-datos">Material de acera</span>
+                <span fxFlex class="form-datos">{{solicitudServ.matAcera}}</span>
             </div>
         </div>
         <div fxFill fxLayoutAlign="center center">
             <span class="mat-title">Comentarios</span>
         </div>
         <div fxFill>
-            <span fxFlex class="form-datos">Comentarios para la solicitud de servicio de agua o drenaje</span>
+            <span fxFlex class="form-datos">{{solicitudServ.comentarios}}</span>
         </div>
     </section>
 </ng-container>

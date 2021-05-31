@@ -16,3 +16,21 @@ export const clientesPorCriterio = gql`
     }
     ${fragCliente}
 `;
+
+export const datosRef = gql`
+    query datosRef($noMedidor: String)
+    {
+        datosRef(noMedidor: $noMedidor)
+        {
+            estatus
+            mensaje
+            documento
+            {
+                ...fragCliente
+            }
+
+        }
+    }
+    ${fragCliente}
+`;
+

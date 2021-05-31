@@ -21,5 +21,6 @@ export const fragSolicitud = gql`
         aprobadoServ
         matArroyoCalle
         matAcera
+        pagoServRealizado
     }
 `;
