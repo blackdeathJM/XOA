@@ -1,0 +1,29 @@
+<div class="baseDiv">
+    <form [formGroup]="formActSolitudServ">
+        <div fxLayoutAlign="center center">
+            Observaciones
+        </div>
+        <mat-form-field appearance="outline">
+            <textarea matInput formControlName="observaciones"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Solicitud ejecutada por</mat-label>
+            <input matInput formControlName="ejecutadaPor">
+        </mat-form-field>
+
+        <mat-radio-group formControlName="aprobadoServ" fxLayoutGap="16px">
+            <mat-radio-button value="true">La solicitud es viable</mat-radio-button>
+            <mat-radio-button value="false">La solicitud no se viable</mat-radio-button>
+        </mat-radio-group>
+    </form>
+
+    <mat-action-row fxLayoutAlign="start" fxLayoutGap="8px" class="baseDiv mt-5">
+        <button fxFlex="1 0 auto" mat-raised-button color="warn" matDialogClose="true">
+            <mat-icon>close</mat-icon>
+            Cancelar
+        </button>
+        <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" [disabled]="formActSolitudServ.invalid" (click)="actSolicitud()">
+            Guardar
+        </mat-spinner-button>
+    </mat-action-row>
+</div>

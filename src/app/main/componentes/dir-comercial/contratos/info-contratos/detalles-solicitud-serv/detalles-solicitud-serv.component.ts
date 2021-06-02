@@ -33,6 +33,8 @@ export class DetallesSolicitudServComponent
         pdf.line(10, 21, 100, 21);
         pdf.save();
         pdf.autoPrint();
+
+        this._solicitudServ.aprovRechSolicitud(solicitudServ._id, true).subscribe();
     }
 
     imprimirOrdenServ(solicitudServ: ISolicitudServ): void

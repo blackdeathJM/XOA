@@ -7,6 +7,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutation.service';
 import {tap} from 'rxjs/operators';
 import {SolicitudServQueryService} from '@dir-comercial/solicitud-serv.query.service';
+import {patch, updateItem} from '@ngxs/store/operators';
 
 @StateRepository()
 @State<ISolicitudServ[]>({name: 'SolicitudServicio', defaults: []})
@@ -47,6 +48,15 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
                 this.ctx.setState(res.documentos);
                 this.cargando = false;
             }
+        }));
+    }
+
+    @DataAction() aprovRechSolicitud(@Payload('Aprobar rechazar solicitud') _id: string, valor: boolean): Observable<IResSolicitud>
+    {
+        return this._solicitudMutation.aprovRechSolicitud(_id, valor).pipe(tap((res: IResSolicitud) =>
+        {
+            this.ctx.setState(patch(updateItem((solicitud: ISolicitudServ) => solicitud._id === _id, res.documento)));
+            console.log('estado', this.ctx.getState());
         }));
     }
 }

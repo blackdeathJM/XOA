@@ -16,3 +16,20 @@ export const regSolicitudServ = gql`
     }
     ${fragSolicitud}
 `;
+
+export const aprovRechSolicitud = gql`
+    mutation aprovRechSolicitud($_id: ID!, $valor: Boolean!)
+    {
+        aprovRechSolicitud(_id: $_id, valor: $valor)
+        {
+            estatus
+            mensaje
+            documento
+            {
+                ...fragSolicitud
+            }
+        }
+    }
+    ${fragSolicitud}
+`;
+
