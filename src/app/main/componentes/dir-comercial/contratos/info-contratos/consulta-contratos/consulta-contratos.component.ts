@@ -90,7 +90,6 @@ export class ConsultaContratosComponent
 
     verSolicitudesCreadas(cliente: ICliente): void
     {
-        this._clienteState.sCliente = cliente;
         this._solicitudServState.solPorCliente(cliente._id).subscribe();
     }
 }

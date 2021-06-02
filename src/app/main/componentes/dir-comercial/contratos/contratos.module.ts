@@ -22,6 +22,7 @@ import {NgxsModule} from '@ngxs/store';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {SharedModule} from '@shared/shared.module';
 import {InfoSolicitudServComponent} from './info-solicitud-serv/info-solicitud-serv.component';
+import { ActualizarSolicitudServComponent } from './reg-solicitud-serv/actualizar-solicitud-serv/actualizar-solicitud-serv.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {InfoSolicitudServComponent} from './info-solicitud-serv/info-solicitud-s
             DetallesSolicitudServComponent,
             DetalleContratoComponent,
             DetalleReferenciaComponent,
-            InfoSolicitudServComponent
+            InfoSolicitudServComponent,
+            ActualizarSolicitudServComponent
         ],
     imports:
         [

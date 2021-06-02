@@ -63,6 +63,9 @@ export class InfoSolicitudServComponent implements OnDestroy
                 this._solicitudPrev.sSolicituServ = datos;
                 this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
                 break;
+            case 'reset':
+                this._solicitudPrev.sSolicituServ = null;
+                break;
         }
     }
 

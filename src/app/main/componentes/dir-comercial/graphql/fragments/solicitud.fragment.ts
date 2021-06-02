@@ -18,9 +18,15 @@ export const fragSolicitud = gql`
         almacenamiento
         tarifa
         comentarios
+        observaciones
+        ejecutadaPor
         aprobadoServ
         matArroyoCalle
         matAcera
         pagoServRealizado
+        cliente
+        {
+            nombreCompleto
+        }
     }
 `;

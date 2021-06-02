@@ -3,6 +3,10 @@ import {fuseAnimations} from '@plantilla/animations';
 import {PuentePortalService} from '@services/puente-portal.service';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import Jspdf from 'jspdf';
+import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
+import {MatDialog} from '@angular/material/dialog';
+import {ActualizarSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/actualizar-solicitud-serv/actualizar-solicitud-serv.component';
+import {IModalInfo} from '@funcionesRaiz/modal.interface';
 
 @Component({
     selector: 'app-detalles-solicitud-serv',
@@ -16,23 +20,12 @@ export class DetallesSolicitudServComponent
 {
     @Input() visible = false;
 
-    // @ViewChild(CdkPortal, {static: true}) contenedorPortal: CdkPortal;
-
-    constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState)
+    constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState, private _dr: MatDialog)
     {
 
     }
 
-    // ngOnInit(): void
-    // {
-    //     setTimeout(() => this._puentePortal.setPortal(this.contenedorPortal), 100);
-    // }
-
-    // ngOnDestroy(): void
-    // {
-    //     // this.contenedorPortal.detach();
-    // }
-    generarPagoServ(solicitudServ: any): void
+    generarPagoServ(solicitudServ: ISolicitudServ): void
     {
         const pdf = new Jspdf({orientation: 'l'});
         pdf.text('Solicitud de verificacion de servicios de agua o drenaje', 10, 20);
@@ -42,14 +35,19 @@ export class DetallesSolicitudServComponent
         pdf.autoPrint();
     }
 
-    imprimirOrdenServ(solicitudServ: any): void
+    imprimirOrdenServ(solicitudServ: ISolicitudServ): void
     {
 
     }
 
-    actualizarOrden(solicitudServ: any): void
+    actualizarOrden(solicitudServ: ISolicitudServ): void
     {
-
+        const data: IModalInfo =
+            {
+                esReg: false,
+                datos: solicitudServ
+            };
+        this._dr.open(ActualizarSolicitudServComponent, {width: '45%', data});
     }
 
     generarContrato(solicitudServ: any): void

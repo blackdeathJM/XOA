@@ -7,7 +7,6 @@ import {Observable} from 'rxjs';
 import {ClienteMutationService} from '../services/cliente.mutation.service';
 import {tap} from 'rxjs/operators';
 import {ClienteQueryService} from '@dir-comercial/cliente.query.service';
-import {BehaviorSubject} from 'rxjs';
 
 @StateRepository()
 @State<ICliente>({name: 'Cliente', defaults: null})
@@ -17,18 +16,6 @@ export class ClienteState extends NgxsDataRepository<ICliente>
     constructor(private _clienteMutation: ClienteMutationService, private _clienteQuery: ClienteQueryService)
     {
         super();
-    }
-
-    private cliente$ = new BehaviorSubject<ICliente>(null);
-
-    get gCliente(): Observable<ICliente>
-    {
-        return this.cliente$.asObservable();
-    }
-
-    set sCliente(dato: ICliente)
-    {
-        this.cliente$.next(dato);
     }
 
     @DataAction() regCliente(@Payload('Registrar cliente') cliente: ICliente): Observable<IResCliente>
@@ -48,10 +35,5 @@ export class ClienteState extends NgxsDataRepository<ICliente>
                 this.ctx.setState(res.documento);
             }
         }));
-    }
-
-    @DataAction() cliente(@Payload('Cliente') cliente: ICliente): void
-    {
-        this.ctx.setState(cliente);
     }
 }

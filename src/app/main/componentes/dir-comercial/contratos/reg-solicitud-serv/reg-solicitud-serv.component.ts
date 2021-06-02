@@ -39,15 +39,19 @@ export class RegSolicitudServComponent implements OnInit
         colonia: ['', RxwebValidators.required({message: 'La colonia es requerido'})],
         entreCalles: [''],
         referencia: [''],
-        servSolicitado: ['', RxwebValidators.required({message: 'El tipo de servicio es requerido'})],
-        almacenamiento: ['', RxwebValidators.required({message: 'El almacenamiento es requerido'})],
-        tipoPredio: ['', RxwebValidators.required({message: 'El predio es requerido'})],
-        tarifa: ['', RxwebValidators.required({message: 'La tarifa es requerida'})],
+        observaciones: [''],
         areaPredio: [0, validarNum(true)],
         areaConstruida: [0, validarNum(true)],
         matArroyoCalle: ['', RxwebValidators.required({message: 'Este campo es requerido'})],
         matAcera: ['', RxwebValidators.required({message: 'Este campo es requerido'})],
         medidorRef: ['']
+    });
+
+    formDatosTecnicos: FormGroup = this._fb.group({
+        servSolicitado: ['', RxwebValidators.required({message: 'El tipo de servicio es requerido'})],
+        almacenamiento: ['', RxwebValidators.required({message: 'El almacenamiento es requerido'})],
+        tipoPredio: ['', RxwebValidators.required({message: 'El predio es requerido'})],
+        tarifa: ['', RxwebValidators.required({message: 'La tarifa es requerida'})],
     });
 
     ngOnInit(): void
@@ -68,7 +72,9 @@ export class RegSolicitudServComponent implements OnInit
         const modSolicitudServ: ISolicitudServ =
             {
                 idCliente: this.data.datos._id,
-                ...this.formSolicitud.value
+                pagoServRealizado: false,
+                ...this.formSolicitud.value,
+                ...this.formDatosTecnicos.value
             };
 
         this._solicitudServState.regSolicitudServ(modSolicitudServ).subscribe((res: IResSolicitud) =>

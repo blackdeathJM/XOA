@@ -1,3 +1,5 @@
+import {ICliente} from '@dir-comercial/cliente.interface';
+
 export interface ISolicitudServ
 {
     _id: string;
@@ -15,10 +17,13 @@ export interface ISolicitudServ
     almacenamiento: string;
     tarifa: string;
     comentarios: string;
+    observaciones: string;
+    ejecutadaPor: string;
     aprobadoServ: boolean;
     matArroyoCalle: string;
     matAcera: string;
     pagoServRealizado: boolean;
+    cliente?: ICliente;
 }
 
 export interface IResSolicitud

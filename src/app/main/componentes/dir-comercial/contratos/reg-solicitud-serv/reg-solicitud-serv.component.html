@@ -1,97 +1,131 @@
 <div class="h1 message-box mat-elevation-z14" fxLayoutAlign="center center">{{nombreCliente | titlecase}}</div>
 
-<div class="baseDiv">
-    <form [formGroup]="formSolicitud">
-        <div fxLayoutAlign="start" fxLayoutGap="8px">
+<mat-horizontal-stepper class="fuse-navy-800" linear>
+    <mat-step [stepControl]="formSolicitud" errorMessage="Verifica los campos que son requeridos">
+        <form [formGroup]="formSolicitud">
+            <ng-template matStepLabel>Solicitud de servicio</ng-template>
+            <div fxLayoutAlign="start" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Calle y numero</mat-label>
+                    <input matInput formControlName="calle">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Colonia</mat-label>
+                    <input matInput formControlName="colonia">
+                </mat-form-field>
+            </div>
             <mat-form-field>
-                <mat-label>Calle y numero</mat-label>
-                <input matInput formControlName="calle">
+                <mat-label>Entre que calles</mat-label>
+                <input matInput formControlName="entreCalles">
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Colonia</mat-label>
-                <input matInput formControlName="colonia">
+                <mat-label>Referencia del domicilio</mat-label>
+                <input matInput formControlName="referencia">
             </mat-form-field>
-        </div>
-        <mat-form-field>
-            <mat-label>Entre que calles</mat-label>
-            <input matInput formControlName="entreCalles">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Referencia del domicilio</mat-label>
-            <input matInput formControlName="referencia">
-        </mat-form-field>
-        <div fxLayoutAlign="start" fxLayoutGap="8px">
+            <div fxLayoutAlign="start" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Area del predio</mat-label>
+                    <input type="number" matInput formControlName="areaPredio"/>
+                    <span matSuffix>&nbsp;&nbsp;Mts2</span>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Area construida</mat-label>
+                    <input type="number" matInput formControlName="areaConstruida"/>
+                    <span matSuffix>&nbsp;&nbsp;Mts2</span>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="start" fxLayoutGap="8px">
+                <mat-form-field>
+                    <mat-label>Material del arroyo de calle</mat-label>
+                    <input matInput formControlName="matArroyoCalle"/>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Material acera</mat-label>
+                    <input matInput formControlName="matAcera"/>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center center">Observaciones</div>
             <mat-form-field>
-                <mat-label>Area del predio</mat-label>
-                <input type="number" matInput formControlName="areaPredio"/>
-                <span matSuffix>&nbsp;&nbsp;Mts2</span>
+                <textarea matInput formControlName="observaciones"></textarea>
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Area construida</mat-label>
-                <input type="number" matInput formControlName="areaConstruida"/>
-                <span matSuffix>&nbsp;&nbsp;Mts2</span>
+                <mat-label>Medidor referencia</mat-label>
+                <input matInput formControlName="medidorRef">
             </mat-form-field>
-        </div>
-        <div fxLayoutAlign="start" fxLayoutGap="8px">
-            <mat-form-field>
-                <mat-label>Material del arroyo de calle</mat-label>
-                <input matInput formControlName="matArroyoCalle"/>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Material acera</mat-label>
-                <input matInput formControlName="matAcera"/>
-            </mat-form-field>
-        </div>
-        <mat-form-field>
-            <mat-label>Medidor referencia</mat-label>
-            <input matInput formControlName="medidorRef">
-        </mat-form-field>
-        <div class="my-8">
-            <label>Servicio solicitado</label>
-            <mat-button-toggle-group formControlName="servSolicitado">
-                <mat-button-toggle fxFlex="1 0 auto" *ngFor="let serv of servicios" [value]="serv.servicio">
-                    <mat-icon class="blue-fg">{{serv.icono}}</mat-icon>
-                    {{serv.servicio}}
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="my-8">
-            <label>Tipo del predio</label>
-            <mat-button-toggle-group formControlName="tipoPredio">
-                <mat-button-toggle fxFlex="1 0 auto" *ngFor="let tp of tiposDePredio" [value]="tp.tipo">
-                    <mat-icon class="light-green-fg">{{tp.icono}}</mat-icon>
-                    {{tp.tipo}}
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="my-8">
-            <label>Almacenamiento</label>
-            <mat-button-toggle-group formControlName="almacenamiento">
-                <mat-button-toggle fxFlex="1 0 auto" *ngFor="let a of alm" [value]="a.tipo">
-                    <mat-icon class="purple-fg">{{a.icono}}</mat-icon>
-                    {{a.tipo}}
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="my-8">
-            <label>Tarifa</label>
-            <mat-button-toggle-group formControlName="tarifa">
-                <mat-button-toggle fxFlex="1 0 auto" *ngFor="let ta of tarifas" [value]="ta.tarifa">
-                    <mat-icon class="brown-400-fg">{{ta.icono}}</mat-icon>
-                    {{ta.tarifa}}
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-    </form>
-</div>
+            <mat-action-row>
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperNext [disabled]="formSolicitud.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-step>
+    <mat-step>
+        <form [formGroup]="formDatosTecnicos">
+            <ng-template matStepLabel>Datos tecnicos</ng-template>
 
-<mat-action-row fxLayoutAlign="start" fxLayoutGap="8px" class="baseDiv mt-5">
-    <button fxFlex="1 0 auto" mat-raised-button color="warn" matDialogClose="true">
-        <mat-icon>close</mat-icon>
-        Cancelar
-    </button>
-    <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" [disabled]="formSolicitud.invalid" (click)="regSolicitudServ()">Guardar</mat-spinner-button>
-</mat-action-row>
+            <div class="my-8">
+                <label>Servicio solicitado</label>
+                <mat-button-toggle-group formControlName="servSolicitado">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let serv of servicios" [value]="serv.servicio">
+                        <mat-icon class="blue-fg">{{serv.icono}}</mat-icon>
+                        {{serv.servicio}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="my-8">
+                <label>Tipo del predio</label>
+                <mat-button-toggle-group formControlName="tipoPredio">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let tp of tiposDePredio" [value]="tp.tipo">
+                        <mat-icon class="light-green-fg">{{tp.icono}}</mat-icon>
+                        {{tp.tipo}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="my-8">
+                <label>Almacenamiento</label>
+                <mat-button-toggle-group formControlName="almacenamiento">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let a of alm" [value]="a.tipo">
+                        <mat-icon class="purple-fg">{{a.icono}}</mat-icon>
+                        {{a.tipo}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="my-8">
+                <label>Tarifa</label>
+                <mat-button-toggle-group formControlName="tarifa">
+                    <mat-button-toggle fxFlex="1 0 auto" *ngFor="let ta of tarifas" [value]="ta.tarifa">
+                        <mat-icon class="brown-400-fg">{{ta.icono}}</mat-icon>
+                        {{ta.tarifa}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <mat-action-row fxLayoutAlign="space-between" fxLayoutGap="8px">
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Anterior
+                </button>
+                <button mat-raised-button color="accent" fxFlex="1 0 auto" matStepperNext [disabled]="formDatosTecnicos.invalid">
+                    Siguiente
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </mat-action-row>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Correcto</ng-template>
+        <div fxLayoutAlign="center center" fxFill style="height: 110px">
+            <img src="assets/images/varios/contratosOk.svg" alt="">
+        </div>
+        <mat-action-row fxLayoutGap="8px">
+            <button fxFlex="50" mat-raised-button color="warn" matDialogClose="true">
+                <mat-icon>close</mat-icon>
+                Cancelar
+            </button>
+            <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" (click)="regSolicitudServ()">Guardar</mat-spinner-button>
+        </mat-action-row>
+    </mat-step>
+</mat-horizontal-stepper>
