@@ -1,6 +1,6 @@
 <ng-container *ngIf="_solicitudServ.gSolicituServ | async as solicitudServ">
     <div fxLayoutAlign="center center">
-        <section [@animate]="{value: '*', params: {y: '100%'}}" class="baseDiv m-5 w-90-p">
+        <section [@animate]="{value: '*', params: {y: '100%'}}" class="baseDiv w-90-p">
             <div fxFill>
                 <span fxFlex="20" class="form-etiquetas">Nombre:</span>
                 <span fxFlex class="form-datos">Nombre completo del cliente</span>
@@ -79,7 +79,7 @@
                     </button>
                     <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(solicitudServ)">
                         <mat-icon>print</mat-icon>
-                        Imprimir
+                        Imprimir orden
                     </button>
                     <button mat-raised-button fxFlex="1 0 auto" class="lime" (click)="actualizarOrden(solicitudServ)">
                         <mat-icon>autorenew</mat-icon>

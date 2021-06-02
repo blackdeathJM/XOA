@@ -20,18 +20,6 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
         super();
     }
 
-    private cliente$ = new BehaviorSubject<ICliente>(null);
-
-    get gCliente(): Observable<ICliente>
-    {
-        return this.cliente$.asObservable();
-    }
-
-    set sCliente(dato: ICliente)
-    {
-        this.cliente$.next(dato);
-    }
-
     cargando = false;
 
     @DataAction() clientesPorCriterio(@Payload('Buscar por criterio') criterio: string): Observable<IResCliente>
