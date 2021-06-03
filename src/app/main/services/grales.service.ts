@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2';
 import {Router} from '@angular/router';
 import {FormGroup} from '@angular/forms';
-import {mean, toArray} from 'lodash-es';
+import {findIndex, indexOf, mean, toArray} from 'lodash-es';
 import {Chart} from 'chart.js';
 import {Role} from '@modelosUsuarios/usuario.interface';
 import {environment} from '@env/environment';
 import {IDatasets} from '@funcionesRaiz/graficas';
 import {DataStateContext} from '@ngxs-labs/data/typings';
 import {IOpcionesCarga} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
+import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -123,6 +124,12 @@ export class GralesServices
     static nvoEdo(idDoc: string, ctx: DataStateContext<any>): any
     {
         return ctx.getState().filter(id => id._id !== idDoc);
+    }
+
+    static nvoEdoReemplazando(ctx: DataStateContext<any>): any
+    {
+        const indice = findIndex(ctx.getState(), (i: any) => i._id === '');
+        console.log('indice', indice);
     }
 
     static opcCargaImg(prefijo: string): IOpcionesCarga

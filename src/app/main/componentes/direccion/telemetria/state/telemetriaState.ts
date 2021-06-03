@@ -166,5 +166,6 @@ export class TelemetriaState extends NgxsDataRepository<IInstalacion[]>
     @DataAction() listaInst(): Observable<IResInstalacion>
     {
         return this._instQuery.todasInstalaciones().pipe(tap((res: IResInstalacion) => this.setState(res.documentos)));
+
     }
 }

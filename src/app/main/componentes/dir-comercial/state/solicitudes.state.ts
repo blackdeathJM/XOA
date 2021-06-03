@@ -8,6 +8,7 @@ import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutati
 import {tap} from 'rxjs/operators';
 import {SolicitudServQueryService} from '@dir-comercial/solicitud-serv.query.service';
 import {patch, updateItem} from '@ngxs/store/operators';
+import {GralesServices} from '@services/grales.service';
 
 @StateRepository()
 @State<ISolicitudServ[]>({name: 'SolicitudServicio', defaults: []})
@@ -47,6 +48,8 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
             {
                 this.ctx.setState(res.documentos);
                 this.cargando = false;
+
+                GralesServices.nvoEdoReemplazando(this.ctx);
             }
         }));
     }
@@ -56,7 +59,6 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
         return this._solicitudMutation.aprovRechSolicitud(_id, valor).pipe(tap((res: IResSolicitud) =>
         {
             this.ctx.setState(patch(updateItem((solicitud: ISolicitudServ) => solicitud._id === _id, res.documento)));
-            console.log('estado', this.ctx.getState());
         }));
     }
 }
