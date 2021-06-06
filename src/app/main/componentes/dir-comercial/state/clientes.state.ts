@@ -8,7 +8,6 @@ import {ClienteQueryService} from '../services/cliente.query.service';
 import {tap} from 'rxjs/operators';
 import {GralesServices} from '@services/grales.service';
 import {ClienteMutationService} from '@dir-comercial/cliente.mutation.service';
-import {BehaviorSubject} from 'rxjs';
 
 @StateRepository()
 @State<ICliente[]>({name: 'Clientes', defaults: []})

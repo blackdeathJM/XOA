@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
@@ -11,7 +11,6 @@ import {fuseAnimations} from '@plantilla/animations';
     selector: 'app-info-solicitud-serv',
     templateUrl: './info-solicitud-serv.component.html',
     styleUrls: ['./info-solicitud-serv.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
 export class InfoSolicitudServComponent implements OnDestroy
