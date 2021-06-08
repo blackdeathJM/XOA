@@ -87,7 +87,9 @@
                         Pago verificacion de servicio
                     </button>
                     <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(solicitudServ)" [disabled]="!solicitudServ?.pagoServRealizado">
-                        <mat-icon>print</mat-icon>
+                        <ng-container *ngIf="!cargandoDatos; else cargando">
+                            <mat-icon>print</mat-icon>
+                        </ng-container>
                         Imprimir orden
                     </button>
                     <button mat-raised-button fxFlex="1 0 auto" class="lime" (click)="actualizarOrden(solicitudServ)" [disabled]="!solicitudServ?.pagoServRealizado">
@@ -103,3 +105,9 @@
         </section>
     </div>
 </ng-container>
+
+<ng-template #cargando>
+    <mat-icon>
+        <mat-progress-spinner mode="indeterminate" diameter="20"></mat-progress-spinner>
+    </mat-icon>
+</ng-template>

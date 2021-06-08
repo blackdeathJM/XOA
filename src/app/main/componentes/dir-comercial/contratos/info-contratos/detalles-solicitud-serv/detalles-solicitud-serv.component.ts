@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 import {PuentePortalService} from '@services/puente-portal.service';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
@@ -9,8 +9,10 @@ import {ActualizarSolicitudServComponent} from '@dir-comercial/reg-solicitud-ser
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {Canvas, Columns, Img, Line, PdfMakeWrapper, Rect, Stack, Txt} from 'pdfmake-wrapper';
 import organismo from 'assets/organismo/organismo.json';
-import {IContrato} from '@dir-comercial/cliente.interface';
+import {ICliente, IContrato, IResCliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
+import {Subscription} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-detalles-solicitud-serv',
@@ -20,9 +22,12 @@ import {ClienteState} from '@dir-comercial/cliente.state';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
-export class DetallesSolicitudServComponent
+export class DetallesSolicitudServComponent implements OnDestroy
 {
     @Input() visible = false;
+    subscripciones: Subscription = new Subscription();
+    datosRef: ICliente;
+    cargandoDatos = false;
 
     constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState, private _dr: MatDialog,
                 private _clienteState: ClienteState)
@@ -40,15 +45,18 @@ export class DetallesSolicitudServComponent
         this._solicitudServ.aprovRechSolicitud(solicitudServ._id, true).subscribe();
     }
 
-    async imprimirOrdenServ(solicitudServ: ISolicitudServ): Promise<void>
+    imprimirOrdenServ(solicitudServ: ISolicitudServ): void
     {
         // const pdf = new JsPDF({orientation: 'p', unit: 'cm'});
         // pdf.text('Sistema Municipal', 10, 10, {baseline: 'middle', maxWidth: 200}, null);
         // pdf.save();
-
-        const contrato = await this._clienteState.snapshot.contratos.filter(v => v.noMedidor === solicitudServ.medidorRef);
-
-        this.crearOrdenServicio(solicitudServ, contrato[0]).then();
+        this.cargandoDatos = true;
+        this.subscripciones.add(this._clienteState.datosRef(solicitudServ.medidorRef).pipe(tap((res: IResCliente) =>
+        {
+            this.cargandoDatos = false;
+            // this.crearOrdenServicio(solicitudServ, res.documento.contratos[0]).then();
+            console.log('+++++++++++', res.documento);
+        })).subscribe());
     }
 
     actualizarOrden(solicitudServ: ISolicitudServ): void
@@ -111,5 +119,10 @@ export class DetallesSolicitudServComponent
         pdf.add(new Columns([`Medidor de referencia: --- Falta de colocar`, `No. Cuenta: --- falta de colocar`]).end);
         pdf.add('Referencia: --- Colocar referencia');
         pdf.create().open();
+    }
+
+    ngOnDestroy(): void
+    {
+        this.subscripciones.unsubscribe();
     }
 }
