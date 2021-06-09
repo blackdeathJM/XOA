@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import Swal from 'sweetalert2/dist/sweetalert2';
 import {TelemetriaState} from '@telemetria/telemetriaState';
@@ -16,7 +15,7 @@ import {IBajaEquipo} from '@telemetria/equipo-electrico-interface';
 })
 export class BajaEquipoComponent
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     formFecha: FormGroup = this._fb.group({
         fecha: [null, Validators.required],
         motivoRetiro: [null, Validators.required]
@@ -29,7 +28,7 @@ export class BajaEquipoComponent
 
     baja(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardado');
+        this.estaCargando = true;
         Swal.fire({
             title: 'Baja equipo',
             text: `Confirma que deseas dar de baja este ${this.data.equipo}?`,
@@ -49,7 +48,7 @@ export class BajaEquipoComponent
                     {
                         if (m.estatus)
                         {
-                            this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                            this.estaCargando = false;
                             Swal.fire(
                                 {
                                     title: 'Baja correcta',

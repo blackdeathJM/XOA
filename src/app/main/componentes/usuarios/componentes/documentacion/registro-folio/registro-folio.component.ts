@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {IDocExt} from '../../../../direccion/documentos/models/docExt.interface';
 import {ProcesosDoc} from '@Config/enums';
 import {DocsUsuarioFolioState} from '@usuarios/state/docs-folios.state';
@@ -24,7 +23,7 @@ import {Subscription} from 'rxjs';
 })
 export class RegistroFolioComponent implements OnDestroy
 {
-    opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Generar y guardar');
+    estaCargando = false;
     subscripciones: Subscription = new Subscription();
     tiposDoc: string[] = Object.values(TIPOS_DOC);
     modeloDocs: IDocExt =
@@ -63,7 +62,7 @@ export class RegistroFolioComponent implements OnDestroy
     {
         this.subscripciones.add(this._deptosState.listaDeptos().subscribe(async (deptos) =>
         {
-            this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+            this.estaCargando = true;
             this.modeloDocs.dependencia = this.formFolios.get('dependencia').value;
             this.modeloDocs.asunto = this.formFolios.get('asunto').value;
             this.modeloDocs.comentario = this.formFolios.get('comentario').value;
@@ -80,7 +79,7 @@ export class RegistroFolioComponent implements OnDestroy
             this.subscripciones.add(this._docsFoliosState.regFolio(this.modeloDocs, parseInt(this.formFolios.get('refDoc').value, 10))
                 .subscribe(res =>
                 {
-                    this.opcionesButtonSpinner = botonGuardarConfig(false, 'save');
+                    this.estaCargando = false;
                     if (res.estatus)
                     {
                         toastSweet(TipoAlerta.satisfactorio, `Tu folio se ha generado correctamente, puedes consultarlo

@@ -39,6 +39,7 @@ import {TelemetriaState} from '@telemetria/telemetriaState';
 import { OrdenesTrabTeleComponent } from '@telemetria/ordenes-trab-tele/ordenes-trab-tele.component';
 import { OrdenesTrabajoState } from '@dir-area-tecnica/state/ordenes-trabajo.state';
 import { OrdenesTrabajoModule } from '@dir-area-tecnica/ordenes-trabajo.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { OrdenesTrabajoModule } from '@dir-area-tecnica/ordenes-trabajo.module';
             CfeModule,
             ComparativasModule,
             ComponentesCompartidosModule,
-            OrdenesTrabajoModule
+            OrdenesTrabajoModule,
+            CtrlsModule
         ]
 })
 export class TelemetriaModule

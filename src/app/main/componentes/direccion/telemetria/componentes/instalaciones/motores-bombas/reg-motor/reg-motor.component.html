@@ -1,4 +1,7 @@
 <form [formGroup]='formMotor'>
+    <section>
+
+    </section>
     <div fxLayout='row' fxFill>
         <mat-form-field [appearance]='_apariencia'>
             <mat-label>No. serie</mat-label>
@@ -68,11 +71,7 @@
             <mat-datepicker #fechaInstalacionMotor></mat-datepicker>
         </mat-form-field>
     </div>
-    <mat-action-row fxLayoutGap='8px' *ngIf='!_ocultarAcciones'>
-        <button fxFlex='50' mat-raised-button color='warn' matDialogClose='true'>
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <mat-spinner-button fxFlex='50' [options]='opcionesButtonSpinner' [disabled]='this.formMotor.invalid' (click)='regMotor()'>Guardar</mat-spinner-button>
-    </mat-action-row>
 </form>
+<app-reg-modales *ngIf="_ocultarAcciones" (registro)="regMotor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMotor.invalid"
+                 [cargandoDatos]="estaCargando">
+</app-reg-modales>

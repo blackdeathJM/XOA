@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {IParams, IParamsCtrls} from '@telemetria/parametros-electricos-interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
@@ -19,7 +18,7 @@ import {TelemetriaState} from '@telemetria/telemetriaState';
 })
 export class RegLecturaComponent
 {
-    opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardar', 'button');
+    estaCargando = false;
 
 
     modeloParams: IParams;
@@ -41,7 +40,7 @@ export class RegLecturaComponent
 
     nvoParametro(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this.estaCargando = true;
         const {date, month, year} = this.formFecha.get('fechaReg').value._i;
 
         const promedio = GralesServices.obtenerPromedios(this.formParametros).toFixed(2);
@@ -62,13 +61,13 @@ export class RegLecturaComponent
             {
                 if (param.mensaje.includes('encontrado'))
                 {
-                    this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                    this.estaCargando = false;
                     toastSweet(TipoAlerta.alerta, `No puedes registrar estos valores porque coincide la fecha de
                     registro con una ya existente`, 5000);
 
                 } else
                 {
-                    this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                    this.estaCargando = false;
                     toastSweet(TipoAlerta.satisfactorio, param.mensaje, 5000);
                     this.cerrarModal();
                 }

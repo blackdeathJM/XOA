@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {FormBuilder, Validators} from '@angular/forms';
 import {NumericValueType, RxwebValidators} from '@rxweb/reactive-form-validators';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
@@ -41,12 +40,13 @@ export class RegInstalacionComponent implements OnDestroy, OnInit, OnChanges
         this._instSele = val;
     }
 
+    @Input() clase = 'baseDiv';
     _soloLectura = false;
     _ocultarAcciones = false;
     _apariencia: MatFormFieldAppearance = 'legacy';
     _instSele: IInstalacion;
 
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloInstalacion: IInstalacion;
 
     subscripcion: Subscription = new Subscription();
@@ -80,7 +80,7 @@ export class RegInstalacionComponent implements OnDestroy, OnInit, OnChanges
 
     regEditInstalacion(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         this.modeloInstalacion =
             {
                 _id: this.formInstalacion.get('_id').value,
@@ -100,12 +100,12 @@ export class RegInstalacionComponent implements OnDestroy, OnInit, OnChanges
         {
             if (instalacion.estatus)
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Elemento guardado');
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.satisfactorio, instalacion.mensaje, 5000);
                 this.cerrarModal();
             } else
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Error de guardado');
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.error, instalacion.mensaje, 5000);
                 this.cerrarModal();
             }

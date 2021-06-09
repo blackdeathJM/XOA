@@ -8,6 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from '@ui-externos/material/material.module';
 import {WingetsModule} from '@shared/widgets/wingets.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from '@angular/forms';
             FlexLayoutModule,
             MaterialModule,
             WingetsModule,
-            ReactiveFormsModule
+            ReactiveFormsModule,
+            CtrlsModule
         ]
 })
 export class LecturasParametrosModule

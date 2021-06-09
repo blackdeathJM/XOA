@@ -7,7 +7,6 @@ import {TelemetriaState} from '@telemetria/telemetriaState';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {IAccEquipo, IMotor} from '@telemetria/equipo-electrico-interface';
 import {fuseAnimations} from '@plantilla/animations';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {v4 as uuidv4} from 'uuid';
 import moment from 'moment';
 import {validarNum} from '@services/validacionCampos';
@@ -49,7 +48,7 @@ export class RegMotorComponent implements OnInit, OnDestroy, OnChanges
     _apariencia: MatFormFieldAppearance = 'legacy';
     _motorSele: IMotor;
 
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloMotor: IMotor;
 
     subscripcion: Subscription = new Subscription();
@@ -84,7 +83,7 @@ export class RegMotorComponent implements OnInit, OnDestroy, OnChanges
 
     regMotor(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         this.modeloMotor = this.formMotor.value;
         if (this.data.nombreMutacion === 'regMotor')
         {
@@ -109,12 +108,12 @@ export class RegMotorComponent implements OnInit, OnDestroy, OnChanges
         {
             if (res.documento)
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
                 this.cerrarModal();
             } else
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.error, res.mensaje, 5000);
                 this.cerrarModal();
             }

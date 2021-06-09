@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 import {MatFormFieldAppearance} from '@angular/material/form-field';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {Subscription} from 'rxjs';
 import {IAccEquipo, IBomba} from '@telemetria/equipo-electrico-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -50,7 +49,7 @@ export class RegBombaComponent implements OnInit, OnChanges, OnDestroy
     _bombaSele: IBomba;
     _apariencia: MatFormFieldAppearance = 'legacy';
 
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloBomba: IBomba;
     subscripcion: Subscription = new Subscription();
 
@@ -86,7 +85,7 @@ export class RegBombaComponent implements OnInit, OnChanges, OnDestroy
 
     regBomba(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this.estaCargando = true;
         this.modeloBomba = this.formBomba.value;
         if (this.data.nombreMutacion === 'regBomba')
         {
@@ -109,12 +108,12 @@ export class RegBombaComponent implements OnInit, OnChanges, OnDestroy
         {
             if (res.documento)
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
                 this.cerrarModal();
             } else
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
                 toastSweet(TipoAlerta.error, res.mensaje, 5000);
                 this.cerrarModal();
             }

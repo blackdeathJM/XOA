@@ -28,12 +28,7 @@
     </div>
 </form>
 
-<mat-action-row fxLayoutGap="8px" class="baseDiv mt-8 p-12">
-    <button fxFlex mat-raised-button color="warn" matDialogClose="true">
-        <mat-icon>close</mat-icon>
-        Cancelar
-    </button>
-    <mat-spinner-button fxFlex [options]="opcionesButtonSpinner"
-                        [disabled]="this.formParametros.invalid || this.formFecha.invalid" (click)="nvoParametro()">Guardar
-    </mat-spinner-button>
-</mat-action-row>
+<app-reg-modales (registro)="nvoParametro()" (cancelar)="cerrarModal()"
+                 [cargandoDatos]="estaCargando"
+                 [deshabilitar]="this.formParametros.invalid || this.formFecha.invalid">
+</app-reg-modales>

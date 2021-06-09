@@ -9,6 +9,7 @@ import {GraficaLectMedicionComponent} from './grafica-lect-medicion/grafica-lect
 import {PlantillasModule} from '@shared/plantillas/plantillas.module';
 import {TablaLectMedComponent} from './tabla-lect-med/tabla-lect-med.component';
 import {WingetsModule} from '@shared/widgets/wingets.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {WingetsModule} from '@shared/widgets/wingets.module';
         MaterialModule,
         ReactiveFormsModule,
         PlantillasModule,
-        WingetsModule
+        WingetsModule,
+        CtrlsModule
     ]
 })
 export class LecturasMedicionesModule

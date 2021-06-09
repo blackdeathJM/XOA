@@ -22,15 +22,7 @@
             </mat-form-field>
         </div>
     </ng-container>
-
-    <mat-action-row fxLayoutGap="8px">
-        <mat-spinner-button (click)="regLecturas()" [disabled]="this.formLecturasMacro.invalid" [options]="opcionesButtonSpinner"
-                            fxFlex="50">Guardar
-        </mat-spinner-button>
-        <button color="warn" fxFlex="50" mat-raised-button matDialogClose="true">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-    </mat-action-row>
 </form>
 
+<app-reg-modales (registro)="regLecturas()" (cancelar)="cerrarModal()" [deshabilitar]="this.formLecturasMacro.invalid" [cargandoDatos]="estaCargando">
+</app-reg-modales>

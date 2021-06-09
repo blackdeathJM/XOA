@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, Inject, ViewEncapsulation} from '@an
 import {ILecturas, IParamsMediciones} from '@telemetria/lecturas-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
@@ -25,7 +24,7 @@ export class RegMedicionComponent
         lectura: [0, validarNum(true, null, null, null)],
         lecturaAnterior: [0, validarNum(true, null, null, null)]
     });
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
 
     constructor(private _fb: FormBuilder, private _teleState: TelemetriaState, private _dialogRef: MatDialog,
                 @Inject(MAT_DIALOG_DATA) public data: IParamsMediciones)
@@ -34,7 +33,7 @@ export class RegMedicionComponent
 
     regLecturas(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this.estaCargando = true;
         const {year, month} = this.formLecturasMacro.value.fechaRegistro._i;
         const mes: string = GralesServices.convertirMes(month + 1);
 
@@ -66,14 +65,14 @@ export class RegMedicionComponent
 
                         if (lect.mensaje.includes('encontrado'))
                         {
-                            this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                            this.estaCargando = false;
                             toastSweet(TipoAlerta.alerta, 'Ya existe un registro con ese ano', 5000);
                             this.cerrarModal();
                         } else
                         {
                             if (lect.estatus)
                             {
-                                this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                                this.estaCargando = false;
                                 toastSweet(TipoAlerta.satisfactorio, lect.mensaje, 5000);
                                 this.cerrarModal();
                             }
@@ -111,14 +110,14 @@ export class RegMedicionComponent
                     {
                         if (res.estatus)
                         {
-                            this.opcionesButtonSpinner = botonGuardarConfig(false);
+                            this.estaCargando = false;
                             toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
                             this.cerrarModal();
                         }
                     });
             } else
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
                 this.formLecturasMacro.reset();
                 toastSweet(TipoAlerta.alerta, 'El año que ingresaste no correspone con el seleccionado', 5000);
             }

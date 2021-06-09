@@ -17,6 +17,7 @@ import {DocsUsuarioFolioState} from '@usuarios/state/docs-folios.state';
 import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
 import {PlantillasModule} from '@shared/plantillas/plantillas.module';
 import {WingetsModule} from '@shared/widgets/wingets.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 @NgModule({
     declarations:
@@ -42,6 +43,7 @@ import {WingetsModule} from '@shared/widgets/wingets.module';
             PrimeNgModule,
             PlantillasModule,
             WingetsModule,
+            CtrlsModule,
         ]
 })
 export class DocumentacionModule

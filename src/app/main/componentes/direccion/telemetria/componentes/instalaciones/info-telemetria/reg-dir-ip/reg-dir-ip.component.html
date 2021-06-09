@@ -1,15 +1,11 @@
-<form [formGroup]='formEditarIp' (ngSubmit)='regEditarIp()'>
-    <div fxLayout='row'>
-        <mat-form-field fxFill>
-            <mat-label>Direccion ip</mat-label>
-            <input matInput type='text' formControlName='ip'>
-        </mat-form-field>
-    </div>
-    <mat-action-row fxLayoutGap='8px'>
-        <button fxFlex='50' mat-raised-button color='warn' type='button' matDialogClose='true'>
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <mat-spinner-button fxFlex='50' [options]='opcionesButtonSpinner' [disabled]='formEditarIp.invalid'></mat-spinner-button>
-    </mat-action-row>
+<form [formGroup]='formEditarIp'>
+    <section class="baseDiv">
+        <div fxLayout='row'>
+            <mat-form-field fxFill>
+                <mat-label>Direccion ip</mat-label>
+                <input matInput type='text' formControlName='ip'>
+            </mat-form-field>
+        </div>
+    </section>
+    <app-reg-modales (registro)="regEditarIp()" (cancelar)="cerrarModal()" [deshabilitar]="formEditarIp.invalid" [cargandoDatos]="estaCargando"></app-reg-modales>
 </form>

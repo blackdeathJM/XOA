@@ -1,71 +1,69 @@
 <form (ngSubmit)='regEditInstalacion()' [formGroup]='formInstalacion' name='formInstalacion'>
-    <mat-form-field [hidden]='true'>
-        <mat-label>ID</mat-label>
-        <input matInput type='text' formControlName='_id'>
-    </mat-form-field>
-    <div fxLayoutAlign='space-between' fxLayoutGap='8px'>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Fecha que inicio su funcionamiento</mat-label>
-            <input [matDatepicker]='fechaRegistro' formControlName='fechaReg' matInput [readonly]='_soloLectura'
-                   name='fechaReg' placeholder='Fecha que inicio su funcionamiento'>
-            <mat-datepicker-toggle [for]='fechaRegistro' matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #fechaRegistro></mat-datepicker>
+    <section [className]="clase">
+        <mat-form-field [hidden]='true'>
+            <mat-label>ID</mat-label>
+            <input matInput type='text' formControlName='_id'>
         </mat-form-field>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Fecha que termino su funcionamiento</mat-label>
-            <input [matDatepicker]='fechaTerFun' formControlName='fechaRet' matInput [readonly]='_soloLectura'
-                   name='fechaRet' placeholder='Fecha que termino su funcionamiento'>
-            <mat-datepicker-toggle [for]='fechaTerFun' matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #fechaTerFun></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div fxLayout='row' fxLayoutGap='8px' fxLayoutAlign='space-between'>
-        <mat-form-field fxFlex='30' [appearance]='_apariencia'>
-            <mat-label>nombre</mat-label>
-            <input matInput type='text' required formControlName='nombre' [readonly]='_soloLectura'>
-        </mat-form-field>
-        <mat-form-field fxFlex [appearance]='_apariencia'>
-            <mat-label>direccion</mat-label>
-            <input matInput type='text' required formControlName='direccion' [readonly]='_soloLectura'>
-        </mat-form-field>
-        <mat-form-field fxFlex='10' [appearance]='_apariencia'>
-            <mat-label>Numero</mat-label>
-            <input matInput class='ali-numeros' required formControlName='noInstalacion' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;cant</span>
-        </mat-form-field>
-    </div>
-    <div fxLayout='row' fxLayoutGap='8px'>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Profundidad del pozo</mat-label>
-            <input matInput class='ali-numeros' required formControlName='profPozo' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;mts</span>
-        </mat-form-field>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Diametro de la perforacion</mat-label>
-            <input matInput class='ali-numeros' required formControlName='diamPerfo' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;pulg</span>
-        </mat-form-field>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Diametro ADEME</mat-label>
-            <input matInput class='ali-numeros' required formControlName='diamAdeme' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;pulg</span>
-        </mat-form-field>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Diametro Columna</mat-label>
-            <input matInput class='ali-numeros' required formControlName='diamColumna' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;pulg</span>
-        </mat-form-field>
-        <mat-form-field [appearance]='_apariencia'>
-            <mat-label>Longitud de columna</mat-label>
-            <input matInput class='ali-numeros' required formControlName='longColumna' [readonly]='_soloLectura'>
-            <span matSuffix>&nbsp;&nbsp;mts</span>
-        </mat-form-field>
-    </div>
-    <div fxLayoutGap='8px' [hidden]='_ocultarAcciones'>
-        <button fxFlex='50' mat-raised-button color='warn' matDialogClose='true'>
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <mat-spinner-button fxFlex='50' [options]='opcionesButtonSpinner' [disabled]='formInstalacion.invalid'>Guardar</mat-spinner-button>
-    </div>
+        <div fxLayoutAlign='space-between' fxLayoutGap='8px'>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Fecha que inicio su funcionamiento</mat-label>
+                <input [matDatepicker]='fechaRegistro' formControlName='fechaReg' matInput [readonly]='_soloLectura'
+                       name='fechaReg' placeholder='Fecha que inicio su funcionamiento'>
+                <mat-datepicker-toggle [for]='fechaRegistro' matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fechaRegistro></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Fecha que termino su funcionamiento</mat-label>
+                <input [matDatepicker]='fechaTerFun' formControlName='fechaRet' matInput [readonly]='_soloLectura'
+                       name='fechaRet' placeholder='Fecha que termino su funcionamiento'>
+                <mat-datepicker-toggle [for]='fechaTerFun' matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fechaTerFun></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div fxLayout='row' fxLayoutGap='8px' fxLayoutAlign='space-between'>
+            <mat-form-field fxFlex='30' [appearance]='_apariencia'>
+                <mat-label>nombre</mat-label>
+                <input matInput type='text' required formControlName='nombre' [readonly]='_soloLectura'>
+            </mat-form-field>
+            <mat-form-field fxFlex [appearance]='_apariencia'>
+                <mat-label>direccion</mat-label>
+                <input matInput type='text' required formControlName='direccion' [readonly]='_soloLectura'>
+            </mat-form-field>
+            <mat-form-field fxFlex='10' [appearance]='_apariencia'>
+                <mat-label>Numero</mat-label>
+                <input matInput class='ali-numeros' required formControlName='noInstalacion' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;cant</span>
+            </mat-form-field>
+        </div>
+        <div fxLayout='row' fxLayoutGap='8px'>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Profundidad del pozo</mat-label>
+                <input matInput class='ali-numeros' required formControlName='profPozo' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;mts</span>
+            </mat-form-field>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Diametro de la perforacion</mat-label>
+                <input matInput class='ali-numeros' required formControlName='diamPerfo' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;pulg</span>
+            </mat-form-field>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Diametro ADEME</mat-label>
+                <input matInput class='ali-numeros' required formControlName='diamAdeme' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;pulg</span>
+            </mat-form-field>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Diametro Columna</mat-label>
+                <input matInput class='ali-numeros' required formControlName='diamColumna' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;pulg</span>
+            </mat-form-field>
+            <mat-form-field [appearance]='_apariencia'>
+                <mat-label>Longitud de columna</mat-label>
+                <input matInput class='ali-numeros' required formControlName='longColumna' [readonly]='_soloLectura'>
+                <span matSuffix>&nbsp;&nbsp;mts</span>
+            </mat-form-field>
+        </div>
+    </section>
 </form>
+<app-reg-modales *ngIf="!_ocultarAcciones" (registro)="regEditInstalacion()" (cancelar)="cerrarModal()" [deshabilitar]="formInstalacion.invalid"
+                 [cargandoDatos]="estaCargando">
+</app-reg-modales>
