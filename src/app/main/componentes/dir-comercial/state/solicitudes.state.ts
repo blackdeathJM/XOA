@@ -59,4 +59,12 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
             this.ctx.setState(GralesServices.nvoEdoReem(_id, this.ctx, res.documento));
         }));
     }
+
+    @DataAction() actualizarSolicitud(@Payload('Actualizar solicitud') _id: string, observaciones: string, aprobadoServ: boolean, ejecutadaPor: string): Observable<IResSolicitud>
+    {
+        return this._solicitudMutation.actualizarSolicitud(_id, observaciones, aprobadoServ, ejecutadaPor).pipe(tap((res: IResSolicitud) =>
+        {
+            this.ctx.setState(GralesServices.nvoEdoReem(_id, this.ctx, res.documento));
+        }));
+    }
 }

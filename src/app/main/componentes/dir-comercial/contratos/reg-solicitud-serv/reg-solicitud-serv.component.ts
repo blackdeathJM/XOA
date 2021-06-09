@@ -25,7 +25,7 @@ export class RegSolicitudServComponent implements OnInit
     servicios = serv;
     tarifas = t;
     alm = almacenamiento;
-    estaCargando = true;
+    estaCargando = false;
     nombreCliente: string;
 
     constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo, private _solicitudServState: SolicitudesState,

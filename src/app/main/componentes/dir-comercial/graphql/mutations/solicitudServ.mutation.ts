@@ -33,3 +33,19 @@ export const aprovRechSolicitud = gql`
     ${fragSolicitud}
 `;
 
+export const actualizarSolicitud = gql`
+    mutation actualizarSolicitud($_id: ID!, $observaciones: String, $aprobadoServ: Boolean!, $ejecutadaPor: String!)
+    {
+        actualizarSolicitud(_id: $_id, observaciones: $observaciones, aprobadoServ:$aprobadoServ, ejecutadaPor: $ejecutadaPor)
+        {
+            estatus
+            mensaje
+            documento
+            {
+                ...fragSolicitud
+            }
+        }
+    }
+    ${fragSolicitud}
+`;
+
