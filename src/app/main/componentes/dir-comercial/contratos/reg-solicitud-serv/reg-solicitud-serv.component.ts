@@ -9,7 +9,6 @@ import {validarNum} from '@services/validacionCampos';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ICliente} from '@dir-comercial/cliente.interface';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 import {toastSweet} from '@shared/alerts/toasts';
@@ -26,7 +25,7 @@ export class RegSolicitudServComponent implements OnInit
     servicios = serv;
     tarifas = t;
     alm = almacenamiento;
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = true;
     nombreCliente: string;
 
     constructor(private _fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private data: IModalInfo, private _solicitudServState: SolicitudesState,
@@ -68,7 +67,7 @@ export class RegSolicitudServComponent implements OnInit
 
     regSolicitudServ(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         const modSolicitudServ: ISolicitudServ =
             {
                 idCliente: this.data.datos._id,
@@ -86,7 +85,7 @@ export class RegSolicitudServComponent implements OnInit
             {
                 toastSweet(TipoAlerta.error, 'Ocurrio un error al tratar de crear la solicitud de servicio', 5000);
             }
-            this.opcionesButtonSpinner = botonGuardarConfig(false);
+            this.estaCargando = false;
             this.cerrarModal();
         }, e => toastSweet(TipoAlerta.error, e, 5000));
     }

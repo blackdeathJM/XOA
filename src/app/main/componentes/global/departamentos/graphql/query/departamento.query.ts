@@ -1,16 +1,11 @@
 import {fragDeptos} from '../fragments/fragDepto.fragment';
 import {gql} from 'apollo-angular';
-import {fragPaginacion} from '../../../../../graphql/paginacion.fragment';
 
 export const obtenerDeptos = gql`
-    query obtenerDeptos($pagina: Int, $elementosPorPagina: Int)
+    query
     {
-        obtenerDeptos(pagina: $pagina, elementosPorPagina: $elementosPorPagina)
+        obtenerDeptos
         {
-            info
-            {
-                ...fragPaginacion
-            }
             estatus
             mensaje
             documentos
@@ -19,6 +14,5 @@ export const obtenerDeptos = gql`
             }
         }
     }
-    ${fragPaginacion}
     ${fragDeptos}
 `;

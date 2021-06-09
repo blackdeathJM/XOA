@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {WingetsModule} from '@shared/widgets/wingets.module';
 import {FileUploadModule} from 'ng2-file-upload';
 import {NgxBootstrapModule} from '@ui-externos/ngx-bootstrap/ngx-bootstrap.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 
 
@@ -25,7 +26,8 @@ import {NgxBootstrapModule} from '@ui-externos/ngx-bootstrap/ngx-bootstrap.modul
         ReactiveFormsModule,
         WingetsModule,
         FileUploadModule,
-        NgxBootstrapModule
+        NgxBootstrapModule,
+        CtrlsModule
     ]
 })
 export class CfeModule { }

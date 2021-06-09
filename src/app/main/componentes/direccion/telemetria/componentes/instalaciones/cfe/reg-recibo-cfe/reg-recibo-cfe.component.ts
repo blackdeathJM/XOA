@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IReciboCfeD, IRecibosCfe} from '@telemetria/medidor-interface';
 import {NumericValueType, RxwebValidators} from '@rxweb/reactive-form-validators';
@@ -25,7 +24,7 @@ export class RegReciboCfeComponent implements OnDestroy
     cargaDeArchivo = cargaDeArchivo(false);
 
     lista: any = [];
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     validacionNumerica = RxwebValidators.numeric({acceptValue: NumericValueType.PositiveNumber, allowDecimal: true});
     modeloReciboCfe: IRecibosCfe = {ano: 0, costoKw: 0, dia: 0, imgRecibo: '', lectura: 0, mes: 0, pago: 0};
     subscripcion: Subscription = new Subscription();
@@ -48,7 +47,7 @@ export class RegReciboCfeComponent implements OnDestroy
     {
         if (this.cargaDeArchivo.queue.length > 0)
         {
-            this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+            this.estaCargando = true;
             this.cargaDeArchivo.onBeforeUploadItem = antesDeSubir =>
             {
                 antesDeSubir.file.name = antesDeSubirArchivo(antesDeSubir.file.name, Prefijos.cfe);
@@ -71,14 +70,14 @@ export class RegReciboCfeComponent implements OnDestroy
                     {
                         if (rec.mensaje.includes('encontrado'))
                         {
-                            this.opcionesButtonSpinner = botonGuardarConfig(false);
+                            this.estaCargando = false;
                             this.cargaDeArchivo.clearQueue();
                             toastSweet(TipoAlerta.alerta, 'No puedes registrar el recibo porque ya hay uno con ese mes y ese dia', 5000);
                         } else
                         {
                             if (rec.estatus)
                             {
-                                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                                this.estaCargando = false;
                                 toastSweet(TipoAlerta.satisfactorio, 'El recibo fue registrado con exito', 5000);
                                 this.cerrarModal();
                             }

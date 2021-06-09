@@ -7617,13 +7617,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mat-progress-buttons@^9.2.1:
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/mat-progress-buttons/-/mat-progress-buttons-9.2.1.tgz#9200c200087f460679361d5876b2366bf5f4a574"
-  integrity sha512-q/L2zof/SOrDLxa28iaQlN2PBJ2Z7NoLuWtDZ66VD35L+/QWyILSn+V76WTBhZOh9G8BK0BYTiqZZapMJawI5w==
-  dependencies:
-    tslib "^2.0.0"
-
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"

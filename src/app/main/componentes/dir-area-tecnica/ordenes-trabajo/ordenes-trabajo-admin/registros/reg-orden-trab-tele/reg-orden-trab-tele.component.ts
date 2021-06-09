@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import moment from 'moment';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {Subscription} from 'rxjs';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IOrdenTrabajo, IResOrdenTrabajo, TipoAnomalia} from '../../../models/ordenes-trabajo';
@@ -32,7 +31,7 @@ export class RegOrdenTrabTeleComponent implements OnInit
 {
     fecha = moment().toISOString();
     tipoAnomalia = TipoAnomalia.tele;
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     subscripcion: Subscription = new Subscription();
     departamentoId: IDepartamento[] = [{_id: '', nombre: '', centroGestor: ''}];
     modeloOrdenTele: IOrdenTrabajo;
@@ -63,7 +62,7 @@ export class RegOrdenTrabTeleComponent implements OnInit
     {
         if (this.departamentoId)
         {
-            this.opcionesButtonSpinner = botonGuardarConfig(true);
+            this.estaCargando = true;
             this.modeloOrdenTele =
                 {
                     fechaEjecucion: null,
@@ -88,11 +87,11 @@ export class RegOrdenTrabTeleComponent implements OnInit
                 if (res.estatus)
                 {
                     toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
-                    this.opcionesButtonSpinner = botonGuardarConfig(false);
+                    this.estaCargando = false;
                     this.cerrarModal();
                 } else
                 {
-                    this.opcionesButtonSpinner = botonGuardarConfig(false);
+                    this.estaCargando = false;
                     toastSweet(TipoAlerta.error, res.mensaje, 5000);
                     this.cerrarModal();
                 }
@@ -100,7 +99,7 @@ export class RegOrdenTrabTeleComponent implements OnInit
         } else
         {
             toastSweet(TipoAlerta.alerta, 'no hay departamento seleccionado', 5000);
-            this.opcionesButtonSpinner = botonGuardarConfig(false);
+            this.estaCargando = false;
         }
     }
 

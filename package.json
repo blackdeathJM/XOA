@@ -73,7 +73,6 @@
         "jspdf": "^2.3.1",
         "jspdf-autotable": "^3.5.14",
         "lodash-es": "^4.17.21",
-        "mat-progress-buttons": "^9.2.1",
         "moment": "2.29.1",
         "ng2-file-upload": "^1.4.0",
         "ngx-bootstrap": "^6.2.0",

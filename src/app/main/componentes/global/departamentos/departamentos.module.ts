@@ -9,6 +9,7 @@ import {NgxBootstrapModule} from '@ui-externos/ngx-bootstrap/ngx-bootstrap.modul
 import {FlexModule} from '@angular/flex-layout';
 import {PrimeNgModule} from '@ui-externos/prime-ng/prime-ng.module';
 import {PlantillasModule} from '@shared/plantillas/plantillas.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 @NgModule({
     declarations:
@@ -27,6 +28,7 @@ import {PlantillasModule} from '@shared/plantillas/plantillas.module';
             FlexModule,
             PrimeNgModule,
             PlantillasModule,
+            CtrlsModule,
         ]
 })
 export class DepartamentosModule

@@ -24,8 +24,12 @@
                                    type="password">
                         </mat-form-field>
                         <div fxLayout="row">
-                            <mat-spinner-button [disabled]="formCambiarContrasena.invalid" [options]="opcionesButtonSpinner" fxFill>
-                            </mat-spinner-button>
+                            <button mat-raised-button fxFill [disabled]="formCambiarContrasena.invalid" color="primary">
+                                <ng-container *ngIf="!estaCargando; else cargando">
+                                    <mat-icon>save</mat-icon>
+                                    Cambiar
+                                </ng-container>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -38,3 +42,10 @@
         </div>
     </ng-container>
 </app-card-bootstrap>
+
+<ng-template #cargando>
+    <mat-icon>
+        <mat-progress-spinner diameter="20" mode="indeterminate" color="accent"></mat-progress-spinner>
+        procesando...
+    </mat-icon>
+</ng-template>

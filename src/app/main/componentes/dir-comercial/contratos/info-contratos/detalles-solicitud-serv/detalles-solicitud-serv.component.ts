@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 import {PuentePortalService} from '@services/puente-portal.service';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
@@ -9,7 +9,7 @@ import {ActualizarSolicitudServComponent} from '@dir-comercial/reg-solicitud-ser
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {Canvas, Columns, Img, Line, PdfMakeWrapper, Rect, Stack, Txt} from 'pdfmake-wrapper';
 import organismo from 'assets/organismo/organismo.json';
-import {ICliente, IContrato, IResCliente} from '@dir-comercial/cliente.interface';
+import {ICliente, IResCliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
@@ -18,8 +18,6 @@ import {tap} from 'rxjs/operators';
     selector: 'app-detalles-solicitud-serv',
     templateUrl: './detalles-solicitud-serv.component.html',
     styleUrls: ['./detalles-solicitud-serv.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
 export class DetallesSolicitudServComponent implements OnDestroy
@@ -53,9 +51,9 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this.cargandoDatos = true;
         this.subscripciones.add(this._clienteState.datosRef(solicitudServ.medidorRef).pipe(tap((res: IResCliente) =>
         {
+            this.datosRef = res.documento;
+            this.crearOrdenServicio(solicitudServ, res.documento).then();
             this.cargandoDatos = false;
-            // this.crearOrdenServicio(solicitudServ, res.documento.contratos[0]).then();
-            console.log('+++++++++++', res.documento);
         })).subscribe());
     }
 
@@ -74,7 +72,7 @@ export class DetallesSolicitudServComponent implements OnDestroy
 
     }
 
-    async crearOrdenServicio(solicitud: ISolicitudServ, ref: IContrato): Promise<void>
+    async crearOrdenServicio(solicitud: ISolicitudServ, ref: ICliente): Promise<void>
     {
         const pdf = new PdfMakeWrapper();
         const verificacion = `Verificacion de servicio para contratacion y/o presupuesto`;
@@ -93,14 +91,14 @@ export class DetallesSolicitudServComponent implements OnDestroy
             .alignment('center').end);
         pdf.add(new Canvas([new Line([520, 10], [0, 10]).end]).end);
         pdf.add('\n');
-        pdf.add(new Txt(`Nombre: ${solicitud.cliente.nombreCompleto}`).preserveLeadingSpaces().end);
-        pdf.add(new Columns([`Calle: ${solicitud.calle}`, `Colonia: ${solicitud.colonia}`]).end);
-        pdf.add(`Entre calles: ${solicitud.entreCalles}`);
-        pdf.add(`Referencia: ${solicitud.referencia}`);
-        pdf.add(new Columns([`Servicio solicitado: ${solicitud.servSolicitado}`, `Tipo de predio: ${solicitud.tipoPredio}`]).end);
-        pdf.add(new Columns([`Area del predio: ${solicitud.areaPredio} mt2`, `Area construida: ${solicitud.areaConstruida} mt2`]).end);
-        pdf.add(new Columns([`Almacenamiento: ${solicitud.almacenamiento}`, `Tarifa: ${solicitud.tarifa}`]).end);
-        pdf.add(new Columns([`Material del arroyo de calle: ${solicitud.matArroyoCalle}`, `Material de acera: ${solicitud.matAcera}`]).end);
+        pdf.add(new Txt(`Nombre: ${solicitud.cliente?.nombreCompleto}`).preserveLeadingSpaces().end);
+        pdf.add(new Columns([`Calle: ${solicitud?.calle}`, `Colonia: ${solicitud.colonia}`]).end);
+        pdf.add(`Entre calles: ${solicitud?.entreCalles}`);
+        pdf.add(`Referencia: ${solicitud?.referencia}`);
+        pdf.add(new Columns([`Servicio solicitado: ${solicitud?.servSolicitado}`, `Tipo de predio: ${solicitud?.tipoPredio}`]).end);
+        pdf.add(new Columns([`Area del predio: ${solicitud?.areaPredio} mt2`, `Area construida: ${solicitud.areaConstruida} mt2`]).end);
+        pdf.add(new Columns([`Almacenamiento: ${solicitud?.almacenamiento}`, `Tarifa: ${solicitud.tarifa}`]).end);
+        pdf.add(new Columns([`Material del arroyo de calle: ${solicitud?.matArroyoCalle}`, `Material de acera: ${solicitud?.matAcera}`]).end);
         pdf.add('\n');
         pdf.add(new Txt('Observaciones').alignment('center').end);
         pdf.add(solicitud.observaciones);
@@ -116,8 +114,8 @@ export class DetallesSolicitudServComponent implements OnDestroy
         pdf.add(new Txt('Datos de referencia').alignment('center').relativePosition(0, -21).bold().end);
         pdf.add('\n');
         pdf.add('');
-        pdf.add(new Columns([`Medidor de referencia: --- Falta de colocar`, `No. Cuenta: --- falta de colocar`]).end);
-        pdf.add('Referencia: --- Colocar referencia');
+        pdf.add(new Columns([`Medidor de referencia: ${ref?.contratos[0]?.noMedidor}`, `No. Cuenta: ${ref?.contratos[0]?.noCuenta}`]).end);
+        pdf.add(`Referencia: ${ref?.contratos[0]?.datosSolicitud?.referencia}`);
         pdf.create().open();
     }
 

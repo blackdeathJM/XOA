@@ -12,9 +12,9 @@ export class DeptoQueryService extends ApiService
 {
     constructor(_apollo: Apollo) {super(_apollo); }
 
-    obtenerDeptos(pagina?: number, elementosPorPagina?: number): Observable<IResDepto>
+    obtenerDeptos(): Observable<IResDepto>
     {
-        return this.query(obtenerDeptos, {pagina, elementosPorPagina}, {}, ['data', 'obtenerDeptos']);
+        return this.query(obtenerDeptos, {}, {}, ['data', 'obtenerDeptos']);
     }
 
 }

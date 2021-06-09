@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
@@ -13,7 +12,7 @@ import {IModalInfo} from '@funcionesRaiz/modal.interface';
 })
 export class ActualizarSolicitudServComponent implements OnInit
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     formActSolitudServ: FormGroup = this._fb.group({
         observaciones: ['', RxwebValidators.required({message: 'Este Campo es requerido'})],
         aprobadoServ: [null, RxwebValidators.required({message: 'Selecciona si el servicio fue aprobado'})],
@@ -30,6 +29,11 @@ export class ActualizarSolicitudServComponent implements OnInit
     }
 
     actSolicitud(): void
+    {
+
+    }
+
+    cerrarModal(): void
     {
 
     }

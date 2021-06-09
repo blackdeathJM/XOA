@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {ICliente, IClienteMod, IResCliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
@@ -20,7 +19,7 @@ import {Subscription} from 'rxjs';
 })
 export class RegClienteComponent implements OnDestroy
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloCliente: ICliente;
     sub: Subscription = new Subscription();
     formCliente: FormGroup = this._formBuilder.group({
@@ -58,7 +57,7 @@ export class RegClienteComponent implements OnDestroy
 
     regCliente(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         this.modeloCliente = this.formCliente.value;
 
         if (this.data.esRegistro)
@@ -70,17 +69,17 @@ export class RegClienteComponent implements OnDestroy
                     if (res.mensaje.includes('Documento encontrado'))
                     {
                         toastSweet(TipoAlerta.alerta, 'El documento ya existe, no se puede volver a registrar', 5000);
-                        this.opcionesButtonSpinner = botonGuardarConfig(false);
+                        this.estaCargando = false;
                     } else
                     {
                         toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
-                        this.opcionesButtonSpinner = botonGuardarConfig(false);
+                        this.estaCargando = false;
                         this.cerrarModal();
                     }
                 } else
                 {
                     toastSweet(TipoAlerta.error, res.mensaje, 5000);
-                    this.opcionesButtonSpinner = botonGuardarConfig(false);
+                    this.estaCargando = false;
                     this.cerrarModal();
                 }
             })).subscribe());

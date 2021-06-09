@@ -119,12 +119,6 @@
         <div fxLayoutAlign="center center" fxFill style="height: 110px">
             <img src="assets/images/varios/contratosOk.svg" alt="">
         </div>
-        <mat-action-row fxLayoutGap="8px">
-            <button fxFlex="50" mat-raised-button color="warn" matDialogClose="true">
-                <mat-icon>close</mat-icon>
-                Cancelar
-            </button>
-            <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" (click)="regContrato()">Guardar</mat-spinner-button>
-        </mat-action-row>
+        <app-reg-modales (registro)="regContrato()" (cancelar)="cerrarModal()" [cargandoDatos]="estaCargando"></app-reg-modales>
     </mat-step>
 </mat-horizontal-stepper>

@@ -16,14 +16,7 @@
             <mat-radio-button value="false">La solicitud no se viable</mat-radio-button>
         </mat-radio-group>
     </form>
-
-    <mat-action-row fxLayoutAlign="start" fxLayoutGap="8px" class="baseDiv mt-5">
-        <button fxFlex="1 0 auto" mat-raised-button color="warn" matDialogClose="true">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" [disabled]="formActSolitudServ.invalid" (click)="actSolicitud()">
-            Guardar
-        </mat-spinner-button>
-    </mat-action-row>
 </div>
+
+<app-reg-modales (registro)="actSolicitud()" (cancelar)="cerrarModal()" [deshabilitar]="formActSolitudServ.invalid" [cargandoDatos]="estaCargando">
+</app-reg-modales>

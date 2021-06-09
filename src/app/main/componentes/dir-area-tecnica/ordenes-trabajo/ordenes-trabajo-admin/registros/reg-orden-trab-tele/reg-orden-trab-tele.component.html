@@ -37,12 +37,6 @@
         <div fxLayoutAlign="center center" fxFill>
             <img src="../../../../../../../../assets/images/varios/ok3.svg" alt="ok">
         </div>
-        <div class="mt-8" fxLayoutGap="8px">
-            <button fxFlex="1 0 auto" mat-raised-button color="warn">
-                <mat-icon>cancel</mat-icon>
-                Cancelar
-            </button>
-            <mat-spinner-button fxFlex="1 0 auto" [options]="opcionesButtonSpinner" (click)="regOrdenTele()">Guardar</mat-spinner-button>
-        </div>
+        <app-reg-modales (cancelar)="cerrarModal()" (registro)="regOrdenTele()" [cargandoDatos]="estaCargando"></app-reg-modales>
     </mat-step>
 </mat-horizontal-stepper>

@@ -1,30 +1,26 @@
-<form [formGroup]="formMedidor" (ngSubmit)="regMedidor()">
-    <div fxLayout="row" fxLayoutGap="32px">
-        <mat-form-field fxFlex>
-            <input [matDatepicker]="fechaReg" formControlName="fechaInstalacion" matInput
-                   name="FechaInst" placeholder="Fecha de registro">
-            <mat-datepicker-toggle [for]="fechaReg" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #fechaReg></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field fxFlex>
-            <input [matDatepicker]="fechaRetiro" formControlName="fechaRetiro" matInput
-                   name="FechaRet" placeholder="Fecha de retiro">
-            <mat-datepicker-toggle [for]="fechaRetiro" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #fechaRetiro></mat-datepicker>
-        </mat-form-field>
+<form [formGroup]="formMedidor">
+    <div class="baseDiv">
+        <div fxLayout="row" fxLayoutGap="32px">
+            <mat-form-field fxFlex>
+                <input [matDatepicker]="fechaReg" formControlName="fechaInstalacion" matInput
+                       name="FechaInst" placeholder="Fecha de registro">
+                <mat-datepicker-toggle [for]="fechaReg" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fechaReg></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input [matDatepicker]="fechaRetiro" formControlName="fechaRetiro" matInput
+                       name="FechaRet" placeholder="Fecha de retiro">
+                <mat-datepicker-toggle [for]="fechaRetiro" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #fechaRetiro></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row">
+            <mat-form-field fxFill>
+                <mat-label>Medidor</mat-label>
+                <input matInput formControlName="medidor">
+            </mat-form-field>
+        </div>
     </div>
-    <div fxLayout="row">
-        <mat-form-field fxFill>
-            <mat-label>Medidor</mat-label>
-            <input matInput formControlName="medidor">
-        </mat-form-field>
-    </div>
-    <mat-action-row fxLayout="row" fxLayoutGap=" 32px">
-        <mat-spinner-button fxFlex="50" [options]="opcionesButtonSpinner" [disabled]="this.formMedidor.invalid">Guardar
-        </mat-spinner-button>
-        <button fxFlex="50" mat-raised-button color="warn" matDialogClose="true">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-    </mat-action-row>
 </form>
+<app-reg-modales (registro)="regMedidor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMedidor.invalid" [cargandoDatos]="estaCargando">
+</app-reg-modales>

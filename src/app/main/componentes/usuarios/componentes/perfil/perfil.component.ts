@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
 import {actualizarContrasena} from '../../../../validators/validadores';
 import {TipoAlerta} from '@shared/alerts/values.config';
 import {SesionState} from '@usuarios/state/sesion.state';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {IOpcionesCarga} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
 
@@ -22,7 +21,7 @@ import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
 export class PerfilComponent
 {
     formCambiarContrasena: FormGroup;
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     opcionesCarga: IOpcionesCarga =
         {
             allowedFileType: ['image'],
@@ -53,21 +52,21 @@ export class PerfilComponent
 
     cambiarContrasena(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this.estaCargando = true;
         this._admonUsuarioState.actualizarContrasena(this.formCambiarContrasena.get('contrasenaActual').value,
             this.formCambiarContrasena.get('contrasena').value, this._sesionState.snapshot.usuario, false).subscribe((res: ILoginToken) =>
         {
             if (res.estatus)
             {
                 toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
-                this.opcionesButtonSpinner = botonGuardarConfig();
+                this.estaCargando = false;
                 localStorage.removeItem('token');
                 this._router.navigate(['/seguridad/login']).then();
 
             } else
             {
                 toastSweet(TipoAlerta.error, res.mensaje, 5000);
-                this.opcionesButtonSpinner = botonGuardarConfig();
+                this.estaCargando = false;
             }
         });
     }

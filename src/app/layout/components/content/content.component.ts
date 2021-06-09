@@ -12,13 +12,16 @@ import {fuseAnimations} from '@plantilla/animations';
     encapsulation: ViewEncapsulation.None,
     animations: fuseAnimations
 })
-export class ContentComponent {
+export class ContentComponent
+{
     titulo: string;
     icono: string;
 
-    constructor(private _router: Router, private titutlo: Title, private meta: Meta) {
+    constructor(private _router: Router, private titutlo: Title, private meta: Meta)
+    {
         this.obternerDatosRuta().subscribe
-        (datos => {
+        (datos =>
+            {
                 this.titulo = datos.titulo;
                 this.icono = datos.icono;
             }
@@ -33,7 +36,8 @@ export class ContentComponent {
         this.meta.updateTag(metaTag);
     }
 
-    obternerDatosRuta(): Observable<any> {
+    obternerDatosRuta(): Observable<any>
+    {
         return this._router.events.pipe(
             filter(evento => evento instanceof ActivationEnd),
             filter((evento: ActivationEnd) => evento.snapshot.firstChild === null),

@@ -4,9 +4,10 @@ import {SelecDeptoDropComponent} from '@shared/ctrls/selec-depto-drop/selec-dept
 import {FechaComponent} from '@shared/ctrls/fecha/fecha.component';
 import {MaterialModule} from '@ui-externos/material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { RegModalesComponent } from './reg-modales/reg-modales.component';
 
 @NgModule({
-    declarations: [SelecDeptoDropComponent, FechaComponent],
+    declarations: [SelecDeptoDropComponent, FechaComponent, RegModalesComponent],
     imports:
         [
             CommonModule,
@@ -15,7 +16,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         ],
     exports:
         [
-            SelecDeptoDropComponent, FechaComponent
+            SelecDeptoDropComponent, FechaComponent, RegModalesComponent
         ]
 })
 export class CtrlsModule

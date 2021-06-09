@@ -1,0 +1,20 @@
+<mat-action-row fxLayoutAlign="start center" fxLayoutGap="8px" class="baseDiv mt-5">
+    <button fxFlex="1 0 auto" mat-raised-button color="warn" (click)="cancelarReg()" type="button">
+        <mat-icon>close</mat-icon>
+        Cancelar
+    </button>
+
+    <button mat-raised-button fxFlex="1 0 auto" color="primary" [disabled]="_deshabilitar" (click)="reg()" type="button">
+        <ng-container *ngIf="!_cargandoDatos; else cargando">
+            <mat-icon>save</mat-icon>
+            Guardar
+        </ng-container>
+    </button>
+</mat-action-row>
+
+<ng-template #cargando>
+    <mat-icon>
+        <mat-progress-spinner mode="indeterminate" diameter="20" color="accent"></mat-progress-spinner>
+    </mat-icon>
+    Procesando...
+</ng-template>

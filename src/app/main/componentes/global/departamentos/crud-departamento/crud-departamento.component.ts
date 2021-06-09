@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IDepartamento, IResDepto} from '../models/departamento.model';
 import {TipoAlerta} from '@shared/alerts/values.config';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {DepartamentoState} from '@global/state/departamento.state';
 import {toastSweet} from '@shared/alerts/toasts';
 
@@ -14,7 +13,8 @@ import {toastSweet} from '@shared/alerts/toasts';
 })
 export class CrudDepartamentoComponent implements OnInit
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    cargandoDatos = false;
+
     nvoDepartamento: IDepartamento = {
         nombre: '',
         centroGestor: ''
@@ -37,9 +37,14 @@ export class CrudDepartamentoComponent implements OnInit
         }
     }
 
-    agregarActualizarDepto(): void
+    cerrarModal(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this._dialogRef.closeAll();
+    }
+
+    registro(): void
+    {
+        this.cargandoDatos = true;
         this.nvoDepartamento.nombre = this.formDepto.get('nombre').value;
         this.nvoDepartamento.centroGestor = this.formDepto.get('centroGestor').value;
 
@@ -47,8 +52,7 @@ export class CrudDepartamentoComponent implements OnInit
         {
             this._depto.agregarDepto(this.nvoDepartamento).subscribe((res: IResDepto) =>
             {
-                console.log('Depto', res);
-                this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                this.cargandoDatos = false;
                 toastSweet(TipoAlerta.satisfactorio, 'Departamento guardado con exito', 5000);
                 this.cerrarModal();
             });
@@ -57,15 +61,15 @@ export class CrudDepartamentoComponent implements OnInit
             this.nvoDepartamento._id = this.data._id;
             this._depto.actualizarDepto(this.nvoDepartamento).subscribe(() =>
             {
-                this.opcionesButtonSpinner = botonGuardarConfig(false, 'save', 'Guardado');
+                this.cargandoDatos = false;
                 toastSweet(TipoAlerta.satisfactorio, 'Departamento actualizado con exito', 5000);
                 this.cerrarModal();
             });
         }
     }
 
-    cerrarModal(): void
+    cancelar(): void
     {
-        this._dialogRef.closeAll();
+        this.cerrarModal();
     }
 }

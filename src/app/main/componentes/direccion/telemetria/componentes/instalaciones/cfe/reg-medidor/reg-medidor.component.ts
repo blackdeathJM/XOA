@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {IMedidor, IMedidorD} from '@telemetria/medidor-interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {InstalacionQueryService} from '@telemetria/query/instalacion-query.service';
@@ -18,7 +17,7 @@ import {Subscription} from 'rxjs';
 })
 export class RegMedidorComponent implements OnInit
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloMedidor: IMedidor = {activa: true, fechaInstalacion: '', fechaRetiro: '', medidor: '', recibos: []};
     sub: Subscription = new Subscription();
     formMedidor: FormGroup = this._fb.group({
@@ -42,7 +41,7 @@ export class RegMedidorComponent implements OnInit
 
     regMedidor(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true, 'save', 'Guardando...');
+        this.estaCargando = true;
         this.modeloMedidor.medidor = this.formMedidor.get('medidor').value;
         this.modeloMedidor.fechaInstalacion = this.formMedidor.get('fechaInstalacion').value;
 
@@ -56,7 +55,7 @@ export class RegMedidorComponent implements OnInit
                     {
                         if (v.estatus)
                         {
-                            this.opcionesButtonSpinner = botonGuardarConfig(false);
+                            this.estaCargando = false;
                             toastSweet(TipoAlerta.satisfactorio, v.mensaje, 5000);
                             this.cerrarModal();
                         }
@@ -64,7 +63,7 @@ export class RegMedidorComponent implements OnInit
             } else
             {
                 toastSweet(TipoAlerta.alerta, 'No se ha seleccionado fecha de baja', 5000);
-                this.opcionesButtonSpinner = botonGuardarConfig(false);
+                this.estaCargando = false;
             }
         } else
         {
@@ -73,7 +72,7 @@ export class RegMedidorComponent implements OnInit
             {
                 if (res.estatus)
                 {
-                    this.opcionesButtonSpinner = botonGuardarConfig(false);
+                    this.estaCargando = false;
                     toastSweet(TipoAlerta.satisfactorio, res.mensaje, 5000);
                     this.cerrarModal();
                 }

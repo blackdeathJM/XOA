@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {MatDialog} from '@angular/material/dialog';
 import {Subscription} from 'rxjs';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
@@ -30,7 +29,7 @@ import {TipoAlerta} from '@shared/alerts/values.config';
 export class RegOrdenAreaTComponent implements OnDestroy
 {
     tipoAnomalia = TipoAnomalia.areaT;
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     subscripcion: Subscription = new Subscription();
     modeloOrdenTrabajo: IOrdenTrabajo;
     nombreCompleto: string;
@@ -57,7 +56,7 @@ export class RegOrdenAreaTComponent implements OnDestroy
 
     regOrdenAreaT(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         this.modeloOrdenTrabajo =
             {
                 departamentoId: this._sesionState.snapshot.departamentoID,
@@ -76,7 +75,7 @@ export class RegOrdenAreaTComponent implements OnDestroy
             };
 
         this._ordenTrabajoState.regOrdenTrabajo(this.modeloOrdenTrabajo).pipe(finalize(() =>
-            this.opcionesButtonSpinner = botonGuardarConfig(false))).subscribe((res: IResOrdenTrabajo) =>
+            this.estaCargando = false)).subscribe((res: IResOrdenTrabajo) =>
         {
             if (res.documento)
             {

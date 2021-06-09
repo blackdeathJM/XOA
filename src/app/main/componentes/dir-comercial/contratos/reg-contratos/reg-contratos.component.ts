@@ -1,5 +1,4 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {botonGuardarConfig} from '@services/botonGuardarConfig';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {validarNum} from '@services/validacionCampos';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
@@ -30,7 +29,7 @@ interface ITarifa
 
 export class RegContratosComponent implements OnInit
 {
-    opcionesButtonSpinner = botonGuardarConfig();
+    estaCargando = false;
     modeloContrato: IContrato;
     sub: Subscription = new Subscription();
     tarifas: ITarifa[] = tarifa;
@@ -70,7 +69,7 @@ export class RegContratosComponent implements OnInit
 
     regContrato(): void
     {
-        this.opcionesButtonSpinner = botonGuardarConfig(true);
+        this.estaCargando = true;
         this.modeloContrato = Object.assign(this.formDatosGrales.value, this.formContrato.value);
 
         if (this.data.esRegistro)
