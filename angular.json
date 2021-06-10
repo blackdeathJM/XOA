@@ -31,16 +31,15 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "node_modules/primeng/resources/themes/vela-blue/theme.css",
                             "node_modules/primeng/resources/primeng.min.css",
+                            "src/temaPrime.css",
                             "node_modules/primeicons/primeicons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
                             "node_modules/ngx-lightbox/lightbox.css",
                             "src/styles.scss"
                         ],
-                        "scripts":
-                        [
+                        "scripts": [
                             "node_modules/html2canvas/dist/html2canvas.min.js",
                             "node_modules/jspdf/dist/jspdf.es.min.js"
                         ],
