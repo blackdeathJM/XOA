@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-dir-comercial',
-  templateUrl: './dir-comercial.component.html',
-  styleUrls: ['./dir-comercial.component.scss']
+    selector: 'app-dir-comercial',
+    templateUrl: './dir-comercial.component.html',
+    styleUrls: ['./dir-comercial.component.scss']
 })
-export class DirComercialComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class DirComercialComponent
+{
 }

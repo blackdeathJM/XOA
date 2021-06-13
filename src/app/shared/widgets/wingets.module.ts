@@ -24,6 +24,7 @@ import {ClientesState} from '@dir-comercial/clientes.state';
 import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
 import { PopoverBuscarClienteTablaComponent } from './popover-buscar-cliente-tabla/popover-buscar-cliente-tabla.component';
 import {PlantillasModule} from '@shared/plantillas/plantillas.module';
+import { MapaComponent } from './mapa/mapa.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import {PlantillasModule} from '@shared/plantillas/plantillas.module';
             MiPipePipe,
             BuscarClienteAutocompleteComponent,
             PopoverBuscarClienteTablaComponent,
+            MapaComponent,
         ],
     exports:
         [
@@ -57,6 +59,7 @@ import {PlantillasModule} from '@shared/plantillas/plantillas.module';
             TNgTablaVisPipe,
             BuscarClienteAutocompleteComponent,
             PopoverBuscarClienteTablaComponent,
+            MapaComponent,
         ],
     imports: [
         CommonModule,

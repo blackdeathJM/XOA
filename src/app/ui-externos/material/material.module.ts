@@ -33,6 +33,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatRadioModule} from '@angular/material/radio';
 import {MdePopoverModule} from '@material-extended/mde';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
     declarations: [],
@@ -73,6 +74,7 @@ import {MdePopoverModule} from '@material-extended/mde';
             MatStepperModule,
             MatBottomSheetModule,
             MatRadioModule,
+            MatSliderModule,
             MdePopoverModule
         ],
     exports:
@@ -116,6 +118,7 @@ import {MdePopoverModule} from '@material-extended/mde';
             MatButtonToggleModule,
             MatBottomSheetModule,
             MatRadioModule,
+            MatSliderModule,
             MdePopoverModule
         ],
     providers:

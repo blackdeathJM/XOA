@@ -47,7 +47,6 @@ export class SesionState extends NgxsDataRepository<IUsuario> implements NgxsDat
     obtenerSesion(): IUsuario
     {
         const nvaSession = this._sesionService.obtenerSesionActual();
-        console.log('nueva sesion', nvaSession);
         return nvaSession;
     }
 
