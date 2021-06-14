@@ -20,6 +20,7 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {ReemplazarDocsComponent} from './componentes/reemplazar-docs/reemplazar-docs.component';
 import {WingetsModule} from '@shared/widgets/wingets.module';
 import {PlantillasModule} from '@shared/plantillas/plantillas.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {PlantillasModule} from '@shared/plantillas/plantillas.module';
             RouterModule,
             FileUploadModule,
             WingetsModule,
-            PlantillasModule
+            PlantillasModule,
+            CtrlsModule
         ]
 })
 export class AdministracionDocModule

@@ -72,6 +72,6 @@
         </mat-form-field>
     </div>
 </form>
-<app-reg-modales *ngIf="_ocultarAcciones" (registro)="regMotor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMotor.invalid"
+<app-reg-modales *ngIf="_ocultarAcciones" (registro)="regMotor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMotor.invalid || estaCargando"
                  [cargandoDatos]="estaCargando">
 </app-reg-modales>

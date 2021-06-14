@@ -7,5 +7,5 @@
             </mat-form-field>
         </div>
     </section>
-    <app-reg-modales (registro)="regEditarIp()" (cancelar)="cerrarModal()" [deshabilitar]="formEditarIp.invalid" [cargandoDatos]="estaCargando"></app-reg-modales>
+    <app-reg-modales (registro)="regEditarIp()" (cancelar)="cerrarModal()" [deshabilitar]="formEditarIp.invalid || estaCargando" [cargandoDatos]="estaCargando"></app-reg-modales>
 </form>

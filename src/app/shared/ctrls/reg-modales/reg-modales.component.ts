@@ -20,19 +20,19 @@ export class RegModalesComponent
         this._deshabilitar = v;
     }
 
-    @Output() registro = new EventEmitter<boolean>();
-    @Output() cancelar = new EventEmitter<boolean>();
+    @Output() registro = new EventEmitter<void>();
+    @Output() cancelar = new EventEmitter<void>();
 
     _cargandoDatos = false;
     _deshabilitar = false;
 
     cancelarReg(): void
     {
-        this.cancelar.emit(true);
+        this.cancelar.emit();
     }
 
     reg(): void
     {
-        this.registro.emit(true);
+        this.registro.emit();
     }
 }

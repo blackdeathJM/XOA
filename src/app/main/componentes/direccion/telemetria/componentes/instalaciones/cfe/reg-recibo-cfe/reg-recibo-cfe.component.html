@@ -33,6 +33,6 @@
             </button>
         </div>
     </section>
-    <app-reg-modales (registro)="regReciboCfe()" (cancelar)="cerrarModal()" [deshabilitar]="this.formRecibosCfe.invalid" [cargandoDatos]="estaCargando">
+    <app-reg-modales (registro)="regReciboCfe()" (cancelar)="cerrarModal()" [deshabilitar]="this.formRecibosCfe.invalid || estaCargando" [cargandoDatos]="estaCargando">
     </app-reg-modales>
 </form>

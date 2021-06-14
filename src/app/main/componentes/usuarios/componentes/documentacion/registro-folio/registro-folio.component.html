@@ -19,5 +19,5 @@
         <app-seleccionar-tipo-doc formControlName="tipoDoc"></app-seleccionar-tipo-doc>
     </div>
 </form>
-<app-reg-modales (registro)="registrarFolios()" (cancelar)="cerrarModal()" [deshabilitar]="formFolios.invalid" [cargandoDatos]="estaCargando">
+<app-reg-modales (registro)="registrarFolios()" (cancelar)="cerrarModal()" [deshabilitar]="formFolios.invalid || estaCargando" [cargandoDatos]="estaCargando">
 </app-reg-modales>

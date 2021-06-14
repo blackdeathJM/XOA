@@ -73,6 +73,6 @@
         </div>
     </section>
 </form>
-<app-reg-modales *ngIf="!_ocultarAcciones" (registro)="regBomba()" (cancelar)="cerrarModal()" [deshabilitar]="formBomba.invalid"
+<app-reg-modales *ngIf="!_ocultarAcciones" (registro)="regBomba()" (cancelar)="cerrarModal()" [deshabilitar]="formBomba.invalid || estaCargando"
                  [cargandoDatos]="estaCargando">
 </app-reg-modales>

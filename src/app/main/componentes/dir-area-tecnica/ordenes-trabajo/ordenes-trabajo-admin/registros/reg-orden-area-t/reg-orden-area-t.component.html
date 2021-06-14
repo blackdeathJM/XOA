@@ -74,6 +74,6 @@
         <div fxLayoutAlign="center center">
             <img src="../../../../../../../../assets/images/varios/ok3.svg" alt>
         </div>
-        <app-reg-modales (cancelar)="cerrarModal()" (click)="regOrdenAreaT()" [cargandoDatos]="estaCargando"></app-reg-modales>
+        <app-reg-modales (cancelar)="cerrarModal()" (click)="regOrdenAreaT()" [cargandoDatos]="estaCargando" [deshabilitar]="estaCargando"></app-reg-modales>
     </mat-step>
 </mat-horizontal-stepper>

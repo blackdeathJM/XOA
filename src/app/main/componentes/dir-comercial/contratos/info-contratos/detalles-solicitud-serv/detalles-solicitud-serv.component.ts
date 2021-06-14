@@ -14,6 +14,7 @@ import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import Swal from 'sweetalert2/dist/sweetalert2';
+import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.component';
 
 @Component({
     selector: 'app-detalles-solicitud-serv',
@@ -82,11 +83,12 @@ export class DetallesSolicitudServComponent implements OnDestroy
         {
             if (result.isConfirmed)
             {
-                Swal.fire(
-                    'Contratos!',
-                    'Contrato generado correctamente.',
-                    'success'
-                ).then();
+                const data: IModalInfo =
+                    {
+                        esReg: true,
+                        datos: solicitudServ
+                    };
+                this._dr.open(RegContratosComponent, {width: '45%', data});
             }
         });
     }

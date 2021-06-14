@@ -52,7 +52,7 @@ export class MapaComponent implements AfterViewInit, OnDestroy
         const popup = new mapboxgl.Popup({
             offset: 25
         }).setText('Sistema municipal de agua potable y alcantarillado');
-        const nvoMarcador = new mapboxgl.Marker({
+        new mapboxgl.Marker({
             color
         }).setLngLat(this.centro).setPopup(popup).addTo(this.mapa);
     }

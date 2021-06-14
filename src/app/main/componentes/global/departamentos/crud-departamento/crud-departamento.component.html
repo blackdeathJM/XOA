@@ -11,4 +11,5 @@
     </div>
 </form>
 
-<app-reg-modales (registro)="registro()" (cancelar)="cancelar()" [cargandoDatos]="cargandoDatos" [deshabilitar]="formDepto.invalid"></app-reg-modales>
+<app-reg-modales (registro)="registro()" (cancelar)="cancelar()" [cargandoDatos]="cargandoDatos" [deshabilitar]="formDepto.invalid || cargandoDatos">
+</app-reg-modales>

@@ -1,7 +1,7 @@
 <input #fileInput accept="application/pdf" [multiple]="false" [uploader]="cargaDeArchivo" hidden id="fileUpload" name="fileUpload" ng2FileSelect type="file"
        (click)="cargaDeArchivo.clearQueue()">
 
-<form (ngSubmit)="regDocExt()" [formGroup]="formDocExterno" name="formDocExt">
+<form [formGroup]="formDocExterno" name="formDocExt">
     <div class="baseDiv p-12">
         <div fxLayout="row">
             <div fxFill fxLayout="column">
@@ -51,19 +51,7 @@
             {{fileInput.value}}
         </button>
     </div>
-    <mat-action-row fxLayout="row" fxLayoutGap="12px" class="baseDiv mt-8 p-12">
-        <button color="warn" fxFlex="50" mat-dialog-close mat-raised-button type="button">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <div class="button-container" fxFlex="50">
-            <div *ngIf="guardando" class="spinner-container">
-                <mat-spinner diameter="24"></mat-spinner>
-            </div>
-            <button class="altoAnchoButton100" color="primary" mat-raised-button type="submit" [disabled]="formDocExterno.invalid || guardando">
-                <mat-icon>save</mat-icon>
-                Guardar
-            </button>
-        </div>
-    </mat-action-row>
 </form>
+
+<app-reg-modales (registro)="regDocExt()" (cancelar)="cerrarModal()" [deshabilitar]="formDocExterno.invalid || guardando" [cargandoDatos]="guardando">
+</app-reg-modales>

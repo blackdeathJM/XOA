@@ -49,9 +49,7 @@ export interface IContrato
     fechaAlta: string;
     sector: number;
     ruta: number;
-    giro: string;
     zona: string;
-    noPersonas: number;
     activo: boolean;
     esPrincipal: boolean;
     creadoPor: string;

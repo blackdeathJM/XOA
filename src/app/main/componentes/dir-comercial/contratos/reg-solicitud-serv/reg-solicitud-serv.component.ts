@@ -36,6 +36,7 @@ export class RegSolicitudServComponent implements OnInit
     formSolicitud: FormGroup = this._fb.group({
         calle: ['', RxwebValidators.required({message: 'La calle es requerido'})],
         colonia: ['', RxwebValidators.required({message: 'La colonia es requerido'})],
+        noPersonas: [0, validarNum(false, null, null, {value: 20})],
         entreCalles: [''],
         referencia: [''],
         observaciones: [''],

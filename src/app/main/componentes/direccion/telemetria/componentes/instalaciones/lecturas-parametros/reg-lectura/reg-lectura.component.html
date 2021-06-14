@@ -30,5 +30,5 @@
 
 <app-reg-modales (registro)="nvoParametro()" (cancelar)="cerrarModal()"
                  [cargandoDatos]="estaCargando"
-                 [deshabilitar]="this.formParametros.invalid || this.formFecha.invalid">
+                 [deshabilitar]="this.formParametros.invalid || this.formFecha.invalid || estaCargando">
 </app-reg-modales>

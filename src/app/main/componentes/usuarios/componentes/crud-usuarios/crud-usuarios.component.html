@@ -1,4 +1,4 @@
-<form (ngSubmit)="registrarUsuario()" [formGroup]="formUsuarios">
+<form [formGroup]="formUsuarios">
     <div class="baseDiv">
         <div fxLayout="column">
             <mat-form-field>
@@ -32,19 +32,7 @@
             </mat-form-field>
         </div>
     </div>
-    <div fxLayoutGap="8px" class="baseDiv mt-8">
-        <button color="warn" fxFlex mat-dialog-close mat-raised-button type="button">
-            <mat-icon>close</mat-icon>
-            Cancelar
-        </button>
-        <div class="button-container" fxFlex>
-            <div *ngIf="guardando" class="spinner-container">
-                <mat-spinner diameter="24"></mat-spinner>
-            </div>
-            <button [disabled]="formUsuarios.invalid || guardando" class="altoAnchoButton100" color="primary" mat-raised-button type="submit">
-                <mat-icon>save</mat-icon>
-                Guardar
-            </button>
-        </div>
-    </div>
 </form>
+
+<app-reg-modales (registro)="registrarUsuario()" (cancelar)="cerrarModal()" [cargandoDatos]="guardando" [deshabilitar]="formUsuarios.invalid || guardando">
+</app-reg-modales>

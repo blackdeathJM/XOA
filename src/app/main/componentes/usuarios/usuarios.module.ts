@@ -16,6 +16,7 @@ import {UsuarioConfigComponent} from './componentes/usuario-config.component';
 import {NgxsModule} from '@ngxs/store';
 import {AdmonUsuariosState} from '@usuarios/state/admon-usuarios.state';
 import {SubidasModule} from '@shared/components/subidas/subidas.module';
+import {CtrlsModule} from '@shared/ctrls/ctrls.module';
 
 @NgModule({
     declarations:
@@ -39,7 +40,8 @@ import {SubidasModule} from '@shared/components/subidas/subidas.module';
             PrimeNgModule,
             PlantillasModule,
             NgxsModule.forFeature([AdmonUsuariosState]),
-            SubidasModule
+            SubidasModule,
+            CtrlsModule
         ]
 })
 export class UsuariosModule

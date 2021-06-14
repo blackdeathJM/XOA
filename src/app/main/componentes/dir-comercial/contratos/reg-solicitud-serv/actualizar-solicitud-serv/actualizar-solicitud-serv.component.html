@@ -18,5 +18,5 @@
     </form>
 </div>
 
-<app-reg-modales (registro)="actSolicitud()" (cancelar)="cerrarModal()" [deshabilitar]="formActSolitudServ.invalid" [cargandoDatos]="estaCargando">
+<app-reg-modales (registro)="actSolicitud()" (cancelar)="cerrarModal()" [deshabilitar]="formActSolitudServ.invalid || estaCargando" [cargandoDatos]="estaCargando">
 </app-reg-modales>

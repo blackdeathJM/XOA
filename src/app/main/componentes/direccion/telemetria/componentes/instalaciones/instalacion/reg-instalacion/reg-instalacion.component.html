@@ -64,6 +64,6 @@
         </div>
     </section>
 </form>
-<app-reg-modales *ngIf="!_ocultarAcciones" (registro)="regEditInstalacion()" (cancelar)="cerrarModal()" [deshabilitar]="formInstalacion.invalid"
+<app-reg-modales *ngIf="!_ocultarAcciones" (registro)="regEditInstalacion()" (cancelar)="cerrarModal()" [deshabilitar]="formInstalacion.invalid || estaCargando"
                  [cargandoDatos]="estaCargando">
 </app-reg-modales>

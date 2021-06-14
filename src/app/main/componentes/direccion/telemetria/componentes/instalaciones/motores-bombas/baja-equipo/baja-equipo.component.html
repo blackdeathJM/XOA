@@ -17,4 +17,4 @@
         </div>
     </div>
 </form>
-<app-reg-modales (registro)="baja()" (cancelar)="cerrarModal()" [deshabilitar]="formFecha.invalid" [cargandoDatos]="estaCargando"></app-reg-modales>
+<app-reg-modales (registro)="baja()" (cancelar)="cerrarModal()" [deshabilitar]="formFecha.invalid || estaCargando" [cargandoDatos]="estaCargando"></app-reg-modales>

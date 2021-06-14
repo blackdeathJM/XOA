@@ -22,7 +22,6 @@ export const fragContrato = gql`
         fechaAlta
         sector
         ruta
-        giro
         zona
         activo
         esPrincipal

@@ -22,5 +22,5 @@
         </div>
     </div>
 </form>
-<app-reg-modales (registro)="regMedidor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMedidor.invalid" [cargandoDatos]="estaCargando">
+<app-reg-modales (registro)="regMedidor()" (cancelar)="cerrarModal()" [deshabilitar]="this.formMedidor.invalid || estaCargando" [cargandoDatos]="estaCargando">
 </app-reg-modales>

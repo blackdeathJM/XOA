@@ -120,6 +120,7 @@
         <div fxLayoutAlign="center center" fxFill style="height: 110px">
             <img src="assets/images/varios/contratosOk.svg" alt="">
         </div>
-        <app-reg-modales (registro)="regSolicitudServ()" (cancelar)="cerrarModal()" [cargandoDatos]="estaCargando"></app-reg-modales>
+        <app-reg-modales (registro)="regSolicitudServ()" (cancelar)="cerrarModal()" [cargandoDatos]="estaCargando" [deshabilitar]="estaCargando">
+        </app-reg-modales>
     </mat-step>
 </mat-horizontal-stepper>
