@@ -21,8 +21,8 @@ export class ClienteMutationService extends ApiService
         return this.mutation(regCliente, {cliente}, {}, ['data', 'regCliente']);
     }
 
-    regContrato(idCliente: string, contrato: IContrato): Observable<IResCliente>
+    regContrato(idCliente: string, contrato: IContrato, idSolicitud: string): Observable<IResCliente>
     {
-        return this.mutation(regContrato, {idCliente, contrato}, {}, ['data', 'regContrato']);
+        return this.mutation(regContrato, {idCliente, contrato, idSolicitud}, {}, ['data', 'regContrato']);
     }
 }

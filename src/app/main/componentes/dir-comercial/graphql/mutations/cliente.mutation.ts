@@ -19,9 +19,9 @@ export const regCliente = gql`
 `;
 
 export const regContrato = gql`
-    mutation regContrato($idCliente: ID!, $contrato: ContratoInput)
+    mutation regContrato($idCliente: ID!, $contrato: ContratoInput, $idSolicitud: ID!)
     {
-        regContrato(idCliente: $idCliente, contrato: $contrato)
+        regContrato(idCliente: $idCliente, contrato: $contrato, idSolicitud: $idSolicitud)
         {
             estatus
             mensaje

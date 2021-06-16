@@ -37,9 +37,9 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
         }));
     }
 
-    @DataAction() regContrato(@Payload('Reg contrato') idCliente: string, contrato: IContrato): Observable<IResCliente>
+    @DataAction() regContrato(@Payload('Reg contrato') idCliente: string, contrato: IContrato, idSolicitud: string): Observable<IResCliente>
     {
-        return this._clienteMutation.regContrato(idCliente, contrato).pipe(tap((cli: IResCliente) =>
+        return this._clienteMutation.regContrato(idCliente, contrato, idSolicitud).pipe(tap((cli: IResCliente) =>
         {
             if (cli.estatus)
             {
