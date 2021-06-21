@@ -8,10 +8,11 @@ import {Subscription} from 'rxjs';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
-import {finalize} from 'rxjs/operators';
+import {finalize, switchMap} from 'rxjs/operators';
+import {SesionState} from '@usuarios/state/sesion.state';
+import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
-import {SesionState} from '@usuarios/state/sesion.state';
 
 @Component({
     selector: 'app-reg-contratos',
@@ -48,7 +49,7 @@ export class RegContratosComponent implements OnDestroy
     });
 
     constructor(private _formBuilder: FormBuilder, private _clienteState: ClientesState, @Inject(MAT_DIALOG_DATA) private data: IModalInfo,
-                private _dialogRef: MatDialog, private _sesionState: SesionState)
+                private _dialogRef: MatDialog, private _sesionState: SesionState, private _solicitudState: SolicitudesState)
     {
     }
 
@@ -69,20 +70,16 @@ export class RegContratosComponent implements OnDestroy
             };
         if (this.data.esReg)
         {
-            this.sub.add(this._clienteState.regContrato(datos.idCliente, this.modeloContrato, idSolicitud).pipe(finalize(() =>
+
+            this.sub.add(this._clienteState.regContrato(datos.idCliente, this.modeloContrato, idSolicitud).pipe(switchMap(() =>
+                this._solicitudState.solPorCliente(datos.idCliente))).pipe(finalize(() =>
             {
                 this.estaCargando = false;
                 this.cerrarModal();
-            })).subscribe((res) =>
+            }))).subscribe((res) =>
             {
-                if (res.documento)
-                {
-                    toastSweet(TipoAlerta.satisfactorio, 'El contrato fue realizado con exito', 5000);
-                } else
-                {
-                    toastSweet(TipoAlerta.error, res.mensaje, 5000);
-                }
-            }, e => toastSweet(TipoAlerta.error, e, 5000)));
+                console.log('Res', res);
+            }, e => toastSweet(TipoAlerta.error, e, 5000));
         }
     }
 
