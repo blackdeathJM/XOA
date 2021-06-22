@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
 import {ClientesState} from '@dir-comercial/clientes.state';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
-import {finalize, switchMap} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {SesionState} from '@usuarios/state/sesion.state';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {toastSweet} from '@shared/alerts/toasts';
@@ -32,7 +32,6 @@ export class RegContratosComponent implements OnDestroy
     estaCargando = false;
     modeloContrato: IContrato;
     sub: Subscription = new Subscription();
-    giros: string[] = ['Casa habitacion', 'Comercio', 'Otros'];
 
     formContrato: FormGroup = this._formBuilder.group({
         ciudad: ['Dolores Hidalgo', RxwebValidators.required()],
@@ -70,16 +69,11 @@ export class RegContratosComponent implements OnDestroy
             };
         if (this.data.esReg)
         {
-
-            this.sub.add(this._clienteState.regContrato(datos.idCliente, this.modeloContrato, idSolicitud).pipe(switchMap(() =>
-                this._solicitudState.solPorCliente(datos.idCliente))).pipe(finalize(() =>
+            this.sub.add(this._clienteState.regContrato(datos.idCliente, this.modeloContrato, idSolicitud).pipe(finalize(() =>
             {
                 this.estaCargando = false;
                 this.cerrarModal();
-            }))).subscribe((res) =>
-            {
-                console.log('Res', res);
-            }, e => toastSweet(TipoAlerta.error, e, 5000));
+            })).subscribe());
         }
     }
 

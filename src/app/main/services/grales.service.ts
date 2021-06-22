@@ -125,13 +125,20 @@ export class GralesServices
         return ctx.getState().filter(id => id._id !== idDoc);
     }
 
-    static nvoEdoReem(idDocABuscar: string, ctx: DataStateContext<any>, documentoAReemplazar: any): any
+    static async nvoEdoReem(idDocABuscar: string, ctx: DataStateContext<any>, documentoAReemplazar: any, eliminar = false): Promise<any>
     {
-        const indice = findIndex(ctx.getState(), (i: any) => i._id === idDocABuscar);
-        const edoActual = {...ctx.getState()};
+        const indice = await findIndex(ctx.getState(), (i: any) => i._id === idDocABuscar);
+        const edoActual = await {...ctx.getState()};
 
-        const res = toArray(edoActual);
-        res[indice] = documentoAReemplazar;
+        const res = await toArray(edoActual);
+
+        if (eliminar)
+        {
+            await res.slice(indice, 1);
+        } else
+        {
+            res[indice] = await documentoAReemplazar;
+        }
         return res;
     }
 

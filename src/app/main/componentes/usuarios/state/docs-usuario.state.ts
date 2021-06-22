@@ -113,11 +113,11 @@ export class DocsUsuarioState extends NgxsDataRepository<IDocExt[]> implements N
 
     subDocsUsuario(): Observable<IDocExt[]>
     {
-        return this._docsSubscription.docSubProceso(this._sesionState.snapshot.usuario).pipe(tap((r: IResDocEx) =>
+        return this._docsSubscription.docSubProceso(this._sesionState.snapshot.usuario).pipe(tap((r: IDocExt[]) =>
         {
             if (r)
             {
-                this.ctx.setState(r.documentos);
+                this.ctx.setState(r);
             } else
             {
                 this.ctx.setState(this.initialState);

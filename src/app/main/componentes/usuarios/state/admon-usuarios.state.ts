@@ -32,22 +32,13 @@ export class AdmonUsuariosState extends NgxsDataRepository<IUsuario[]>
         return this._usuarioMutation.actualizarRole(_id, role, esActualizar).pipe(tap((res: IResUsuario) =>
         {
             this.ctx.setState(GralesServices.nvoEdo(_id, this.ctx).concat(res.documento));
-        }), catchError(err =>
-        {
-            toastSweet(TipoAlerta.error, err, 5000);
-            return of([]);
         }));
     }
 
     @DataAction() actualizarContrasena(@Payload('Actualizar contrasena') actualContrasena: string, nvaContrasena: string,
                                        usuario: string, esAdmin: boolean): Observable<IResUsuario>
     {
-        return this._usuarioMutation.actualizarContrasena(actualContrasena, nvaContrasena, usuario, esAdmin)
-            .pipe(catchError(err =>
-            {
-                toastSweet(TipoAlerta.error, err, 5000);
-                return of([]);
-            }));
+        return this._usuarioMutation.actualizarContrasena(actualContrasena, nvaContrasena, usuario, esAdmin);
     }
 
     public cargarUsuarios(): Observable<IResUsuario>
@@ -55,10 +46,6 @@ export class AdmonUsuariosState extends NgxsDataRepository<IUsuario[]>
         return this._usuarioQuery.obTodosUsuarios().pipe(tap((res: IResUsuario) =>
         {
             this.setState(res.documentos);
-        }), catchError(err =>
-        {
-            toastSweet(TipoAlerta.error, err, 5000);
-            return of([]);
         }));
     }
 }

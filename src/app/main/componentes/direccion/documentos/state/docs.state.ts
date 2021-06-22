@@ -201,7 +201,7 @@ export class DocsState extends NgxsDataRepository<IDocExt[]>
 
     @DataAction() subDocs(): Observable<IDocExt[]>
     {
-        return this.docsSubscription.todosDocsExtSub().pipe(tap((docs: IResDocEx) =>
+        return this.docsSubscription.todosDocsExtSub().pipe(tap((docs: IDocExt[]) =>
         {
             if (docs)
             {
@@ -209,7 +209,7 @@ export class DocsState extends NgxsDataRepository<IDocExt[]>
                 setTimeout(() =>
                 {
                     // this.ctx.patchState(td);
-                    this.ctx.setState(docs.documentos);
+                    this.ctx.setState(docs);
                 }, 500);
             }
         }));

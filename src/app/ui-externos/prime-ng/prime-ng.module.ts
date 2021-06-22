@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
+import {AvatarModule} from 'primeng/avatar';
 import {TableModule} from 'primeng/table';
-import {BlockUIModule} from 'primeng/blockui';
 import {RippleModule} from 'primeng/ripple';
-import {PopoverModule} from 'ngx-bootstrap/popover';
+import {BlockUIModule} from 'primeng/blockui';
 import {PaginatorModule} from 'primeng/paginator';
 import {SkeletonModule} from 'primeng/skeleton';
-import {AvatarModule} from 'primeng/avatar';
+import {PopoverModule} from 'ngx-bootstrap/popover';
+import {NgModule} from '@angular/core';
 
 @NgModule({
     declarations: [],
