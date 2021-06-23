@@ -74,7 +74,7 @@ export class RegContratosComponent implements OnDestroy
                 this.estaCargando = false;
                 toastSweet(TipoAlerta.satisfactorio, 'El contrato se ha generado correctamente', 5000);
                 this.cerrarModal();
-            })).subscribe());
+            })).subscribe(res => console.log('respuesta', res)));
         }
     }
 

@@ -3198,10 +3198,10 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.1.tgz#e7939d599119dc818a90478a2a299bdaff037e09"
-  integrity sha512-Fl79+wsLOZKoiU345KeEaWD0ik8WKRI5zm0YSPj2oF1Qr+BO7z0fco6GbUtqjoG1h4VI89PeKJnMsMMVQdKKTw==
+bootstrap@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.2.tgz#aff23d5e0e03c31255ad437530ee6556e78e728e"
+  integrity sha512-1Ge963tyEQWJJ+8qtXFU6wgmAVj9gweEjibUdbmcCEYsn38tVwRk8107rk2vzt6cfQcRr3SlZ8aQBqaD8aqf+Q==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -7460,10 +7460,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng-packagr@^12.0.6:
-  version "12.0.6"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-12.0.6.tgz#f2e790a398d159ddce9199dd0acf35a78222857c"
-  integrity sha512-+EITs+See8qCDJQcX+HArC3gQvPzX5Y8/m9CWe8WdJz7kmM0LTZjw7UgKWn98+8tM5bsFRTH89qCs53XDEC6TQ==
+ng-packagr@^12.0.8:
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-12.0.8.tgz#5ce1b1b43307571060b75c9b4140634b49d5791d"
+  integrity sha512-tGT8mJ0rU1UbIkVa+tgPgQDNZHkWJyTP6H6WEElpH0FeAI+Li3CCWqbS0jtrci3SdGm0tOKbQWY5fAuD/C2Sog==
   dependencies:
     "@rollup/plugin-commonjs" "^19.0.0"
     "@rollup/plugin-json" "^4.1.0"
@@ -7518,10 +7518,10 @@ ngx-cookie-service@^12.0.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-lightbox@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-2.4.0.tgz#93b1f719b4439f6e8cb65e194be72c991c1587bf"
-  integrity sha512-sBf0kguf+exuG9t2UTlPSkklChZJPlkfYGm9CyETvle0s8a1afDbjzhQnkElvd6b4KcKeGb/Zz/fsJQzyFcb+g==
+ngx-lightbox@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-2.4.1.tgz#70e05f4c85bf04301e8a9c511f6db864e07cad4b"
+  integrity sha512-5r+PA+6Ep3PPAx22SDC6HSX/qHrVLade67hkEnJG2ZId9MkarPyFaUq5bIvS6+dXsEyckF0d+yH1fI8D6YWAvQ==
 
 ngx-mask@^12.0.0:
   version "12.0.0"
