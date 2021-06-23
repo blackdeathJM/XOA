@@ -13,7 +13,6 @@ import {ICliente, IResCliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import Swal from 'sweetalert2/dist/sweetalert2';
 import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.component';
 
 @Component({
@@ -71,26 +70,12 @@ export class DetallesSolicitudServComponent implements OnDestroy
 
     generarContrato(solicitudServ: any): void
     {
-        Swal.fire({
-            title: 'Generar contrato',
-            text: 'Confirma que deseas generar un contrato basado en esta solicitud?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, generar contrato!'
-        }).then((result) =>
-        {
-            if (result.isConfirmed)
+        const data: IModalInfo =
             {
-                const data: IModalInfo =
-                    {
-                        esReg: true,
-                        datos: solicitudServ
-                    };
-                this._dr.open(RegContratosComponent, {width: '45%', data});
-            }
-        });
+                esReg: true,
+                datos: solicitudServ
+            };
+        this._dr.open(RegContratosComponent, {width: '45%', data});
     }
 
     async crearOrdenServicio(solicitud: ISolicitudServ, ref: ICliente): Promise<void>

@@ -72,9 +72,18 @@ export class RegContratosComponent implements OnDestroy
             this.sub.add(this._clienteState.regContrato(datos.idCliente, this.modeloContrato, idSolicitud).pipe(finalize(() =>
             {
                 this.estaCargando = false;
-                toastSweet(TipoAlerta.satisfactorio, 'El contrato se ha generado correctamente', 5000);
                 this.cerrarModal();
-            })).subscribe(res => console.log('respuesta', res)));
+            })).subscribe(res =>
+            {
+                if (res.documento)
+                {
+                    this._solicitudState.eliminarElementoDelEdo(datos._id)
+                        .then(() => toastSweet(TipoAlerta.satisfactorio, 'El contrato se ha generado correctamente', 5000));
+                } else
+                {
+                    toastSweet(TipoAlerta.alerta, res.mensaje, 5000);
+                }
+            }));
         }
     }
 

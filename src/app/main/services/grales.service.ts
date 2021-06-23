@@ -134,7 +134,7 @@ export class GralesServices
 
         if (eliminar)
         {
-            await res.slice(indice, 1);
+            await res.splice(indice, 1);
         } else
         {
             res[indice] = await documentoAReemplazar;

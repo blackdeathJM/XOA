@@ -2,7 +2,7 @@ import {State} from '@ngxs/store';
 import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
-import {DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
+import {Computed, DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutation.service';
 import {tap} from 'rxjs/operators';
@@ -66,5 +66,11 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
         {
             this.ctx.setState(await GralesServices.nvoEdoReem(_id, this.ctx, res.documento));
         }));
+    }
+
+    @Computed()
+    async eliminarElementoDelEdo(idBuscar): Promise<void>
+    {
+        this.ctx.setState(await GralesServices.nvoEdoReem(idBuscar, this.ctx, '', true));
     }
 }
