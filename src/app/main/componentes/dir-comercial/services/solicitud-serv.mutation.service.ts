@@ -3,7 +3,7 @@ import {ApiService} from '@services/api.service';
 import {Apollo} from 'apollo-angular';
 import {Observable} from 'rxjs';
 import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
-import {actualizarSolicitud, aprovRechSolicitud, regSolicitudServ} from '@dir-comercial/mutations/solicitudServ.mutation';
+import {actualizarSolicitud, realizarPago, regSolicitudServ} from '@dir-comercial/mutations/solicitudServ.mutation';
 
 @Injectable({
     providedIn: 'root'
@@ -21,9 +21,9 @@ export class SolicitudServMutationService extends ApiService
         return this.mutation(regSolicitudServ, {solicitudServ}, {}, ['data', 'regSolicitudServ']);
     }
 
-    aprovRechSolicitud(_id: string, valor: boolean): Observable<IResSolicitud>
+    realizarPago(_id: string, valor: boolean): Observable<IResSolicitud>
     {
-        return this.mutation(aprovRechSolicitud, {_id, valor}, {}, ['data', 'aprovRechSolicitud']);
+        return this.mutation(realizarPago, {_id, valor}, {}, ['data', 'aprovRechSolicitud']);
     }
 
     actualizarSolicitud(_id: string, observaciones: string, aprobadoServ: boolean, ejecutadaPor: string): Observable<IResSolicitud>

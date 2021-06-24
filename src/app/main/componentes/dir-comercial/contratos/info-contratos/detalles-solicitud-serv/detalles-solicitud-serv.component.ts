@@ -41,20 +41,16 @@ export class DetallesSolicitudServComponent implements OnDestroy
         pdf.text('Solicitud de verificacion de servicios de agua o drenaje', 10, 20);
         pdf.f2(5);
         pdf.line(10, 21, 100, 21);
-        this._solicitudServ.aprovRechSolicitud(solicitudServ._id, true).subscribe();
+        this._solicitudServ.realizarPago(solicitudServ._id, true).subscribe();
     }
 
     imprimirOrdenServ(solicitudServ: ISolicitudServ): void
     {
-        // const pdf = new JsPDF({orientation: 'p', unit: 'cm'});
-        // pdf.text('Sistema Municipal', 10, 10, {baseline: 'middle', maxWidth: 200}, null);
-        // pdf.save();
         this.cargandoDatos = true;
         this.subscripciones.add(this._clienteState.datosRef(solicitudServ.medidorRef).pipe(tap((res: IResCliente) =>
         {
             this.datosRef = res.documento;
-            this.crearOrdenServicio(solicitudServ, res.documento).then();
-            this.cargandoDatos = false;
+            this.generarOrdenServicio(solicitudServ, res.documento).then(() => this.cargandoDatos = false);
         })).subscribe());
     }
 
@@ -78,7 +74,7 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this._dr.open(RegContratosComponent, {width: '45%', data});
     }
 
-    async crearOrdenServicio(solicitud: ISolicitudServ, ref: ICliente): Promise<void>
+    async generarOrdenServicio(solicitud: ISolicitudServ, ref: ICliente): Promise<void>
     {
         const pdf = new PdfMakeWrapper();
         const verificacion = `Verificacion de servicio para contratacion y/o presupuesto`;

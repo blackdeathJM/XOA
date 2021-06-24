@@ -2,7 +2,7 @@ import {State} from '@ngxs/store';
 import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
-import {Computed, DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
+import {DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutation.service';
 import {tap} from 'rxjs/operators';
@@ -51,9 +51,9 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
         }));
     }
 
-    @DataAction() aprovRechSolicitud(@Payload('Aprobar rechazar solicitud') _id: string, valor: boolean): Observable<IResSolicitud>
+    @DataAction() realizarPago(@Payload('Aprobar rechazar solicitud') _id: string, valor: boolean): Observable<IResSolicitud>
     {
-        return this._solicitudMutation.aprovRechSolicitud(_id, valor).pipe(tap(async (res: IResSolicitud) =>
+        return this._solicitudMutation.realizarPago(_id, valor).pipe(tap(async (res: IResSolicitud) =>
         {
             // this.ctx.setState(patch(updateItem((solicitud: ISolicitudServ) => solicitud._id === _id, res.documento)));
             this.ctx.setState(await GralesServices.nvoEdoReem(_id, this.ctx, res.documento));
@@ -68,7 +68,7 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
         }));
     }
 
-    @Computed()
+    @DataAction()
     async eliminarElementoDelEdo(idBuscar): Promise<void>
     {
         this.ctx.setState(await GralesServices.nvoEdoReem(idBuscar, this.ctx, '', true));

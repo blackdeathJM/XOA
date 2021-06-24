@@ -1,16 +1,16 @@
-<section *ngIf="_clienteState.state$ | async as datosReferencia">
+<section *ngIf="referencia">
     <div>
         <div fxFlex>
             <span fxFlex="40" class="form-etiquetas">Medidor de referencia:</span>
-            <span fxFlex class="form-datos">{{datosReferencia?.noMedidor}}</span>
+            <span fxFlex class="form-datos">{{referencia?.contratos[0].noMedidor}}</span>
         </div>
         <div fxFlex>
             <span fxFlex="40" class="form-etiquetas">No. de cuenta:</span>
-            <span fxFlex class="form-datos">{{datosReferencia?.noCuenta}}</span>
+            <span fxFlex class="form-datos">{{referencia?.contratos[0].noCuenta}}</span>
         </div>
     </div>
     <div fxFill>
         <span fxFlex="20" class="form-etiquetas">Referencia:</span>
-        <span fxFlex class="form-datos">{{datosReferencia?.referencia}}</span>
+        <span fxFlex class="form-datos">{{referencia?.contratos[0].datosSolicitud.referencia}}</span>
     </div>
 </section>

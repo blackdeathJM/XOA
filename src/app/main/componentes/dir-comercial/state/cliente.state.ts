@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
 import {Observable} from 'rxjs';
 import {ClienteMutationService} from '../services/cliente.mutation.service';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {ClienteQueryService} from '@dir-comercial/cliente.query.service';
 
 @StateRepository()
