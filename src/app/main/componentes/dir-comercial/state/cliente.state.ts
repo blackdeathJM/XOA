@@ -28,12 +28,17 @@ export class ClienteState extends NgxsDataRepository<ICliente>
 
     @DataAction() datosRef(@Payload('Buscar medidor ref') noMedidor: string): Observable<IResCliente>
     {
-        return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) =>
+        console.log('fuera del if noMedidor', noMedidor);
+        if (noMedidor)
         {
-            if (res.estatus)
+            console.log('dentro del if', noMedidor);
+            return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) =>
             {
-                this.ctx.setState(res.documento);
-            }
-        }));
+                if (res.estatus)
+                {
+                    this.ctx.setState(res.documento);
+                }
+            }));
+        }
     }
 }

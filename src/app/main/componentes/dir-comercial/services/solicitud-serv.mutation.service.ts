@@ -23,7 +23,7 @@ export class SolicitudServMutationService extends ApiService
 
     realizarPago(_id: string, valor: boolean): Observable<IResSolicitud>
     {
-        return this.mutation(realizarPago, {_id, valor}, {}, ['data', 'aprovRechSolicitud']);
+        return this.mutation(realizarPago, {_id, valor}, {}, ['data', 'realizarPago']);
     }
 
     actualizarSolicitud(_id: string, observaciones: string, aprobadoServ: boolean, ejecutadaPor: string): Observable<IResSolicitud>

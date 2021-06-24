@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 
 @Component({
@@ -8,15 +8,6 @@ import {fuseAnimations} from '@plantilla/animations';
     encapsulation: ViewEncapsulation.None,
     animations: [fuseAnimations]
 })
-export class DetalleContratoComponent implements OnInit
+export class DetalleContratoComponent
 {
-
-    constructor()
-    {
-    }
-
-    ngOnInit(): void
-    {
-    }
-
 }

@@ -8,28 +8,12 @@ import {ICliente} from '@dir-comercial/cliente.interface';
     templateUrl: './detalle-referencia.component.html',
     styleUrls: ['./detalle-referencia.component.scss']
 })
-export class DetalleReferenciaComponent implements OnInit, OnDestroy
+export class DetalleReferenciaComponent
 {
-    @Input() set noMedidor(v: string)
-    {
-        this._noMedidor = v;
-    }
-
-    _noMedidor: string;
     sub: Subscription = new Subscription();
     referencia: ICliente;
 
-    constructor(private _clienteState: ClienteState)
+    constructor(public _clienteState: ClienteState)
     {
-    }
-
-    ngOnInit(): void
-    {
-        this.sub.add(this._clienteState.state$.subscribe());
-    }
-
-    ngOnDestroy(): void
-    {
-        this.sub.unsubscribe();
     }
 }
