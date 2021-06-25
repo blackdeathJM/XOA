@@ -28,15 +28,15 @@
             <tr>
                 <td [colSpan]="7">
                     <app-prime-tabla (emitirAccion)="MostrarDetalleContrato($event, cliente)"
-                        [accionesVisibles]="true"
-                        [btnAcciones]="acciones"
-                        [columnas]="columnas"
-                        [valConsulta]="cliente.contratos"
-                        [ancho]="{width: '80px'}">
+                                     [accionesVisibles]="true"
+                                     [btnAcciones]="acciones"
+                                     [columnas]="columnas"
+                                     [valConsulta]="cliente.contratos"
+                                     [ancho]="{width: '80px'}">
                     </app-prime-tabla>
                     <mat-divider class="m-5"></mat-divider>
-                    <ng-container>
-                        <app-detalles-solicitud-serv [datosSolicitud]=""></app-detalles-solicitud-serv>
+                    <ng-container *ngIf="detallesSolicicitud">
+                        <app-detalles-solicitud-serv [datosSolicitud]="detallesSolicicitud"></app-detalles-solicitud-serv>
                     </ng-container>
                 </td>
             </tr>
