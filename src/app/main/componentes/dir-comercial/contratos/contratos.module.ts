@@ -12,7 +12,6 @@ import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.compon
 import {ConsultaContratosComponent} from './info-contratos/consulta-contratos/consulta-contratos.component';
 import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv.component';
 import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
-import {DetalleContratoComponent} from './info-contratos/detalle-contrato/detalle-contrato.component';
 import {DetalleReferenciaComponent} from './info-contratos/detalle-referencia/detalle-referencia.component';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {SharedModule} from '@shared/shared.module';
@@ -36,7 +35,6 @@ import {PortalModule} from '@angular/cdk/portal';
             ConsultaContratosComponent,
             RegSolicitudServComponent,
             DetallesSolicitudServComponent,
-            DetalleContratoComponent,
             DetalleReferenciaComponent,
             InfoSolicitudServComponent,
             ActualizarSolicitudServComponent

@@ -88,7 +88,7 @@ export class RegSolicitudServComponent implements OnInit
             }
             this.estaCargando = false;
             this.cerrarModal();
-        }, e => toastSweet(TipoAlerta.error, e, 5000));
+        });
     }
 
     cerrarModal(): void

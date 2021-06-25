@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ClientesState} from '@dir-comercial/clientes.state';
-import {IAccionesPrimeTabla} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
+import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 import {MatDialog} from '@angular/material/dialog';
 import {RegSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/reg-solicitud-serv.component';
@@ -47,23 +47,28 @@ export class ConsultaContratosComponent
             },
             {
                 etiqueta: 'Calle',
-                propiedad: 'calle'
+                propiedad: 'datosSolicitud',
+                subPropiedad: 'calle'
             },
             {
                 etiqueta: 'Colonia',
-                propiedad: 'colonia'
+                propiedad: 'datosSolicitud',
+                subPropiedad: 'colonia'
             },
             {
                 etiqueta: 'Ruta',
-                propiedad: 'ruta'
+                propiedad: 'datosSolicitud',
+                subPropiedad: 'ruta'
             },
             {
                 etiqueta: 'Tarifa',
-                propiedad: 'tarifa'
+                propiedad: 'datosSolicitud',
+                subPropiedad: 'tarifa'
             },
             {
                 etiqueta: 'Giro',
-                propiedad: 'giro'
+                propiedad: 'datosSolicitud',
+                subPropiedad: 'giro'
             }
         ];
 
@@ -73,7 +78,7 @@ export class ConsultaContratosComponent
                 accion: AccionesTabla.info,
                 icono: 'info',
                 color: 'primary',
-                tooltip: 'Mostrar informacion detallada del o los contratos de este usuario'
+                tooltip: 'Mostrar informacion detallada del contrato de este usuario'
             }
         ];
 
@@ -91,5 +96,28 @@ export class ConsultaContratosComponent
     verSolicitudesCreadas(cliente: ICliente): void
     {
         this._solicitudServState.solPorCliente(cliente._id).subscribe();
+    }
+
+    MostrarDetalleContrato(evento: IEventoAcciones, cliente: ICliente): void
+    {
+        switch (evento.accion)
+        {
+            case AccionesTabla.info:
+                const {...contrato} = evento.datos;
+                delete contrato['__typename'];
+                const {...copiaCliente} = cliente;
+                delete copiaCliente.contratos;
+                Object.defineProperty(copiaCliente, 'contratos',
+                    {
+                        configurable: true,
+                        enumerable: true,
+                        writable: true,
+                        value: contrato
+                    });
+                this._clienteState.sClienteDetalle = copiaCliente;
+                break;
+            case AccionesTabla.rest:
+                break;
+        }
     }
 }

@@ -23,7 +23,16 @@ import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.
 })
 export class DetallesSolicitudServComponent implements OnDestroy
 {
-    @Input() visible = false;
+    @Input() accionesVisibles = false;
+
+    @Input() set datosSolicitud(v: ISolicitudServ)
+    {
+        console.log('+++++', v);
+        this._datosSolicitud = v;
+    }
+
+    _datosSolicitud: ISolicitudServ;
+
     subscripciones: Subscription = new Subscription();
     datosRef: ICliente;
     cargandoDatos = false;

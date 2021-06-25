@@ -15,7 +15,6 @@ import {fuseAnimations} from '@plantilla/animations';
 })
 export class InfoSolicitudServComponent implements OnDestroy
 {
-    noMedidor: string;
     columnasSolicitud: ITablaColumnas[] =
         [
             {
@@ -61,7 +60,7 @@ export class InfoSolicitudServComponent implements OnDestroy
         {
             case 'info':
                 this._solicitudPrev.sSolicituServ = datos;
-                this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe((r) => console.log(r)));
+                this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
                 break;
             case 'reset':
                 this._solicitudPrev.sSolicituServ = null;
