@@ -57,11 +57,11 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this._solicitudServ.realizarPago(solicitudServ._id, true).subscribe();
     }
 
-    imprimirOrdenServ(solicitudServ: ISolicitudServ, referencia: ICliente): void
+    imprimirOrdenServ(solicitudServ: ISolicitudServ): void
     {
 
         this.cargandoDatos = true;
-        this.generarOrdenServicio(solicitudServ, referencia).then(() => this.cargandoDatos = false);
+        this.generarOrdenServicio(solicitudServ, null).then(() => this.cargandoDatos = false);
     }
 
     actualizarOrden(solicitudServ: ISolicitudServ): void
