@@ -9,10 +9,9 @@ import {ActualizarSolicitudServComponent} from '@dir-comercial/reg-solicitud-ser
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {Canvas, Columns, Img, Line, PdfMakeWrapper, Rect, Stack, Txt} from 'pdfmake-wrapper';
 import organismo from 'assets/organismo/organismo.json';
-import {ICliente, IResCliente} from '@dir-comercial/cliente.interface';
+import {ICliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
-import {tap} from 'rxjs/operators';
 import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.component';
 
 @Component({
@@ -31,10 +30,15 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this._datosSolicitud = v;
     }
 
+    @Input() set infoReferencia(v: ICliente)
+    {
+        this._infoReferencia = v;
+    }
+
+    _infoReferencia: ICliente;
     _datosSolicitud: ISolicitudServ;
 
     subscripciones: Subscription = new Subscription();
-    datosRef: ICliente;
     cargandoDatos = false;
 
     constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState, private _dr: MatDialog,
@@ -53,14 +57,11 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this._solicitudServ.realizarPago(solicitudServ._id, true).subscribe();
     }
 
-    imprimirOrdenServ(solicitudServ: ISolicitudServ): void
+    imprimirOrdenServ(solicitudServ: ISolicitudServ, referencia: ICliente): void
     {
+
         this.cargandoDatos = true;
-        this.subscripciones.add(this._clienteState.datosRef(solicitudServ.medidorRef).pipe(tap((res: IResCliente) =>
-        {
-            this.datosRef = res.documento;
-            this.generarOrdenServicio(solicitudServ, res.documento).then(() => this.cargandoDatos = false);
-        })).subscribe());
+        this.generarOrdenServicio(solicitudServ, referencia).then(() => this.cargandoDatos = false);
     }
 
     actualizarOrden(solicitudServ: ISolicitudServ): void

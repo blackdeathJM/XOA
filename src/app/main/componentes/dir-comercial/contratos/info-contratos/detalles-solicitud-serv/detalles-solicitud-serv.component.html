@@ -86,7 +86,8 @@
                         <mat-icon>attach_money</mat-icon>
                         Pago verificacion de servicio
                     </button>
-                    <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(_datosSolicitud)" [disabled]="!_datosSolicitud?.pagoServRealizado">
+                    <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(_datosSolicitud)"
+                            [disabled]="!_datosSolicitud?.pagoServRealizado || cargandoDatos">
                         <ng-container *ngIf="!cargandoDatos; else cargando">
                             <mat-icon>print</mat-icon>
                         </ng-container>

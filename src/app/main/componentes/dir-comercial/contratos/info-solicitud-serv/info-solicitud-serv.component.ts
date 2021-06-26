@@ -6,6 +6,7 @@ import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 import {fuseAnimations} from '@plantilla/animations';
+import {ICliente} from '@dir-comercial/cliente.interface';
 
 @Component({
     selector: 'app-info-solicitud-serv',
@@ -15,6 +16,7 @@ import {fuseAnimations} from '@plantilla/animations';
 })
 export class InfoSolicitudServComponent implements OnDestroy
 {
+    infoReferencia: ICliente = null;
     columnasSolicitud: ITablaColumnas[] =
         [
             {
@@ -60,7 +62,13 @@ export class InfoSolicitudServComponent implements OnDestroy
         {
             case 'info':
                 this._solicitudPrev.sSolicituServ = datos;
-                this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
+                if (datos.medidorRef)
+                {
+                    this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe((r) =>
+                    {
+                        this.infoReferencia = r.documento;
+                    }));
+                }
                 break;
             case 'reset':
                 this._solicitudPrev.sSolicituServ = null;

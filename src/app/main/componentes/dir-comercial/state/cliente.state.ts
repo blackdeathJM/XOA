@@ -13,29 +13,15 @@ import {ClienteQueryService} from '@dir-comercial/cliente.query.service';
 @Injectable()
 export class ClienteState extends NgxsDataRepository<ICliente>
 {
-    private clienteDetalle$: BehaviorSubject<ICliente> = new BehaviorSubject(null);
-
     constructor(private _clienteMutation: ClienteMutationService, private _clienteQuery: ClienteQueryService)
     {
         super();
     }
 
-    get gClienteDetalle(): Observable<ICliente>
-    {
-        return this.clienteDetalle$.asObservable();
-    }
-
-    set sClienteDetalle(datos: ICliente)
-    {
-        this.clienteDetalle$.next(datos);
-    }
 
     @DataAction() regCliente(@Payload('Registrar cliente') cliente: ICliente): Observable<IResCliente>
     {
-        return this._clienteMutation.regCliente(cliente).pipe(tap((cli: IResCliente) =>
-        {
-            this.ctx.setState(cli.documento);
-        }));
+        return this._clienteMutation.regCliente(cliente);
     }
 
     @DataAction() datosRef(@Payload('Buscar medidor ref') noMedidor: string): Observable<IResCliente>

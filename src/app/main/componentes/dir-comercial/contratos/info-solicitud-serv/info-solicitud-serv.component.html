@@ -11,8 +11,9 @@
                              (emitirAccion)="clienteSelec($event)">
             </app-prime-tabla>
             <mat-divider class="m-5"></mat-divider>
-            <app-detalles-solicitud-serv [accionesVisibles]="true" [datosSolicitud]="this._solicitudPrev.gSolicituServ | async">
-                <app-detalle-referencia></app-detalle-referencia>
+            <app-detalles-solicitud-serv [infoReferencia]="infoReferencia"
+                                         [accionesVisibles]="true" [datosSolicitud]="this._solicitudPrev.gSolicituServ | async">
+                <app-detalle-referencia [infoReferencia]="infoReferencia"></app-detalle-referencia>
             </app-detalles-solicitud-serv>
         </ng-container>
     </app-card-bootstrap>

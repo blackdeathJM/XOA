@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {ClienteState} from '@dir-comercial/cliente.state';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ICliente} from '@dir-comercial/cliente.interface';
 
 @Component({
     selector: 'app-detalle-referencia',
@@ -9,7 +9,10 @@ import {ClienteState} from '@dir-comercial/cliente.state';
 })
 export class DetalleReferenciaComponent
 {
-    constructor(public _clienteState: ClienteState)
+    @Input() set infoReferencia(v: ICliente)
     {
+        this._infoReferencia = v;
     }
+
+    _infoReferencia: ICliente = null;
 }
