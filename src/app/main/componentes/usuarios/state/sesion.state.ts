@@ -1,4 +1,4 @@
-import {DataAction, Payload, Persistence, StateRepository} from '@ngxs-labs/data/decorators';
+import {DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
 import {State} from '@ngxs/store';
 import {ILoginToken, IUsuario} from '@modelosUsuarios/usuario.interface';
 import {Injectable} from '@angular/core';
@@ -9,13 +9,8 @@ import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
 import {Router} from '@angular/router';
 import {NgxsDataDoCheck} from '@ngxs-labs/data/typings';
-import {TtlExpiredStrategy} from '@ngxs-labs/data/typings/storage/storage';
 import {UsuarioSubscriptionService} from '@usuarios/usuario-subscription.service';
 
-@Persistence({
-    existingEngine: localStorage, ttlExpiredStrategy: TtlExpiredStrategy.REMOVE_KEY_AFTER_EXPIRED,
-    path: 'usuario'
-})
 @StateRepository()
 @State<IUsuario>({
     name: 'usuario', defaults: null
@@ -46,8 +41,7 @@ export class SesionState extends NgxsDataRepository<IUsuario> implements NgxsDat
 
     obtenerSesion(): IUsuario
     {
-        const nvaSession = this._sesionService.obtenerSesionActual();
-        return nvaSession;
+        return this._sesionService.obtenerSesionActual();
     }
 
     cerrarSesion(): void

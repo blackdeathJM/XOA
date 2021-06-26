@@ -119,7 +119,7 @@ export class ConsultaContratosComponent
                 // this._clienteState.sClienteDetalle = copiaCliente;
 
                 this.detallesSolicicitud = evento.datos.datosSolicitud;
-                console.log('Detalle', this.detallesSolicicitud);
+                console.log('Detalle', evento);
                 break;
             case AccionesTabla.rest:
 
