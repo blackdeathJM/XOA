@@ -23,8 +23,9 @@ enum AccionesTabla
 })
 export class ConsultaContratosComponent
 {
-    detalleContrato: IContrato;
-    detalleSolicitud: ISolicitudServ;
+    detalleContrato: IContrato = null;
+    detalleSolicitud: ISolicitudServ = null;
+
     constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState, public _solicitudServState: SolicitudesState, private _clienteState: ClienteState)
     {
     }
@@ -104,30 +105,19 @@ export class ConsultaContratosComponent
         switch (evento.accion)
         {
             case AccionesTabla.info:
-                // const {...contrato} = evento.datos;
-                // delete contrato['__typename'];
-                // const {...copiaCliente} = cliente;
-                // delete copiaCliente.contratos;
-                // Object.defineProperty(copiaCliente, 'contratos',
-                //     {
-                //         configurable: true,
-                //         enumerable: true,
-                //         writable: true,
-                //         value: contrato
-                //     });
-                // this._clienteState.sClienteDetalle = copiaCliente;
-                this.detalleContrato = evento.datos.contratos;
                 this.detalleSolicitud = evento.datos.datosSolicitud;
-                console.log('===>>', evento.datos);
+                this.detalleContrato = evento.datos;
                 break;
             case AccionesTabla.rest:
                 this.detalleSolicitud = null;
+                this.detalleContrato = null;
                 break;
         }
     }
 
-    resetearDetalles(): void
+    resetearDetalles(evento: MouseEvent): void
     {
+        evento.preventDefault();
         this.detalleSolicitud = null;
     }
 }

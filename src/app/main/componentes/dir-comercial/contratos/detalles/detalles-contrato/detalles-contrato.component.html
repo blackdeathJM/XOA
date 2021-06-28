@@ -1,0 +1,18 @@
+<div fxLayoutAlign="center center">
+    <section [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="_infoContrato" class="baseDiv w-90-p">
+        <div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Municipio</span>
+                <span fxFlex class="form-datos">{{_infoContrato.municipio}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Ciudad</span>
+                <span fxFlex class="form-datos">{{_infoContrato.ciudad}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="40" class="form-etiquetas">Estado</span>
+                <span fxFlex class="form-datos">{{_infoContrato.estado}}</span>
+            </div>
+        </div>
+    </section>
+</div>

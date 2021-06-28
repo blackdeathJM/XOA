@@ -18,7 +18,8 @@ import { DetalleContratoComponent } from './clientes/detalle-contrato/detalle-co
         ],
     exports:
         [
-            GaleriaComponent
+            GaleriaComponent,
+            DetalleContratoComponent
         ],
     imports:
         [

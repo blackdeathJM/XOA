@@ -23,7 +23,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from '@ngxs/store';
 import {PortalModule} from '@angular/cdk/portal';
-import { DetalleContratoComponent } from './detalles/detalle-contrato/detalle-contrato.component';
+import {DetallesContratoComponent} from './detalles/detalles-contrato/detalles-contrato.component';
 
 
 @NgModule({
@@ -37,9 +37,9 @@ import { DetalleContratoComponent } from './detalles/detalle-contrato/detalle-co
             RegSolicitudServComponent,
             DetallesSolicitudServComponent,
             DetalleReferenciaComponent,
+            DetallesContratoComponent,
             InfoSolicitudServComponent,
             ActualizarSolicitudServComponent,
-            DetalleContratoComponent
         ],
     imports:
         [

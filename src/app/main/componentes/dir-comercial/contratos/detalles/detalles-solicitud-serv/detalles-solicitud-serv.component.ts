@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 import {PuentePortalService} from '@services/puente-portal.service';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
@@ -18,6 +18,7 @@ import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.
     selector: 'app-detalles-solicitud-serv',
     templateUrl: './detalles-solicitud-serv.component.html',
     styleUrls: ['./detalles-solicitud-serv.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
 export class DetallesSolicitudServComponent implements OnDestroy

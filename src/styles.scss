@@ -81,7 +81,7 @@ $fuse-theme: mat-light-theme((
 @import "src/app/ui-externos/prime-ng/primeng";
 
 // sweetalert2
-//@import '~@sweetalert2/themes/dark/dark';
+@import '~@sweetalert2/themes/dark/dark';
 $swal2-font-size: 1.5rem;
 @import "src/app/shared/alerts/sweet-alert";
 
