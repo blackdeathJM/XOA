@@ -12,7 +12,7 @@
                 <td class="amber-fg" [colSpan]="5">{{cliente.nombreCompleto}}</td>
                 <td class="amber-fg">{{cliente.telefonos}}</td>
                 <td [ngStyle]="{width: '150px'}">
-                    <button mat-icon-button class="green-fg" [pRowToggler]="cliente">
+                    <button mat-icon-button class="green-fg" [pRowToggler]="cliente" (click)="resetearDetalles()">
                         <mat-icon>{{expanded ? 'arrow_downward' : 'arrow_forward'}}</mat-icon>
                     </button>
                     <button mat-icon-button class="white-fg" (click)="nvaSolicitudServAgua(cliente)" matTooltip="Crear nueva solicitud de servicio">
@@ -27,7 +27,7 @@
         <ng-template pTemplate="rowexpansion" let-cliente>
             <tr>
                 <td [colSpan]="7">
-                    <app-prime-tabla (emitirAccion)="MostrarDetalleContrato($event, cliente)"
+                    <app-prime-tabla (emitirAccion)="MostrarDetalleContrato($event)"
                                      [accionesVisibles]="true"
                                      [btnAcciones]="acciones"
                                      [columnas]="columnas"
@@ -35,9 +35,8 @@
                                      [ancho]="{width: '80px'}">
                     </app-prime-tabla>
                     <mat-divider class="m-5"></mat-divider>
-                    <ng-container *ngIf="detallesSolicicitud">
-                        <app-detalles-solicitud-serv [datosSolicitud]="detallesSolicicitud"></app-detalles-solicitud-serv>
-                    </ng-container>
+                    <app-detalles-solicitud-serv [detalleSolicitud]="detalleSolicitud"></app-detalles-solicitud-serv>
+                    <app-detalle-contrato [infoContrato]="detalleContrato"></app-detalle-contrato>
                 </td>
             </tr>
         </ng-template>

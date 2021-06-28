@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ICliente} from '@dir-comercial/cliente.interface';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ClienteState} from '@dir-comercial/cliente.state';
 
 @Component({
     selector: 'app-detalle-referencia',
@@ -9,10 +9,13 @@ import {ICliente} from '@dir-comercial/cliente.interface';
 })
 export class DetalleReferenciaComponent
 {
-    @Input() set infoReferencia(v: ICliente)
+    constructor(public _clienteState: ClienteState)
     {
-        this._infoReferencia = v;
+
     }
 
-    _infoReferencia: ICliente = null;
+    localizarRef(): void
+    {
+        console.log('Falta localizar en mapa');
+    }
 }

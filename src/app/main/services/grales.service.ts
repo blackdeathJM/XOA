@@ -9,12 +9,25 @@ import {environment} from '@env/environment';
 import {IDatasets} from '@funcionesRaiz/graficas';
 import {DataStateContext} from '@ngxs-labs/data/typings';
 import {IOpcionesCarga} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
+import mapboxgl from 'mapbox-gl';
+import {BehaviorSubject} from 'rxjs';
+import {Observable} from 'subscriptions-transport-ws';
+
+export interface IMapa
+{
+    centro: [number, number];
+    marcadores: mapboxgl.Marker;
+    zoom: number;
+    popup: any;
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class GralesServices
 {
+    private mapa$: BehaviorSubject<IMapa> = new BehaviorSubject<IMapa>(null);
+
     constructor(private _router: Router)
     {
     }
@@ -206,5 +219,15 @@ export class GralesServices
             });
         }
         return tienePermiso;
+    }
+
+    get gMapa(): Observable<IMapa>
+    {
+        return this.mapa$.asObservable();
+    }
+
+    set sMapa(v: IMapa)
+    {
+        this.mapa$.next(v);
     }
 }

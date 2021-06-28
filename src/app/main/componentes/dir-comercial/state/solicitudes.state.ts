@@ -14,7 +14,7 @@ import {GralesServices} from '@services/grales.service';
 @Injectable()
 export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 {
-    private solicitud$: BehaviorSubject<ISolicitudServ> = new BehaviorSubject<ISolicitudServ>(null);
+    // private solicitud$: BehaviorSubject<ISolicitudServ> = new BehaviorSubject<ISolicitudServ>(null);
 
     constructor(private _solicitudMutation: SolicitudServMutationService, private _solicitudQuery: SolicitudServQueryService)
     {
@@ -23,15 +23,15 @@ export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 
     cargando = false;
 
-    get gSolicituServ(): Observable<ISolicitudServ>
-    {
-        return this.solicitud$.asObservable();
-    }
-
-    set sSolicituServ(datos: ISolicitudServ)
-    {
-        this.solicitud$.next(datos);
-    }
+    // get gSolicituServ(): Observable<ISolicitudServ>
+    // {
+    //     return this.solicitud$.asObservable();
+    // }
+    //
+    // set sSolicituServ(datos: ISolicitudServ)
+    // {
+    //     this.solicitud$.next(datos);
+    // }
 
     @DataAction() regSolicitudServ(@Payload('Reg solicitud serv') solicitudServ: ISolicitudServ): Observable<IResSolicitud>
     {

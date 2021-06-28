@@ -1,6 +1,8 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import {fuseAnimations} from '@plantilla/animations';
+import {GralesServices, IMapa} from '@services/grales.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-mapa',
@@ -9,28 +11,35 @@ import {fuseAnimations} from '@plantilla/animations';
     encapsulation: ViewEncapsulation.None,
     animations: [fuseAnimations]
 })
-export class MapaComponent implements AfterViewInit, OnDestroy
+export class MapaComponent implements AfterViewInit, OnDestroy, OnInit
 {
-
     @ViewChild('mapa') divMapa: ElementRef;
+
+    datosMapa: IMapa;
     mapa: mapboxgl.Map;
-    etiqueta: string;
-    nivelZoom = 15;
-    centro: [number, number] = [-100.93292035370479, 21.169707631250635];
-    marcadores: mapboxgl.Marker;
+    sub: Subscription = new Subscription();
+
+    constructor(private _gralesS: GralesServices)
+    {
+    }
+
+    ngOnInit(): void
+    {
+
+    }
 
     ngAfterViewInit(): void
     {
         this.mapa = new mapboxgl.Map({
             container: this.divMapa.nativeElement,
             style: 'mapbox://styles/mapbox/dark-v10',
-            center: this.centro,
+            center: this.datosMapa.centro,
             keyboard: true,
-            zoom: this.nivelZoom,
-            scrollZoom: false,
+            zoom: this.datosMapa.zoom,
+            scrollZoom: true,
             boxZoom: true,
         }).addControl(new mapboxgl.AttributionControl({compact: true}));
-        this.mapa.on('zoom', () => this.nivelZoom = this.mapa.getZoom());
+        this.mapa.on('zoom', () => this.datosMapa.zoom = this.mapa.getZoom());
         this.agregarMarcador();
     }
 
@@ -54,6 +63,6 @@ export class MapaComponent implements AfterViewInit, OnDestroy
         }).setText('Sistema municipal de agua potable y alcantarillado');
         new mapboxgl.Marker({
             color
-        }).setLngLat(this.centro).setPopup(popup).addTo(this.mapa);
+        }).setLngLat(this.datosMapa.centro).setPopup(popup).addTo(this.mapa);
     }
 }

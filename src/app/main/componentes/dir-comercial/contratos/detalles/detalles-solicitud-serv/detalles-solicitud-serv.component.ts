@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ActualizarSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/actualizar-solicitud-serv/actualizar-solicitud-serv.component';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {Canvas, Columns, Img, Line, PdfMakeWrapper, Rect, Stack, Txt} from 'pdfmake-wrapper';
-import organismo from 'assets/organismo/organismo.json';
+import organismo from '@organismo/organismo.json';
 import {ICliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
@@ -24,20 +24,12 @@ export class DetallesSolicitudServComponent implements OnDestroy
 {
     @Input() accionesVisibles = false;
 
-    @Input() set datosSolicitud(v: ISolicitudServ)
+    @Input() set detalleSolicitud(v: ISolicitudServ)
     {
-        console.log('+++++', v);
-        this._datosSolicitud = v;
+        this._detalleSolicitud = v;
     }
 
-    @Input() set infoReferencia(v: ICliente)
-    {
-        this._infoReferencia = v;
-    }
-
-    _infoReferencia: ICliente;
-    _datosSolicitud: ISolicitudServ;
-
+    _detalleSolicitud: ISolicitudServ;
     subscripciones: Subscription = new Subscription();
     cargandoDatos = false;
 
@@ -54,6 +46,7 @@ export class DetallesSolicitudServComponent implements OnDestroy
         pdf.text('Solicitud de verificacion de servicios de agua o drenaje', 10, 20);
         pdf.f2(5);
         pdf.line(10, 21, 100, 21);
+
         this._solicitudServ.realizarPago(solicitudServ._id, true).subscribe();
     }
 
@@ -61,7 +54,13 @@ export class DetallesSolicitudServComponent implements OnDestroy
     {
 
         this.cargandoDatos = true;
-        this.generarOrdenServicio(solicitudServ, null).then(() => this.cargandoDatos = false);
+        if (solicitudServ.medidorRef)
+        {
+            this.generarOrdenServicio(solicitudServ, this._clienteState.snapshot).then(() => this.cargandoDatos = false);
+        } else
+        {
+            this.generarOrdenServicio(solicitudServ, null).then(() => this.cargandoDatos = false);
+        }
     }
 
     actualizarOrden(solicitudServ: ISolicitudServ): void

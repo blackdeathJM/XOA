@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, OnDestroy, ViewEncapsulation} from '@angular/core';
 import {ICliente, IClienteMod, IResCliente} from '@dir-comercial/cliente.interface';
-import {ClienteState} from '@dir-comercial/cliente.state';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
@@ -9,6 +8,7 @@ import {tap} from 'rxjs/operators';
 import {toastSweet} from '@shared/alerts/toasts';
 import {TipoAlerta} from '@shared/alerts/values.config';
 import {Subscription} from 'rxjs';
+import {ClientesState} from '@dir-comercial/clientes.state';
 
 @Component({
     selector: 'app-reg-cliente',
@@ -34,7 +34,7 @@ export class RegClienteComponent implements OnDestroy
         return this.formCliente.get('telefonos') as FormArray;
     }
 
-    constructor(private _formBuilder: FormBuilder, public _clienteState: ClienteState, @Inject(MAT_DIALOG_DATA) public data: IClienteMod, private _sesionState: SesionState,
+    constructor(private _formBuilder: FormBuilder, public _clienteState: ClientesState, @Inject(MAT_DIALOG_DATA) public data: IClienteMod, private _sesionState: SesionState,
                 private _dialogRef: MatDialog)
     {
     }

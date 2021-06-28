@@ -1,4 +1,4 @@
-<div [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="_solicitudPrev.state$ | async as solicitud">
+<section [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="(_solicitudPrev.state$ | async) as solicitud">
     <app-card-bootstrap>
         <ng-container cabecera><h2>Informacion de solicitudes creadas</h2></ng-container>
         <ng-container contenido>
@@ -10,11 +10,9 @@
                              [valConsulta]="solicitud"
                              (emitirAccion)="clienteSelec($event)">
             </app-prime-tabla>
-            <mat-divider class="m-5"></mat-divider>
-            <app-detalles-solicitud-serv [infoReferencia]="infoReferencia"
-                                         [accionesVisibles]="true" [datosSolicitud]="this._solicitudPrev.gSolicituServ | async">
-                <app-detalle-referencia [infoReferencia]="infoReferencia"></app-detalle-referencia>
+            <app-detalles-solicitud-serv [accionesVisibles]="true" [detalleSolicitud]="detalleSolicitud">
+                <app-detalle-referencia></app-detalle-referencia>
             </app-detalles-solicitud-serv>
         </ng-container>
     </app-card-bootstrap>
-</div>
+</section>

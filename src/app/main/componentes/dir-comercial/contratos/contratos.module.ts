@@ -11,8 +11,8 @@ import {SubidasModule} from '@shared/components/subidas/subidas.module';
 import {RegClienteComponent} from '@dir-comercial/reg-cliente/reg-cliente.component';
 import {ConsultaContratosComponent} from './info-contratos/consulta-contratos/consulta-contratos.component';
 import {RegSolicitudServComponent} from './reg-solicitud-serv/reg-solicitud-serv.component';
-import {DetallesSolicitudServComponent} from './info-contratos/detalles-solicitud-serv/detalles-solicitud-serv.component';
-import {DetalleReferenciaComponent} from './info-contratos/detalle-referencia/detalle-referencia.component';
+import {DetallesSolicitudServComponent} from './detalles/detalles-solicitud-serv/detalles-solicitud-serv.component';
+import {DetalleReferenciaComponent} from './detalles/detalle-referencia/detalle-referencia.component';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {SharedModule} from '@shared/shared.module';
 import {InfoSolicitudServComponent} from './info-solicitud-serv/info-solicitud-serv.component';
@@ -23,6 +23,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from '@ngxs/store';
 import {PortalModule} from '@angular/cdk/portal';
+import { DetalleContratoComponent } from './detalles/detalle-contrato/detalle-contrato.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {PortalModule} from '@angular/cdk/portal';
             DetallesSolicitudServComponent,
             DetalleReferenciaComponent,
             InfoSolicitudServComponent,
-            ActualizarSolicitudServComponent
+            ActualizarSolicitudServComponent,
+            DetalleContratoComponent
         ],
     imports:
         [

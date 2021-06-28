@@ -1,6 +1,11 @@
-<section [@animate]="{value: '*', params: {y: '100%'}}">
-    <div #mapa class="contenedor-mapa inner-scroll"></div>
-    <div class="my-8" fxLayoutAlign="center center">
-        <mat-slider fxFlex="50" thumbLabel tickInterval="1" [min]="1" [max]="22" (valueChange)="zoom($event)" [value]="nivelZoom"></mat-slider>
-    </div>
-</section>
+<div [@animate]="{value: '*', params: {y: '100%'}}">
+    <app-card-bootstrap>
+        <ng-container cabecera><h2>Mapa</h2></ng-container>
+        <ng-container contenido>
+            <div #mapa class="contenedor-mapa"></div>
+            <div fxLayoutAlign="center center">
+                <mat-slider fxFlex="50" thumbLabel tickInterval="1" [min]="1" [max]="22" (valueChange)="zoom($event)" [value]="datosMapa.zoom"></mat-slider>
+            </div>
+        </ng-container>
+    </app-card-bootstrap>
+</div>

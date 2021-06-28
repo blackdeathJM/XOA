@@ -32,6 +32,7 @@ export class ActualizarSolicitudServComponent
 
     actSolicitud(): void
     {
+        this.estaCargando = true;
         const datos = this.data.datos as ISolicitudServ;
         const aprobar: boolean = this.formActSolitudServ.get('aprobadoServ').value === 'true';
         this._solicitudState.actualizarSolicitud(datos._id, this.formActSolitudServ.get('observaciones').value, aprobar,
@@ -49,7 +50,7 @@ export class ActualizarSolicitudServComponent
             {
                 toastSweet(TipoAlerta.error, 'Ocurrio un erro al tratar de actualizar la solicitud', 5000);
             }
-        }, e => toastSweet(TipoAlerta.error, e, 5000));
+        });
     }
 
     cerrarModal(): void

@@ -5,7 +5,7 @@ import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 import {MatDialog} from '@angular/material/dialog';
 import {RegSolicitudServComponent} from '@dir-comercial/reg-solicitud-serv/reg-solicitud-serv.component';
 import {IModalInfo} from '@funcionesRaiz/modal.interface';
-import {ICliente} from '@dir-comercial/cliente.interface';
+import {ICliente, IContrato} from '@dir-comercial/cliente.interface';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
@@ -23,8 +23,8 @@ enum AccionesTabla
 })
 export class ConsultaContratosComponent
 {
-    detallesSolicicitud: ISolicitudServ;
-
+    detalleContrato: IContrato;
+    detalleSolicitud: ISolicitudServ;
     constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState, public _solicitudServState: SolicitudesState, private _clienteState: ClienteState)
     {
     }
@@ -59,8 +59,7 @@ export class ConsultaContratosComponent
             },
             {
                 etiqueta: 'Ruta',
-                propiedad: 'datosSolicitud',
-                subPropiedad: 'ruta'
+                propiedad: 'ruta',
             },
             {
                 etiqueta: 'Tarifa',
@@ -100,7 +99,7 @@ export class ConsultaContratosComponent
         this._solicitudServState.solPorCliente(cliente._id).subscribe();
     }
 
-    MostrarDetalleContrato(evento: IEventoAcciones, cliente: ICliente): void
+    MostrarDetalleContrato(evento: IEventoAcciones): void
     {
         switch (evento.accion)
         {
@@ -117,13 +116,18 @@ export class ConsultaContratosComponent
                 //         value: contrato
                 //     });
                 // this._clienteState.sClienteDetalle = copiaCliente;
-
-                this.detallesSolicicitud = evento.datos.datosSolicitud;
-                console.log('Detalle', evento);
+                this.detalleContrato = evento.datos.contratos;
+                this.detalleSolicitud = evento.datos.datosSolicitud;
+                console.log('===>>', evento.datos);
                 break;
             case AccionesTabla.rest:
-
+                this.detalleSolicitud = null;
                 break;
         }
+    }
+
+    resetearDetalles(): void
+    {
+        this.detalleSolicitud = null;
     }
 }

@@ -3,7 +3,7 @@ import {State} from '@ngxs/store';
 import {ICliente, IResCliente} from '../models/cliente.interface';
 import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {ClienteMutationService} from '../services/cliente.mutation.service';
 import {tap} from 'rxjs/operators';
 import {ClienteQueryService} from '@dir-comercial/cliente.query.service';
@@ -18,18 +18,13 @@ export class ClienteState extends NgxsDataRepository<ICliente>
         super();
     }
 
-
-    @DataAction() regCliente(@Payload('Registrar cliente') cliente: ICliente): Observable<IResCliente>
-    {
-        return this._clienteMutation.regCliente(cliente);
-    }
-
     @DataAction() datosRef(@Payload('Buscar medidor ref') noMedidor: string): Observable<IResCliente>
     {
         if (noMedidor)
         {
             return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) =>
             {
+                console.log('res', res);
                 if (res.estatus)
                 {
                     this.ctx.setState(res.documento);

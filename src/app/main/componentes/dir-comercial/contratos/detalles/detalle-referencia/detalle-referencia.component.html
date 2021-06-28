@@ -1,8 +1,12 @@
-<section *ngIf="_infoReferencia">
+<section *ngIf="_clienteState.state$ | async as referencia">
     <div>
         <div fxFlex>
             <span fxFlex="40" class="form-etiquetas">Medidor de referencia:</span>
-            <span fxFlex class="form-datos">{{referencia?.contratos[0]?.noMedidor}}</span>
+            <span fxFlex class="form-datos">{{referencia?.contratos[0]?.noMedidor}}
+                <button mat-icon-button color="primary" matTooltip="click para localizar en el mapa" (click)="localizarRef()">
+                <mat-icon>location_on</mat-icon>
+            </button>
+            </span>
         </div>
         <div fxFlex>
             <span fxFlex="40" class="form-etiquetas">No. de cuenta:</span>

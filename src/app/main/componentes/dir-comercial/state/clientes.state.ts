@@ -21,6 +21,11 @@ export class ClientesState extends NgxsDataRepository<ICliente[]>
 
     cargando = false;
 
+    @DataAction() regCliente(@Payload('Registrar cliente') cliente: ICliente): Observable<IResCliente>
+    {
+        return this._clienteMutation.regCliente(cliente);
+    }
+
     @DataAction() clientesPorCriterio(@Payload('Buscar por criterio') criterio: string): Observable<IResCliente>
     {
         if (criterio !== '')
