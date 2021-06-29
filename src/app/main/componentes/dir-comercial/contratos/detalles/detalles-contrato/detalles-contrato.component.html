@@ -1,17 +1,62 @@
 <div fxLayoutAlign="center center">
     <section [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="_infoContrato" class="baseDiv w-90-p">
+        <div fxLayout="row-reverse">
+            <span fxFlex class="form-datos">{{_infoContrato.fechaAlta | date: 'medium'}}</span>
+            <span fxFlex="75" class="form-etiquetas">Fecha de alta:</span>
+        </div>
         <div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Municipio</span>
+            <div fxFlex="65">
+                <span fxFlex="30" class="form-etiquetas">Municipio:</span>
                 <span fxFlex class="form-datos">{{_infoContrato.municipio}}</span>
             </div>
             <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Ciudad</span>
+                <span fxFlex="30" class="form-etiquetas">Ciudad:</span>
                 <span fxFlex class="form-datos">{{_infoContrato.ciudad}}</span>
             </div>
-            <div fxFlex>
-                <span fxFlex="40" class="form-etiquetas">Estado</span>
+        </div>
+        <div>
+            <div fxFlex="65">
+                <span fxFlex="30" class="form-etiquetas">Estado:</span>
                 <span fxFlex class="form-datos">{{_infoContrato.estado}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="30" class="form-etiquetas">Cp:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.codigoPostal}}</span>
+            </div>
+        </div>
+        <div>
+            <div fxFlex="65">
+                <span fxFlex="30" class="form-etiquetas">RPU:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.rpu}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="30" class="form-etiquetas">No. Contrato:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.noContrato}}</span>
+            </div>
+        </div>
+        <div>
+            <div fxFlex="65">
+                <span fxFlex="30" class="form-etiquetas">No. Medidor:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.noMedidor}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="30" class="form-etiquetas">No. Cta:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.noCuenta}}</span>
+            </div>
+        </div>
+
+        <div>
+            <div fxFlex>
+                <span fxFlex="60" class="form-etiquetas">Sector:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.sector}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="60" class="form-etiquetas">Ruta:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.ruta}}</span>
+            </div>
+            <div fxFlex>
+                <span fxFlex="60" class="form-etiquetas">Zona:</span>
+                <span fxFlex class="form-datos">{{_infoContrato.zona}}</span>
             </div>
         </div>
     </section>

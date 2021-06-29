@@ -63,7 +63,6 @@ export class InfoSolicitudServComponent implements OnDestroy
                 this.detalleSolicitud = datos;
                 if (datos.medidorRef)
                 {
-                    console.log('****', datos);
                     this.subscripcion.add(this._clienteState.datosRef(datos.medidorRef).subscribe());
                 }
                 break;
