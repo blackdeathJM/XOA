@@ -17,8 +17,6 @@ import {IWidget} from '@Config/widget.interface';
 export class BuscarClienteAutocompleteComponent implements OnInit, OnDestroy
 {
     @Input() tipoConsulta: 'multiple' | 'autoCompletado' | 'normal';
-
-    // @Output() clienteSeleccionado: EventEmitter<[ICliente, IContrato]> = new EventEmitter();
     @ContentChild(WIDGET as any, {static: true}) clientes: IWidget;
 
     marcador = 'Buscar cliente por: (NOMBRE COMPLETO - TELEFONO)';

@@ -119,5 +119,6 @@ export class ConsultaContratosComponent
     {
         evento.preventDefault();
         this.detalleSolicitud = null;
+        this.detalleContrato = null;
     }
 }

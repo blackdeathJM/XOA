@@ -27,6 +27,7 @@ export const fragSolicitud = gql`
         cliente
         {
             nombreCompleto
+            telefonos
         }
     }
 `;

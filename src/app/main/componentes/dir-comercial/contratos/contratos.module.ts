@@ -24,6 +24,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from '@ngxs/store';
 import {PortalModule} from '@angular/cdk/portal';
 import {DetallesContratoComponent} from './detalles/detalles-contrato/detalles-contrato.component';
+import { DetalleDocumentosContratoComponent } from './detalles/detalle-documentos-contrato/detalle-documentos-contrato.component';
+import { DetalleFacturacionComponent } from './detalles/detalle-facturacion/detalle-facturacion.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import {DetallesContratoComponent} from './detalles/detalles-contrato/detalles-c
             DetallesContratoComponent,
             InfoSolicitudServComponent,
             ActualizarSolicitudServComponent,
+            DetalleDocumentosContratoComponent,
+            DetalleFacturacionComponent,
         ],
     imports:
         [

@@ -34,10 +34,11 @@
                                      [valConsulta]="cliente.contratos"
                                      [ancho]="{width: '80px'}">
                     </app-prime-tabla>
-                    <mat-divider class="m-5"></mat-divider>
                     <app-detalles-solicitud-serv [detalleSolicitud]="detalleSolicitud"></app-detalles-solicitud-serv>
                     <mat-divider class="my-5"></mat-divider>
                     <app-detalles-contrato [infoContrato]="detalleContrato"></app-detalles-contrato>
+                    <mat-divider class="my-5"></mat-divider>
+                    <app-detalle-documentos-contrato></app-detalle-documentos-contrato>
                 </td>
             </tr>
         </ng-template>

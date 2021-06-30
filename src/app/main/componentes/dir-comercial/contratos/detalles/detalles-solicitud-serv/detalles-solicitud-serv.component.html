@@ -1,9 +1,12 @@
-<ng-container *ngIf="_detalleSolicitud">
-    <div fxLayoutAlign="center center">
-        <section [@animate]="{value: '*', params: {y: '100%'}}" class="baseDiv w-90-p">
+<app-card-bootstrap *ngIf="_detalleSolicitud">
+    <ng-container cabecera><h2>Informacion detallada de la solicitud de servicio</h2></ng-container>
+    <ng-container contenido>
+        <section [@animate]="{value: '*', params: {y: '100%'}}">
             <div fxFill>
                 <span fxFlex="20" class="form-etiquetas">Nombre:</span>
                 <span fxFlex class="form-datos">{{_detalleSolicitud.cliente?.nombreCompleto}}</span>
+                <span fxFlex="20" class="form-etiquetas">Contacto:</span>
+                <span fxFlex class="form-datos">{{_detalleSolicitud.cliente?.telefonos}}</span>
             </div>
             <div>
                 <div fxFlex>
@@ -106,9 +109,8 @@
                 </div>
             </mat-action-row>
         </section>
-    </div>
-</ng-container>
-
+    </ng-container>
+</app-card-bootstrap>
 <ng-template #cargando>
     <mat-icon>
         <mat-progress-spinner mode="indeterminate" diameter="20"></mat-progress-spinner>
