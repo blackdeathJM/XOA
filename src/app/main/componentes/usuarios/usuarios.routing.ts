@@ -11,6 +11,7 @@ const usuariosRouting: Routes =
         {
             path: '',
             component: AdmonUsuarioComponent,
+            resolve: [],
             children:
                 [
                     {

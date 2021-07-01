@@ -180,42 +180,14 @@ export class GralesServices
             tienePermiso = true;
         } else
         {
-            let timerInterval;
             Swal.fire({
-                title: 'No tienes permiso para acceder a este apartado!',
-                html: '<b>Redirigiendo</b>.',
+                title: 'ADMINISTRADOR!',
+                html: `<h2>No tienes permiso para acceder a este apartado</h2>`,
                 timer: 2000,
-                timerProgressBar: true,
-                onBeforeOpen: () =>
-                {
-                    Swal.showLoading();
-                    timerInterval = setInterval(() =>
-                    {
-                        const content = Swal.getContent();
-                        if (content)
-                        {
-                            const b = content.querySelector('b');
-                            if (b)
-                            {
-                                b.textContent = Swal.getTimerLeft();
-                            }
-                        }
-                    }, 100);
-                },
-                onClose: () =>
-                {
-                    clearInterval(timerInterval);
-                }
-            }).then((result) =>
+                timerProgressBar: true
+            }).then(() =>
             {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer)
-                {
-                    this._router.navigate(['/sistema-comercial/home']).then(() =>
-                    {
-                        tienePermiso = false;
-                    });
-                }
+                Swal.showLoading();
             });
         }
         return tienePermiso;

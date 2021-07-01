@@ -17,8 +17,6 @@ export class AdminGuard implements CanActivate
 
     canActivate(): Observable<boolean> | boolean
     {
-        const admin = this._serviciosGrales.compararRoles(this._sesionState.snapshot.role, Role.superadmin);
-        console.log('guard admin', admin);
-        return admin;
+        return this._serviciosGrales.compararRoles(this._sesionState.snapshot.role, Role.superadmin);
     }
 }

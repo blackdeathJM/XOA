@@ -47,7 +47,6 @@ export class UsuarioConfigComponent
         const {value: password} = await Swal.fire({
             title: 'Ingresa la nueva contrasena',
             input: 'password',
-            customClass: 'swal-text',
             inputLabel: 'Contrasena',
             inputAttributes: {
                 maxlength: 10,
@@ -61,10 +60,11 @@ export class UsuarioConfigComponent
             this._admonUsuarioState.actualizarContrasena('', password, usuario, true).subscribe(() =>
             {
                 toastSweet(TipoAlerta.satisfactorio, 'Contrasena cambiada correctamente', 5000);
-            }, error => toastSweet(TipoAlerta.error, error, 5000));
+            });
         }
     }
 
+    // customClass: 'swal-text',
     cambiarRole(slideToggle: MatSlideToggle, usuario: IUsuario, rolDeLaLista: Role): void
     {
         // Quitar el rol del usuario
