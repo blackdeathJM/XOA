@@ -1,4 +1,4 @@
-<section [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="(_solicitudPrev.state$ | async).length > 0 as solicitud">
+<section [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="(_solicitudPrev.state$ | async) as solicitud">
     <app-card-bootstrap>
         <ng-container cabecera><h2>Informacion de solicitudes creadas</h2></ng-container>
         <ng-container contenido>

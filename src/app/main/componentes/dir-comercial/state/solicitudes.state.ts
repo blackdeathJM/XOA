@@ -3,14 +3,14 @@ import {IResSolicitud, ISolicitudServ} from '@dir-comercial/solicitudServ.interf
 import {Injectable} from '@angular/core';
 import {NgxsDataRepository} from '@ngxs-labs/data/repositories';
 import {DataAction, Payload, StateRepository} from '@ngxs-labs/data/decorators';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {SolicitudServMutationService} from '@dir-comercial/solicitud-serv.mutation.service';
 import {tap} from 'rxjs/operators';
 import {SolicitudServQueryService} from '@dir-comercial/solicitud-serv.query.service';
 import {GralesServices} from '@services/grales.service';
 
 @StateRepository()
-@State<ISolicitudServ[]>({name: 'SolicitudServicio', defaults: []})
+@State<ISolicitudServ[]>({name: 'SolicitudServicio', defaults: null})
 @Injectable()
 export class SolicitudesState extends NgxsDataRepository<ISolicitudServ[]>
 {
