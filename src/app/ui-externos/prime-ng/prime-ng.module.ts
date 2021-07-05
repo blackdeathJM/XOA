@@ -1,11 +1,12 @@
 import {AvatarModule} from 'primeng/avatar';
 import {TableModule} from 'primeng/table';
 import {RippleModule} from 'primeng/ripple';
-import {BlockUIModule} from 'primeng/blockui';
 import {PaginatorModule} from 'primeng/paginator';
 import {SkeletonModule} from 'primeng/skeleton';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import {NgModule} from '@angular/core';
+import {DividerModule} from 'primeng/divider';
+import {FieldsetModule} from 'primeng/fieldset';
 
 @NgModule({
     declarations: [],
@@ -13,10 +14,11 @@ import {NgModule} from '@angular/core';
         [
             TableModule,
             RippleModule,
-            BlockUIModule,
+            DividerModule,
             PaginatorModule,
             SkeletonModule,
             AvatarModule,
+            FieldsetModule,
             PopoverModule.forRoot(),
         ],
     exports:
@@ -24,8 +26,9 @@ import {NgModule} from '@angular/core';
             TableModule,
             AvatarModule,
             RippleModule,
-            BlockUIModule,
             PopoverModule,
+            DividerModule,
+            FieldsetModule,
             SkeletonModule,
             PaginatorModule,
         ]

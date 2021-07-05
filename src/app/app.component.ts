@@ -1,9 +1,10 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
-import { FuseConfigService } from '../@fuse/services/config.service';
-import { Platform } from '@angular/cdk/platform';
-import { takeUntil } from 'rxjs/operators';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {DOCUMENT} from '@angular/common';
+import {FuseConfigService} from '../@fuse/services/config.service';
+import {Platform} from '@angular/cdk/platform';
+import {takeUntil} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -18,8 +19,8 @@ export class AppComponent implements OnInit, OnDestroy
     // Private
     private _unsubscribeAll: Subject<any>;
 
-    constructor(@Inject(DOCUMENT) private document: any, private _fuseConfigService: FuseConfigService, private _platform: Platform
-    )
+    constructor(@Inject(DOCUMENT) private document: any, private _fuseConfigService: FuseConfigService, private _platform: Platform,
+                private _router: Router, private _ar: ActivatedRoute)
     {
         // Add is-mobile class to the body if the platform is mobile
         if (this._platform.ANDROID || this._platform.IOS)

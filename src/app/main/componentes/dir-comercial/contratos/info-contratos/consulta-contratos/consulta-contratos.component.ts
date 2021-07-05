@@ -8,7 +8,6 @@ import {IModalInfo} from '@funcionesRaiz/modal.interface';
 import {ICliente, IContrato} from '@dir-comercial/cliente.interface';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {ClienteState} from '@dir-comercial/cliente.state';
-import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 
 enum AccionesTabla
 {
@@ -24,7 +23,6 @@ enum AccionesTabla
 export class ConsultaContratosComponent
 {
     detalleContrato: IContrato = null;
-    detalleSolicitud: ISolicitudServ = null;
 
     constructor(private _dialogRef: MatDialog, public _clientesState: ClientesState, public _solicitudServState: SolicitudesState, private _clienteState: ClienteState)
     {
@@ -105,11 +103,9 @@ export class ConsultaContratosComponent
         switch (evento.accion)
         {
             case AccionesTabla.info:
-                this.detalleSolicitud = evento.datos.datosSolicitud;
                 this.detalleContrato = evento.datos;
                 break;
             case AccionesTabla.rest:
-                this.detalleSolicitud = null;
                 this.detalleContrato = null;
                 break;
         }
@@ -118,7 +114,6 @@ export class ConsultaContratosComponent
     resetearDetalles(evento: MouseEvent): void
     {
         evento.preventDefault();
-        this.detalleSolicitud = null;
         this.detalleContrato = null;
     }
 }

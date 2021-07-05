@@ -57,10 +57,12 @@ export class DetallesSolicitudServComponent implements OnDestroy
         this.cargandoDatos = true;
         if (solicitudServ.medidorRef)
         {
-            this.generarOrdenServicio(solicitudServ, this._clienteState.snapshot).then(() => this.cargandoDatos = false);
+            this.generarOrdenServicio(solicitudServ, this._clienteState.snapshot).then();
+            this.cargandoDatos = false;
         } else
         {
-            this.generarOrdenServicio(solicitudServ, null).then(() => this.cargandoDatos = false);
+            this.generarOrdenServicio(solicitudServ, null).then();
+            this.cargandoDatos = false;
         }
     }
 
