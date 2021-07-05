@@ -1,0 +1,83 @@
+<div [@animate]="{value: '*', params: {y: '100%'}}" *ngIf="_detalleContrato">
+    <app-detalles-solicitud-serv [accionesVisibles]="false" [detalleSolicitud]="_detalleContrato.datosSolicitud">
+        <ng-container fechaAlta>
+            <div fxLayout="row-reverse">
+                <span fxFlex class="form-datos">{{_detalleContrato.fechaAlta | date: 'medium'}}</span>
+                <span fxFlex="75" class="form-etiquetas">Fecha de alta:</span>
+            </div>
+        </ng-container>
+        <ng-container contrato>
+            <p-divider>
+                <span>Informacion del contrato</span>
+            </p-divider>
+            <div>
+                <div fxFlex="65">
+                    <span fxFlex="30" class="form-etiquetas">RPU:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.rpu}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="30" class="form-etiquetas">No. Contrato:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.noContrato}}</span>
+                </div>
+            </div>
+            <div>
+                <div fxFlex="65">
+                    <span fxFlex="30" class="form-etiquetas">No. Medidor:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.noMedidor}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="30" class="form-etiquetas">No. Cta:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.noCuenta}}</span>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container cdEstado>
+            <div>
+                <div fxFlex="65">
+                    <span fxFlex="30" class="form-etiquetas">Municipio:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.municipio}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="30" class="form-etiquetas">Ciudad:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.ciudad}}</span>
+                </div>
+            </div>
+            <div>
+                <div fxFlex="65">
+                    <span fxFlex="30" class="form-etiquetas">Estado:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.estado}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="30" class="form-etiquetas">Cp:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.codigoPostal}}</span>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container ruta>
+            <div>
+                <div fxFlex>
+                    <span fxFlex="60" class="form-etiquetas">Sector:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.sector}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="60" class="form-etiquetas">Ruta:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.ruta}}</span>
+                </div>
+                <div fxFlex>
+                    <span fxFlex="60" class="form-etiquetas">Zona:</span>
+                    <span fxFlex class="form-datos">{{_detalleContrato.zona}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </app-detalles-solicitud-serv>
+    <div fxLayoutAlign="start">
+        <blockquote>
+            <p>
+                Contrato creado por
+            </p>
+            <footer>
+                {{_detalleContrato.creadoPor}}
+            </footer>
+        </blockquote>
+    </div>
+</div>
