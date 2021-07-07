@@ -163,10 +163,10 @@
     "@angular-devkit/core" "7.3.10"
     rxjs "6.3.3"
 
-"@angular-ru/common@15.276.0":
-  version "15.276.0"
-  resolved "https://registry.yarnpkg.com/@angular-ru/common/-/common-15.276.0.tgz#090f7ae62bf708a33bbe9e62737fc18b9b2ad295"
-  integrity sha512-bsiRgunAUfYFuxBoqhcTC+H2MO5fO9pbN0VItpOG1yCLbX7ldTRVRBewsfKJT1rGmy5lVUraXNO+QybvyFYjwA==
+"@angular-ru/common@15.301.0":
+  version "15.301.0"
+  resolved "https://registry.yarnpkg.com/@angular-ru/common/-/common-15.301.0.tgz#d1381e07d24aab40e1999808f7d84f17b94930ca"
+  integrity sha512-IXAxesytYCjmMCah3HGq6oFUaLVbjWCkUpzVGWik38BvOaewkwy7EBMq0rA7UAS3+2fbxWexpjEBlbv6zcaO2g==
   dependencies:
     tslib "^2.0.0"
 
@@ -330,10 +330,10 @@
   resolved "https://registry.yarnpkg.com/@angularclass/hmr/-/hmr-3.0.0.tgz#6d0c31a237a46af99085de65082a97975575eda5"
   integrity sha512-4A/DKmSafWUcffv7f536oY6RbpXEAD7f0NCGVLlRj9Gna8dkGc9JOHSr3NCWHd/NRc4ey8x+V0itsBqlPxEJ/A==
 
-"@apollo/client@^3.3.20":
-  version "3.3.20"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.20.tgz#8f0935fa991857e9cf2e73c9bd378ad7ec97caf8"
-  integrity sha512-hS7UmBwJweudw/J3M0RAcusMHNiRuGqkRH6g91PM2ev8cXScIMdXr/++9jo7wD1nAITMCMF4HQQ3LFaw/Or0Bw==
+"@apollo/client@^3.3.21":
+  version "3.3.21"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.21.tgz#2862baa4e1ced8c5e89ebe6fc52877fc64a726aa"
+  integrity sha512-RAmZReFuKCKx0Rs5C0nVJwKomAHUHn+gGP/YvbEsXQWu0sXoncEUZa71UqlfCPVXa/0MkYOIbCXSQdOcuRrHgw==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
@@ -345,7 +345,7 @@
     optimism "^0.16.0"
     prop-types "^15.7.2"
     symbol-observable "^4.0.0"
-    ts-invariant "^0.7.0"
+    ts-invariant "^0.8.0"
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
@@ -1507,6 +1507,46 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
+"@foliojs-fork/fontkit@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@foliojs-fork/fontkit/-/fontkit-1.9.0.tgz#cd774ceb39c685742058be6bac55199ff767a79c"
+  integrity sha512-Akg3xZ/cbM9bHeifsrtPx+OmNomuR5zpEsnrvgA+r7O3KlnJc6lLaZovNFc9QojbzNOJWcquraMQZuS4HwW7WQ==
+  dependencies:
+    "@foliojs-fork/restructure" "^2.0.1"
+    brfs "^2.0.0"
+    brotli "^1.2.0"
+    browserify-optional "^1.0.1"
+    clone "^1.0.4"
+    deep-equal "^1.0.0"
+    dfa "^1.2.0"
+    tiny-inflate "^1.0.2"
+    unicode-properties "^1.2.2"
+    unicode-trie "^2.0.0"
+
+"@foliojs-fork/linebreak@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@foliojs-fork/linebreak/-/linebreak-1.1.0.tgz#261d553f8cb0f367460aaa06467f2f0577352198"
+  integrity sha512-W5WW+kJPrTveTMTT0a9l2aupcrC0CfIT+zVgzGyYw/dUAXe5QF+gg7amocvZYIWs2xunK+0johbLGpgUjf0jnA==
+  dependencies:
+    base64-js "1.3.1"
+    brfs "^2.0.2"
+    unicode-trie "^2.0.0"
+
+"@foliojs-fork/pdfkit@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@foliojs-fork/pdfkit/-/pdfkit-0.12.1.tgz#882773cd9a3b7d3d368991ddd2e0009094b30565"
+  integrity sha512-6hnCPi+80wQsKIEmxuVD3WSRq3jYs4nb+ZQU482FW7pszGKX27GOHbtl4j/sZRgpBDNua/Dd/EWNhBoQI37g7w==
+  dependencies:
+    "@foliojs-fork/fontkit" "^1.9.0"
+    "@foliojs-fork/linebreak" "^1.1.0"
+    crypto-js "^3.3.0"
+    png-js "^1.0.0"
+
+"@foliojs-fork/restructure@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@foliojs-fork/restructure/-/restructure-2.0.1.tgz#5e863db48ecd96a85dd6da449baff3336e0da792"
+  integrity sha512-yf44Y0wbWJWnpgsEMlfJiV6LzmdSsuzJndnDB+VycFeDrXqheOMKzjEKLj4NRuwrwqLwGOxdUiSnXN8nCg/yTw==
+
 "@fullcalendar/common@~5.8.0":
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@fullcalendar/common/-/common-5.8.0.tgz#43e79e26e6347af83baaa603157aced67e23d549"
@@ -2188,25 +2228,27 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/html2canvas@^0.0.36":
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/@types/html2canvas/-/html2canvas-0.0.36.tgz#5c7ba01ba8771b39c6eebbbde8f05885858dafa8"
-  integrity sha512-6g/TVYK5U5AyRaOj1lHVnEmlxzH21K9CRDkC0s6s3CAWLDFbwZ8s+dy0kPrhPfo0cEjIOQh3eeFtTjRBPN4Q0g==
+"@types/html2canvas@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/html2canvas/-/html2canvas-1.0.0.tgz#72c638f0c4008d59d57caff02c14a5e8d416d025"
+  integrity sha512-BJpVf+FIN9UERmzhbtUgpXj6XBZpG67FMgBLLoj9HZKd9XifcCpSV+UnFcwTZfEyun4U/KmCrrVOG7829L589w==
+  dependencies:
+    html2canvas "*"
 
 "@types/jasmine@*":
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.7.4.tgz#99a49aa9a5f8dc86fc249ed13ed59552c6ce862d"
   integrity sha512-L3FKeEwMm8e8hqGvt7cSesVmGtavpRyHV1FNDq+Pm5pS4x5eFmE70ZERXCSBWAiLQqXBcZRUrwV59FZLQl/GxQ==
 
-"@types/jasmine@^3.7.7":
-  version "3.7.7"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.7.7.tgz#56718af036be3c9f86eca560a22e39440b2b0784"
-  integrity sha512-yZzGe1d1T0y+imXDZ79F030nn8qbmiwpWKCZKvKN0KbTzwXAVYShUxkIxu1ba+vhIdabTGVGCfbtZC0oOam8TQ==
+"@types/jasmine@^3.7.8":
+  version "3.7.8"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.7.8.tgz#e558b31bf2418fd63de2329bcfb29f5a42413d4b"
+  integrity sha512-4YTb9L+tFCGJ/dyG8LOz1cYIaq0xF0sELMkTs78/KCMTIpYa0591VQpS5G1iEx6Ejl+GevdRKsR8U/ozwBsxHQ==
 
-"@types/jasminewd2@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@types/jasminewd2/-/jasminewd2-2.0.9.tgz#db3946314605deea9d5c7aea0b61d807089ba76d"
-  integrity sha512-Oz+Faunpe2SimFvkMYMXxpK89WXl7rZHG8abTOKcGndu4xOoSbUZ+jUdZ0LQpmDqPEGLBWXF/yZP1tlsplGhzw==
+"@types/jasminewd2@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@types/jasminewd2/-/jasminewd2-2.0.10.tgz#ae31c237aa6421bde30f1058b1d20f4577e54443"
+  integrity sha512-J7mDz7ovjwjc+Y9rR9rY53hFWKATcIkrr9DwQWmOas4/pnIPJTXawnzjwpHm3RSxz/e3ZVUvQ7cRbd5UQLo10g==
   dependencies:
     "@types/jasmine" "*"
 
@@ -2234,10 +2276,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.170.tgz#0d67711d4bf7f4ca5147e9091b847479b87925d6"
   integrity sha512-bpcvu/MKHHeYX+qeEN8GE7DIravODWdACVA1ctevD8CN24RhPZIKMn9ntfAsrvLfSX3cR5RrBKAbYm9bGs0A+Q==
 
-"@types/mapbox-gl@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@types/mapbox-gl/-/mapbox-gl-2.3.1.tgz#159f125835cebafa19f3fb521a5fba323623a390"
-  integrity sha512-lmCexZBhrQSYAdz2FqIfPsjGPLJVRqoGuaXvRyYFOV2GXvC3ubWm6ktUQImVzKv0nykArpMn1nU18Qsgdhq0cA==
+"@types/mapbox-gl@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/mapbox-gl/-/mapbox-gl-2.3.2.tgz#93a68f496b87903197770c6840a3ecc4f515a0c8"
+  integrity sha512-YoH1rlmh6LPUBDbv4XTXPgjJGftZEEbcXD9iSPjTgAYdmNtCRTdRUo8iSGwiZEk7QCJ7iagzu2rhzzun7VRHaw==
   dependencies:
     "@types/geojson" "*"
 
@@ -3100,6 +3142,11 @@ base64-js@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-0.0.8.tgz#1101e9544f4a76b1bc3b26d452ca96d7a35e7978"
   integrity sha1-EQHpVE9KdrG8OybUUsqW16NeeXg=
+
+base64-js@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
+  integrity sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
 
 base64-js@^1.1.2, base64-js@^1.3.0, base64-js@^1.3.1:
   version "1.5.1"
@@ -5892,7 +5939,7 @@ html-escaper@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
-html2canvas@^1.0.0:
+html2canvas@*, html2canvas@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/html2canvas/-/html2canvas-1.0.0.tgz#05c1966aeab08c17d9f113921b6b82d4d56740a4"
   integrity sha512-0d/f2Aj1Brn+EeNWkuRdtnT13qu1NdvxhBMvts3ssme7jgPU7dtuwnm1P6cXvXmnDdUUerH5XdhveWvuLfqkew==
@@ -6025,7 +6072,7 @@ iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-iconv-lite@0.6:
+iconv-lite@0.6, iconv-lite@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
   integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
@@ -8111,7 +8158,7 @@ pbf@^3.2.1:
     ieee754 "^1.1.12"
     resolve-protobuf-schema "^2.1.0"
 
-pdfkit@>=0.8.1, pdfkit@^0.12.0:
+pdfkit@>=0.8.1:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/pdfkit/-/pdfkit-0.12.1.tgz#0df246b46cffd3d8fb99b1ea33dc1854430a9199"
   integrity sha512-ruNLx49hVW3ePJziKjHtWdTHN1VZHLCUCcbui/vx4lYwFLEM1d8W0L7ObYPbN8EifK7s281ZMugCLgSbk+KRhg==
@@ -8121,19 +8168,19 @@ pdfkit@>=0.8.1, pdfkit@^0.12.0:
     linebreak "^1.0.2"
     png-js "^1.0.0"
 
-pdfmake-wrapper@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/pdfmake-wrapper/-/pdfmake-wrapper-2.1.1.tgz#b35ba7f0b419adae63a3602b676a4bae2e7ce19c"
-  integrity sha512-DYYmSH9zX0/leUtF/UitMwen+z0s8TLBcLwO38EBGlGaEoR/u5nDb8zUCPXI3XM4clGXb458y8zevuVReGAYIg==
+pdfmake-wrapper@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/pdfmake-wrapper/-/pdfmake-wrapper-2.1.2.tgz#d5a739b6e5801bb0359ca6b127103658c1ccd19c"
+  integrity sha512-oApp2QP6ST3cdPvTQM3XrV2c0tZCNkrNhsuSz/1MQJ0F3X2q4Om3b5uGh1In3K5ofElPV02z8U7vTcvExBgN9Q==
 
-pdfmake@^0.1.71:
-  version "0.1.71"
-  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.1.71.tgz#9cb20032cfed534f1bb5aa95026343fd7b4a5953"
-  integrity sha512-uXUy+NZ8R5pwJ6rYLJRu7VRw/w5ogBScNk440CHpMZ6Z0+E1uc1XvwK4I1U5ry0UZQ3qPD0dpSvbzAkRBKYoJA==
+pdfmake@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.2.0.tgz#d17625786fe04b5affd489e9b772e3c43d04eb7b"
+  integrity sha512-pK0fyRol3MrCTWMya/FYpQydZzBO5G38cynMlIxgm24QWu8N4+0i0ewYHWcg8Y8fzGVGIzgV4r62efT/vkYeeQ==
   dependencies:
-    iconv-lite "^0.6.2"
-    linebreak "^1.0.2"
-    pdfkit "^0.12.0"
+    "@foliojs-fork/linebreak" "^1.1.0"
+    "@foliojs-fork/pdfkit" "^0.12.1"
+    iconv-lite "^0.6.3"
     svg-to-pdfkit "^0.1.8"
     xmldoc "^1.1.2"
 
@@ -9447,10 +9494,10 @@ rxjs@6.6.7, rxjs@^6.5.0, rxjs@^6.5.3, rxjs@^6.6.6:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.1.0.tgz#94202d27b19305ef7b1a4f330277b2065df7039e"
-  integrity sha512-gCFO5iHIbRPwznl6hAYuwNFld8W4S2shtSJIqG27ReWXo9IWrCyEICxUA+6vJHwSR/OakoenC4QsDxq50tzYmw==
+rxjs@7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.2.0.tgz#5cd12409639e9514a71c9f5f9192b2c4ae94de31"
+  integrity sha512-aX8w9OpKrQmiPKfT1bqETtUr9JygIz6GZ+gql8v7CijClsP0laoFUdKzxFAoWuRdSlOdU2+crss+cMf+cqMTnw==
   dependencies:
     tslib "~2.1.0"
 
@@ -10412,10 +10459,10 @@ tree-kill@1.2.2:
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
-ts-invariant@^0.7.0:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.7.3.tgz#13aae22a4a165393aaf5cecdee45ef4128d358b8"
-  integrity sha512-UWDDeovyUTIMWj+45g5nhnl+8oo+GhxL5leTaHn5c8FkQWfh8v66gccLd2/YzVmV5hoQUjCEjhrXnQqVDJdvKA==
+ts-invariant@^0.8.0:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.8.2.tgz#62af654ebfb8b1eeb55bc9adc2f40c6b93b0ff7e"
+  integrity sha512-VI1ZSMW8soizP5dU8DsMbj/TncHf7bIUqavuE7FTeYeQat454HHurJ8wbfCnVWcDOMkyiBUWOW2ytew3xUxlRw==
   dependencies:
     tslib "^2.1.0"
 

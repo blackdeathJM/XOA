@@ -5,18 +5,21 @@ import {FechaComponent} from '@shared/ctrls/fecha/fecha.component';
 import {MaterialModule} from '@ui-externos/material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RegModalesComponent } from './reg-modales/reg-modales.component';
+import { AccionPortalComponent } from './accion-portal/accion-portal.component';
+import {PortalModule} from '@angular/cdk/portal';
 
 @NgModule({
-    declarations: [SelecDeptoDropComponent, FechaComponent, RegModalesComponent],
+    declarations: [SelecDeptoDropComponent, FechaComponent, RegModalesComponent, AccionPortalComponent],
     imports:
         [
             CommonModule,
             MaterialModule,
-            FlexLayoutModule
+            FlexLayoutModule,
+            PortalModule
         ],
     exports:
         [
-            SelecDeptoDropComponent, FechaComponent, RegModalesComponent
+            SelecDeptoDropComponent, FechaComponent, RegModalesComponent, AccionPortalComponent
         ]
 })
 export class CtrlsModule

@@ -85,32 +85,33 @@
         <span fxFlex class="form-datos">{{_detalleSolicitud?.comentarios}}</span>
     </div>
     <ng-content></ng-content>
-    <mat-action-row *ngIf="accionesVisibles">
-        <div fxLayoutGap="8px">
-            <button mat-raised-button fxFlex="1 0 auto" class="light-green-500" (click)="generarPagoServ(_detalleSolicitud)">
-                <mat-icon>attach_money</mat-icon>
-                Pago verificacion de servicio
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(_detalleSolicitud)"
-                    [disabled]="!_detalleSolicitud?.pagoServRealizado || cargandoDatos">
-                <ng-container *ngIf="!cargandoDatos; else cargando">
-                    <mat-icon>print</mat-icon>
-                </ng-container>
-                Imprimir orden
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="lime" (click)="actualizarOrden(_detalleSolicitud)"
-                    [disabled]="!_detalleSolicitud?.pagoServRealizado">
-                <mat-icon>autorenew</mat-icon>
-                Actualizar servicio
-            </button>
-            <button mat-raised-button fxFlex="1 0 auto" class="fuse-white" (click)="generarContrato(_detalleSolicitud)"
-                    [disabled]="!_detalleSolicitud?.aprobadoServ">
-                <mat-icon>featured_play_list</mat-icon>
-                Generar contrato
-            </button>
-        </div>
-    </mat-action-row>
 </section>
+
+<ng-container *cdkPortal>
+    <div fxLayoutGap="8px">
+        <button mat-raised-button fxFlex="1 0 auto" class="light-green-500" (click)="generarPagoServ(_detalleSolicitud)">
+            <mat-icon>attach_money</mat-icon>
+            Pago verificacion de servicio
+        </button>
+        <button mat-raised-button fxFlex="1 0 auto" class="brown" (click)="imprimirOrdenServ(_detalleSolicitud)"
+                [disabled]="!_detalleSolicitud?.pagoServRealizado || cargandoDatos">
+            <ng-container *ngIf="!cargandoDatos; else cargando">
+                <mat-icon>print</mat-icon>
+            </ng-container>
+            Imprimir orden
+        </button>
+        <button mat-raised-button fxFlex="1 0 auto" class="lime" (click)="actualizarOrden(_detalleSolicitud)"
+                [disabled]="!_detalleSolicitud?.pagoServRealizado">
+            <mat-icon>autorenew</mat-icon>
+            Actualizar servicio
+        </button>
+        <button mat-raised-button fxFlex="1 0 auto" class="fuse-white" (click)="generarContrato(_detalleSolicitud)"
+                [disabled]="!_detalleSolicitud?.aprobadoServ">
+            <mat-icon>featured_play_list</mat-icon>
+            Generar contrato
+        </button>
+    </div>
+</ng-container>
 <ng-template #cargando>
     <mat-icon>
         <mat-progress-spinner mode="indeterminate" diameter="20"></mat-progress-spinner>

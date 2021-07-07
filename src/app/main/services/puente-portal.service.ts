@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ComponentPortal, DomPortal, TemplatePortal} from '@angular/cdk/portal';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 export type Portal = TemplatePortal | ComponentPortal<any> | DomPortal;
 
@@ -9,11 +9,15 @@ export type Portal = TemplatePortal | ComponentPortal<any> | DomPortal;
 })
 export class PuentePortalService
 {
-    private portalActivo = new Subject<Portal>();
-    readonly portal$ = this.portalActivo.asObservable();
+    private portal$ = new Subject<Portal>();
 
-    setPortal(portal: Portal): void
+    get gPortal(): Observable<Portal>
     {
-        this.portalActivo.next(portal);
+        return this.portal$.asObservable();
+    }
+
+    set sPortal(portal: Portal)
+    {
+        this.portal$.next(portal);
     }
 }

@@ -1,11 +1,12 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ITablaColumnas} from '@funcionesRaiz/paginacion-interface';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
 import {IAccionesPrimeTabla, IEventoAcciones} from '@shared/widgets/tablas/prime-tabla/models/acciones-prime-tabla-interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ISolicitudServ} from '@dir-comercial/solicitudServ.interface';
 import {fuseAnimations} from '@plantilla/animations';
+import {Portal, PuentePortalService} from '@services/puente-portal.service';
 
 @Component({
     selector: 'app-info-solicitud-serv',
@@ -13,7 +14,7 @@ import {fuseAnimations} from '@plantilla/animations';
     styleUrls: ['./info-solicitud-serv.component.scss'],
     animations: [fuseAnimations]
 })
-export class InfoSolicitudServComponent implements OnDestroy
+export class InfoSolicitudServComponent implements OnDestroy, OnInit
 {
     detalleSolicitud: ISolicitudServ;
     columnasSolicitud: ITablaColumnas[] =
@@ -49,9 +50,15 @@ export class InfoSolicitudServComponent implements OnDestroy
             }
         ];
     subscripcion: Subscription = new Subscription();
+    portal$: Observable<Portal>;
 
-    constructor(public _solicitudPrev: SolicitudesState, public _clienteState: ClienteState)
+    constructor(public _solicitudPrev: SolicitudesState, public _clienteState: ClienteState, public _portal: PuentePortalService)
     {
+    }
+
+    ngOnInit(): void
+    {
+        this.portal$ = this._portal.gPortal;
     }
 
     clienteSelec(evento: IEventoAcciones): void
