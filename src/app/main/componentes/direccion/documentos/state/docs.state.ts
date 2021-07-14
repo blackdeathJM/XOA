@@ -147,6 +147,7 @@ export class DocsState extends NgxsDataRepository<IDocExt[]>
     {
         return this.docsQuery.todosDocsExt(ProcesosDoc.entregado).pipe(tap((res: IResDocEx) =>
         {
+            console.log('respuesta', res);
             if (res.documentos)
             {
                 this.ctx.setState(res.documentos);
