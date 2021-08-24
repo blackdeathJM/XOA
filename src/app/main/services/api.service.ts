@@ -15,7 +15,7 @@ export class ApiService
     {
     }
 
-    protected query(query: DocumentNode, variables = {}, context = {}, _pluck: string[] = []): Observable<any>
+    query(query: DocumentNode, variables = {}, context = {}, _pluck: string[] = []): Observable<any>
     {
         return this._apollo.watchQuery({
             query,
@@ -25,23 +25,20 @@ export class ApiService
         }).valueChanges.pipe(pluck(..._pluck));
     }
 
-    protected consulta(query: DocumentNode, variables = {}, context = {}, _pluck: string[] = []): Observable<any>
+    consulta(query: DocumentNode, variables = {}, context = {}, _pluck: string[] = []): Observable<any>
     {
         return this._apollo.query(
             {query, variables, context, fetchPolicy: 'network-only', notifyOnNetworkStatusChange: true}).pipe(pluck(..._pluck));
     }
 
-    protected mutation(mutation: DocumentNode, variables = {}, context = {}, _pluck: string[] = [],
-                       refetchQueries = []): Observable<any>
+    mutation(mutation: DocumentNode, variables = {}, context = {}, _pluck: string[] = [],
+             refetchQueries = []): Observable<any>
     {
         return this._apollo.mutate({
             mutation,
             variables,
             context,
-        }).pipe(
-            catchError(err => throwError(err)),
-            pluck(..._pluck)
-        );
+        }).pipe(pluck(..._pluck));
     }
 
     protected subscription(subscription: DocumentNode, variables = {}, context = {}, _pluck: string[] = []): Observable<any>

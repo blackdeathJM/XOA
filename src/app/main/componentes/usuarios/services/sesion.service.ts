@@ -31,8 +31,7 @@ export class SesionService extends ApiService
 
     obtenerSesionActual(): IUsuario
     {
-        const tokenLocal = this._jwtHelperService.tokenGetter();
-        if (this._jwtHelperService.isTokenExpired(tokenLocal))
+        if (this._jwtHelperService.isTokenExpired())
         {
             this._router.navigateByUrl('seguridad/login').then(() =>
             {
@@ -42,10 +41,10 @@ export class SesionService extends ApiService
         } else
         {
             // Decodificar token
-            const tokenDecodificado = this._jwtHelperService.decodeToken(tokenLocal).usuario.loginUsuario || this._jwtHelperService.decodeToken(tokenLocal).usuario;
+            const tokenDecodificado = this._jwtHelperService.decodeToken().usuario.loginUsuario || this._jwtHelperService.decodeToken().usuario;
             if ('res' in tokenDecodificado)
             {
-                return tokenDecodificado.res.elemento;
+                return tokenDecodificado.res.documento;
             } else
             {
                 return tokenDecodificado;

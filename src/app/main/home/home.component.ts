@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {GralesServices} from '@services/grales.service';
 
 @Component({
     selector: 'app-home',
@@ -8,4 +9,10 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 })
 export class HomeComponent
 {
+    opcionesCarga = GralesServices.opcCargaImg('pre');
+
+    listaArchivos($event: string[]): void
+    {
+        console.log('imagen', $event);
+    }
 }

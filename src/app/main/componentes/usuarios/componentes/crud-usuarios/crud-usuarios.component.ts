@@ -18,7 +18,6 @@ import {TipoAlerta} from '@shared/alerts/values.config';
 export class CrudUsuariosComponent implements OnInit
 {
     guardando = false;
-    departamentos: IDepartamento[];
     usuarioRegistro: IUsuario = {
         nombre: '',
         usuario: '',

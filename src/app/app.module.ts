@@ -14,6 +14,7 @@ import {SharedModule} from '@shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {FileUploadModule} from '@iplab/ngx-file-upload';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import {SubidasModule} from '@shared/components/subidas/subidas.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
         MaterialModule,
         FileUploadModule,
         AppRouting,
-        SweetAlert2Module
+        SweetAlert2Module,
+        SubidasModule
     ]
 })
 export class AppModule

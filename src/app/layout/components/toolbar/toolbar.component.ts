@@ -35,9 +35,8 @@ export class ToolbarComponent implements OnInit, AfterContentInit, OnDestroy
     notificacion: INotificacion[] = [];
     subscripcion: Subscription = new Subscription();
     userStatusOptions: any[];
-    matBageTotal = 0;
 
-// Private
+    // Private
     private _unsubscribeAll: Subject<any>;
 
     constructor(private _fuseConfigService: FuseConfigService, private _fuseSidebarService: FuseSidebarService, public _sesionState: SesionState,
@@ -95,15 +94,15 @@ export class ToolbarComponent implements OnInit, AfterContentInit, OnDestroy
             {
                 this.sesionUsuario = r;
             }
-        }, error => toastSweet(TipoAlerta.error, 'Error inseperado: ' + error, 5000), () => console.log('Se completo')));
+        }));
     }
 
     ngAfterContentInit(): void
     {
-        this.subscripcion.add(this._notificacionState.listarNotificaciones().subscribe());
-        this._docsState.subDocs().subscribe();
-        this._docUsuarioState.subDocsUsuario().subscribe();
-        this._notificacionState.subNot();
+        // this.subscripcion.add(this._notificacionState.listarNotificaciones().subscribe());
+        // this._docsState.subDocs().subscribe();
+        // this._docUsuarioState.subDocsUsuario().subscribe();
+         // this._notificacionState.subNot();
 
         this._usuarioSubscripcion.cambiarRoleUsuario(this._sesionState.snapshot.usuario).subscribe((res) =>
         {
