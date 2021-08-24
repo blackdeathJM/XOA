@@ -24,7 +24,6 @@ export class ClienteState extends NgxsDataRepository<ICliente>
         {
             return this._clienteQuery.datosRef(noMedidor).pipe(tap((res: IResCliente) =>
             {
-                console.log('res', res);
                 if (res.estatus)
                 {
                     this.ctx.setState(res.documento);

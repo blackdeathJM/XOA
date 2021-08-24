@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild} from '@angular/core';
 import {fuseAnimations} from '@plantilla/animations';
 import {PuentePortalService} from '@services/puente-portal.service';
 import {SolicitudesState} from '@dir-comercial/solicitudes.state';
@@ -13,31 +13,41 @@ import {ICliente} from '@dir-comercial/cliente.interface';
 import {ClienteState} from '@dir-comercial/cliente.state';
 import {Subscription} from 'rxjs';
 import {RegContratosComponent} from '@dir-comercial/reg-contratos/reg-contratos.component';
+import {CdkPortal} from '@angular/cdk/portal';
 
 @Component({
     selector: 'app-detalles-solicitud-serv',
     templateUrl: './detalles-solicitud-serv.component.html',
     styleUrls: ['./detalles-solicitud-serv.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fuseAnimations]
 })
-export class DetallesSolicitudServComponent implements OnDestroy
+export class DetallesSolicitudServComponent implements OnDestroy, OnChanges
 {
-    @Input() accionesVisibles = false;
-
     @Input() set detalleSolicitud(v: ISolicitudServ)
     {
         this._detalleSolicitud = v;
     }
 
+    @ViewChild(CdkPortal, {static: true}) portal: CdkPortal;
+
     _detalleSolicitud: ISolicitudServ;
     subscripciones: Subscription = new Subscription();
     cargandoDatos = false;
 
-    constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState, private _dr: MatDialog,
-                private _clienteState: ClienteState)
+    constructor(private _puentePortal: PuentePortalService, public _solicitudServ: SolicitudesState, private _dr: MatDialog, private _clienteState: ClienteState)
     {
 
+    }
+
+    ngOnChanges(changes: SimpleChanges): void
+    {
+        if (changes.detalleSolicitud.currentValue)
+        {
+            this._puentePortal.sPortal = this.portal;
+        } else
+        {
+            this._puentePortal.sPortal = null;
+        }
     }
 
     generarPagoServ(solicitudServ: ISolicitudServ): void
@@ -134,5 +144,6 @@ export class DetallesSolicitudServComponent implements OnDestroy
     ngOnDestroy(): void
     {
         this.subscripciones.unsubscribe();
+        this.portal.detach();
     }
 }

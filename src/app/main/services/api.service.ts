@@ -4,7 +4,6 @@ import {catchError, pluck} from 'rxjs/operators';
 import {DocumentNode} from 'graphql';
 import {Observable, throwError} from 'rxjs';
 import {GralesServices} from './grales.service';
-import {RefetchQueryDescription} from '@apollo/client/core/watchQueryOptions';
 
 @Injectable({
     providedIn: 'root'
@@ -33,13 +32,12 @@ export class ApiService
     }
 
     protected mutation(mutation: DocumentNode, variables = {}, context = {}, _pluck: string[] = [],
-                       refetchQueries: RefetchQueryDescription = []): Observable<any>
+                       refetchQueries = []): Observable<any>
     {
         return this._apollo.mutate({
             mutation,
             variables,
             context,
-            refetchQueries
         }).pipe(
             catchError(err => throwError(err)),
             pluck(..._pluck)

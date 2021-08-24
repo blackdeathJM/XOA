@@ -8,8 +8,6 @@ import {Subscription} from 'rxjs';
 import {ReemplazarDocsComponent} from '../reemplazar-docs/reemplazar-docs.component';
 import {IWidget} from '@Config/widget.interface';
 import {WIDGET} from '@Config/widget.token';
-import {toastSweet} from '@shared/alerts/toasts';
-import {TipoAlerta} from '@shared/alerts/values.config';
 
 @Component({
     selector: 'app-tabla-doc-ext-principal',
@@ -49,7 +47,7 @@ export class TablaDocExtPrincipalComponent implements OnInit, OnDestroy, IWidget
             {
                 this.tieneDatos = false;
             }
-        }, error => toastSweet(TipoAlerta.error, 'Error al cargar la informacion: ' + error, 5000));
+        });
     }
 
     darPorTerminadoDoc(_id: string): void

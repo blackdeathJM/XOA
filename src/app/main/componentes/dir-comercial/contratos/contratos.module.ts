@@ -23,9 +23,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from '@ngxs/store';
 import {PortalModule} from '@angular/cdk/portal';
-import {DetallesContratoComponent} from './detalles/detalles-contrato/detalles-contrato.component';
-import { DetalleDocumentosContratoComponent } from './detalles/detalle-documentos-contrato/detalle-documentos-contrato.component';
-import { DetalleFacturacionComponent } from './detalles/detalle-facturacion/detalle-facturacion.component';
+import {DetalleFacturacionComponent} from './detalles/detalle-facturacion/detalle-facturacion.component';
+import {DetalleContratoComponent} from './detalles/detalle-contrato/detalle-contrato.component';
 
 
 @NgModule({
@@ -39,11 +38,10 @@ import { DetalleFacturacionComponent } from './detalles/detalle-facturacion/deta
             RegSolicitudServComponent,
             DetallesSolicitudServComponent,
             DetalleReferenciaComponent,
-            DetallesContratoComponent,
             InfoSolicitudServComponent,
             ActualizarSolicitudServComponent,
-            DetalleDocumentosContratoComponent,
             DetalleFacturacionComponent,
+            DetalleContratoComponent,
         ],
     imports:
         [

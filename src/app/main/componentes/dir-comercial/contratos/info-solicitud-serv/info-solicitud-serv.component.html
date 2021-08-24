@@ -10,9 +10,12 @@
                              [valConsulta]="solicitud"
                              (emitirAccion)="clienteSelec($event)">
             </app-prime-tabla>
-            <app-detalles-solicitud-serv [accionesVisibles]="true" [detalleSolicitud]="detalleSolicitud">
+            <app-detalles-solicitud-serv [detalleSolicitud]="detalleSolicitud">
                 <app-detalle-referencia></app-detalle-referencia>
             </app-detalles-solicitud-serv>
+        </ng-container>
+        <ng-container pie>
+            <ng-template [cdkPortalOutlet]="portal$ | async"></ng-template>
         </ng-container>
     </app-card-bootstrap>
 </section>
