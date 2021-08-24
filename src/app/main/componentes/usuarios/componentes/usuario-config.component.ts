@@ -80,6 +80,6 @@ export class UsuarioConfigComponent
         this._admonUsuarioState.actualizarRole(usuario._id, rolDeLaLista, slideToggle.checked).subscribe(() =>
         {
             toastSweet(TipoAlerta.satisfactorio, 'Rol actualizado con exito', 5000);
-        }, e => toastSweet(TipoAlerta.error, e, 5000));
+        });
     }
 }
