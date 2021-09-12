@@ -1,5 +1,5 @@
-import {gql} from 'apollo-angular';
-import {fragDocExt} from './docExterna.fragment';
+import { gql } from 'apollo-angular';
+import { fragDocExt } from './docExterna.fragment';
 
 
 // Obtener la tabla completa de documentos registrados
